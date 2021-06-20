@@ -28,11 +28,11 @@
                       Grid.Column="1">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="ID" Width="200"/>
-                        <GridViewColumn Header="Time" Width="200"/>
-                        <GridViewColumn Header="Latitude" Width="200"/>
-                        <GridViewColumn Header="Longitude" Width="200"/>
-                        <GridViewColumn Header="Intensity" Width="100"/>
+                        <GridViewColumn Header="ID" Width="200" DisplayMemberBinding="{Binding Id}"/>
+                        <GridViewColumn Header="Time" Width="200" DisplayMemberBinding="{Binding Time}"/>
+                        <GridViewColumn Header="Latitude" Width="200" DisplayMemberBinding="{Binding Latitude}"/>
+                        <GridViewColumn Header="Longitude" Width="200" DisplayMemberBinding="{Binding Longitude}"/>
+                        <GridViewColumn Header="Intensity" Width="100" DisplayMemberBinding="{Binding Intensity}"/>
                     </GridView>
                 </ListView.View>
             </ListView>

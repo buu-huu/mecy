@@ -23,6 +23,10 @@ namespace MecyInformation
         public MainWindow()
         {
             InitializeComponent();
+
+            List<Mesocyclone> mesos = new List<Mesocyclone>();
+            mesos.Add(new Mesocyclone());
+            lvMesos.ItemsSource = mesos;
         }
     }
 }

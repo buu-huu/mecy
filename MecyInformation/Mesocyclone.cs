@@ -69,6 +69,11 @@ namespace MecyInformation
         public double VelocityRotationalMaxClosestToGround { get => _velocityRotationalMaxClosestToGround; set => _velocityRotationalMaxClosestToGround = value; }
         public int Intensity { get => _intensity; set => _intensity = value; }
 
+        public Mesocyclone()
+        {
+
+        }
+
         public Mesocyclone(int id, string time, double latitude, double longitude, double polarMotion,
                    double majorAxis, double minorAxis, int orientation, double shearMean, double shearMax,
                    double momentumMean, double momentumMax, double diameter, double diameterEquivalent,
