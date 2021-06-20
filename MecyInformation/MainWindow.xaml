@@ -23,6 +23,351 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+
+                <Label Content="Mesocyclone Data"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="22"
+                       FontWeight="Bold"
+                       Grid.ColumnSpan="2"/>
+
+                <Label Content="ID"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="1"
+                       Grid.Column="0"/>
+                <TextBox Text="TestText"
+                         VerticalContentAlignment="Center"
+                         Margin="2"
+                         IsReadOnly="True"
+                         Grid.Row="1"
+                         Grid.Column="1"/>
+
+                <Label Content="Time"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="2"
+                       Grid.Column="0"/>
+                <TextBox Text="25.12.23"
+                         VerticalContentAlignment="Center"
+                         Margin="2"
+                         Grid.Row="2"
+                         Grid.Column="1"/>
+
+                <Label Content="Latitude"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="3"
+                       Grid.Column="0"/>
+                <TextBox VerticalContentAlignment="Center"
+                         Margin="2"
+                         Grid.Row="3"
+                         Grid.Column="1"/>
+
+                <Label Content="Longitude"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="4"
+                       Grid.Column="0"/>
+                <TextBox VerticalContentAlignment="Center"
+                         Margin="2"
+                         Grid.Row="4"
+                         Grid.Column="1"/>
+
+                <Label Content="Polar Motion"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="5"
+                       Grid.Column="0"/>
+                <TextBox VerticalContentAlignment="Center"
+                         Margin="2"
+                         Grid.Row="5"
+                         Grid.Column="1"/>
+
+                <Label Content="Major Axis"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="6"
+                       Grid.Column="0"/>
+                <TextBox VerticalContentAlignment="Center"
+                         Margin="2"
+                         Grid.Row="6"
+                         Grid.Column="1"/>
+
+                <Label Content="Minor Axis"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="7"
+                       Grid.Column="0"/>
+                <TextBox VerticalContentAlignment="Center"
+                         Margin="2"
+                         Grid.Row="7"
+                         Grid.Column="1"/>
+
+                <Label Content="Orientation"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="8"
+                       Grid.Column="0"/>
+                <TextBox VerticalContentAlignment="Center"
+                         Margin="2"
+                         Grid.Row="8"
+                         Grid.Column="1"/>
+
+                <Label Content="Shear Mean"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="9"
+                       Grid.Column="0"/>
+                <TextBox VerticalContentAlignment="Center"
+                         Margin="2"
+                         Grid.Row="9"
+                         Grid.Column="1"/>
+
+                <Label Content="Shear Max"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="10"
+                       Grid.Column="0"/>
+                <TextBox VerticalContentAlignment="Center"
+                         Margin="2"
+                         Grid.Row="10"
+                         Grid.Column="1"/>
+
+                <Label Content="Momentum Mean"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="11"
+                       Grid.Column="0"/>
+                <TextBox VerticalContentAlignment="Center"
+                         Margin="2"
+                         Grid.Row="11"
+                         Grid.Column="1"/>
+
+                <Label Content="Momentum Max"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="12"
+                       Grid.Column="0"/>
+                <TextBox VerticalContentAlignment="Center"
+                         Margin="2"
+                         Grid.Row="12"
+                         Grid.Column="1"/>
+
+                <Label Content="Diameter"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="13"
+                       Grid.Column="0"/>
+                <TextBox VerticalContentAlignment="Center"
+                         Margin="2"
+                         Grid.Row="13"
+                         Grid.Column="1"/>
+
+                <Label Content="Diameter Equivalent"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="14"
+                       Grid.Column="0"/>
+                <TextBox VerticalContentAlignment="Center"
+                         Margin="2"
+                         Grid.Row="14"
+                         Grid.Column="1"/>
+                
+                <Label Content="Top"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="15"
+                       Grid.Column="0"/>
+                <TextBox VerticalContentAlignment="Center"
+                         Margin="2"
+                         Grid.Row="15"
+                         Grid.Column="1"/>
+
+                <Label Content="Meso Base"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="16"
+                       Grid.Column="0"/>
+                <TextBox VerticalContentAlignment="Center"
+                         Margin="2"
+                         Grid.Row="16"
+                         Grid.Column="1"/>
+
+                <Label Content="Echotop"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="17"
+                       Grid.Column="0"/>
+                <TextBox VerticalContentAlignment="Center"
+                         Margin="2"
+                         Grid.Row="17"
+                         Grid.Column="1"/>
+
+                <Label Content="VIL"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="18"
+                       Grid.Column="0"/>
+                <TextBox VerticalContentAlignment="Center"
+                         Margin="2"
+                         Grid.Row="18"
+                         Grid.Column="1"/>
+
+                <Label Content="Shear Vectors"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="19"
+                       Grid.Column="0"/>
+                <TextBox VerticalContentAlignment="Center"
+                         Margin="2"
+                         Grid.Row="19"
+                         Grid.Column="1"/>
+
+                <Label Content="Shear Features"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="20"
+                       Grid.Column="0"/>
+                <TextBox VerticalContentAlignment="Center"
+                         Margin="2"
+                         Grid.Row="20"
+                         Grid.Column="1"/>
+
+                <Label Content="Mean DBZ"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="21"
+                       Grid.Column="0"/>
+                <TextBox VerticalContentAlignment="Center"
+                         Margin="2"
+                         Grid.Row="21"
+                         Grid.Column="1"/>
+
+                <Label Content="Max DBZ"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="22"
+                       Grid.Column="0"/>
+                <TextBox VerticalContentAlignment="Center"
+                         Margin="2"
+                         Grid.Row="22"
+                         Grid.Column="1"/>
+
+                <Label Content="Velocity Max"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="23"
+                       Grid.Column="0"/>
+                <TextBox VerticalContentAlignment="Center"
+                         Margin="2"
+                         Grid.Row="23"
+                         Grid.Column="1"/>
+
+                <Label Content="Velocity Rotational Max"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="24"
+                       Grid.Column="0"/>
+                <TextBox VerticalContentAlignment="Center"
+                         Margin="2"
+                         Grid.Row="24"
+                         Grid.Column="1"/>
+
+                <Label Content="Velocity Rotational Mean"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="25"
+                       Grid.Column="0"/>
+                <TextBox VerticalContentAlignment="Center"
+                         Margin="2"
+                         Grid.Row="25"
+                         Grid.Column="1"/>
+
+                <Label Content="Velocity Rot Max Closest To Gnd"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="26"
+                       Grid.Column="0"/>
+                <TextBox VerticalContentAlignment="Center"
+                         Margin="2"
+                         Grid.Row="26"
+                         Grid.Column="1"/>
+
+                <Label Content="Intensity"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="27"
+                       Grid.Column="0"/>
+                <TextBox VerticalContentAlignment="Center"
+                         Margin="2"
+                         Grid.Row="27"
+                         Grid.Column="1"/>
+
+            </Grid>
+            
             <ListView Margin="10"
                       x:Name="lvMesos"
                       Grid.Column="1">
