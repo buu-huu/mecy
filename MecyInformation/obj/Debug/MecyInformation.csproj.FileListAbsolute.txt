@@ -1,0 +1,15 @@
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\bin\Debug\MecyInformation.exe.config
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\bin\Debug\MecyInformation.exe
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\bin\Debug\MecyInformation.pdb
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\MecyInformation.csproj.AssemblyReference.cache
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\MainWindow.g.cs
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\App.g.cs
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\MecyInformation_MarkupCompile.cache
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\MecyInformation_MarkupCompile.lref
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\MainWindow.baml
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\MecyInformation.g.resources
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\MecyInformation.Properties.Resources.resources
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\MecyInformation.csproj.GenerateResource.cache
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\MecyInformation.csproj.CoreCompileInputs.cache
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\MecyInformation.exe
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\MecyInformation.pdb

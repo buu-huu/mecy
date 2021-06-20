@@ -5,8 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MecyInformation"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MecyInformation" Height="1080" Width="1920">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Exit"/>
+            </MenuItem>
+            <MenuItem Header="_Exit"/>
+        </Menu>
+
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="400"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <ListView Margin="10"
+                      x:Name="lvMesos"
+                      Grid.Column="1">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID" Width="200"/>
+                        <GridViewColumn Header="Time" Width="200"/>
+                        <GridViewColumn Header="Latitude" Width="200"/>
+                        <GridViewColumn Header="Longitude" Width="200"/>
+                        <GridViewColumn Header="Intensity" Width="100"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+    </DockPanel>
 </Window>
