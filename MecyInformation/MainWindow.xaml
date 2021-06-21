@@ -8,12 +8,22 @@
         Title="MecyInformation" Height="1080" Width="1920" Background="#FFE8E8E8"
         WindowStartupLocation="CenterScreen">
     <DockPanel>
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_File">
+        <StackPanel DockPanel.Dock="Top">
+            <Menu>
+                <MenuItem Header="_File">
+                    <MenuItem Header="_Exit"/>
+                </MenuItem>
                 <MenuItem Header="_Exit"/>
-            </MenuItem>
-            <MenuItem Header="_Exit"/>
-        </Menu>
+            </Menu>
+            <ToolBarTray>
+                <ToolBar>
+                    <Button Content="New"/>
+                    <Button Content="Save"/>
+                    <Button Content="Exit"/>
+                </ToolBar>
+            </ToolBarTray>
+        </StackPanel>
+
 
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBar.ItemsPanel>
@@ -34,7 +44,7 @@
             </StatusBarItem>
             <Separator Grid.Column="1" />
             <StatusBarItem Grid.Column="2">
-                <TextBlock Text="c:\path\of\current\file.txt" />
+                <TextBlock Text="Waiting for next download..." />
             </StatusBarItem>
             <Separator Grid.Column="3" />
             <StatusBarItem Grid.Column="4">
@@ -117,6 +127,7 @@
                 <TextBox Text="{Binding Time}"
                          VerticalContentAlignment="Center"
                          Margin="2"
+                         IsReadOnly="True"
                          Grid.Row="2"
                          Grid.Column="1"/>
                 <Label Content="UTC"
@@ -135,6 +146,7 @@
                 <TextBox Text="{Binding Latitude}"
                          VerticalContentAlignment="Center"
                          Margin="2"
+                         IsReadOnly="True"
                          Grid.Row="3"
                          Grid.Column="1"/>
 
@@ -147,6 +159,7 @@
                 <TextBox Text="{Binding Longitude}"
                          VerticalContentAlignment="Center"
                          Margin="2"
+                         IsReadOnly="True"
                          Grid.Row="4"
                          Grid.Column="1"/>
 
@@ -243,6 +256,7 @@
                 <TextBox Text="{Binding ShearMean}"
                          VerticalContentAlignment="Center"
                          Margin="2"
+                         IsReadOnly="True"
                          Grid.Row="9"
                          Grid.Column="1"/>
                 <Label Content="m/s/km"
@@ -261,6 +275,7 @@
                 <TextBox Text="{Binding ShearMax}"
                          VerticalContentAlignment="Center"
                          Margin="2"
+                         IsReadOnly="True"
                          Grid.Row="10"
                          Grid.Column="1"/>
                 <Label Content="m/s/km"
@@ -279,6 +294,7 @@
                 <TextBox Text="{Binding MomentumMean}"
                          VerticalContentAlignment="Center"
                          Margin="2"
+                         IsReadOnly="True"
                          Grid.Row="11"
                          Grid.Column="1"/>
                 <Label Content="m/s/km"
@@ -297,6 +313,7 @@
                 <TextBox Text="{Binding MomentumMax}"
                          VerticalContentAlignment="Center"
                          Margin="2"
+                         IsReadOnly="True"
                          Grid.Row="12"
                          Grid.Column="1"/>
                 <Label Content="m/s/km"
@@ -315,6 +332,7 @@
                 <TextBox Text="{Binding Diameter}"
                          VerticalContentAlignment="Center"
                          Margin="2"
+                         IsReadOnly="True"
                          Grid.Row="13"
                          Grid.Column="1"/>
                 <Label Content="km"
@@ -333,6 +351,7 @@
                 <TextBox Text="{Binding DiameterEquivalent}"
                          VerticalContentAlignment="Center"
                          Margin="2"
+                         IsReadOnly="True"
                          Grid.Row="14"
                          Grid.Column="1"/>
                 <Label Content="km"
@@ -351,6 +370,7 @@
                 <TextBox Text="{Binding Top}"
                          VerticalContentAlignment="Center"
                          Margin="2"
+                         IsReadOnly="True"
                          Grid.Row="15"
                          Grid.Column="1"/>
                 <Label Content="km"
@@ -369,6 +389,7 @@
                 <TextBox Text="{Binding MesoBase}"
                          VerticalContentAlignment="Center"
                          Margin="2"
+                         IsReadOnly="True"
                          Grid.Row="16"
                          Grid.Column="1"/>
                 <Label Content="km"
@@ -387,6 +408,7 @@
                 <TextBox Text="{Binding Echotop}"
                          VerticalContentAlignment="Center"
                          Margin="2"
+                         IsReadOnly="True"
                          Grid.Row="17"
                          Grid.Column="1"/>
                 <Label Content="km"
@@ -405,6 +427,7 @@
                 <TextBox Text="{Binding Vil}"
                          VerticalContentAlignment="Center"
                          Margin="2"
+                         IsReadOnly="True"
                          Grid.Row="18"
                          Grid.Column="1"/>
                 <Label Content="kg/m²"
@@ -423,6 +446,7 @@
                 <TextBox Text="{Binding ShearVectors}"
                          VerticalContentAlignment="Center"
                          Margin="2"
+                         IsReadOnly="True"
                          Grid.Row="19"
                          Grid.Column="1"/>
 
@@ -435,6 +459,7 @@
                 <TextBox Text="{Binding ShearFeatures}"
                          VerticalContentAlignment="Center"
                          Margin="2"
+                         IsReadOnly="True"
                          Grid.Row="20"
                          Grid.Column="1"/>
 
@@ -447,6 +472,7 @@
                 <TextBox Text="{Binding MeanDBZ}"
                          VerticalContentAlignment="Center"
                          Margin="2"
+                         IsReadOnly="True"
                          Grid.Row="21"
                          Grid.Column="1"/>
                 <Label Content="dB(Z)"
@@ -465,6 +491,7 @@
                 <TextBox Text="{Binding MaxDBZ}"
                          VerticalContentAlignment="Center"
                          Margin="2"
+                         IsReadOnly="True"
                          Grid.Row="22"
                          Grid.Column="1"/>
                 <Label Content="dB(Z)"
@@ -483,6 +510,7 @@
                 <TextBox Text="{Binding VelocityMax}"
                          VerticalContentAlignment="Center"
                          Margin="2"
+                         IsReadOnly="True"
                          Grid.Row="23"
                          Grid.Column="1"/>
                 <Label Content="m/s"
@@ -501,6 +529,7 @@
                 <TextBox Text="{Binding VelocityRotationalMax}"
                          VerticalContentAlignment="Center"
                          Margin="2"
+                         IsReadOnly="True"
                          Grid.Row="24"
                          Grid.Column="1"/>
                 <Label Content="m/s"
@@ -519,6 +548,7 @@
                 <TextBox Text="{Binding VelocityRotationalMean}"
                          VerticalContentAlignment="Center"
                          Margin="2"
+                         IsReadOnly="True"
                          Grid.Row="25"
                          Grid.Column="1"/>
                 <Label Content="m/s"
@@ -537,6 +567,7 @@
                 <TextBox Text="{Binding VelocityRotationalMaxClosestToGround}"
                          VerticalContentAlignment="Center"
                          Margin="2"
+                         IsReadOnly="True"
                          Grid.Row="26"
                          Grid.Column="1"/>
                 <Label Content="m/s"
@@ -555,6 +586,7 @@
                 <TextBox Text="{Binding Intensity}"
                          VerticalContentAlignment="Center"
                          Margin="2"
+                         IsReadOnly="True"
                          Grid.Row="27"
                          Grid.Column="1"/>
             </Grid>
