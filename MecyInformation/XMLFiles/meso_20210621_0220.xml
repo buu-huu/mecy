@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nowcast-data>
+  <radar-stations>ASB,BOO,ROS,HNR,UMD,PRO,ESS,FLD,DRS,NEU,NHB,OFT,EIS,TUR,ISN,FBG,MEM</radar-stations>
+  <event ID="15">
+    <time time-coordinate="UTC">2021-06-21T02:20:00</time>
+    <location>
+      <area>
+        <ellipse>
+          <moving-point>
+            <latitude>52.432244</latitude>
+            <longitude>11.587930</longitude>
+            <polar_motion>
+              <speed units="km/h">0.0</speed>
+            </polar_motion>
+          </moving-point>
+          <major_axis units="km">8.55</major_axis>
+          <minor_axis units="km">8.55</minor_axis>
+          <orientation units="degrees true">0</orientation>
+        </ellipse>
+      </area>
+    </location>
+    <nowcast-parameters>
+      <mesocyclone_shear_mean units="m/s/km">4.706907</mesocyclone_shear_mean>
+      <mesocyclone_shear_max units="m/s/km">8.451438</mesocyclone_shear_max>
+      <mesocyclone_momentum_mean units="m/s/km">81.940309</mesocyclone_momentum_mean>
+      <mesocyclone_momentum_max units="m/s/km">443.020215</mesocyclone_momentum_max>
+      <mesocyclone_diameter units="km">8.553963</mesocyclone_diameter>
+      <mesocyclone_diameter_equivalent units="km">5.781072</mesocyclone_diameter_equivalent>
+      <mesocyclone_top units="km">4.176533</mesocyclone_top>
+      <mesocyclone_base units="km">0.194247</mesocyclone_base>
+      <mesocyclone_echotop units="km">11.264570</mesocyclone_echotop>
+      <mesocyclone_vil units="kg/m*m">16.606941</mesocyclone_vil>
+      <mesocyclone_shear_vectors>27</mesocyclone_shear_vectors>
+      <mesocyclone_shear_features>4</mesocyclone_shear_features>
+      <elevations>
+        <elevation site="umd" units="&#176;">0.5,1.5,2.5</elevation>
+        <elevation site="pro" units="&#176;">0.5</elevation>
+      </elevations>
+      <mean_dbz units="DBZ">44.30</mean_dbz>
+      <max_dbz units="DBZ">59.02</max_dbz>
+      <mesocyclone_velocity_max units="m/s">20.793425</mesocyclone_velocity_max>
+      <mesocyclone_velocity_rotational_max units="m/s">16.508718</mesocyclone_velocity_rotational_max>
+      <mesocyclone_velocity_rotational_mean units="m/s">9.094231</mesocyclone_velocity_rotational_mean>
+      <mesocyclone_velocity_rotational_max_closest_to_ground units="m/s">12.350032</mesocyclone_velocity_rotational_max_closest_to_ground>
+      <meso_intensity>3</meso_intensity>
+    </nowcast-parameters>
+  </event>
+  <event ID="16">
+    <time time-coordinate="UTC">2021-06-21T02:20:00</time>
+    <location>
+      <area>
+        <ellipse>
+          <moving-point>
+            <latitude>52.420913</latitude>
+            <longitude>12.082527</longitude>
+            <polar_motion>
+              <speed units="km/h">0.0</speed>
+            </polar_motion>
+          </moving-point>
+          <major_axis units="km">9.25</major_axis>
+          <minor_axis units="km">9.25</minor_axis>
+          <orientation units="degrees true">0</orientation>
+        </ellipse>
+      </area>
+    </location>
+    <nowcast-parameters>
+      <mesocyclone_shear_mean units="m/s/km">4.613255</mesocyclone_shear_mean>
+      <mesocyclone_shear_max units="m/s/km">7.290226</mesocyclone_shear_max>
+      <mesocyclone_momentum_mean units="m/s/km">51.032373</mesocyclone_momentum_mean>
+      <mesocyclone_momentum_max units="m/s/km">84.545013</mesocyclone_momentum_max>
+      <mesocyclone_diameter units="km">9.250000</mesocyclone_diameter>
+      <mesocyclone_diameter_equivalent units="km">5.452835</mesocyclone_diameter_equivalent>
+      <mesocyclone_top units="km">5.485706</mesocyclone_top>
+      <mesocyclone_base units="km">2.105976</mesocyclone_base>
+      <mesocyclone_echotop units="km">9.787233</mesocyclone_echotop>
+      <mesocyclone_vil units="kg/m*m">8.273233</mesocyclone_vil>
+      <mesocyclone_shear_vectors>25</mesocyclone_shear_vectors>
+      <mesocyclone_shear_features>3</mesocyclone_shear_features>
+      <elevations>
+        <elevation site="umd" units="&#176;">2.5</elevation>
+        <elevation site="pro" units="&#176;">1.5</elevation>
+        <elevation site="drs" units="&#176;">0.5</elevation>
+      </elevations>
+      <mean_dbz units="DBZ">42.78</mean_dbz>
+      <max_dbz units="DBZ">55.74</max_dbz>
+      <mesocyclone_velocity_max units="m/s">23.565876</mesocyclone_velocity_max>
+      <mesocyclone_velocity_rotational_max units="m/s">9.451556</mesocyclone_velocity_rotational_max>
+      <mesocyclone_velocity_rotational_mean units="m/s">7.451380</mesocyclone_velocity_rotational_mean>
+      <mesocyclone_velocity_rotational_max_closest_to_ground units="m/s">6.301037</mesocyclone_velocity_rotational_max_closest_to_ground>
+      <meso_intensity>2</meso_intensity>
+    </nowcast-parameters>
+  </event>
+  <event ID="23">
+    <time time-coordinate="UTC">2021-06-21T02:20:00</time>
+    <location>
+      <area>
+        <ellipse>
+          <moving-point>
+            <latitude>52.373209</latitude>
+            <longitude>11.471996</longitude>
+            <polar_motion>
+              <speed units="km/h">0.0</speed>
+            </polar_motion>
+          </moving-point>
+          <major_axis units="km">4.28</major_axis>
+          <minor_axis units="km">4.28</minor_axis>
+          <orientation units="degrees true">0</orientation>
+        </ellipse>
+      </area>
+    </location>
+    <nowcast-parameters>
+      <mesocyclone_shear_mean units="m/s/km">4.014411</mesocyclone_shear_mean>
+      <mesocyclone_shear_max units="m/s/km">5.082705</mesocyclone_shear_max>
+      <mesocyclone_momentum_mean units="m/s/km">47.249830</mesocyclone_momentum_mean>
+      <mesocyclone_momentum_max units="m/s/km">155.089598</mesocyclone_momentum_max>
+      <mesocyclone_diameter units="km">4.281511</mesocyclone_diameter>
+      <mesocyclone_diameter_equivalent units="km">3.043959</mesocyclone_diameter_equivalent>
+      <mesocyclone_top units="km">3.423742</mesocyclone_top>
+      <mesocyclone_base units="km">1.846018</mesocyclone_base>
+      <mesocyclone_echotop units="km">11.777161</mesocyclone_echotop>
+      <mesocyclone_vil units="kg/m*m">11.996435</mesocyclone_vil>
+      <mesocyclone_shear_vectors>8</mesocyclone_shear_vectors>
+      <mesocyclone_shear_features>3</mesocyclone_shear_features>
+      <elevations>
+        <elevation site="umd" units="&#176;">3.5,4.5,5.5</elevation>
+      </elevations>
+      <mean_dbz units="DBZ">41.08</mean_dbz>
+      <max_dbz units="DBZ">53.64</max_dbz>
+      <mesocyclone_velocity_max units="m/s">15.752596</mesocyclone_velocity_max>
+      <mesocyclone_velocity_rotational_max units="m/s">12.980138</mesocyclone_velocity_rotational_max>
+      <mesocyclone_velocity_rotational_mean units="m/s">6.717454</mesocyclone_velocity_rotational_mean>
+      <mesocyclone_velocity_rotational_max_closest_to_ground units="m/s">6.553079</mesocyclone_velocity_rotational_max_closest_to_ground>
+      <meso_intensity>1</meso_intensity>
+    </nowcast-parameters>
+  </event>
+  <event ID="13">
+    <time time-coordinate="UTC">2021-06-21T02:20:00</time>
+    <location>
+      <area>
+        <ellipse>
+          <moving-point>
+            <latitude>52.341547</latitude>
+            <longitude>11.858964</longitude>
+            <polar_motion>
+              <speed units="km/h">0.0</speed>
+            </polar_motion>
+          </moving-point>
+          <major_axis units="km">6.78</major_axis>
+          <minor_axis units="km">6.78</minor_axis>
+          <orientation units="degrees true">0</orientation>
+        </ellipse>
+      </area>
+    </location>
+    <nowcast-parameters>
+      <mesocyclone_shear_mean units="m/s/km">3.609595</mesocyclone_shear_mean>
+      <mesocyclone_shear_max units="m/s/km">6.592336</mesocyclone_shear_max>
+      <mesocyclone_momentum_mean units="m/s/km">67.916051</mesocyclone_momentum_mean>
+      <mesocyclone_momentum_max units="m/s/km">157.745695</mesocyclone_momentum_max>
+      <mesocyclone_diameter units="km">6.782107</mesocyclone_diameter>
+      <mesocyclone_diameter_equivalent units="km">4.465889</mesocyclone_diameter_equivalent>
+      <mesocyclone_top units="km">11.538282</mesocyclone_top>
+      <mesocyclone_base units="km">1.199692</mesocyclone_base>
+      <mesocyclone_echotop units="km">12.814483</mesocyclone_echotop>
+      <mesocyclone_vil units="kg/m*m">14.281372</mesocyclone_vil>
+      <mesocyclone_shear_vectors>14</mesocyclone_shear_vectors>
+      <mesocyclone_shear_features>5</mesocyclone_shear_features>
+      <elevations>
+        <elevation site="hnr" units="&#176;">3.5</elevation>
+        <elevation site="umd" units="&#176;">1.5,2.5,8.0,12.0</elevation>
+      </elevations>
+      <mean_dbz units="DBZ">39.53</mean_dbz>
+      <max_dbz units="DBZ">54.50</max_dbz>
+      <mesocyclone_velocity_max units="m/s">28.102629</mesocyclone_velocity_max>
+      <mesocyclone_velocity_rotational_max units="m/s">9.577578</mesocyclone_velocity_rotational_max>
+      <mesocyclone_velocity_rotational_mean units="m/s">7.277104</mesocyclone_velocity_rotational_mean>
+      <mesocyclone_velocity_rotational_max_closest_to_ground units="m/s">9.577578</mesocyclone_velocity_rotational_max_closest_to_ground>
+      <meso_intensity>1</meso_intensity>
+    </nowcast-parameters>
+  </event>
+  <event ID="38">
+    <time time-coordinate="UTC">2021-06-21T02:20:00</time>
+    <location>
+      <area>
+        <ellipse>
+          <moving-point>
+            <latitude>51.281655</latitude>
+            <longitude>6.698225</longitude>
+            <polar_motion>
+              <speed units="km/h">0.0</speed>
+            </polar_motion>
+          </moving-point>
+          <major_axis units="km">9.00</major_axis>
+          <minor_axis units="km">9.00</minor_axis>
+          <orientation units="degrees true">0</orientation>
+        </ellipse>
+      </area>
+    </location>
+    <nowcast-parameters>
+      <mesocyclone_shear_mean units="m/s/km">2.830184</mesocyclone_shear_mean>
+      <mesocyclone_shear_max units="m/s/km">4.557991</mesocyclone_shear_max>
+      <mesocyclone_momentum_mean units="m/s/km">90.191639</mesocyclone_momentum_mean>
+      <mesocyclone_momentum_max units="m/s/km">256.730067</mesocyclone_momentum_max>
+      <mesocyclone_diameter units="km">9.000000</mesocyclone_diameter>
+      <mesocyclone_diameter_equivalent units="km">5.187365</mesocyclone_diameter_equivalent>
+      <mesocyclone_top units="km">1.998065</mesocyclone_top>
+      <mesocyclone_base units="km">0.582007</mesocyclone_base>
+      <mesocyclone_echotop units="km">6.504186</mesocyclone_echotop>
+      <mesocyclone_vil units="kg/m*m">4.578253</mesocyclone_vil>
+      <mesocyclone_shear_vectors>14</mesocyclone_shear_vectors>
+      <mesocyclone_shear_features>3</mesocyclone_shear_features>
+      <elevations>
+        <elevation site="ess" units="&#176;">1.5,2.5,3.5</elevation>
+      </elevations>
+      <mean_dbz units="DBZ">34.05</mean_dbz>
+      <max_dbz units="DBZ">48.73</max_dbz>
+      <mesocyclone_velocity_max units="m/s">16.004631</mesocyclone_velocity_max>
+      <mesocyclone_velocity_rotational_max units="m/s">10.837785</mesocyclone_velocity_rotational_max>
+      <mesocyclone_velocity_rotational_mean units="m/s">7.263377</mesocyclone_velocity_rotational_mean>
+      <mesocyclone_velocity_rotational_max_closest_to_ground units="m/s">7.561244</mesocyclone_velocity_rotational_max_closest_to_ground>
+      <meso_intensity>1</meso_intensity>
+    </nowcast-parameters>
+  </event>
+</nowcast-data>

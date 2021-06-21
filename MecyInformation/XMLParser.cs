@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,16 +41,16 @@ namespace MecyInformation
                                         {
                                             if (movingPointNode.Name == "latitude")
                                             {
-                                                meso.Latitude = Convert.ToDouble(movingPointNode.InnerText);
+                                                meso.Latitude = Convert.ToDouble(movingPointNode.InnerText, CultureInfo.InvariantCulture);
                                             }
                                             if (movingPointNode.Name == "longitude")
                                             {
-                                                meso.Longitude = Convert.ToDouble(movingPointNode.InnerText);
+                                                meso.Longitude = Convert.ToDouble(movingPointNode.InnerText, CultureInfo.InvariantCulture);
                                             }
                                             /*
                                             if (movingPointNode.Name == "polar_motion")
                                             {
-                                                meso.PolarMotion = Convert.ToDouble(movingPointNode.ChildNodes[0].InnerText);
+                                                meso.PolarMotion = Convert.ToDouble(movingPointNode.ChildNodes[0].InnerText, CultureInfo.InvariantCulture);
                                             }
                                             */
                                         }
@@ -57,15 +58,15 @@ namespace MecyInformation
                                     /*
                                     if (ellipseNode.Name == "major_axis")
                                     {
-                                        meso.MajorAxis = Convert.ToDouble(ellipseNode.InnerText);
+                                        meso.MajorAxis = Convert.ToDouble(ellipseNode.InnerText, CultureInfo.InvariantCulture);
                                     }
                                     if (ellipseNode.Name == "minor_axis")
                                     {
-                                        meso.MinorAxis = Convert.ToDouble(ellipseNode.InnerText);
+                                        meso.MinorAxis = Convert.ToDouble(ellipseNode.InnerText, CultureInfo.InvariantCulture);
                                     }
                                     if (ellipseNode.Name == "orientation")
                                     {
-                                        meso.Orientation = Convert.ToInt32(ellipseNode.InnerText);
+                                        meso.Orientation = Convert.ToInt32(ellipseNode.InnerText, CultureInfo.InvariantCulture);
                                     }
                                     */
                                 }
@@ -76,34 +77,35 @@ namespace MecyInformation
                                     switch (paramNode.Name)
                                     {
                                         case "mesocyclone_shear_mean":
-                                            meso.ShearMean = Convert.ToDouble(paramNode.InnerText);
+                                            meso.ShearMean = Convert.ToDouble(paramNode.InnerText, CultureInfo.InvariantCulture);
                                             break;
                                         case "mesocyclone_shear_max":
-                                            meso.ShearMax = Convert.ToDouble(paramNode.InnerText);
+                                            meso.ShearMax = Convert.ToDouble(paramNode.InnerText, CultureInfo.InvariantCulture);
                                             break;
                                         case "mesocyclone_momentum_mean":
-                                            meso.MomentumMean = Convert.ToDouble(paramNode.InnerText);
+                                            meso.MomentumMean = Convert.ToDouble(paramNode.InnerText, CultureInfo.InvariantCulture);
                                             break;
                                         case "mesocyclone_momentum_max":
-                                            meso.MomentumMax = Convert.ToDouble(paramNode.InnerText);
+                                            meso.MomentumMax = Convert.ToDouble(paramNode.InnerText, CultureInfo.InvariantCulture);
                                             break;
                                         case "mesocyclone_diameter":
-                                            meso.Diameter = Convert.ToDouble(paramNode.InnerText);
+                                            Console.WriteLine(paramNode.InnerText);
+                                            meso.Diameter = Convert.ToDouble(paramNode.InnerText, CultureInfo.InvariantCulture);
                                             break;
                                         case "mesocyclone_diameter_equivalent":
-                                            meso.DiameterEquivalent = Convert.ToDouble(paramNode.InnerText);
+                                            meso.DiameterEquivalent = Convert.ToDouble(paramNode.InnerText, CultureInfo.InvariantCulture);
                                             break;
                                         case "mesocyclone_top":
-                                            meso.Top = Convert.ToDouble(paramNode.InnerText);
+                                            meso.Top = Convert.ToDouble(paramNode.InnerText, CultureInfo.InvariantCulture);
                                             break;
                                         case "mesocyclone_base":
-                                            meso.MesoBase = Convert.ToDouble(paramNode.InnerText);
+                                            meso.MesoBase = Convert.ToDouble(paramNode.InnerText, CultureInfo.InvariantCulture);
                                             break;
                                         case "mesocyclone_echotop":
-                                            meso.Echotop = Convert.ToDouble(paramNode.InnerText);
+                                            meso.Echotop = Convert.ToDouble(paramNode.InnerText, CultureInfo.InvariantCulture);
                                             break;
                                         case "mesocyclone_vil":
-                                            meso.Vil = Convert.ToDouble(paramNode.InnerText);
+                                            meso.Vil = Convert.ToDouble(paramNode.InnerText, CultureInfo.InvariantCulture);
                                             break;
                                         case "mesocyclone_shear_vectors":
                                             meso.ShearVectors = Convert.ToInt32(paramNode.InnerText);
@@ -112,22 +114,22 @@ namespace MecyInformation
                                             meso.ShearFeatures = Convert.ToInt32(paramNode.InnerText);
                                             break;
                                         case "mean_dbz":
-                                            meso.MeanDBZ = Convert.ToDouble(paramNode.InnerText);
+                                            meso.MeanDBZ = Convert.ToDouble(paramNode.InnerText, CultureInfo.InvariantCulture);
                                             break;
                                         case "max_dbz":
-                                            meso.MaxDBZ = Convert.ToDouble(paramNode.InnerText);
+                                            meso.MaxDBZ = Convert.ToDouble(paramNode.InnerText, CultureInfo.InvariantCulture);
                                             break;
                                         case "mesocyclone_velocity_max":
-                                            meso.VelocityMax = Convert.ToDouble(paramNode.InnerText);
+                                            meso.VelocityMax = Convert.ToDouble(paramNode.InnerText, CultureInfo.InvariantCulture);
                                             break;
                                         case "mesocyclone_velocity_rotational_max":
-                                            meso.VelocityRotationalMax = Convert.ToDouble(paramNode.InnerText);
+                                            meso.VelocityRotationalMax = Convert.ToDouble(paramNode.InnerText, CultureInfo.InvariantCulture);
                                             break;
                                         case "mesocyclone_velocity_rotational_mean":
-                                            meso.VelocityRotationalMean = Convert.ToDouble(paramNode.InnerText);
+                                            meso.VelocityRotationalMean = Convert.ToDouble(paramNode.InnerText, CultureInfo.InvariantCulture);
                                             break;
                                         case "mesocyclone_velocity_rotational_max_closest_to_ground":
-                                            meso.VelocityRotationalMaxClosestToGround = Convert.ToDouble(paramNode.InnerText);
+                                            meso.VelocityRotationalMaxClosestToGround = Convert.ToDouble(paramNode.InnerText, CultureInfo.InvariantCulture);
                                             break;
                                         case "meso_intensity":
                                             meso.Intensity = Convert.ToInt32(paramNode.InnerText);
