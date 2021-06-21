@@ -13,3 +13,5 @@ C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\MecyInfor
 C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\MecyInformation.csproj.CoreCompileInputs.cache
 C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\MecyInformation.exe
 C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\MecyInformation.pdb
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\MapWindow.g.cs
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\MapWindow.baml

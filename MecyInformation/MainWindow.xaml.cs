@@ -33,6 +33,8 @@ namespace MecyInformation
             mesos = XMLParser.ParseMesos(@"C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\XMLFiles\meso_20210621_0220.xml");
             lvMesos.ItemsSource = mesos;
             gridDetails.DataContext = activeMeso;
+
+            new MapWindow().Show();
         }
 
         private void UpdateDetailsPanel()
