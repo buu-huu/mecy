@@ -15,13 +15,15 @@ namespace MecyInformation
     /// </summary>
     public partial class MapWindow : Window
     {
-        public MapWindow()
+        Mesocyclone meso;
+        public MapWindow(Mesocyclone meso)
         {
             InitializeComponent();
+            this.meso = meso;
             mapControl.Map = CreateMap();
         }
 
-        public static Map CreateMap()
+        public Map CreateMap()
         {
             var map = new Map
             {
@@ -34,9 +36,9 @@ namespace MecyInformation
             return map;
         }
 
-        private static Layer CreateMesoLayer()
+        private Layer CreateMesoLayer()
         {
-            var mesoFeature = new Feature { Geometry = new Mapsui.Geometries.Point(9.153820, 48.698847) };
+            var mesoFeature = new Feature { Geometry = new Mapsui.Geometries.Point(meso.Longitude, meso.Latitude) };
             mesoFeature.Styles.Add(new LabelStyle
             {
                 Text = "M",

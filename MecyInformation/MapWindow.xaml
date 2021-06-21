@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MecyInformation"
         xmlns:xaml="clr-namespace:Mapsui.UI.Wpf;assembly=Mapsui.UI.Wpf"
         mc:Ignorable="d"
-        Title="MapWindow" Height="800" Width="800">
+        Title="MapWindow" Height="1000" Width="1000">
     <Grid x:Name="mapGrid">
         <xaml:MapControl Name="mapControl"></xaml:MapControl>
     </Grid>

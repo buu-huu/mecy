@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 
 namespace MecyInformation
 {
-    class Mesocyclone
+    public class Mesocyclone
     {
         private int _id;
         private string _time;

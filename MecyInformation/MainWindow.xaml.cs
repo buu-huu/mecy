@@ -33,8 +33,6 @@ namespace MecyInformation
             mesos = XMLParser.ParseMesos(@"C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\XMLFiles\meso_20210621_0220.xml");
             lvMesos.ItemsSource = mesos;
             gridDetails.DataContext = activeMeso;
-
-            new MapWindow().Show();
         }
 
         private void UpdateDetailsPanel()
@@ -46,6 +44,23 @@ namespace MecyInformation
         private void lvMesos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             UpdateDetailsPanel();
+        }
+
+        private void lvMesos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (lvMesos.SelectedItem != null)
+            {
+                new MapWindow(activeMeso).Show();
+            }
+        }
+
+        private void lvMesos_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            HitTestResult res = VisualTreeHelper.HitTest(this, e.GetPosition(this));
+            if (res.VisualHit.GetType() != typeof(ListBoxItem))
+            {
+                lvMesos.UnselectAll();
+            }
         }
     }
 }
