@@ -4,9 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MecyInformation"
+        xmlns:xaml="clr-namespace:Mapsui.UI.Wpf;assembly=Mapsui.UI.Wpf"
         mc:Ignorable="d"
         Title="MapWindow" Height="800" Width="800">
     <Grid x:Name="mapGrid">
-        
+        <xaml:MapControl Name="mapControl"></xaml:MapControl>
     </Grid>
 </Window>
