@@ -20,16 +20,30 @@ namespace MecyInformation
     /// </summary>
     public partial class MainWindow : Window
     {
+        Mesocyclone activeMeso = null;
+        List<Mesocyclone> mesos;
+
         public MainWindow()
         {
             InitializeComponent();
 
-            List<Mesocyclone> mesos = new List<Mesocyclone>();
-            mesos.Add(new Mesocyclone());
+            mesos = new List<Mesocyclone>();
             lvMesos.ItemsSource = mesos;
 
             mesos = XMLParser.ParseMesos(@"C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\XMLFiles\meso_20200702_0120.xml");
             lvMesos.ItemsSource = mesos;
+            gridDetails.DataContext = activeMeso;
+        }
+
+        private void lvMesos_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            UpdateDetailsPanel();
+        }
+
+        private void UpdateDetailsPanel()
+        {
+            activeMeso = (Mesocyclone)lvMesos.SelectedItem;
+            gridDetails.DataContext = activeMeso;
         }
     }
 }

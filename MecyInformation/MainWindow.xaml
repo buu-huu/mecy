@@ -23,7 +23,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Grid>
+            <Grid x:Name="gridDetails">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="200"/>
                     <ColumnDefinition/>
@@ -59,7 +59,7 @@
                     <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
 
-                <Label Content="Mesocyclone Data"
+                <Label Content="Mesocyclone Details"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="22"
@@ -72,7 +72,7 @@
                        Margin="0 0 10 0"
                        Grid.Row="1"
                        Grid.Column="0"/>
-                <TextBox Text="TestText"
+                <TextBox Text="{Binding Id}"
                          VerticalContentAlignment="Center"
                          Margin="2"
                          IsReadOnly="True"
@@ -370,7 +370,8 @@
             
             <ListView Margin="10"
                       x:Name="lvMesos"
-                      Grid.Column="1">
+                      Grid.Column="1"
+                      MouseUp="lvMesos_MouseUp">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="ID" Width="200" DisplayMemberBinding="{Binding Id}"/>
