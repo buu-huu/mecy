@@ -27,6 +27,9 @@ namespace MecyInformation
             List<Mesocyclone> mesos = new List<Mesocyclone>();
             mesos.Add(new Mesocyclone());
             lvMesos.ItemsSource = mesos;
+
+            mesos = XMLParser.ParseMesos(@"C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\XMLFiles\meso_20200702_0120.xml");
+            lvMesos.ItemsSource = mesos;
         }
     }
 }
