@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MecyInformation"
         mc:Ignorable="d"
-        Title="MecyInformation" Height="1080" Width="1920" Background="#FFE8E8E8">
+        Title="MecyInformation" Height="1080" Width="1920" Background="#FFE8E8E8"
+        WindowStartupLocation="CenterScreen">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
@@ -529,13 +530,29 @@
                          Margin="2"
                          Grid.Row="27"
                          Grid.Column="1"/>
-
             </Grid>
             
             <ListView Margin="10"
                       x:Name="lvMesos"
                       Grid.Column="1"
                       SelectionChanged="lvMesos_SelectionChanged" Background="#FFC2C2C2">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Height" Value="40"/>
+                        <Setter Property="Background" Value="Bisque"/>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#FFE88C1F"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFFFA841"/>
+                            </Trigger>
+                        </Style.Triggers> 
+                    </Style>
+                    
+                    
+                </ListView.ItemContainerStyle>
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="ID" Width="45" DisplayMemberBinding="{Binding Id}"/>
