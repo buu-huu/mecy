@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MecyInformation"
         mc:Ignorable="d"
-        Title="MecyInformation" Height="1080" Width="1920">
+        Title="MecyInformation" Height="1080" Width="1920" Background="#FFE8E8E8">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
@@ -27,6 +27,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="200"/>
                     <ColumnDefinition/>
+                    <ColumnDefinition Width="60"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
@@ -90,6 +91,12 @@
                          Margin="2"
                          Grid.Row="2"
                          Grid.Column="1"/>
+                <Label Content="UTC"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="1"
+                       Grid.Column="2"/>
 
                 <Label Content="Latitude"
                        HorizontalAlignment="Right"
@@ -120,48 +127,84 @@
                        VerticalAlignment="Center"
                        Margin="0 0 10 0"
                        Grid.Row="5"
-                       Grid.Column="0"/>
+                       Grid.Column="0"
+                       IsEnabled="False"/>
                 <TextBox Text="{Binding PolarMotion}"
                          VerticalContentAlignment="Center"
                          Margin="2"
                          Grid.Row="5"
-                         Grid.Column="1"/>
+                         Grid.Column="1"
+                         IsEnabled="False"/>
+                <Label Content="km/h"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="5"
+                       Grid.Column="2"
+                       IsEnabled="False"/>
 
                 <Label Content="Major Axis"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center"
                        Margin="0 0 10 0"
                        Grid.Row="6"
-                       Grid.Column="0"/>
+                       Grid.Column="0"
+                       IsEnabled="False"/>
                 <TextBox Text="{Binding MajorAxis}"
                          VerticalContentAlignment="Center"
                          Margin="2"
                          Grid.Row="6"
-                         Grid.Column="1"/>
+                         Grid.Column="1"
+                         IsEnabled="False"/>
+                <Label Content="km"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="6"
+                       Grid.Column="2"
+                       IsEnabled="False"/>
 
                 <Label Content="Minor Axis"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center"
                        Margin="0 0 10 0"
                        Grid.Row="7"
-                       Grid.Column="0"/>
+                       Grid.Column="0"
+                       IsEnabled="False"/>
                 <TextBox Text="{Binding MinorAxis}"
                          VerticalContentAlignment="Center"
                          Margin="2"
                          Grid.Row="7"
-                         Grid.Column="1"/>
+                         Grid.Column="1"
+                         IsEnabled="False"/>
+                <Label Content="km"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="7"
+                       Grid.Column="2"
+                       IsEnabled="False"/>
 
                 <Label Content="Orientation"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center"
                        Margin="0 0 10 0"
                        Grid.Row="8"
-                       Grid.Column="0"/>
+                       Grid.Column="0"
+                       IsEnabled="False"/>
                 <TextBox Text="{Binding Orientation}"
                          VerticalContentAlignment="Center"
                          Margin="2"
                          Grid.Row="8"
-                         Grid.Column="1"/>
+                         Grid.Column="1"
+                         IsEnabled="False"/>
+                <Label Content="°"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="8"
+                       Grid.Column="2"
+                       IsEnabled="False"/>
 
                 <Label Content="Shear Mean"
                        HorizontalAlignment="Right"
@@ -174,6 +217,12 @@
                          Margin="2"
                          Grid.Row="9"
                          Grid.Column="1"/>
+                <Label Content="m/s/km"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="9"
+                       Grid.Column="2"/>
 
                 <Label Content="Shear Max"
                        HorizontalAlignment="Right"
@@ -186,6 +235,12 @@
                          Margin="2"
                          Grid.Row="10"
                          Grid.Column="1"/>
+                <Label Content="m/s/km"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="10"
+                       Grid.Column="2"/>
 
                 <Label Content="Momentum Mean"
                        HorizontalAlignment="Right"
@@ -198,6 +253,12 @@
                          Margin="2"
                          Grid.Row="11"
                          Grid.Column="1"/>
+                <Label Content="m/s/km"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="11"
+                       Grid.Column="2"/>
 
                 <Label Content="Momentum Max"
                        HorizontalAlignment="Right"
@@ -210,6 +271,12 @@
                          Margin="2"
                          Grid.Row="12"
                          Grid.Column="1"/>
+                <Label Content="m/s/km"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="12"
+                       Grid.Column="2"/>
 
                 <Label Content="Diameter"
                        HorizontalAlignment="Right"
@@ -222,6 +289,12 @@
                          Margin="2"
                          Grid.Row="13"
                          Grid.Column="1"/>
+                <Label Content="km"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="13"
+                       Grid.Column="2"/>
 
                 <Label Content="Diameter Equivalent"
                        HorizontalAlignment="Right"
@@ -234,6 +307,12 @@
                          Margin="2"
                          Grid.Row="14"
                          Grid.Column="1"/>
+                <Label Content="km"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="14"
+                       Grid.Column="2"/>
                 
                 <Label Content="Top"
                        HorizontalAlignment="Right"
@@ -246,6 +325,12 @@
                          Margin="2"
                          Grid.Row="15"
                          Grid.Column="1"/>
+                <Label Content="km"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="15"
+                       Grid.Column="2"/>
 
                 <Label Content="Base"
                        HorizontalAlignment="Right"
@@ -258,8 +343,14 @@
                          Margin="2"
                          Grid.Row="16"
                          Grid.Column="1"/>
+                <Label Content="km"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="16"
+                       Grid.Column="2"/>
 
-                <Label Content="Echotop"
+                <Label Content="18db(Z)-Echo-Top"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center"
                        Margin="0 0 10 0"
@@ -270,8 +361,14 @@
                          Margin="2"
                          Grid.Row="17"
                          Grid.Column="1"/>
+                <Label Content="km"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="17"
+                       Grid.Column="2"/>
 
-                <Label Content="Vil"
+                <Label Content="VIL"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center"
                        Margin="0 0 10 0"
@@ -282,6 +379,12 @@
                          Margin="2"
                          Grid.Row="18"
                          Grid.Column="1"/>
+                <Label Content="kg/m²"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="18"
+                       Grid.Column="2"/>
 
                 <Label Content="Shear Vectors"
                        HorizontalAlignment="Right"
@@ -318,6 +421,12 @@
                          Margin="2"
                          Grid.Row="21"
                          Grid.Column="1"/>
+                <Label Content="dB(Z)"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="21"
+                       Grid.Column="2"/>
 
                 <Label Content="Max DBZ"
                        HorizontalAlignment="Right"
@@ -330,6 +439,12 @@
                          Margin="2"
                          Grid.Row="22"
                          Grid.Column="1"/>
+                <Label Content="dB(Z)"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="22"
+                       Grid.Column="2"/>
 
                 <Label Content="Velocity Max"
                        HorizontalAlignment="Right"
@@ -342,6 +457,12 @@
                          Margin="2"
                          Grid.Row="23"
                          Grid.Column="1"/>
+                <Label Content="m/s"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="23"
+                       Grid.Column="2"/>
 
                 <Label Content="Velocity Rotational Max"
                        HorizontalAlignment="Right"
@@ -354,6 +475,12 @@
                          Margin="2"
                          Grid.Row="24"
                          Grid.Column="1"/>
+                <Label Content="m/s"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="24"
+                       Grid.Column="2"/>
 
                 <Label Content="Velocity Rotational Mean"
                        HorizontalAlignment="Right"
@@ -366,6 +493,12 @@
                          Margin="2"
                          Grid.Row="25"
                          Grid.Column="1"/>
+                <Label Content="m/s"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="25"
+                       Grid.Column="2"/>
 
                 <Label Content="Velocity Rot Max Closest To Gnd"
                        HorizontalAlignment="Right"
@@ -378,6 +511,12 @@
                          Margin="2"
                          Grid.Row="26"
                          Grid.Column="1"/>
+                <Label Content="m/s"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="26"
+                       Grid.Column="2"/>
 
                 <Label Content="Intensity"
                        HorizontalAlignment="Right"
@@ -396,13 +535,13 @@
             <ListView Margin="10"
                       x:Name="lvMesos"
                       Grid.Column="1"
-                      SelectionChanged="lvMesos_SelectionChanged">
+                      SelectionChanged="lvMesos_SelectionChanged" Background="#FFC2C2C2">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="ID" Width="200" DisplayMemberBinding="{Binding Id}"/>
-                        <GridViewColumn Header="Time" Width="200" DisplayMemberBinding="{Binding Time}"/>
-                        <GridViewColumn Header="Latitude" Width="200" DisplayMemberBinding="{Binding Latitude}"/>
-                        <GridViewColumn Header="Longitude" Width="200" DisplayMemberBinding="{Binding Longitude}"/>
+                        <GridViewColumn Header="ID" Width="45" DisplayMemberBinding="{Binding Id}"/>
+                        <GridViewColumn Header="Time" Width="150" DisplayMemberBinding="{Binding Time}"/>
+                        <GridViewColumn Header="Latitude" Width="150" DisplayMemberBinding="{Binding Latitude}"/>
+                        <GridViewColumn Header="Longitude" Width="150" DisplayMemberBinding="{Binding Longitude}"/>
                         <GridViewColumn Header="Intensity" Width="100" DisplayMemberBinding="{Binding Intensity}"/>
                     </GridView>
                 </ListView.View>
