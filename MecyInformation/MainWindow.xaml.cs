@@ -35,7 +35,6 @@ namespace MecyInformation
             gridDetails.DataContext = activeMeso;
         }
 
-
         private void UpdateDetailsPanel()
         {
             activeMeso = (Mesocyclone)lvMesos.SelectedItem;

@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -98,6 +99,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="XMLFiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\meso_icon_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\meso_icon_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\meso_icon_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\meso_icon_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\meso_icon_5.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

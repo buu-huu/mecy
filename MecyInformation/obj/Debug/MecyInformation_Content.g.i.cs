@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("xmlfiles/meso_20200702_0120.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("meso_icon_1.png")]
 
 

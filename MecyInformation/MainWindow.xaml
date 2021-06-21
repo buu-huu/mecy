@@ -538,9 +538,8 @@
                       SelectionChanged="lvMesos_SelectionChanged" Background="#FFC2C2C2">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
-                        <Setter Property="Height" Value="40"/>
+                        <Setter Property="Height" Value="60"/>
                         <Setter Property="Background" Value="Bisque"/>
-
                         <Style.Triggers>
                             <Trigger Property="IsSelected" Value="True">
                                 <Setter Property="Background" Value="#FFE88C1F"/>
@@ -548,18 +547,49 @@
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Background" Value="#FFFFA841"/>
                             </Trigger>
-                        </Style.Triggers> 
+                        </Style.Triggers>
                     </Style>
-                    
-                    
                 </ListView.ItemContainerStyle>
+                <ListView.Resources>
+                    <Style TargetType="{x:Type GridViewColumnHeader}">
+                        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                    </Style>
+                </ListView.Resources>
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="ID" Width="45" DisplayMemberBinding="{Binding Id}"/>
                         <GridViewColumn Header="Time" Width="150" DisplayMemberBinding="{Binding Time}"/>
                         <GridViewColumn Header="Latitude" Width="150" DisplayMemberBinding="{Binding Latitude}"/>
                         <GridViewColumn Header="Longitude" Width="150" DisplayMemberBinding="{Binding Longitude}"/>
-                        <GridViewColumn Header="Intensity" Width="100" DisplayMemberBinding="{Binding Intensity}"/>
+                        <GridViewColumn Header="Intensity" Width="70">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Width="55" Height="55" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <Image.Style>
+                                            <Style TargetType="{x:Type Image}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Intensity}" Value="1">
+                                                        <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_1.png"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Intensity}" Value="2">
+                                                        <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_2.png"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Intensity}" Value="3">
+                                                        <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_3.png"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Intensity}" Value="4">
+                                                        <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_4.png"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Intensity}" Value="5">
+                                                        <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_5.png"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Image.Style>
+                                    </Image>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
