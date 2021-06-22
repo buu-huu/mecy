@@ -25,18 +25,18 @@ namespace MecyInformation
             InitializeComponent();
         }
 
-        private async void Window_ContentRendered(object sender, EventArgs e)
+        private void Window_ContentRendered(object sender, EventArgs e)
         {
             var scheduler = TaskScheduler.FromCurrentSynchronizationContext();
-            Task.Factory.StartNew(() =>
-            {
-                OpenDataDownloader.DownloadAllData();
-            }).ContinueWith(task =>
-            {
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
-                this.Close();
-            }, scheduler);
+            _ = Task.Factory.StartNew(() =>
+              {
+                  OpenDataDownloader.DownloadAllData();
+              }).ContinueWith(task =>
+              {
+                  MainWindow mainWindow = new MainWindow();
+                  mainWindow.Show();
+                  this.Close();
+              }, scheduler);
 
             //OpenDataDownloader.DownloadAllData();
 
