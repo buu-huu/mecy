@@ -61,3 +61,5 @@ C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\bin\Debug\WinSCPnet
 C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\MecyInformation_Content.g.cs
 C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\SplashScreen.g.cs
 C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\SplashScreen.baml
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\AboutWindow.g.cs
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\AboutWindow.baml

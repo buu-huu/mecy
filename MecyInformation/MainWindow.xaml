@@ -9,6 +9,7 @@
         Height="1080" Width="1920"
         Background="#FFE8E8E8"
         WindowStartupLocation="CenterScreen"
+        Closing="Window_Closing"
         WindowState="Maximized">
     <DockPanel>
         <StackPanel DockPanel.Dock="Top">
@@ -16,7 +17,7 @@
                 <MenuItem Header="_File">
                     <MenuItem Header="_Exit"/>
                 </MenuItem>
-                <MenuItem Header="_Exit"/>
+                <MenuItem Header="_About" Click="mnuAbout_Click"/>
             </Menu>
             <ToolBarTray>
                 <ToolBar>
@@ -134,7 +135,8 @@
                          Margin="2"
                          IsReadOnly="True"
                          Grid.Row="1"
-                         Grid.Column="1"/>
+                         Grid.Column="1"
+                                  Background="#FFE3B8FF"/>
 
                         <Label Content="Time"
                        HorizontalAlignment="Right"
@@ -147,7 +149,8 @@
                          Margin="2"
                          IsReadOnly="True"
                          Grid.Row="2"
-                         Grid.Column="1"/>
+                         Grid.Column="1"
+                                  Background="#FFFFDEB8"/>
                         <Label Content="UTC"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
@@ -166,7 +169,8 @@
                          Margin="2"
                          IsReadOnly="True"
                          Grid.Row="3"
-                         Grid.Column="1"/>
+                         Grid.Column="1"
+                                  Background="#FFFFDEB8"/>
 
                         <Label Content="Longitude"
                        HorizontalAlignment="Right"
@@ -179,7 +183,8 @@
                          Margin="2"
                          IsReadOnly="True"
                          Grid.Row="4"
-                         Grid.Column="1"/>
+                         Grid.Column="1"
+                                  Background="#FFFFDEB8"/>
 
                         <Label Content="Polar Motion"
                        HorizontalAlignment="Right"
@@ -193,7 +198,8 @@
                          Margin="2"
                          Grid.Row="5"
                          Grid.Column="1"
-                         IsEnabled="False"/>
+                         IsEnabled="False"
+                                  Background="#FFFFDEB8"/>
                         <Label Content="km/h"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
@@ -214,7 +220,8 @@
                          Margin="2"
                          Grid.Row="6"
                          Grid.Column="1"
-                         IsEnabled="False"/>
+                         IsEnabled="False"
+                                  Background="#FFFFDEB8"/>
                         <Label Content="km"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
@@ -235,7 +242,8 @@
                          Margin="2"
                          Grid.Row="7"
                          Grid.Column="1"
-                         IsEnabled="False"/>
+                         IsEnabled="False"
+                                  Background="#FFFFDEB8"/>
                         <Label Content="km"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
@@ -256,7 +264,8 @@
                          Margin="2"
                          Grid.Row="8"
                          Grid.Column="1"
-                         IsEnabled="False"/>
+                         IsEnabled="False"
+                                  Background="#FFFFDEB8"/>
                         <Label Content="°"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
@@ -276,7 +285,8 @@
                          Margin="2"
                          IsReadOnly="True"
                          Grid.Row="9"
-                         Grid.Column="1"/>
+                         Grid.Column="1"
+                                  Background="#FFFFDEB8"/>
                         <Label Content="m/s/km"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
@@ -295,7 +305,8 @@
                          Margin="2"
                          IsReadOnly="True"
                          Grid.Row="10"
-                         Grid.Column="1"/>
+                         Grid.Column="1"
+                                  Background="#FFFFDEB8"/>
                         <Label Content="m/s/km"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
@@ -314,7 +325,8 @@
                          Margin="2"
                          IsReadOnly="True"
                          Grid.Row="11"
-                         Grid.Column="1"/>
+                         Grid.Column="1"
+                                  Background="#FFFFDEB8"/>
                         <Label Content="m/s/km"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
@@ -333,7 +345,8 @@
                          Margin="2"
                          IsReadOnly="True"
                          Grid.Row="12"
-                         Grid.Column="1"/>
+                         Grid.Column="1"
+                                  Background="#FFFFDEB8"/>
                         <Label Content="m/s/km"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
@@ -352,7 +365,8 @@
                          Margin="2"
                          IsReadOnly="True"
                          Grid.Row="13"
-                         Grid.Column="1"/>
+                         Grid.Column="1"
+                                  Background="#FFFFDEB8"/>
                         <Label Content="km"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
@@ -371,7 +385,8 @@
                          Margin="2"
                          IsReadOnly="True"
                          Grid.Row="14"
-                         Grid.Column="1"/>
+                         Grid.Column="1"
+                                  Background="#FFFFDEB8"/>
                         <Label Content="km"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
@@ -390,7 +405,8 @@
                          Margin="2"
                          IsReadOnly="True"
                          Grid.Row="15"
-                         Grid.Column="1"/>
+                         Grid.Column="1"
+                                  Background="#FFFFDEB8"/>
                         <Label Content="km"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
@@ -409,7 +425,8 @@
                          Margin="2"
                          IsReadOnly="True"
                          Grid.Row="16"
-                         Grid.Column="1"/>
+                         Grid.Column="1"
+                                  Background="#FFFFDEB8"/>
                         <Label Content="km"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
@@ -428,7 +445,8 @@
                          Margin="2"
                          IsReadOnly="True"
                          Grid.Row="17"
-                         Grid.Column="1"/>
+                         Grid.Column="1"
+                                  Background="#FFFFDEB8"/>
                         <Label Content="km"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
@@ -447,7 +465,8 @@
                          Margin="2"
                          IsReadOnly="True"
                          Grid.Row="18"
-                         Grid.Column="1"/>
+                         Grid.Column="1"
+                                  Background="#FFFFDEB8"/>
                         <Label Content="kg/m²"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
@@ -466,7 +485,8 @@
                          Margin="2"
                          IsReadOnly="True"
                          Grid.Row="19"
-                         Grid.Column="1"/>
+                         Grid.Column="1"
+                                  Background="#FFFFDEB8"/>
 
                         <Label Content="Shear Features"
                        HorizontalAlignment="Right"
@@ -479,7 +499,8 @@
                          Margin="2"
                          IsReadOnly="True"
                          Grid.Row="20"
-                         Grid.Column="1"/>
+                         Grid.Column="1"
+                                  Background="#FFFFDEB8"/>
 
                         <Label Content="Mean DBZ"
                        HorizontalAlignment="Right"
@@ -492,7 +513,8 @@
                          Margin="2"
                          IsReadOnly="True"
                          Grid.Row="21"
-                         Grid.Column="1"/>
+                         Grid.Column="1"
+                                  Background="#FFFFDEB8"/>
                         <Label Content="dB(Z)"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
@@ -511,7 +533,8 @@
                          Margin="2"
                          IsReadOnly="True"
                          Grid.Row="22"
-                         Grid.Column="1"/>
+                         Grid.Column="1"
+                                  Background="#FFFFDEB8"/>
                         <Label Content="dB(Z)"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
@@ -530,7 +553,8 @@
                          Margin="2"
                          IsReadOnly="True"
                          Grid.Row="23"
-                         Grid.Column="1"/>
+                         Grid.Column="1"
+                                  Background="#FFFFDEB8"/>
                         <Label Content="m/s"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
@@ -549,7 +573,8 @@
                          Margin="2"
                          IsReadOnly="True"
                          Grid.Row="24"
-                         Grid.Column="1"/>
+                         Grid.Column="1"
+                                  Background="#FFFFDEB8"/>
                         <Label Content="m/s"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
@@ -568,7 +593,8 @@
                          Margin="2"
                          IsReadOnly="True"
                          Grid.Row="25"
-                         Grid.Column="1"/>
+                         Grid.Column="1"
+                                  Background="#FFFFDEB8"/>
                         <Label Content="m/s"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
@@ -587,7 +613,8 @@
                          Margin="2"
                          IsReadOnly="True"
                          Grid.Row="26"
-                         Grid.Column="1"/>
+                         Grid.Column="1"
+                                  Background="#FFFFDEB8"/>
                         <Label Content="m/s"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
@@ -596,16 +623,20 @@
                        Grid.Column="2"/>
 
                         <Label Content="Intensity"
+                               FontWeight="Bold"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center"
                        Margin="0 0 10 0"
                        Grid.Row="27"
-                       Grid.Column="0"/>
-                        <TextBox VerticalContentAlignment="Center"
+                       Grid.Column="0"
+                               />
+                        <TextBox Text="{Binding Intensity}"
+                            VerticalContentAlignment="Center"
                          Margin="2"
                          IsReadOnly="True"
                          Grid.Row="27"
-                         Grid.Column="1"/>
+                         Grid.Column="1"
+                                 Background="#FFFFDEB8"/>
                     </Grid>
                 </ScrollViewer>
                 

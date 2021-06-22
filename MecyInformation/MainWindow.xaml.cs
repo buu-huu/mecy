@@ -95,5 +95,15 @@ namespace MecyInformation
                 lvMesos.ItemsSource = mesoDict[selectedTime];
             }
         }
+
+        private void mnuAbout_Click(object sender, RoutedEventArgs e)
+        {
+            new AboutWindow().Show();
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            Application.Current.Shutdown(0);
+        }
     }
 }
