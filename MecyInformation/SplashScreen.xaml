@@ -9,18 +9,18 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-        Title="SplashScreen" Height="350" Width="500"
+        Title="SplashScreen" Height="250" Width="500"
         ContentRendered="Window_ContentRendered">
     <Grid>
         <Border CornerRadius="20" Background="Beige">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="300"/>
+                    <RowDefinition Height="200"/>
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Image Source="Resources/Logo.png"
-                       Width="350"
+                       Width="300"
                Margin="20"
                Grid.Row="0" />
                 <ProgressBar IsIndeterminate="True" Grid.Row="1" />
