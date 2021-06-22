@@ -85,7 +85,7 @@ namespace MecyInformation
                                             */
                                         }
                                     }
-                                    /*
+                                    
                                     if (ellipseNode.Name == "major_axis")
                                     {
                                         meso.MajorAxis = Convert.ToDouble(ellipseNode.InnerText, CultureInfo.InvariantCulture);
@@ -94,11 +94,13 @@ namespace MecyInformation
                                     {
                                         meso.MinorAxis = Convert.ToDouble(ellipseNode.InnerText, CultureInfo.InvariantCulture);
                                     }
+                                    /*
                                     if (ellipseNode.Name == "orientation")
                                     {
                                         meso.Orientation = Convert.ToInt32(ellipseNode.InnerText, CultureInfo.InvariantCulture);
                                     }
                                     */
+                                    
                                 }
                                 break;
                             case "nowcast-parameters":

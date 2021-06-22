@@ -15,10 +15,10 @@ namespace MecyInformation
         private DateTime _time;
         private double _latitude;
         private double _longitude;
-        private double _polarMotion = 0;   // Currently not used. Using Default
-        private double _majorAxis = 10;    // Currently not used. Using Default
-        private double _minorAxis = 10;    // Currently not used. Using Default
-        private int _orientation = 0;      // Currently not used. Using Default
+        private double _polarMotion = 0;    // Currently not used. Using Default
+        private double _majorAxis;          // Currently not used. Equals diameter
+        private double _minorAxis;          // Currently not used. Equals diameter
+        private int _orientation = 0;       // Currently not used. Using Default
         private double _shearMean;
         private double _shearMax;
         private double _momentumMean;

@@ -64,7 +64,7 @@ namespace MecyInformation
 
         private void clockLocalTick(object sender, EventArgs e)
         {
-            lblClockLocal.Content = "LOCAL: " + DateTime.Now.ToLongTimeString();
+            lblClockLocal.Content = "LOC: " + DateTime.Now.ToLongTimeString();
         }
 
         private void UpdateDetailsPanel()
