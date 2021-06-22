@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MecyInformation"
         mc:Ignorable="d"
-        Title="MecyInformation" Height="1080" Width="1920" Background="#FFE8E8E8"
-        WindowStartupLocation="CenterScreen">
+        Title="MecyInformation"
+        Height="1080" Width="1920"
+        Background="#FFE8E8E8"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized">
     <DockPanel>
         <StackPanel DockPanel.Dock="Top">
             <Menu>

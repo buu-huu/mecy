@@ -12,7 +12,7 @@ namespace MecyInformation
     public class Mesocyclone
     {
         private int _id;
-        private string _time;
+        private DateTime _time;
         private double _latitude;
         private double _longitude;
         private double _polarMotion = 0;   // Currently not used. Using Default
@@ -45,7 +45,7 @@ namespace MecyInformation
 
         /* PROPERTIES */
         public int Id { get => _id; set => _id = value; }
-        public string Time { get => _time; set => _time = value; }
+        public DateTime Time { get => _time; set => _time = value; }
         public double Latitude { get => _latitude; set => _latitude = value; }
         public double Longitude { get => _longitude; set => _longitude = value; }
         public double PolarMotion { get => _polarMotion; set => _polarMotion = value; }
@@ -86,7 +86,7 @@ namespace MecyInformation
                    double velocityRotationalMaxClosestToGround, int intensity)
         {
             this._id = id;
-            this._time = time;
+            this._time = DateTime.Parse(time);
             this._latitude = latitude;
             this._longitude = longitude;
             this._polarMotion = polarMotion;

@@ -30,7 +30,7 @@ namespace MecyInformation
                         switch (childNode.Name)
                         {
                             case "time":
-                                meso.Time = childNode.InnerText;
+                                meso.Time = DateTime.Parse(childNode.InnerText);
                                 break;
                             case "location":
                                 foreach (XmlNode ellipseNode in childNode.ChildNodes[0].ChildNodes[0])
