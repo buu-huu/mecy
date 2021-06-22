@@ -27,6 +27,7 @@ namespace MecyInformation
 
         private void Window_ContentRendered(object sender, EventArgs e)
         {
+            Thread.Sleep(1500);
             var scheduler = TaskScheduler.FromCurrentSynchronizationContext();
             _ = Task.Factory.StartNew(() =>
               {
