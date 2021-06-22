@@ -40,15 +40,31 @@ namespace MecyInformation
 
             gridDetails.DataContext = activeMeso;
 
-            DispatcherTimer clock = new DispatcherTimer();
-            clock.Interval = TimeSpan.FromSeconds(1);
-            clock.Tick += clockTick;
-            clock.Start();
+            SetUpClocks();
+
         }
 
-        private void clockTick(object sender, EventArgs e)
+        private void SetUpClocks()
         {
-            lblClock.Content = "UTC: " + DateTime.UtcNow.ToLongTimeString();
+            DispatcherTimer clockUtc = new DispatcherTimer();
+            clockUtc.Interval = TimeSpan.FromSeconds(1);
+            clockUtc.Tick += clockUtcTick;
+            clockUtc.Start();
+
+            DispatcherTimer clockLocal = new DispatcherTimer();
+            clockLocal.Interval = TimeSpan.FromSeconds(1);
+            clockLocal.Tick += clockLocalTick;
+            clockLocal.Start();
+        }
+
+        private void clockUtcTick(object sender, EventArgs e)
+        {
+            lblClockUtc.Content = "UTC: " + DateTime.UtcNow.ToLongTimeString();
+        }
+
+        private void clockLocalTick(object sender, EventArgs e)
+        {
+            lblClockLocal.Content = "LOCAL: " + DateTime.Now.ToLongTimeString();
         }
 
         private void UpdateDetailsPanel()
