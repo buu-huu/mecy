@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using WinSCP;
 
 namespace MecyInformation
@@ -38,6 +39,16 @@ namespace MecyInformation
             lvTimes.ItemsSource = mesoDict;
 
             gridDetails.DataContext = activeMeso;
+
+            DispatcherTimer clock = new DispatcherTimer();
+            clock.Interval = TimeSpan.FromSeconds(1);
+            clock.Tick += clockTick;
+            clock.Start();
+        }
+
+        private void clockTick(object sender, EventArgs e)
+        {
+            lblClock.Content = "UTC: " + DateTime.UtcNow.ToLongTimeString();
         }
 
         private void UpdateDetailsPanel()
@@ -70,16 +81,19 @@ namespace MecyInformation
 
         private void lvTimes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            KeyValuePair<DateTime, List<Mesocyclone>> pair = (KeyValuePair<DateTime, List<Mesocyclone>>) lvTimes.SelectedItem;
-            DateTime newTime = new DateTime(
-                pair.Key.Year,
-                pair.Key.Month,
-                pair.Key.Day,
-                pair.Key.Hour,
-                pair.Key.Minute,
-                0);
-            selectedTime = newTime;
-            lvMesos.ItemsSource = mesoDict[selectedTime];
+            if (lvTimes.SelectedItem != null)
+            {
+                KeyValuePair<DateTime, List<Mesocyclone>> pair = (KeyValuePair<DateTime, List<Mesocyclone>>)lvTimes.SelectedItem;
+                DateTime newTime = new DateTime(
+                    pair.Key.Year,
+                    pair.Key.Month,
+                    pair.Key.Day,
+                    pair.Key.Hour,
+                    pair.Key.Minute,
+                    0);
+                selectedTime = newTime;
+                lvMesos.ItemsSource = mesoDict[selectedTime];
+            }
         }
     }
 }

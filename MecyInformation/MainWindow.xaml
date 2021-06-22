@@ -43,7 +43,9 @@
                 </ItemsPanelTemplate>
             </StatusBar.ItemsPanel>
             <StatusBarItem>
-                <TextBlock Name="lblCursorPosition" />
+                <Label x:Name="lblClock"
+                       Padding="0"
+                       FontSize="12"/>
             </StatusBarItem>
             <Separator Grid.Column="1" />
             <StatusBarItem Grid.Column="2">
@@ -680,6 +682,20 @@
                               SelectionChanged="lvTimes_SelectionChanged"
                               SelectionMode="Single"
                                 Background="#FFE0E0E0">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Height" Value="30"/>
+                            <Setter Property="Background" Value="AliceBlue"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="Aquamarine"/>
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Aquamarine"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListView.ItemContainerStyle>
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Time" Width="200" DisplayMemberBinding="{Binding Key}"/>
