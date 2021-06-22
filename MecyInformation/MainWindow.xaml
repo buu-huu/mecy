@@ -59,6 +59,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="400"/>
                 <ColumnDefinition/>
+                <ColumnDefinition Width="300"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -608,36 +609,9 @@
                 
             </Border>
             <DockPanel Grid.Column="1">
-                <Grid DockPanel.Dock="Bottom">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="30"/>
-                        <ColumnDefinition Width="30"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <TextBox Height="25"
-                             x:Name="txtSelectedTime"
-                             Grid.Column="0"
-                             IsEnabled="False"/>
-                    <Button x:Name="btnTimeBack" Content="&lt;"
-                            Grid.Column="1"
-                            Width="30"
-                            Click="btnTimeBack_Click" />
-                    <Button x:Name="btnTimeForward" Content=">"
-                            Grid.Column="2"
-                            Width="30" Click="btnTimeForward_Click"/>
-                    <Slider x:Name="sldTime"
-                            IsEnabled="False"
-                        Maximum="40"
-                        Value="40"
-                        Grid.Column="3"
-                        IsSnapToTickEnabled="True"
-                        TickFrequency="1"
-                        Background="#FFA3A3A3">
-                    </Slider>
-                </Grid>
                 <ListView Margin="0"
                       x:Name="lvMesos"
+                          SelectionMode="Single"
                       SelectionChanged="lvMesos_SelectionChanged"
                       Background="#FFC2C2C2"
                       MouseDoubleClick="lvMesos_MouseDoubleClick"
@@ -700,6 +674,21 @@
                     </ListView.View>
                 </ListView>
             </DockPanel>
+            <Grid Grid.Column="2">
+                <ScrollViewer>
+                    <ListView Margin="0"
+                      x:Name="lvTimes"
+                              SelectionChanged="lvTimes_SelectionChanged"
+                              SelectionMode="Single"
+                                Background="#FFE0E0E0">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Time" Width="200" DisplayMemberBinding="{Binding Key}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </ScrollViewer>
+            </Grid>
         </Grid>
     </DockPanel>
 </Window>

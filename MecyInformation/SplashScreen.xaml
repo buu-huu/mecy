@@ -9,7 +9,7 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-        Title="SplashScreen" Height="250" Width="500"
+        Title="Mecy Information" Height="250" Width="500"
         ContentRendered="Window_ContentRendered">
     <Grid>
         <Border CornerRadius="20" Background="Beige">

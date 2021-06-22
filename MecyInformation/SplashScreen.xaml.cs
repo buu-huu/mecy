@@ -30,17 +30,13 @@ namespace MecyInformation
             var scheduler = TaskScheduler.FromCurrentSynchronizationContext();
             _ = Task.Factory.StartNew(() =>
               {
-                  OpenDataDownloader.DownloadAllData();
+                  //OpenDataDownloader.DownloadAllData();
               }).ContinueWith(task =>
               {
                   MainWindow mainWindow = new MainWindow();
                   mainWindow.Show();
                   this.Close();
               }, scheduler);
-
-            //OpenDataDownloader.DownloadAllData();
-
-            
         }
     }
 }

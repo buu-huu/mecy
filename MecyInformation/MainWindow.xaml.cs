@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -22,25 +24,20 @@ namespace MecyInformation
     /// </summary>
     public partial class MainWindow : Window
     {
-        Mesocyclone activeMeso = null;
+        Mesocyclone activeMeso;
         Dictionary<DateTime, List<Mesocyclone>> mesoDict;
         DateTime selectedTime;
-        DateTime earliestTime;
-        DateTime latestTime;
+
+        public DateTime SelectedTime { get => selectedTime; set => selectedTime = value; }
 
         public MainWindow()
         {
             InitializeComponent();
 
             mesoDict = XMLParser.ParseAllMesos(OpenDataDownloader.LOCAL_DOWNLOAD_PATH);
-            earliestTime = Mesocyclone.GetEarliestDateTime(mesoDict);
-            latestTime = Mesocyclone.GetLatestDateTime(mesoDict);
-            selectedTime = latestTime;
-            txtSelectedTime.Text = selectedTime.ToString();
-            lvMesos.ItemsSource = mesoDict[selectedTime];
+            lvTimes.ItemsSource = mesoDict;
 
             gridDetails.DataContext = activeMeso;
-            Console.WriteLine(Mesocyclone.GetLatestDateTime(mesoDict));
         }
 
         private void UpdateDetailsPanel()
@@ -71,31 +68,18 @@ namespace MecyInformation
             }
         }
 
-        private void btnTimeForward_Click(object sender, RoutedEventArgs e)
+        private void lvTimes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (!(sldTime.Value == sldTime.Maximum))
-            {
-                sldTime.Value++;
-                selectedTime = selectedTime.Add(new TimeSpan(0, 5, 0));
-                txtSelectedTime.Text = selectedTime.ToString();
-                lvMesos.ItemsSource = mesoDict[selectedTime];
-            }
-        }
-
-        private void btnTimeBack_Click(object sender, RoutedEventArgs e)
-        {
-            if (!(sldTime.Value == 0))
-            {
-                sldTime.Value--;
-                selectedTime = selectedTime.Subtract(new TimeSpan(0, 5, 0));
-                txtSelectedTime.Text = selectedTime.ToString();
-                lvMesos.ItemsSource = mesoDict[selectedTime];
-            }
-        }
-
-        private void sldTime_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-
+            KeyValuePair<DateTime, List<Mesocyclone>> pair = (KeyValuePair<DateTime, List<Mesocyclone>>) lvTimes.SelectedItem;
+            DateTime newTime = new DateTime(
+                pair.Key.Year,
+                pair.Key.Month,
+                pair.Key.Day,
+                pair.Key.Hour,
+                pair.Key.Minute,
+                0);
+            selectedTime = newTime;
+            lvMesos.ItemsSource = mesoDict[selectedTime];
         }
     }
 }
