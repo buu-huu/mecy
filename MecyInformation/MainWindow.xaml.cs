@@ -32,8 +32,6 @@ namespace MecyInformation
         {
             InitializeComponent();
 
-            OpenDataDownloader.DownloadAllData();
-
             mesoDict = XMLParser.ParseAllMesos(OpenDataDownloader.LOCAL_DOWNLOAD_PATH);
             earliestTime = Mesocyclone.GetEarliestDateTime(mesoDict);
             latestTime = Mesocyclone.GetLatestDateTime(mesoDict);

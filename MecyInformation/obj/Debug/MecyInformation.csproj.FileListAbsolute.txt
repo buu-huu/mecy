@@ -59,3 +59,5 @@ C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\MecyInfor
 C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\bin\Debug\WinSCP.exe
 C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\bin\Debug\WinSCPnet.dll
 C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\MecyInformation_Content.g.cs
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\SplashScreen.g.cs
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\SplashScreen.baml
