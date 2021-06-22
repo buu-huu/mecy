@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,36 @@ namespace MecyInformation
 {
     static class XMLParser
     {
-        public static List<Mesocyclone> ParseMesos(string path)
+        public static Dictionary<DateTime, List<Mesocyclone>> ParseAllMesos(string path)
+        {
+            List<Mesocyclone> parsedMesos = new List<Mesocyclone>();
+            foreach (var mesoFile in Directory.GetFiles(path))
+            {
+                List<Mesocyclone> mesos = ParseMesoFile(mesoFile);
+                parsedMesos.AddRange(mesos);
+            }
+
+            Dictionary<DateTime, List<Mesocyclone>> mesoDict = new Dictionary<DateTime, List<Mesocyclone>>();
+            foreach (var meso in parsedMesos)
+            {
+                if (!mesoDict.ContainsKey(meso.Time))
+                {
+                    List<Mesocyclone> mesoList = new List<Mesocyclone>();
+                    mesoList.Add(meso);
+                    mesoDict.Add(meso.Time, mesoList);
+                }
+                else
+                {
+                    List<Mesocyclone> mesoList = mesoDict[meso.Time];
+                    mesoList.Add(meso);
+                    mesoDict[meso.Time] = mesoList;
+                }
+            }
+
+            return mesoDict;
+        }
+
+        public static List<Mesocyclone> ParseMesoFile(string path)
         {
             List<Mesocyclone> parsedMesos = new List<Mesocyclone>();
 

@@ -23,7 +23,10 @@ namespace MecyInformation
     public partial class MainWindow : Window
     {
         Mesocyclone activeMeso = null;
-        List<Mesocyclone> mesos;
+        Dictionary<DateTime, List<Mesocyclone>> mesoDict;
+        DateTime selectedTime;
+        DateTime earliestTime;
+        DateTime latestTime;
 
         public MainWindow()
         {
@@ -31,12 +34,15 @@ namespace MecyInformation
 
             OpenDataDownloader.DownloadAllData();
 
-            mesos = new List<Mesocyclone>();
-            lvMesos.ItemsSource = mesos;
+            mesoDict = XMLParser.ParseAllMesos(OpenDataDownloader.LOCAL_DOWNLOAD_PATH);
+            earliestTime = Mesocyclone.GetEarliestDateTime(mesoDict);
+            latestTime = Mesocyclone.GetLatestDateTime(mesoDict);
+            selectedTime = latestTime;
+            txtSelectedTime.Text = selectedTime.ToString();
+            lvMesos.ItemsSource = mesoDict[selectedTime];
 
-            mesos = XMLParser.ParseMesos(@"C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\XMLFiles\meso_20210621_0220.xml");
-            lvMesos.ItemsSource = mesos;
             gridDetails.DataContext = activeMeso;
+            Console.WriteLine(Mesocyclone.GetLatestDateTime(mesoDict));
         }
 
         private void UpdateDetailsPanel()
@@ -65,6 +71,33 @@ namespace MecyInformation
             {
                 lvMesos.UnselectAll();
             }
+        }
+
+        private void btnTimeForward_Click(object sender, RoutedEventArgs e)
+        {
+            if (!(sldTime.Value == sldTime.Maximum))
+            {
+                sldTime.Value++;
+                selectedTime = selectedTime.Add(new TimeSpan(0, 5, 0));
+                txtSelectedTime.Text = selectedTime.ToString();
+                lvMesos.ItemsSource = mesoDict[selectedTime];
+            }
+        }
+
+        private void btnTimeBack_Click(object sender, RoutedEventArgs e)
+        {
+            if (!(sldTime.Value == 0))
+            {
+                sldTime.Value--;
+                selectedTime = selectedTime.Subtract(new TimeSpan(0, 5, 0));
+                txtSelectedTime.Text = selectedTime.ToString();
+                lvMesos.ItemsSource = mesoDict[selectedTime];
+            }
+        }
+
+        private void sldTime_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
         }
     }
 }

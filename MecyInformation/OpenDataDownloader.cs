@@ -19,6 +19,7 @@ namespace MecyInformation
 
         public static void DownloadAllData()
         {
+            DeleteAllData();
             System.IO.Directory.CreateDirectory(LOCAL_DOWNLOAD_PATH); // Ignore if directory exists...
 
             SessionOptions sessionOptions = new SessionOptions
@@ -34,6 +35,15 @@ namespace MecyInformation
                 session.Open(sessionOptions);
                 session.GetFiles(DWD_MESO_DIRECTORY+"*", LOCAL_DOWNLOAD_PATH+"\\").Check();
                 session.Close();
+            }
+        }
+
+        private static void DeleteAllData()
+        {
+            if (Directory.Exists(LOCAL_DOWNLOAD_PATH))
+            {
+                Directory.Delete(LOCAL_DOWNLOAD_PATH, true);
+                Directory.CreateDirectory(LOCAL_DOWNLOAD_PATH);
             }
         }
     }

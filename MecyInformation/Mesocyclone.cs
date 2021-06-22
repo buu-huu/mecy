@@ -114,6 +114,32 @@ namespace MecyInformation
             this._intensity = intensity;
         }
 
+        public static DateTime GetEarliestDateTime(Dictionary<DateTime, List<Mesocyclone>> mesoDict)
+        {
+            DateTime earliest = mesoDict.Keys.First();
+            foreach (var dictEntry in mesoDict)
+            {
+                if (DateTime.Compare(dictEntry.Key, earliest) < 0)
+                {
+                    earliest = dictEntry.Key;
+                }
+            }
+            return earliest;
+        }
+
+        public static DateTime GetLatestDateTime(Dictionary<DateTime, List<Mesocyclone>> mesoDict)
+        {
+            DateTime latest = mesoDict.Keys.First();
+            foreach (var dictEntry in mesoDict)
+            {
+                if (DateTime.Compare(dictEntry.Key, latest) > 0)
+                {
+                    latest = dictEntry.Key;
+                }
+            }
+            return latest;
+        }
+
         public override string ToString()
         {
             return "Mesocyclone{" +
