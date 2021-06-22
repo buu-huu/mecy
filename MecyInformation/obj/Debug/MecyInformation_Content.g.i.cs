@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("meso_icon_1.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("winscp.exe")]
 
 

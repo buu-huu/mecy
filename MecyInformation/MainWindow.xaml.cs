@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WinSCP;
 
 namespace MecyInformation
 {
@@ -26,6 +28,8 @@ namespace MecyInformation
         public MainWindow()
         {
             InitializeComponent();
+
+            OpenDataDownloader.DownloadAllData();
 
             mesos = new List<Mesocyclone>();
             lvMesos.ItemsSource = mesos;

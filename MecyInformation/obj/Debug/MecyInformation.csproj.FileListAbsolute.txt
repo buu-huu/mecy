@@ -56,3 +56,6 @@ C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\bin\Debug\Microsoft
 C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\bin\Debug\Microsoft.Toolkit.Wpf.UI.XamlHost.xml
 C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\MecyInformation.exe.config
 C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\MecyInformation.csproj.CopyComplete
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\bin\Debug\WinSCP.exe
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\bin\Debug\WinSCPnet.dll
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\MecyInformation_Content.g.cs
