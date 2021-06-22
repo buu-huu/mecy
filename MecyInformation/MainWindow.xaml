@@ -675,19 +675,17 @@
                 </ListView>
             </DockPanel>
             <Grid Grid.Column="2">
-                <ScrollViewer>
-                    <ListView Margin="0"
+                <ListView Margin="0"
                       x:Name="lvTimes"
                               SelectionChanged="lvTimes_SelectionChanged"
                               SelectionMode="Single"
                                 Background="#FFE0E0E0">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Time" Width="200" DisplayMemberBinding="{Binding Key}"/>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                </ScrollViewer>
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Time" Width="200" DisplayMemberBinding="{Binding Key}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
             </Grid>
         </Grid>
     </DockPanel>
