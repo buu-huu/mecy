@@ -284,6 +284,15 @@ namespace MecyInformation
         {
             activeMeso = (Mesocyclone)lvMesos.SelectedItem;
             gridDetails.DataContext = activeMeso;
+
+            if (activeMeso != null)
+            {
+                lvElevations.ItemsSource = activeMeso.Elevations;
+            }
+            else
+            {
+                lvElevations.ItemsSource = new List<double>();
+            }
         }
 
         private void lvMesos_SelectionChanged(object sender, SelectionChangedEventArgs e)

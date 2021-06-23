@@ -81,6 +81,7 @@
       <DependentUpon>DownloadWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Elevation.cs" />
+    <Compile Include="ListToStringConverter.cs" />
     <Compile Include="MapWindow.xaml.cs">
       <DependentUpon>MapWindow.xaml</DependentUpon>
     </Compile>

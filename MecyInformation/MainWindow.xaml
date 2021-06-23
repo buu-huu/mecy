@@ -10,6 +10,9 @@
         Background="#FFE8E8E8"
         WindowStartupLocation="CenterScreen"
         Closing="Window_Closing">
+    <Window.Resources>
+        <local:ListToStringConverter x:Key="ListToStringConverter" />
+    </Window.Resources>
     <DockPanel>
         <StackPanel DockPanel.Dock="Top">
             <Menu>
@@ -110,6 +113,7 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
                         </Grid.RowDefinitions>
 
                         <Label Content="Mecy Information"
@@ -641,6 +645,17 @@
                          Grid.Row="27"
                          Grid.Column="1"
                                  Background="#FFFFDEB8"/>
+                        <ListView Margin="5" x:Name="lvElevations"
+                            Grid.Row="28"
+                                  Grid.ColumnSpan="3"
+                                  Height="150">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Site" Width="50" DisplayMemberBinding="{Binding RadarSite}" />
+                                    <GridViewColumn Header="Elevations" Width="200" DisplayMemberBinding="{Binding Path=Elevations,Converter={StaticResource ListToStringConverter}}" />
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
                     </Grid>
                 </ScrollViewer>
                 
