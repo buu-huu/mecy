@@ -39,11 +39,215 @@ namespace MecyInformation
             SetUpClocks();
         }
 
+        private void ResetStationAvailability()
+        {
+            lblRadarAsb.Background = new SolidColorBrush();
+            lblRadarBoo.Background = new SolidColorBrush();
+            lblRadarDrs.Background = new SolidColorBrush();
+            lblRadarEis.Background = new SolidColorBrush();
+            lblRadarEss.Background = new SolidColorBrush();
+            lblRadarFbg.Background = new SolidColorBrush();
+            lblRadarFld.Background = new SolidColorBrush();
+            lblRadarHnr.Background = new SolidColorBrush();
+            lblRadarIsn.Background = new SolidColorBrush();
+            lblRadarMem.Background = new SolidColorBrush();
+            lblRadarNeu.Background = new SolidColorBrush();
+            lblRadarNhb.Background = new SolidColorBrush();
+            lblRadarOft.Background = new SolidColorBrush();
+            lblRadarPro.Background = new SolidColorBrush();
+            lblRadarRos.Background = new SolidColorBrush();
+            lblRadarTur.Background = new SolidColorBrush();
+            lblRadarUmd.Background = new SolidColorBrush();
+        }
+
+        private void RefreshStationAvailability()
+        {
+            foreach (RadarStation station in selectedElement.RadarStations)
+            {
+                SolidColorBrush brushGreen = (SolidColorBrush)new BrushConverter().ConvertFrom("#40ff69");
+                SolidColorBrush brushRed = (SolidColorBrush)new BrushConverter().ConvertFrom("#f23333");
+                switch (station.Name)
+                {
+                    case "ASB":
+                        if (station.IsAvailable)
+                        {
+                            lblRadarAsb.Background = brushGreen;
+                        }
+                        else
+                        {
+                            lblRadarAsb.Background = brushRed;
+                        }
+                        break;
+                    case "BOO":
+                        if (station.IsAvailable)
+                        {
+                            lblRadarBoo.Background = brushGreen;
+                        }
+                        else
+                        {
+                            lblRadarBoo.Background = brushRed;
+                        }
+                        break;
+                    case "DRS":
+                        if (station.IsAvailable)
+                        {
+                            lblRadarDrs.Background = brushGreen;
+                        }
+                        else
+                        {
+                            lblRadarDrs.Background = brushRed;
+                        }
+                        break;
+                    case "EIS":
+                        if (station.IsAvailable)
+                        {
+                            lblRadarEis.Background = brushGreen;
+                        }
+                        else
+                        {
+                            lblRadarEis.Background = brushRed;
+                        }
+                        break;
+                    case "ESS":
+                        if (station.IsAvailable)
+                        {
+                            lblRadarEss.Background = brushGreen;
+                        }
+                        else
+                        {
+                            lblRadarEss.Background = brushRed;
+                        }
+                        break;
+                    case "FBG":
+                        if (station.IsAvailable)
+                        {
+                            lblRadarFbg.Background = brushGreen;
+                        }
+                        else
+                        {
+                            lblRadarFbg.Background = brushRed;
+                        }
+                        break;
+                    case "FLD":
+                        if (station.IsAvailable)
+                        {
+                            lblRadarFld.Background = brushGreen;
+                        }
+                        else
+                        {
+                            lblRadarFld.Background = brushRed;
+                        }
+                        break;
+                    case "HNR":
+                        if (station.IsAvailable)
+                        {
+                            lblRadarHnr.Background = brushGreen;
+                        }
+                        else
+                        {
+                            lblRadarHnr.Background = brushRed;
+                        }
+                        break;
+                    case "ISN":
+                        if (station.IsAvailable)
+                        {
+                            lblRadarIsn.Background = brushGreen;
+                        }
+                        else
+                        {
+                            lblRadarIsn.Background = brushRed;
+                        }
+                        break;
+                    case "MEM":
+                        if (station.IsAvailable)
+                        {
+                            lblRadarMem.Background = brushGreen;
+                        }
+                        else
+                        {
+                            lblRadarMem.Background = brushRed;
+                        }
+                        break;
+                    case "NEU":
+                        if (station.IsAvailable)
+                        {
+                            lblRadarNeu.Background = brushGreen;
+                        }
+                        else
+                        {
+                            lblRadarNeu.Background = brushRed;
+                        }
+                        break;
+                    case "NHB":
+                        if (station.IsAvailable)
+                        {
+                            lblRadarNhb.Background = brushGreen;
+                        }
+                        else
+                        {
+                            lblRadarNhb.Background = brushRed;
+                        }
+                        break;
+                    case "OFT":
+                        if (station.IsAvailable)
+                        {
+                            lblRadarOft.Background = brushGreen;
+                        }
+                        else
+                        {
+                            lblRadarOft.Background = brushRed;
+                        }
+                        break;
+                    case "PRO":
+                        if (station.IsAvailable)
+                        {
+                            lblRadarPro.Background = brushGreen;
+                        }
+                        else
+                        {
+                            lblRadarPro.Background = brushRed;
+                        }
+                        break;
+                    case "ROS":
+                        if (station.IsAvailable)
+                        {
+                            lblRadarRos.Background = brushGreen;
+                        }
+                        else
+                        {
+                            lblRadarRos.Background = brushRed;
+                        }
+                        break;
+                    case "TUR":
+                        if (station.IsAvailable)
+                        {
+                            lblRadarTur.Background = brushGreen;
+                        }
+                        else
+                        {
+                            lblRadarTur.Background = brushRed;
+                        }
+                        break;
+                    case "UMD":
+                        if (station.IsAvailable)
+                        {
+                            lblRadarUmd.Background = brushGreen;
+                        }
+                        else
+                        {
+                            lblRadarUmd.Background = brushRed;
+                        }
+                        break;
+                }
+            }
+        }
+
         private void RefreshView()
         {
             openDataElements = XMLParser.ParseAllMesos(OpenDataDownloader.LOCAL_DOWNLOAD_PATH);
             lvTimes.ItemsSource = openDataElements;
             gridDetails.DataContext = activeMeso;
+            gridRadarAvailability.DataContext = selectedElement;
         }
 
         private void ReDownloadData()
@@ -110,6 +314,11 @@ namespace MecyInformation
             {
                 selectedElement = (OpenDataElement)lvTimes.SelectedItem;
                 lvMesos.ItemsSource = selectedElement.Mesocyclones;
+                RefreshStationAvailability();
+            }
+            else
+            {
+                ResetStationAvailability();
             }
         }
 

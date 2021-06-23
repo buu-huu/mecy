@@ -42,6 +42,10 @@ namespace MecyInformation
             
             foreach (XmlNode node in xdoc.DocumentElement.ChildNodes)
             {
+                if (node.Name == "radar-stations")
+                {
+                    element.RadarStations = RadarStation.ParseStationsFromString(node.InnerText);
+                }
                 if (node.Name == "event")
                 {
                     Mesocyclone meso = new Mesocyclone();

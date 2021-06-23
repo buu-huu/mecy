@@ -746,7 +746,7 @@
                 </ListView>
                 <GroupBox Grid.Row="1"
                           Header="Radar Availibility">
-                    <Grid>
+                    <Grid x:Name="gridRadarAvailability">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
@@ -763,87 +763,70 @@
 
                         <Label x:Name="lblRadarAsb" Grid.Row="0" Grid.Column="0" Content="ASB"
                                Margin="3"
-                               Background="Red"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center"/>
                         <Label x:Name="lblRadarBoo" Grid.Row="0" Grid.Column="1" Content="BOO"
                                Margin="3"
-                               Background="Red"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center"/>
                         <Label x:Name="lblRadarDrs" Grid.Row="0" Grid.Column="2" Content="DRS"
                                Margin="3"
-                               Background="Red"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center"/>
                         <Label x:Name="lblRadarEis" Grid.Row="0" Grid.Column="3" Content="EIS"
                                Margin="3"
-                               Background="Red"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center"/>
                         <Label x:Name="lblRadarEss" Grid.Row="0" Grid.Column="4" Content="ESS"
                                Margin="3"
-                               Background="Red"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center"/>
                         <Label x:Name="lblRadarFbg" Grid.Row="0" Grid.Column="5" Content="FBG"
                                Margin="3"
-                               Background="Red"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center"/>
                         <Label x:Name="lblRadarFld" Grid.Row="1" Grid.Column="0" Content="FLD"
                                Margin="3"
-                               Background="Red"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center"/>
                         <Label x:Name="lblRadarHnr" Grid.Row="1" Grid.Column="1" Content="HNR"
                                Margin="3"
-                               Background="Red"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center"/>
                         <Label x:Name="lblRadarIsn" Grid.Row="1" Grid.Column="2" Content="ISN"
                                Margin="3"
-                               Background="Red"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center"/>
                         <Label x:Name="lblRadarMem" Grid.Row="1" Grid.Column="3" Content="MEM"
                                Margin="3"
-                               Background="Red"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center"/>
                         <Label x:Name="lblRadarNeu" Grid.Row="1" Grid.Column="4" Content="NEU"
                                Margin="3"
-                               Background="Red"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center"/>
                         <Label x:Name="lblRadarNhb" Grid.Row="1" Grid.Column="5" Content="NHB"
                                Margin="3"
-                               Background="Red"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center"/>
                         <Label x:Name="lblRadarOft" Grid.Row="2" Grid.Column="0" Content="OFT"
                                Margin="3"
-                               Background="Red"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center"/>
                         <Label x:Name="lblRadarPro" Grid.Row="2" Grid.Column="1" Content="PRO"
                                Margin="3"
-                               Background="Red"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center"/>
                         <Label x:Name="lblRadarRos" Grid.Row="2" Grid.Column="2" Content="ROS"
                                Margin="3"
-                               Background="Red"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center"/>
                         <Label x:Name="lblRadarTur" Grid.Row="2" Grid.Column="3" Content="TUR"
                                Margin="3"
-                               Background="Red"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center"/>
                         <Label x:Name="lblRadarUmd" Grid.Row="2" Grid.Column="4" Content="UMD"
                                Margin="3"
-                               Background="Red"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center"/>
                     </Grid>
