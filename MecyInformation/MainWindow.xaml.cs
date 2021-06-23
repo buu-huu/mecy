@@ -35,13 +35,21 @@ namespace MecyInformation
         {
             InitializeComponent();
 
-            mesoDict = XMLParser.ParseAllMesos(OpenDataDownloader.LOCAL_DOWNLOAD_PATH);
-            lvTimes.ItemsSource = mesoDict;
-
-            gridDetails.DataContext = activeMeso;
+            RefreshView();
 
             SetUpClocks();
+        }
 
+        private void RefreshView()
+        {
+            mesoDict = XMLParser.ParseAllMesos(OpenDataDownloader.LOCAL_DOWNLOAD_PATH);
+            lvTimes.ItemsSource = mesoDict;
+            gridDetails.DataContext = activeMeso;
+        }
+
+        private void ReDownloadData()
+        {
+            OpenDataDownloader.DownloadAllData();
         }
 
         private void SetUpClocks()
@@ -120,6 +128,12 @@ namespace MecyInformation
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             Application.Current.Shutdown(0);
+        }
+
+        private void tlbButton_Click(object sender, RoutedEventArgs e)
+        {
+            ReDownloadData();
+            RefreshView();
         }
     }
 }

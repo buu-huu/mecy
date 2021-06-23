@@ -21,9 +21,7 @@
             </Menu>
             <ToolBarTray>
                 <ToolBar>
-                    <Button Content="New"/>
-                    <Button Content="Save"/>
-                    <Button Content="Exit"/>
+                    <Button Content="Update" Click="tlbButton_Click"/>
                 </ToolBar>
             </ToolBarTray>
         </StackPanel>
@@ -58,7 +56,7 @@
             </StatusBarItem>
             <Separator Grid.Column="3" />
             <StatusBarItem Grid.Column="4">
-                <TextBlock Text="Waiting for next download..." />
+                <TextBlock x:Name="stsTxtInfo" />
             </StatusBarItem>
             <Separator Grid.Column="5" />
             <StatusBarItem Grid.Column="6">
@@ -152,19 +150,13 @@
                        Margin="0 0 10 0"
                        Grid.Row="2"
                        Grid.Column="0"/>
-                        <TextBox Text="{Binding Time}"
+                        <TextBox Text="{Binding Path=Time, StringFormat='dd.MM.yyy HH:mm'}"
                          VerticalContentAlignment="Center"
                          Margin="2"
                          IsReadOnly="True"
                          Grid.Row="2"
                          Grid.Column="1"
                                   Background="#FFFFDEB8"/>
-                        <Label Content="UTC"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="1"
-                       Grid.Column="2"/>
 
                         <Label Content="Latitude"
                        HorizontalAlignment="Right"
@@ -179,6 +171,12 @@
                          Grid.Row="3"
                          Grid.Column="1"
                                   Background="#FFFFDEB8"/>
+                        <Label Content="UTC"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0 0 10 0"
+                       Grid.Row="2"
+                       Grid.Column="2"/>
 
                         <Label Content="Longitude"
                        HorizontalAlignment="Right"
@@ -679,7 +677,7 @@
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="ID" Width="45" DisplayMemberBinding="{Binding Id}"/>
-                            <GridViewColumn Header="Time" Width="150" DisplayMemberBinding="{Binding Time}"/>
+                            <GridViewColumn Header="Time" Width="150" DisplayMemberBinding="{Binding Path=Time, StringFormat='dd.MM.yyy HH:mm'}"/>
                             <GridViewColumn Header="Latitude" Width="150" DisplayMemberBinding="{Binding Latitude}"/>
                             <GridViewColumn Header="Longitude" Width="150" DisplayMemberBinding="{Binding Longitude}"/>
                             <GridViewColumn Header="Intensity" Width="70">
@@ -737,7 +735,7 @@
                     </ListView.ItemContainerStyle>
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Time" Width="200" DisplayMemberBinding="{Binding Key}"/>
+                            <GridViewColumn Header="UTC" Width="200" DisplayMemberBinding="{Binding Path=Key, StringFormat='dd.MM.yyy HH:mm'}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>

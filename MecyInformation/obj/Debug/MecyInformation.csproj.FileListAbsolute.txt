@@ -63,3 +63,5 @@ C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\SplashScr
 C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\SplashScreen.baml
 C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\AboutWindow.g.cs
 C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\AboutWindow.baml
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\DownloadWindow.g.cs
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\DownloadWindow.baml
