@@ -9,8 +9,7 @@
         Height="1080" Width="1920"
         Background="#FFE8E8E8"
         WindowStartupLocation="CenterScreen"
-        Closing="Window_Closing"
-        WindowState="Maximized">
+        Closing="Window_Closing">
     <DockPanel>
         <StackPanel DockPanel.Dock="Top">
             <Menu>
@@ -20,8 +19,10 @@
                 <MenuItem Header="_About" Click="mnuAbout_Click"/>
             </Menu>
             <ToolBarTray>
-                <ToolBar>
-                    <Button Content="Update" Click="tlbButton_Click"/>
+                <ToolBar Height="40">
+                    <Button Click="tlbButtonUpdate_Click">
+                        <Image Source="Resources/ToolbarDownload.png" />
+                    </Button>
                 </ToolBar>
             </ToolBarTray>
         </StackPanel>

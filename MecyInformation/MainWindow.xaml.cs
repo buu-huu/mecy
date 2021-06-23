@@ -28,6 +28,7 @@ namespace MecyInformation
         Mesocyclone activeMeso;
         Dictionary<DateTime, List<Mesocyclone>> mesoDict;
         DateTime selectedTime;
+        bool isDownloading = false;
 
         public DateTime SelectedTime { get => selectedTime; set => selectedTime = value; }
 
@@ -130,10 +131,27 @@ namespace MecyInformation
             Application.Current.Shutdown(0);
         }
 
-        private void tlbButton_Click(object sender, RoutedEventArgs e)
+        private void tlbButtonUpdate_Click(object sender, RoutedEventArgs e)
         {
-            ReDownloadData();
-            RefreshView();
+            if (!isDownloading)
+            {
+                DownloadWindow downloadWindow = new DownloadWindow();
+
+                var scheduler = TaskScheduler.FromCurrentSynchronizationContext();
+                _ = Task.Factory.StartNew(() =>
+                {
+                    Application.Current.Dispatcher.Invoke((Action)delegate {
+                        downloadWindow.Show();
+                    });
+                    isDownloading = true;
+                    ReDownloadData();
+                }).ContinueWith(task =>
+                {
+                    RefreshView();
+                    downloadWindow.Close();
+                }, scheduler);
+                isDownloading = false;
+            }
         }
     }
 }
