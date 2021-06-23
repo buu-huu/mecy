@@ -32,7 +32,7 @@ namespace MecyInformation
         private int _shearVectors;
         private int _shearFeatures;
 
-        //private List<Elevation> _elevations;
+        private List<Elevation> _elevations;
 
         private double _meanDBZ;
         private double _maxDBZ;
@@ -71,6 +71,7 @@ namespace MecyInformation
         public double VelocityRotationalMean { get => _velocityRotationalMean; set => _velocityRotationalMean = value; }
         public double VelocityRotationalMaxClosestToGround { get => _velocityRotationalMaxClosestToGround; set => _velocityRotationalMaxClosestToGround = value; }
         public int Intensity { get => _intensity; set => _intensity = value; }
+        internal List<Elevation> Elevations { get => _elevations; set => _elevations = value; }
 
         public Mesocyclone()
         {
@@ -81,7 +82,7 @@ namespace MecyInformation
                    double majorAxis, double minorAxis, int orientation, double shearMean, double shearMax,
                    double momentumMean, double momentumMax, double diameter, double diameterEquivalent,
                    double top, double mesoBase, double echotop, double vil, int shearVectors, int shearFeatures,
-                   double meanDBZ, double maxDBZ, double velocityMax,
+                   List<Elevation> elevations, double meanDBZ, double maxDBZ, double velocityMax,
                    double velocityRotationalMax, double velocityRotationalMean,
                    double velocityRotationalMaxClosestToGround, int intensity)
         {
@@ -105,6 +106,7 @@ namespace MecyInformation
             this._vil = vil;
             this._shearVectors = shearVectors;
             this._shearFeatures = shearFeatures;
+            this._elevations = elevations;
             this._meanDBZ = meanDBZ;
             this._maxDBZ = maxDBZ;
             this._velocityMax = velocityMax;

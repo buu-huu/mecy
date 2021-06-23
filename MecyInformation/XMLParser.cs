@@ -141,6 +141,17 @@ namespace MecyInformation
                                         case "mesocyclone_shear_features":
                                             meso.ShearFeatures = Convert.ToInt32(paramNode.InnerText);
                                             break;
+                                        case "elevations":
+                                            List<Elevation> elevations = new List<Elevation>();
+                                            foreach (XmlNode elevationNode in paramNode.ChildNodes)
+                                            {
+                                                Elevation elevation = new Elevation();
+                                                elevation.RadarSite = elevationNode.Attributes["site"].Value.ToUpper();
+                                                elevation.Elevations = Elevation.ParseElevationsFromString(elevationNode.InnerText);
+                                                elevations.Add(elevation);
+                                            }
+                                            meso.Elevations = elevations;
+                                            break;
                                         case "mean_dbz":
                                             meso.MeanDBZ = Convert.ToDouble(paramNode.InnerText, CultureInfo.InvariantCulture);
                                             break;
