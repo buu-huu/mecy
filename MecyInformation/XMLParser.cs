@@ -12,37 +12,29 @@ namespace MecyInformation
 {
     static class XMLParser
     {
-        public static Dictionary<DateTime, List<Mesocyclone>> ParseAllMesos(string path)
+        public static List<RadarStation> ParseStations(string path)
         {
-            List<Mesocyclone> parsedMesos = new List<Mesocyclone>();
+            List<RadarStation> radarStations = new List<RadarStation>();
+            return radarStations;
+        }
+        public static List<OpenDataElement> ParseAllMesos(string path)
+        {
+            List<OpenDataElement> openDataElements = new List<OpenDataElement>();
             foreach (var mesoFile in Directory.GetFiles(path))
             {
-                List<Mesocyclone> mesos = ParseMesoFile(mesoFile);
-                parsedMesos.AddRange(mesos);
+                openDataElements.Add(ParseMesoFile(mesoFile));
             }
-
-            Dictionary<DateTime, List<Mesocyclone>> mesoDict = new Dictionary<DateTime, List<Mesocyclone>>();
-            foreach (var meso in parsedMesos)
-            {
-                if (!mesoDict.ContainsKey(meso.Time))
-                {
-                    List<Mesocyclone> mesoList = new List<Mesocyclone>();
-                    mesoList.Add(meso);
-                    mesoDict.Add(meso.Time, mesoList);
-                }
-                else
-                {
-                    List<Mesocyclone> mesoList = mesoDict[meso.Time];
-                    mesoList.Add(meso);
-                    mesoDict[meso.Time] = mesoList;
-                }
-            }
-
-            return mesoDict;
+            return openDataElements;
         }
 
-        public static List<Mesocyclone> ParseMesoFile(string path)
+        public static OpenDataElement ParseMesoFile(string path)
         {
+            string fileNameDate = Path.GetFileName(path).Replace("meso_", "").Replace(".xml", "");
+            DateTime timeStamp = DateTime.ParseExact(fileNameDate, "yyyyMMdd_HHmm", CultureInfo.InvariantCulture);
+
+            OpenDataElement element = new OpenDataElement();
+            element.Time = timeStamp;
+            element.RadarStations = null;
             List<Mesocyclone> parsedMesos = new List<Mesocyclone>();
 
             XmlDocument xdoc = new XmlDocument();
@@ -174,7 +166,8 @@ namespace MecyInformation
                     parsedMesos.Add(meso);
                 }
             }
-            return parsedMesos;
+            element.Mesocyclones = parsedMesos;
+            return element;
         }
     }
 }

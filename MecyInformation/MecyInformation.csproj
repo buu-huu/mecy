@@ -84,6 +84,8 @@
       <DependentUpon>MapWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="OpenDataDownloader.cs" />
+    <Compile Include="OpenDataElement.cs" />
+    <Compile Include="RadarStation.cs" />
     <Compile Include="SplashScreen.xaml.cs">
       <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>

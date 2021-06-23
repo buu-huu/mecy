@@ -26,31 +26,31 @@ namespace MecyInformation
     public partial class MainWindow : Window
     {
         Mesocyclone activeMeso;
-        Dictionary<DateTime, List<Mesocyclone>> mesoDict;
-        DateTime selectedTime;
-        bool isDownloading = false;
+        List<OpenDataElement> openDataElements;
 
-        public DateTime SelectedTime { get => selectedTime; set => selectedTime = value; }
+        OpenDataElement selectedElement;
+        bool isDownloading = false;
 
         public MainWindow()
         {
             InitializeComponent();
 
             RefreshView();
-
             SetUpClocks();
         }
 
         private void RefreshView()
         {
-            mesoDict = XMLParser.ParseAllMesos(OpenDataDownloader.LOCAL_DOWNLOAD_PATH);
-            lvTimes.ItemsSource = mesoDict;
+            openDataElements = XMLParser.ParseAllMesos(OpenDataDownloader.LOCAL_DOWNLOAD_PATH);
+            lvTimes.ItemsSource = openDataElements;
             gridDetails.DataContext = activeMeso;
         }
 
         private void ReDownloadData()
         {
+            isDownloading = true;
             OpenDataDownloader.DownloadAllData();
+            isDownloading = false;
         }
 
         private void SetUpClocks()
@@ -108,16 +108,8 @@ namespace MecyInformation
         {
             if (lvTimes.SelectedItem != null)
             {
-                KeyValuePair<DateTime, List<Mesocyclone>> pair = (KeyValuePair<DateTime, List<Mesocyclone>>)lvTimes.SelectedItem;
-                DateTime newTime = new DateTime(
-                    pair.Key.Year,
-                    pair.Key.Month,
-                    pair.Key.Day,
-                    pair.Key.Hour,
-                    pair.Key.Minute,
-                    0);
-                selectedTime = newTime;
-                lvMesos.ItemsSource = mesoDict[selectedTime];
+                selectedElement = (OpenDataElement)lvTimes.SelectedItem;
+                lvMesos.ItemsSource = selectedElement.Mesocyclones;
             }
         }
 
@@ -143,14 +135,12 @@ namespace MecyInformation
                     Application.Current.Dispatcher.Invoke((Action)delegate {
                         downloadWindow.Show();
                     });
-                    isDownloading = true;
                     ReDownloadData();
                 }).ContinueWith(task =>
                 {
                     RefreshView();
                     downloadWindow.Close();
                 }, scheduler);
-                isDownloading = false;
             }
         }
     }
