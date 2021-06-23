@@ -16,12 +16,17 @@ namespace MecyInformation
     public partial class MapWindow : Window
     {
         Mesocyclone meso;
+        string mesoText;
+
         public MapWindow(Mesocyclone meso)
         {
             InitializeComponent();
             this.meso = meso;
             mapControl.Map = CreateMap();
+            gridInformation.DataContext = meso;
         }
+
+        public string MesoText { get => mesoText; set => mesoText = value; }
 
         public Map CreateMap()
         {

@@ -8,6 +8,33 @@
         mc:Ignorable="d"
         Title="MapWindow" Height="1000" Width="1000">
     <Grid x:Name="mapGrid">
-        <xaml:MapControl Name="mapControl"></xaml:MapControl>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <xaml:MapControl Name="mapControl" Grid.Row="0" Grid.RowSpan="2"></xaml:MapControl>
+        <Grid Grid.Row="0" x:Name="gridInformation">
+            <Grid.Background>
+                <SolidColorBrush Color="#FFCDCDCD" Opacity="0.7"/>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Mesocyclone Object"
+               Background="Transparent"
+                   Grid.ColumnSpan="2"
+                   VerticalContentAlignment="Center" Padding="0"
+               FontSize="20"/>
+            <Label Grid.Row="1" Content="{Binding Time}" Grid.ColumnSpan="2" FontSize="15" />
+            <Label Grid.Row="2"  Content="Intensity" FontSize="15"/>
+            <Label Grid.Row="2" Grid.Column="1" Content="{Binding Intensity}" FontSize="15"/>
+        </Grid>
     </Grid>
 </Window>
