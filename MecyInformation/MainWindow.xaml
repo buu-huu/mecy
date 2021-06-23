@@ -69,11 +69,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="400"/>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="270"/>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
 
             <Border BorderBrush="Gray" BorderThickness="1">
                 <ScrollViewer Grid.Row="1" Padding="11"
@@ -740,7 +737,7 @@
                     </ListView.ItemContainerStyle>
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="UTC" Width="200" DisplayMemberBinding="{Binding Path=Time, StringFormat='dd.MM.yyy HH:mm'}"/>
+                            <GridViewColumn Header="UTC" Width="190" DisplayMemberBinding="{Binding Path=Time, StringFormat='dd.MM.yyy HH:mm'}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
