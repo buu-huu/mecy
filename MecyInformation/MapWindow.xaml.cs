@@ -16,7 +16,6 @@ namespace MecyInformation
     public partial class MapWindow : Window
     {
         Mesocyclone meso;
-        string mesoText;
 
         public MapWindow(Mesocyclone meso)
         {
@@ -25,8 +24,6 @@ namespace MecyInformation
             mapControl.Map = CreateMap();
             gridInformation.DataContext = meso;
         }
-
-        public string MesoText { get => mesoText; set => mesoText = value; }
 
         public Map CreateMap()
         {
