@@ -10,6 +10,7 @@
         Title="Mecy Information"
         Height="1080" Width="1920"
         Background="#FFE8E8E8"
+        Closing="Window_Closing"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <local:ListToStringConverter x:Key="ListToStringConverter" />

@@ -33,26 +33,30 @@ namespace MecyInformation
     /// </summary>
     public partial class MainWindow : Window
     {
+        /*
         Mesocyclone activeMeso;
         List<OpenDataElement> openDataElements;
 
         OpenDataElement selectedElement;
         bool isDownloading = false;
+        */
 
         public MainWindow()
         {
             InitializeComponent();
-
-            //RefreshView();
-            //SetUpClocks();
         }
 
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        /*
         private void lvMesos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
 
         }
 
-        /*
         private void ResetStationAvailability()
         {
             lblRadarAsb.Background = new SolidColorBrush();

@@ -162,23 +162,26 @@ namespace MecyInformation
 
         private void DownloadData(object obj)
         {
-            DownloadWindow downloadWindow = new DownloadWindow();
+            if (!IsDownloading)
+            {
+                DownloadWindow downloadWindow = new DownloadWindow();
 
-            var scheduler = TaskScheduler.FromCurrentSynchronizationContext();
-            _ = Task.Factory.StartNew(() =>
-            {
-                Application.Current.Dispatcher.Invoke((Action)delegate
+                var scheduler = TaskScheduler.FromCurrentSynchronizationContext();
+                _ = Task.Factory.StartNew(() =>
                 {
-                    downloadWindow.Show();
-                });
-                IsDownloading = true;
-                OpenDataDownloader.DownloadAllData();
-                IsDownloading = false;
-            }).ContinueWith(task =>
-            {
-                ParseData();
-                downloadWindow.Close();
-            }, scheduler);
+                    Application.Current.Dispatcher.Invoke((Action)delegate
+                    {
+                        downloadWindow.Show();
+                    });
+                    IsDownloading = true;
+                    OpenDataDownloader.DownloadAllData();
+                }).ContinueWith(task =>
+                {
+                    ParseData();
+                    IsDownloading = false;
+                    downloadWindow.Close();
+                }, scheduler);
+            }
         }
 
         public ICommand OpenMesoMapWindowCommand
