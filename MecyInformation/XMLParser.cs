@@ -32,9 +32,7 @@ namespace MecyInformation
             string fileNameDate = Path.GetFileName(path).Replace("meso_", "").Replace(".xml", "");
             DateTime timeStamp = DateTime.ParseExact(fileNameDate, "yyyyMMdd_HHmm", CultureInfo.InvariantCulture);
 
-            OpenDataElement element = new OpenDataElement();
-            element.Time = timeStamp;
-            element.RadarStations = null;
+            List<RadarStation> stations = new List<RadarStation>();
             List<Mesocyclone> parsedMesos = new List<Mesocyclone>();
 
             XmlDocument xdoc = new XmlDocument();
@@ -44,7 +42,7 @@ namespace MecyInformation
             {
                 if (node.Name == "radar-stations")
                 {
-                    element.RadarStations = RadarStation.ParseStationsFromString(node.InnerText);
+                    stations = RadarStation.ParseStationsFromString(node.InnerText);
                 }
                 if (node.Name == "event")
                 {
@@ -181,8 +179,7 @@ namespace MecyInformation
                     parsedMesos.Add(meso);
                 }
             }
-            element.Mesocyclones = parsedMesos;
-            return element;
+            return new OpenDataElement(timeStamp, stations, parsedMesos);
         }
     }
 }

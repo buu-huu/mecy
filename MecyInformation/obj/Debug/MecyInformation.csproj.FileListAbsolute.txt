@@ -66,3 +66,5 @@ C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\AboutWind
 C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\DownloadWindow.g.cs
 C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\DownloadWindow.baml
 C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\bin\Debug\Microsoft.Xaml.Behaviors.dll
+C:\Users\buuhuu\source\repos\MecyInformation\MecyInformation\bin\Debug\Microsoft.Xaml.Behaviors.pdb

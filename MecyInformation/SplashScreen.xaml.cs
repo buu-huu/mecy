@@ -35,6 +35,9 @@ namespace MecyInformation
               }).ContinueWith(task =>
               {
                   MainWindow mainWindow = new MainWindow();
+                  MainViewModel mainViewModel = new MainViewModel();
+
+                  mainWindow.DataContext = mainViewModel;
                   mainWindow.Show();
                   this.Close();
               }, scheduler);

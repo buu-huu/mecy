@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MecyInformation"
         xmlns:xaml="clr-namespace:Mapsui.UI.Wpf;assembly=Mapsui.UI.Wpf"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         Title="Mecy Information"
         Height="1080" Width="1920"
         Background="#FFE8E8E8"
-        WindowStartupLocation="CenterScreen"
-        Closing="Window_Closing">
+        WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <local:ListToStringConverter x:Key="ListToStringConverter" />
     </Window.Resources>
@@ -20,11 +20,11 @@
                 <MenuItem Header="_File">
                     <MenuItem Header="_Exit"/>
                 </MenuItem>
-                <MenuItem Header="_About" Click="mnuAbout_Click"/>
+                <MenuItem Header="_About"/>
             </Menu>
             <ToolBarTray>
                 <ToolBar Height="50">
-                    <Button Click="tlbButtonUpdate_Click">
+                    <Button Command="{Binding DownloadDataCommand}">
                         <Image Source="Resources/ToolbarDownload.png" />
                     </Button>
                 </ToolBar>
@@ -78,6 +78,7 @@
 
             <Border BorderBrush="Gray" BorderThickness="1">
                 <ScrollViewer Grid.Row="1" Padding="11"
+                              DataContext="{Binding SelectedMesocyclone}"
                     VerticalScrollBarVisibility="Auto">
                     <Grid x:Name="gridDetails">
                         <Grid.ColumnDefinitions>
@@ -665,12 +666,16 @@
                 <TabControl>
                     <TabItem Header="List">
                         <ListView Margin="0"
-                      x:Name="lvMesos"
-                          SelectionMode="Single"
-                      SelectionChanged="lvMesos_SelectionChanged"
-                      Background="#FFC2C2C2"
-                      MouseDoubleClick="lvMesos_MouseDoubleClick"
-                      MouseDown="lvMesos_MouseDown">
+                                  ItemsSource="{Binding SelectedElement.Mesocyclones}"
+                                  SelectedItem="{Binding SelectedMesocyclone}"
+                                  x:Name="lvMesos"
+                                  SelectionMode="Single"
+                                  Background="#FFC2C2C2">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <i:InvokeCommandAction Command="{Binding OpenMesoMapWindowCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
                                     <Setter Property="Height" Value="60"/>
@@ -741,7 +746,8 @@
                 </Grid.RowDefinitions>
                 <ListView Margin="0"
                       x:Name="lvTimes"
-                              SelectionChanged="lvTimes_SelectionChanged"
+                          ItemsSource="{Binding OpenDataElements}"
+                          SelectedItem="{Binding SelectedElement}"
                               SelectionMode="Single"
                                 Background="#FFE0E0E0">
                     <ListView.ItemContainerStyle>
@@ -784,71 +790,292 @@
                         <Label x:Name="lblRadarAsb" Grid.Row="0" Grid.Column="0" Content="ASB"
                                Margin="3"
                                HorizontalContentAlignment="Center"
-                               VerticalContentAlignment="Center"/>
+                               VerticalContentAlignment="Center">
+                            <Label.Style>
+                                <Style TargetType="Label">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailAsb}" Value="true">
+                                            <Setter Property="Background" Value="#FF18C818"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailAsb}" Value="false">
+                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
                         <Label x:Name="lblRadarBoo" Grid.Row="0" Grid.Column="1" Content="BOO"
                                Margin="3"
                                HorizontalContentAlignment="Center"
-                               VerticalContentAlignment="Center"/>
+                               VerticalContentAlignment="Center">
+                            <Label.Style>
+                                <Style TargetType="Label">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailBoo}" Value="true">
+                                            <Setter Property="Background" Value="#FF18C818"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailBoo}" Value="false">
+                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
                         <Label x:Name="lblRadarDrs" Grid.Row="0" Grid.Column="2" Content="DRS"
                                Margin="3"
                                HorizontalContentAlignment="Center"
-                               VerticalContentAlignment="Center"/>
+                               VerticalContentAlignment="Center">
+                            <Label.Style>
+                                <Style TargetType="Label">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailDrs}" Value="true">
+                                            <Setter Property="Background" Value="#FF18C818"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailDrs}" Value="false">
+                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
                         <Label x:Name="lblRadarEis" Grid.Row="0" Grid.Column="3" Content="EIS"
                                Margin="3"
                                HorizontalContentAlignment="Center"
-                               VerticalContentAlignment="Center"/>
+                               VerticalContentAlignment="Center">
+                            <Label.Style>
+                                <Style TargetType="Label">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailEis}" Value="true">
+                                            <Setter Property="Background" Value="#FF18C818"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailEis}" Value="false">
+                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
                         <Label x:Name="lblRadarEss" Grid.Row="0" Grid.Column="4" Content="ESS"
                                Margin="3"
                                HorizontalContentAlignment="Center"
-                               VerticalContentAlignment="Center"/>
+                               VerticalContentAlignment="Center">
+                            <Label.Style>
+                                <Style TargetType="Label">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailEss}" Value="true">
+                                            <Setter Property="Background" Value="#FF18C818"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailEss}" Value="false">
+                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
                         <Label x:Name="lblRadarFbg" Grid.Row="0" Grid.Column="5" Content="FBG"
                                Margin="3"
                                HorizontalContentAlignment="Center"
-                               VerticalContentAlignment="Center"/>
+                               VerticalContentAlignment="Center">
+                            <Label.Style>
+                                <Style TargetType="Label">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailFbg}" Value="true">
+                                            <Setter Property="Background" Value="#FF18C818"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailFbg}" Value="false">
+                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
                         <Label x:Name="lblRadarFld" Grid.Row="1" Grid.Column="0" Content="FLD"
                                Margin="3"
                                HorizontalContentAlignment="Center"
-                               VerticalContentAlignment="Center"/>
+                               VerticalContentAlignment="Center">
+                            <Label.Style>
+                                <Style TargetType="Label">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailFld}" Value="true">
+                                            <Setter Property="Background" Value="#FF18C818"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailFld}" Value="false">
+                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
                         <Label x:Name="lblRadarHnr" Grid.Row="1" Grid.Column="1" Content="HNR"
                                Margin="3"
                                HorizontalContentAlignment="Center"
-                               VerticalContentAlignment="Center"/>
+                               VerticalContentAlignment="Center">
+                            <Label.Style>
+                                <Style TargetType="Label">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailHnr}" Value="true">
+                                            <Setter Property="Background" Value="#FF18C818"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailHnr}" Value="false">
+                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
                         <Label x:Name="lblRadarIsn" Grid.Row="1" Grid.Column="2" Content="ISN"
                                Margin="3"
                                HorizontalContentAlignment="Center"
-                               VerticalContentAlignment="Center"/>
+                               VerticalContentAlignment="Center">
+                            <Label.Style>
+                                <Style TargetType="Label">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailIsn}" Value="true">
+                                            <Setter Property="Background" Value="#FF18C818"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailIsn}" Value="false">
+                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
                         <Label x:Name="lblRadarMem" Grid.Row="1" Grid.Column="3" Content="MEM"
                                Margin="3"
                                HorizontalContentAlignment="Center"
-                               VerticalContentAlignment="Center"/>
+                               VerticalContentAlignment="Center">
+                            <Label.Style>
+                                <Style TargetType="Label">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailMem}" Value="true">
+                                            <Setter Property="Background" Value="#FF18C818"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailMem}" Value="false">
+                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
                         <Label x:Name="lblRadarNeu" Grid.Row="1" Grid.Column="4" Content="NEU"
                                Margin="3"
                                HorizontalContentAlignment="Center"
-                               VerticalContentAlignment="Center"/>
+                               VerticalContentAlignment="Center">
+                            <Label.Style>
+                                <Style TargetType="Label">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailNeu}" Value="true">
+                                            <Setter Property="Background" Value="#FF18C818"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailNeu}" Value="false">
+                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
                         <Label x:Name="lblRadarNhb" Grid.Row="1" Grid.Column="5" Content="NHB"
                                Margin="3"
                                HorizontalContentAlignment="Center"
-                               VerticalContentAlignment="Center"/>
+                               VerticalContentAlignment="Center">
+                            <Label.Style>
+                                <Style TargetType="Label">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailNhb}" Value="true">
+                                            <Setter Property="Background" Value="#FF18C818"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailNhb}" Value="false">
+                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
                         <Label x:Name="lblRadarOft" Grid.Row="2" Grid.Column="0" Content="OFT"
                                Margin="3"
                                HorizontalContentAlignment="Center"
-                               VerticalContentAlignment="Center"/>
+                               VerticalContentAlignment="Center">
+                            <Label.Style>
+                                <Style TargetType="Label">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailOft}" Value="true">
+                                            <Setter Property="Background" Value="#FF18C818"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailOft}" Value="false">
+                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
                         <Label x:Name="lblRadarPro" Grid.Row="2" Grid.Column="1" Content="PRO"
                                Margin="3"
                                HorizontalContentAlignment="Center"
-                               VerticalContentAlignment="Center"/>
+                               VerticalContentAlignment="Center">
+                            <Label.Style>
+                                <Style TargetType="Label">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailPro}" Value="true">
+                                            <Setter Property="Background" Value="#FF18C818"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailPro}" Value="false">
+                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
                         <Label x:Name="lblRadarRos" Grid.Row="2" Grid.Column="2" Content="ROS"
                                Margin="3"
                                HorizontalContentAlignment="Center"
-                               VerticalContentAlignment="Center"/>
+                               VerticalContentAlignment="Center">
+                            <Label.Style>
+                                <Style TargetType="Label">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailRos}" Value="true">
+                                            <Setter Property="Background" Value="#FF18C818"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailRos}" Value="false">
+                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
                         <Label x:Name="lblRadarTur" Grid.Row="2" Grid.Column="3" Content="TUR"
                                Margin="3"
                                HorizontalContentAlignment="Center"
-                               VerticalContentAlignment="Center"/>
+                               VerticalContentAlignment="Center">
+                            <Label.Style>
+                                <Style TargetType="Label">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailTur}" Value="true">
+                                            <Setter Property="Background" Value="#FF18C818"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailTur}" Value="false">
+                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
                         <Label x:Name="lblRadarUmd" Grid.Row="2" Grid.Column="4" Content="UMD"
                                Margin="3"
                                HorizontalContentAlignment="Center"
-                               VerticalContentAlignment="Center"/>
+                               VerticalContentAlignment="Center">
+                            <Label.Style>
+                                <Style TargetType="Label">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailUmd}" Value="true">
+                                            <Setter Property="Background" Value="#FF18C818"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedElement.StationAvailUmd}" Value="false">
+                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
                     </Grid>
                 </GroupBox>
             </Grid>

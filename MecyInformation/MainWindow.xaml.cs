@@ -43,10 +43,16 @@ namespace MecyInformation
         {
             InitializeComponent();
 
-            RefreshView();
-            SetUpClocks();
+            //RefreshView();
+            //SetUpClocks();
         }
 
+        private void lvMesos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        /*
         private void ResetStationAvailability()
         {
             lblRadarAsb.Background = new SolidColorBrush();
@@ -458,5 +464,6 @@ namespace MecyInformation
             var image = assembly.GetManifestResourceStream(imagePath);
             return BitmapRegistry.Instance.Register(image);
         }
+        */
     }
 }

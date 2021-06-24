@@ -77,11 +77,13 @@
     <Compile Include="AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CommandHandler.cs" />
     <Compile Include="DownloadWindow.xaml.cs">
       <DependentUpon>DownloadWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Elevation.cs" />
     <Compile Include="ListToStringConverter.cs" />
+    <Compile Include="MainViewModel.cs" />
     <Compile Include="MapWindow.xaml.cs">
       <DependentUpon>MapWindow.xaml</DependentUpon>
     </Compile>
@@ -93,6 +95,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="RadarStation.cs" />
+    <Compile Include="RelayCommand.cs" />
     <Compile Include="SplashScreen.xaml.cs">
       <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>
@@ -167,6 +170,9 @@
   <ItemGroup>
     <PackageReference Include="Mapsui">
       <Version>2.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf">
+      <Version>1.1.31</Version>
     </PackageReference>
     <PackageReference Include="WinSCP">
       <Version>5.19.0</Version>

@@ -10,7 +10,7 @@ using System.Windows.Media.Imaging;
 
 namespace MecyInformation
 {
-    public class Mesocyclone :INotifyPropertyChanged
+    public class Mesocyclone : INotifyPropertyChanged
     {
         private int _id;
         private DateTime _time;
