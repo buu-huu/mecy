@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MecyInformation
 {
-    class RadarStation
+    public class RadarStation
     {
         static List<string> ALL_STATIONS = new List<string>()
         {

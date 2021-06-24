@@ -54,7 +54,7 @@ namespace MecyInformation
             switch (meso.Intensity)
             {
                 case 1:
-                    mesoFeature.Styles.Add(CreatePngStyle("MecyInformation.Resources.meso_icon_map_1.png", 0.6));
+                    style = CreatePngStyle("MecyInformation.Resources.meso_icon_map_1.png", 0.6);
                     break;
                 case 2:
                     style = CreatePngStyle("MecyInformation.Resources.meso_icon_map_2.png", 0.6);

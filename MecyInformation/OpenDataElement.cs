@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MecyInformation
 {
-    class OpenDataElement
+    public class OpenDataElement
     {
         private DateTime _time;
         private List<RadarStation> _radarStations;

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MecyInformation"
+        xmlns:xaml="clr-namespace:Mapsui.UI.Wpf;assembly=Mapsui.UI.Wpf"
         mc:Ignorable="d"
         Title="Mecy Information"
         Height="1080" Width="1920"
@@ -661,70 +662,77 @@
                 
             </Border>
             <DockPanel Grid.Column="1">
-                <ListView Margin="0"
+                <TabControl>
+                    <TabItem Header="List">
+                        <ListView Margin="0"
                       x:Name="lvMesos"
                           SelectionMode="Single"
                       SelectionChanged="lvMesos_SelectionChanged"
                       Background="#FFC2C2C2"
                       MouseDoubleClick="lvMesos_MouseDoubleClick"
                       MouseDown="lvMesos_MouseDown">
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <Setter Property="Height" Value="60"/>
-                            <Setter Property="Background" Value="Bisque"/>
-                            <Style.Triggers>
-                                <Trigger Property="IsSelected" Value="True">
-                                    <Setter Property="Background" Value="#FFE88C1F"/>
-                                </Trigger>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#FFFFA841"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </ListView.ItemContainerStyle>
-                    <ListView.Resources>
-                        <Style TargetType="{x:Type GridViewColumnHeader}">
-                            <Setter Property="HorizontalContentAlignment" Value="Left"/>
-                        </Style>
-                    </ListView.Resources>
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="ID" Width="45" DisplayMemberBinding="{Binding Id}"/>
-                            <GridViewColumn Header="Time" Width="150" DisplayMemberBinding="{Binding Path=Time, StringFormat='dd.MM.yyy HH:mm'}"/>
-                            <GridViewColumn Header="Latitude" Width="150" DisplayMemberBinding="{Binding Latitude}"/>
-                            <GridViewColumn Header="Longitude" Width="150" DisplayMemberBinding="{Binding Longitude}"/>
-                            <GridViewColumn Header="Intensity" Width="70">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Image Width="55" Height="55" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Image.Style>
-                                                <Style TargetType="{x:Type Image}">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Intensity}" Value="1">
-                                                            <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_1.png"/>
-                                                        </DataTrigger>
-                                                        <DataTrigger Binding="{Binding Intensity}" Value="2">
-                                                            <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_2.png"/>
-                                                        </DataTrigger>
-                                                        <DataTrigger Binding="{Binding Intensity}" Value="3">
-                                                            <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_3.png"/>
-                                                        </DataTrigger>
-                                                        <DataTrigger Binding="{Binding Intensity}" Value="4">
-                                                            <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_4.png"/>
-                                                        </DataTrigger>
-                                                        <DataTrigger Binding="{Binding Intensity}" Value="5">
-                                                            <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_5.png"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Image.Style>
-                                        </Image>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="Height" Value="60"/>
+                                    <Setter Property="Background" Value="Bisque"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Background" Value="#FFE88C1F"/>
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#FFFFA841"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.Resources>
+                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                                </Style>
+                            </ListView.Resources>
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="ID" Width="45" DisplayMemberBinding="{Binding Id}"/>
+                                    <GridViewColumn Header="Time" Width="150" DisplayMemberBinding="{Binding Path=Time, StringFormat='dd.MM.yyy HH:mm'}"/>
+                                    <GridViewColumn Header="Latitude" Width="150" DisplayMemberBinding="{Binding Latitude}"/>
+                                    <GridViewColumn Header="Longitude" Width="150" DisplayMemberBinding="{Binding Longitude}"/>
+                                    <GridViewColumn Header="Intensity" Width="70">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Image Width="55" Height="55" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                    <Image.Style>
+                                                        <Style TargetType="{x:Type Image}">
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding Intensity}" Value="1">
+                                                                    <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_1.png"/>
+                                                                </DataTrigger>
+                                                                <DataTrigger Binding="{Binding Intensity}" Value="2">
+                                                                    <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_2.png"/>
+                                                                </DataTrigger>
+                                                                <DataTrigger Binding="{Binding Intensity}" Value="3">
+                                                                    <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_3.png"/>
+                                                                </DataTrigger>
+                                                                <DataTrigger Binding="{Binding Intensity}" Value="4">
+                                                                    <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_4.png"/>
+                                                                </DataTrigger>
+                                                                <DataTrigger Binding="{Binding Intensity}" Value="5">
+                                                                    <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_5.png"/>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Image.Style>
+                                                </Image>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </TabItem>
+                    <TabItem Header="Map">
+                        <xaml:MapControl Name="mapControl" Grid.Row="0" Grid.RowSpan="2"></xaml:MapControl>
+                    </TabItem>
+                </TabControl>
             </DockPanel>
             <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
