@@ -1,4 +1,5 @@
 ﻿using Mapsui;
+using Mapsui.Geometries;
 using Mapsui.Layers;
 using Mapsui.Projection;
 using Mapsui.Providers;
@@ -431,8 +432,6 @@ namespace MecyInformation
                 mesoFeature.Styles.Add(style);
                 features.Add(mesoFeature);
             }
-            
-            
 
             var dataSource = new MemoryProvider(features)
             {
@@ -446,6 +445,7 @@ namespace MecyInformation
                 Style = null
             };
         }
+
         private static SymbolStyle CreatePngStyle(string embeddedResourcePath, double scale)
         {
             var bitmapId = GetBitmapIdForEmbeddedResource(embeddedResourcePath);

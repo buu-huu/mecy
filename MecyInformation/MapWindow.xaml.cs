@@ -69,6 +69,7 @@ namespace MecyInformation
                     style = CreatePngStyle("MecyInformation.Resources.meso_icon_map_5.png", 0.6);
                     break;
             }
+            mesoFeature.Styles.Add(style);
 
             var features = new Features { mesoFeature };
             var dataSource = new MemoryProvider(features)
@@ -80,7 +81,7 @@ namespace MecyInformation
             {
                 DataSource = dataSource,
                 Name = "Meso Point",
-                Style = style
+                Style = null
             };
         }
 
