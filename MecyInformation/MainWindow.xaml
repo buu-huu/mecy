@@ -18,10 +18,11 @@
         <StackPanel DockPanel.Dock="Top">
             <Menu>
                 <MenuItem Header="_File">
-                    <MenuItem Header="_Exit"/>
+                    <MenuItem Header="_Exit" />
                 </MenuItem>
-                <MenuItem Header="_About"/>
+                <MenuItem Header="_About" />
             </Menu>
+            
             <ToolBarTray>
                 <ToolBar Height="50">
                     <Button Command="{Binding DownloadDataCommand}">
@@ -48,26 +49,35 @@
                     </Grid>
                 </ItemsPanelTemplate>
             </StatusBar.ItemsPanel>
+            
             <StatusBarItem Grid.Column="0">
                 <Label Content="{Binding Path=TimeUtc}"
                        ContentStringFormat="UTC: dd.MM.yyyy HH:mm:ss"
                        Padding="0"
                        FontSize="12"/>
             </StatusBarItem>
+            
             <Separator Grid.Column="1" />
+            
             <StatusBarItem Grid.Column="2">
                 <Label Content="{Binding Path=TimeLoc}"
                        ContentStringFormat="LOCAL: dd.MM.yyyy HH:mm:ss"
                        Padding="0"
-                       FontSize="12"/>
+                       FontSize="12" />
             </StatusBarItem>
+            
             <Separator Grid.Column="3" />
+            
             <StatusBarItem Grid.Column="4">
                 <TextBlock x:Name="stsTxtInfo" />
             </StatusBarItem>
+            
             <Separator Grid.Column="5" />
+            
             <StatusBarItem Grid.Column="6">
-                <ProgressBar Value="50" Width="90" Height="16" />
+                <ProgressBar Value="50"
+                             Width="90"
+                             Height="16" />
             </StatusBarItem>
         </StatusBar>
 
@@ -78,632 +88,643 @@
                 <ColumnDefinition Width="270"/>
             </Grid.ColumnDefinitions>
 
-            <Border BorderBrush="Gray" BorderThickness="1">
-                <ScrollViewer Grid.Row="1" Padding="11"
+            <Border BorderBrush="Gray"
+                    BorderThickness="1">
+                <ScrollViewer Grid.Row="1"
+                              Padding="11"
                               DataContext="{Binding SelectedMesocyclone}"
-                    VerticalScrollBarVisibility="Auto">
-                    <Grid x:Name="gridDetails">
+                              VerticalScrollBarVisibility="Auto">
+                    <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="200" />
                             <ColumnDefinition/>
-                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="60" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="50"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
                         <Label Content="Mecy Information"
-                       HorizontalContentAlignment="Center"
-                       HorizontalAlignment="Stretch"
-                       VerticalContentAlignment="Center"
-                       VerticalAlignment="Stretch"
-                       FontSize="22"
-                       FontWeight="Bold" 
-                       Grid.ColumnSpan="3" FontFamily="Franklin Gothic Demi" Foreground="#FF4C4C4C">
+                               HorizontalContentAlignment="Center"
+                               HorizontalAlignment="Stretch"
+                               VerticalContentAlignment="Center"
+                               VerticalAlignment="Stretch"
+                               FontSize="22"
+                               FontWeight="Bold" 
+                               Grid.ColumnSpan="3"
+                               FontFamily="Franklin Gothic Demi"
+                               Foreground="#FF4C4C4C">
                             <Label.Background>
-                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                    <GradientStop Color="Orange" Offset="0"/>
-                                    <GradientStop Color="#FFDFDFDF" Offset="1"/>
+                                <LinearGradientBrush EndPoint="0.5,1"
+                                                     StartPoint="0.5,0">
+                                    <GradientStop Color="Orange"
+                                                  Offset="0" />
+                                    <GradientStop Color="#FFDFDFDF"
+                                                  Offset="1" />
                                 </LinearGradientBrush>
                             </Label.Background>
                         </Label>
 
                         <Label Content="ID"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="1"
-                       Grid.Column="0"/>
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="1"
+                               Grid.Column="0" />
                         <TextBox Text="{Binding Id}"
-                         VerticalContentAlignment="Center"
-                         Margin="2"
-                         IsReadOnly="True"
-                         Grid.Row="1"
-                         Grid.Column="1"
-                                  Background="#FFE3B8FF"/>
+                                 VerticalContentAlignment="Center"
+                                 Margin="2"
+                                 IsReadOnly="True"
+                                 Grid.Row="1"
+                                 Grid.Column="1"
+                                 Background="#FFE3B8FF" />
 
                         <Label Content="Time"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="2"
-                       Grid.Column="0"/>
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="2"
+                               Grid.Column="0" />
                         <TextBox Text="{Binding Path=Time, StringFormat='dd.MM.yyy HH:mm'}"
-                         VerticalContentAlignment="Center"
-                         Margin="2"
-                         IsReadOnly="True"
-                         Grid.Row="2"
-                         Grid.Column="1"
-                                  Background="#FFFFDEB8"/>
+                                 VerticalContentAlignment="Center"
+                                 Margin="2"
+                                 IsReadOnly="True"
+                                 Grid.Row="2"
+                                 Grid.Column="1"
+                                 Background="#FFFFDEB8" />
 
                         <Label Content="Latitude"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="3"
-                       Grid.Column="0"/>
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="3"
+                               Grid.Column="0" />
                         <TextBox Text="{Binding Latitude}"
-                         VerticalContentAlignment="Center"
-                         Margin="2"
-                         IsReadOnly="True"
-                         Grid.Row="3"
-                         Grid.Column="1"
-                                  Background="#FFFFDEB8"/>
+                                 VerticalContentAlignment="Center"
+                                 Margin="2"
+                                 IsReadOnly="True"
+                                 Grid.Row="3"
+                                 Grid.Column="1"
+                                 Background="#FFFFDEB8" />
                         <Label Content="UTC"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="2"
-                       Grid.Column="2"/>
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="2"
+                               Grid.Column="2" />
 
                         <Label Content="Longitude"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="4"
-                       Grid.Column="0"/>
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="4"
+                               Grid.Column="0" />
                         <TextBox Text="{Binding Longitude}"
-                         VerticalContentAlignment="Center"
-                         Margin="2"
-                         IsReadOnly="True"
-                         Grid.Row="4"
-                         Grid.Column="1"
-                                  Background="#FFFFDEB8"/>
+                                 VerticalContentAlignment="Center"
+                                 Margin="2"
+                                 IsReadOnly="True"
+                                 Grid.Row="4"
+                                 Grid.Column="1"
+                                 Background="#FFFFDEB8" />
 
                         <Label Content="Polar Motion"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="5"
-                       Grid.Column="0"
-                       IsEnabled="False"/>
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="5"
+                               Grid.Column="0"
+                               IsEnabled="False" />
                         <TextBox Text="{Binding PolarMotion}"
-                         VerticalContentAlignment="Center"
-                         Margin="2"
-                         Grid.Row="5"
-                         Grid.Column="1"
-                         IsEnabled="False"
-                                  Background="#FFFFDEB8"/>
+                                 VerticalContentAlignment="Center"
+                                 Margin="2"
+                                 Grid.Row="5"
+                                 Grid.Column="1"
+                                 IsEnabled="False"
+                                 Background="#FFFFDEB8" />
                         <Label Content="km/h"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="5"
-                       Grid.Column="2"
-                       IsEnabled="False"/>
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="5"
+                               Grid.Column="2"
+                               IsEnabled="False" />
 
                         <Label Content="Major Axis"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="6"
-                       Grid.Column="0"
-                       IsEnabled="False"/>
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="6"
+                               Grid.Column="0"
+                               IsEnabled="False" />
                         <TextBox Text="{Binding MajorAxis}"
-                         VerticalContentAlignment="Center"
-                         Margin="2"
-                         Grid.Row="6"
-                         Grid.Column="1"
-                         IsEnabled="False"
-                                  Background="#FFFFDEB8"/>
+                                 VerticalContentAlignment="Center"
+                                 Margin="2"
+                                 Grid.Row="6"
+                                 Grid.Column="1"
+                                 IsEnabled="False"
+                                 Background="#FFFFDEB8" />
                         <Label Content="km"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="6"
-                       Grid.Column="2"
-                       IsEnabled="False"/>
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="6"
+                               Grid.Column="2"
+                               IsEnabled="False" />
 
                         <Label Content="Minor Axis"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="7"
-                       Grid.Column="0"
-                       IsEnabled="False"/>
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="7"
+                               Grid.Column="0"
+                               IsEnabled="False" />
                         <TextBox Text="{Binding MinorAxis}"
-                         VerticalContentAlignment="Center"
-                         Margin="2"
-                         Grid.Row="7"
-                         Grid.Column="1"
-                         IsEnabled="False"
-                                  Background="#FFFFDEB8"/>
+                                 VerticalContentAlignment="Center"
+                                 Margin="2"
+                                 Grid.Row="7"
+                                 Grid.Column="1"
+                                 IsEnabled="False"
+                                 Background="#FFFFDEB8" />
                         <Label Content="km"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="7"
-                       Grid.Column="2"
-                       IsEnabled="False"/>
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="7"
+                               Grid.Column="2"
+                               IsEnabled="False" />
 
                         <Label Content="Orientation"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="8"
-                       Grid.Column="0"
-                       IsEnabled="False"/>
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="8"
+                               Grid.Column="0"
+                               IsEnabled="False" />
                         <TextBox Text="{Binding Orientation}"
-                         VerticalContentAlignment="Center"
-                         Margin="2"
-                         Grid.Row="8"
-                         Grid.Column="1"
-                         IsEnabled="False"
-                                  Background="#FFFFDEB8"/>
+                                 VerticalContentAlignment="Center"
+                                 Margin="2"
+                                 Grid.Row="8"
+                                 Grid.Column="1"
+                                 IsEnabled="False"
+                                 Background="#FFFFDEB8" />
                         <Label Content="°"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="8"
-                       Grid.Column="2"
-                       IsEnabled="False"/>
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="8"
+                               Grid.Column="2"
+                               IsEnabled="False" />
 
                         <Label Content="Shear Mean"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="9"
-                       Grid.Column="0"/>
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="9"
+                               Grid.Column="0" />
                         <TextBox Text="{Binding ShearMean}"
-                         VerticalContentAlignment="Center"
-                         Margin="2"
-                         IsReadOnly="True"
-                         Grid.Row="9"
-                         Grid.Column="1"
-                                  Background="#FFFFDEB8"/>
+                                 VerticalContentAlignment="Center"
+                                 Margin="2"
+                                 IsReadOnly="True"
+                                 Grid.Row="9"
+                                 Grid.Column="1"
+                                 Background="#FFFFDEB8" />
                         <Label Content="m/s/km"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="9"
-                       Grid.Column="2"/>
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="9"
+                               Grid.Column="2" />
 
                         <Label Content="Shear Max"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="10"
-                       Grid.Column="0"/>
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="10"
+                               Grid.Column="0" />
                         <TextBox Text="{Binding ShearMax}"
-                         VerticalContentAlignment="Center"
-                         Margin="2"
-                         IsReadOnly="True"
-                         Grid.Row="10"
-                         Grid.Column="1"
-                                  Background="#FFFFDEB8"/>
+                                 VerticalContentAlignment="Center"
+                                 Margin="2"
+                                 IsReadOnly="True"
+                                 Grid.Row="10"
+                                 Grid.Column="1"
+                                 Background="#FFFFDEB8" />
                         <Label Content="m/s/km"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="10"
-                       Grid.Column="2"/>
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="10"
+                               Grid.Column="2" />
 
                         <Label Content="Momentum Mean"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="11"
-                       Grid.Column="0"/>
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="11"
+                               Grid.Column="0" />
                         <TextBox Text="{Binding MomentumMean}"
-                         VerticalContentAlignment="Center"
-                         Margin="2"
-                         IsReadOnly="True"
-                         Grid.Row="11"
-                         Grid.Column="1"
-                                  Background="#FFFFDEB8"/>
+                                 VerticalContentAlignment="Center"
+                                 Margin="2"
+                                 IsReadOnly="True"
+                                 Grid.Row="11"
+                                 Grid.Column="1"
+                                 Background="#FFFFDEB8" />
                         <Label Content="m/s/km"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
                        Margin="0 0 10 0"
                        Grid.Row="11"
-                       Grid.Column="2"/>
+                       Grid.Column="2" />
 
                         <Label Content="Momentum Max"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="12"
-                       Grid.Column="0"/>
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="12"
+                               Grid.Column="0" />
                         <TextBox Text="{Binding MomentumMax}"
-                         VerticalContentAlignment="Center"
-                         Margin="2"
-                         IsReadOnly="True"
-                         Grid.Row="12"
-                         Grid.Column="1"
-                                  Background="#FFFFDEB8"/>
+                                 VerticalContentAlignment="Center"
+                                 Margin="2"
+                                 IsReadOnly="True"
+                                 Grid.Row="12"
+                                 Grid.Column="1"
+                                 Background="#FFFFDEB8" />
                         <Label Content="m/s/km"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="12"
-                       Grid.Column="2"/>
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="12"
+                               Grid.Column="2" />
 
                         <Label Content="Diameter"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="13"
-                       Grid.Column="0"/>
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="13"
+                               Grid.Column="0" />
                         <TextBox Text="{Binding Diameter}"
-                         VerticalContentAlignment="Center"
-                         Margin="2"
-                         IsReadOnly="True"
-                         Grid.Row="13"
-                         Grid.Column="1"
-                                  Background="#FFFFDEB8"/>
+                                 VerticalContentAlignment="Center"
+                                 Margin="2"
+                                 IsReadOnly="True"
+                                 Grid.Row="13"
+                                 Grid.Column="1"
+                                 Background="#FFFFDEB8" />
                         <Label Content="km"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="13"
-                       Grid.Column="2"/>
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="13"
+                               Grid.Column="2" />
 
                         <Label Content="Diameter Equivalent"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="14"
-                       Grid.Column="0"/>
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="14"
+                               Grid.Column="0" />
                         <TextBox Text="{Binding DiameterEquivalent}"
-                         VerticalContentAlignment="Center"
-                         Margin="2"
-                         IsReadOnly="True"
-                         Grid.Row="14"
-                         Grid.Column="1"
-                                  Background="#FFFFDEB8"/>
+                                 VerticalContentAlignment="Center"
+                                 Margin="2"
+                                 IsReadOnly="True"
+                                 Grid.Row="14"
+                                 Grid.Column="1"
+                                 Background="#FFFFDEB8" />
                         <Label Content="km"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="14"
-                       Grid.Column="2"/>
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="14"
+                               Grid.Column="2" />
 
                         <Label Content="Top"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="15"
-                       Grid.Column="0"/>
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="15"
+                               Grid.Column="0" />
                         <TextBox Text="{Binding Top}"
-                         VerticalContentAlignment="Center"
-                         Margin="2"
-                         IsReadOnly="True"
-                         Grid.Row="15"
-                         Grid.Column="1"
-                                  Background="#FFFFDEB8"/>
+                                 VerticalContentAlignment="Center"
+                                 Margin="2"
+                                 IsReadOnly="True"
+                                 Grid.Row="15"
+                                 Grid.Column="1"
+                                 Background="#FFFFDEB8" />
                         <Label Content="km"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="15"
-                       Grid.Column="2"/>
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="15"
+                               Grid.Column="2" />
 
                         <Label Content="Base"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="16"
-                       Grid.Column="0"/>
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="16"
+                               Grid.Column="0" />
                         <TextBox Text="{Binding MesoBase}"
-                         VerticalContentAlignment="Center"
-                         Margin="2"
-                         IsReadOnly="True"
-                         Grid.Row="16"
-                         Grid.Column="1"
-                                  Background="#FFFFDEB8"/>
+                                 VerticalContentAlignment="Center"
+                                 Margin="2"
+                                 IsReadOnly="True"
+                                 Grid.Row="16"
+                                 Grid.Column="1"
+                                 Background="#FFFFDEB8" />
                         <Label Content="km"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="16"
-                       Grid.Column="2"/>
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="16"
+                               Grid.Column="2" />
 
                         <Label Content="18db(Z)-Echo-Top"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="17"
-                       Grid.Column="0"/>
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="17"
+                               Grid.Column="0" />
                         <TextBox Text="{Binding Echotop}"
-                         VerticalContentAlignment="Center"
-                         Margin="2"
-                         IsReadOnly="True"
-                         Grid.Row="17"
-                         Grid.Column="1"
-                                  Background="#FFFFDEB8"/>
+                                 VerticalContentAlignment="Center"
+                                 Margin="2"
+                                 IsReadOnly="True"
+                                 Grid.Row="17"
+                                 Grid.Column="1"
+                                 Background="#FFFFDEB8" />
                         <Label Content="km"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="17"
-                       Grid.Column="2"/>
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="17"
+                               Grid.Column="2" />
 
                         <Label Content="VIL"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="18"
-                       Grid.Column="0"/>
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="18"
+                               Grid.Column="0" />
                         <TextBox Text="{Binding Vil}"
-                         VerticalContentAlignment="Center"
-                         Margin="2"
-                         IsReadOnly="True"
-                         Grid.Row="18"
-                         Grid.Column="1"
-                                  Background="#FFFFDEB8"/>
+                                 VerticalContentAlignment="Center"
+                                 Margin="2"
+                                 IsReadOnly="True"
+                                 Grid.Row="18"
+                                 Grid.Column="1"
+                                 Background="#FFFFDEB8" />
                         <Label Content="kg/m²"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="18"
-                       Grid.Column="2"/>
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="18"
+                               Grid.Column="2" />
 
                         <Label Content="Shear Vectors"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="19"
-                       Grid.Column="0"/>
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="19"
+                               Grid.Column="0" />
                         <TextBox Text="{Binding ShearVectors}"
-                         VerticalContentAlignment="Center"
-                         Margin="2"
-                         IsReadOnly="True"
-                         Grid.Row="19"
-                         Grid.Column="1"
-                                  Background="#FFFFDEB8"/>
+                                 VerticalContentAlignment="Center"
+                                 Margin="2"
+                                 IsReadOnly="True"
+                                 Grid.Row="19"
+                                 Grid.Column="1"
+                                 Background="#FFFFDEB8" />
 
                         <Label Content="Shear Features"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="20"
-                       Grid.Column="0"/>
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="20"
+                               Grid.Column="0" />
                         <TextBox Text="{Binding ShearFeatures}"
-                         VerticalContentAlignment="Center"
-                         Margin="2"
-                         IsReadOnly="True"
-                         Grid.Row="20"
-                         Grid.Column="1"
-                                  Background="#FFFFDEB8"/>
+                                 VerticalContentAlignment="Center"
+                                 Margin="2"
+                                 IsReadOnly="True"
+                                 Grid.Row="20"
+                                 Grid.Column="1"
+                                 Background="#FFFFDEB8" />
 
                         <Label Content="Mean DBZ"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="21"
-                       Grid.Column="0"/>
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="21"
+                               Grid.Column="0" />
                         <TextBox Text="{Binding MeanDBZ}"
-                         VerticalContentAlignment="Center"
-                         Margin="2"
-                         IsReadOnly="True"
-                         Grid.Row="21"
-                         Grid.Column="1"
-                                  Background="#FFFFDEB8"/>
+                                 VerticalContentAlignment="Center"
+                                 Margin="2"
+                                 IsReadOnly="True"
+                                 Grid.Row="21"
+                                 Grid.Column="1"
+                                 Background="#FFFFDEB8" />
                         <Label Content="dB(Z)"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="21"
-                       Grid.Column="2"/>
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="21"
+                               Grid.Column="2" />
 
                         <Label Content="Max DBZ"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="22"
-                       Grid.Column="0"/>
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="22"
+                               Grid.Column="0" />
                         <TextBox Text="{Binding MaxDBZ}"
-                         VerticalContentAlignment="Center"
-                         Margin="2"
-                         IsReadOnly="True"
-                         Grid.Row="22"
-                         Grid.Column="1"
-                                  Background="#FFFFDEB8"/>
+                                 VerticalContentAlignment="Center"
+                                 Margin="2"
+                                 IsReadOnly="True"
+                                 Grid.Row="22"
+                                 Grid.Column="1"
+                                 Background="#FFFFDEB8" />
                         <Label Content="dB(Z)"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="22"
-                       Grid.Column="2"/>
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="22"
+                               Grid.Column="2" />
 
                         <Label Content="Velocity Max"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="23"
-                       Grid.Column="0"/>
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="23"
+                               Grid.Column="0" />
                         <TextBox Text="{Binding VelocityMax}"
-                         VerticalContentAlignment="Center"
-                         Margin="2"
-                         IsReadOnly="True"
-                         Grid.Row="23"
-                         Grid.Column="1"
-                                  Background="#FFFFDEB8"/>
+                                 VerticalContentAlignment="Center"
+                                 Margin="2"
+                                 IsReadOnly="True"
+                                 Grid.Row="23"
+                                 Grid.Column="1"
+                                 Background="#FFFFDEB8" />
                         <Label Content="m/s"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
                        Margin="0 0 10 0"
                        Grid.Row="23"
-                       Grid.Column="2"/>
+                       Grid.Column="2" />
 
                         <Label Content="Velocity Rotational Max"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="24"
-                       Grid.Column="0"/>
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="24"
+                               Grid.Column="0" />
                         <TextBox Text="{Binding VelocityRotationalMax}"
-                         VerticalContentAlignment="Center"
-                         Margin="2"
-                         IsReadOnly="True"
-                         Grid.Row="24"
-                         Grid.Column="1"
-                                  Background="#FFFFDEB8"/>
+                                 VerticalContentAlignment="Center"
+                                 Margin="2"
+                                 IsReadOnly="True"
+                                 Grid.Row="24"
+                                 Grid.Column="1"
+                                 Background="#FFFFDEB8" />
                         <Label Content="m/s"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="24"
-                       Grid.Column="2"/>
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="24"
+                               Grid.Column="2" />
 
                         <Label Content="Velocity Rotational Mean"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="25"
-                       Grid.Column="0"/>
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="25"
+                               Grid.Column="0" />
                         <TextBox Text="{Binding VelocityRotationalMean}"
-                         VerticalContentAlignment="Center"
-                         Margin="2"
-                         IsReadOnly="True"
-                         Grid.Row="25"
-                         Grid.Column="1"
-                                  Background="#FFFFDEB8"/>
+                                 VerticalContentAlignment="Center"
+                                 Margin="2"
+                                 IsReadOnly="True"
+                                 Grid.Row="25"
+                                 Grid.Column="1"
+                                 Background="#FFFFDEB8" />
                         <Label Content="m/s"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="25"
-                       Grid.Column="2"/>
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="25"
+                               Grid.Column="2" />
 
                         <Label Content="Velocity Rot Max Closest To Gnd"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="26"
-                       Grid.Column="0"/>
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="26"
+                               Grid.Column="0" />
                         <TextBox Text="{Binding VelocityRotationalMaxClosestToGround}"
-                         VerticalContentAlignment="Center"
-                         Margin="2"
-                         IsReadOnly="True"
-                         Grid.Row="26"
-                         Grid.Column="1"
-                                  Background="#FFFFDEB8"/>
+                                 VerticalContentAlignment="Center"
+                                 Margin="2"
+                                 IsReadOnly="True"
+                                 Grid.Row="26"
+                                 Grid.Column="1"
+                                 Background="#FFFFDEB8" />
                         <Label Content="m/s"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="26"
-                       Grid.Column="2"/>
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="26"
+                               Grid.Column="2" />
 
                         <Label Content="Intensity"
                                FontWeight="Bold"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="27"
-                       Grid.Column="0"
-                               />
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0 0 10 0"
+                               Grid.Row="27"
+                               Grid.Column="0" />
                         <TextBox Text="{Binding Intensity}"
-                            VerticalContentAlignment="Center"
-                         Margin="2"
-                         IsReadOnly="True"
-                         Grid.Row="27"
-                         Grid.Column="1"
-                                 Background="#FFFFDEB8"/>
-                        <ListView Margin="5" x:Name="lvElevations"
-                            Grid.Row="28"
-                                  ItemsSource="{Binding Elevations}"
+                                 VerticalContentAlignment="Center"
+                                 Margin="2"
+                                 IsReadOnly="True"
+                                 Grid.Row="27"
+                                 Grid.Column="1"
+                                 Background="#FFFFDEB8" />
+
+                        <ListView ItemsSource="{Binding Elevations}"
+                                  Margin="5"
+                                  Grid.Row="28"
                                   Grid.ColumnSpan="3"
                                   Height="150">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="Site" Width="50" DisplayMemberBinding="{Binding RadarSite}" />
-                                    <GridViewColumn Header="Elevations" Width="200" DisplayMemberBinding="{Binding Path=Elevations,Converter={StaticResource ListToStringConverter}}" />
+                                    <GridViewColumn Header="Site"
+                                                    Width="50"
+                                                    DisplayMemberBinding="{Binding RadarSite}" />
+                                    <GridViewColumn Header="Elevations"
+                                                    Width="200"
+                                                    DisplayMemberBinding="{Binding Path=Elevations,Converter={StaticResource ListToStringConverter}}" />
                                 </GridView>
                             </ListView.View>
                         </ListView>
                     </Grid>
                 </ScrollViewer>
-                
             </Border>
+            
             <DockPanel Grid.Column="1">
                 <TabControl>
                     <TabItem Header="List">
                         <ListView Margin="0"
                                   ItemsSource="{Binding SelectedElement.Mesocyclones}"
                                   SelectedItem="{Binding SelectedMesocyclone}"
-                                  x:Name="lvMesos"
                                   SelectionMode="Single"
                                   Background="#FFC2C2C2">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="MouseDoubleClick">
-                                    <i:InvokeCommandAction Command="{Binding OpenMesoMapWindowCommand}"/>
+                                    <i:InvokeCommandAction Command="{Binding OpenMesoMapWindowCommand}" />
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
+                            
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
-                                    <Setter Property="Height" Value="60"/>
-                                    <Setter Property="Background" Value="Bisque"/>
+                                    <Setter Property="Height" Value="60" />
+                                    <Setter Property="Background" Value="Bisque" />
                                     <Style.Triggers>
                                         <Trigger Property="IsSelected" Value="True">
-                                            <Setter Property="Background" Value="#FFE88C1F"/>
+                                            <Setter Property="Background" Value="#FFE88C1F" />
                                         </Trigger>
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="#FFFFA841"/>
+                                            <Setter Property="Background" Value="#FFFFA841" />
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
                             </ListView.ItemContainerStyle>
                             <ListView.Resources>
                                 <Style TargetType="{x:Type GridViewColumnHeader}">
-                                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                                    <Setter Property="HorizontalContentAlignment" Value="Left" />
                                 </Style>
                             </ListView.Resources>
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="ID" Width="45" DisplayMemberBinding="{Binding Id}"/>
-                                    <GridViewColumn Header="Time" Width="150" DisplayMemberBinding="{Binding Path=Time, StringFormat='dd.MM.yyy HH:mm'}"/>
-                                    <GridViewColumn Header="Latitude" Width="150" DisplayMemberBinding="{Binding Latitude}"/>
-                                    <GridViewColumn Header="Longitude" Width="150" DisplayMemberBinding="{Binding Longitude}"/>
+                                    <GridViewColumn Header="ID" Width="45" DisplayMemberBinding="{Binding Id}" />
+                                    <GridViewColumn Header="Time" Width="150" DisplayMemberBinding="{Binding Path=Time, StringFormat='dd.MM.yyy HH:mm'}" />
+                                    <GridViewColumn Header="Latitude" Width="150" DisplayMemberBinding="{Binding Latitude}" />
+                                    <GridViewColumn Header="Longitude" Width="150" DisplayMemberBinding="{Binding Longitude}" />
                                     <GridViewColumn Header="Intensity" Width="70">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
@@ -712,19 +733,19 @@
                                                         <Style TargetType="{x:Type Image}">
                                                             <Style.Triggers>
                                                                 <DataTrigger Binding="{Binding Intensity}" Value="1">
-                                                                    <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_1.png"/>
+                                                                    <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_1.png" />
                                                                 </DataTrigger>
                                                                 <DataTrigger Binding="{Binding Intensity}" Value="2">
-                                                                    <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_2.png"/>
+                                                                    <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_2.png" />
                                                                 </DataTrigger>
                                                                 <DataTrigger Binding="{Binding Intensity}" Value="3">
-                                                                    <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_3.png"/>
+                                                                    <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_3.png" />
                                                                 </DataTrigger>
                                                                 <DataTrigger Binding="{Binding Intensity}" Value="4">
-                                                                    <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_4.png"/>
+                                                                    <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_4.png" />
                                                                 </DataTrigger>
                                                                 <DataTrigger Binding="{Binding Intensity}" Value="5">
-                                                                    <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_5.png"/>
+                                                                    <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_5.png" />
                                                                 </DataTrigger>
                                                             </Style.Triggers>
                                                         </Style>
@@ -738,38 +759,41 @@
                         </ListView>
                     </TabItem>
                     <TabItem Header="Map">
-                        <xaml:MapControl Name="mapControl" Grid.Row="0" Grid.RowSpan="2"></xaml:MapControl>
+                        <xaml:MapControl Name="mapControl"
+                                         Grid.Row="0"
+                                         Grid.RowSpan="2" />
                     </TabItem>
                 </TabControl>
             </DockPanel>
             <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
-                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="120" />
                 </Grid.RowDefinitions>
                 <ListView Margin="0"
-                      x:Name="lvTimes"
                           ItemsSource="{Binding OpenDataElements}"
                           SelectedItem="{Binding SelectedElement}"
-                              SelectionMode="Single"
-                                Background="#FFE0E0E0">
+                          SelectionMode="Single"
+                          Background="#FFE0E0E0">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
-                            <Setter Property="Height" Value="30"/>
-                            <Setter Property="Background" Value="AliceBlue"/>
+                            <Setter Property="Height" Value="30" />
+                            <Setter Property="Background" Value="AliceBlue" />
                             <Style.Triggers>
                                 <Trigger Property="IsSelected" Value="True">
-                                    <Setter Property="Background" Value="Aquamarine"/>
+                                    <Setter Property="Background" Value="Aquamarine" />
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="Aquamarine"/>
+                                    <Setter Property="Background" Value="Aquamarine" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
                     </ListView.ItemContainerStyle>
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="UTC" Width="190" DisplayMemberBinding="{Binding Path=Time, StringFormat='dd.MM.yyy HH:mm'}"/>
+                            <GridViewColumn Header="UTC"
+                                            Width="190"
+                                            DisplayMemberBinding="{Binding Path=Time, StringFormat='dd.MM.yyy HH:mm'}" />
                         </GridView>
                     </ListView.View>
                 </ListView>
@@ -790,7 +814,9 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
-                        <Label x:Name="lblRadarAsb" Grid.Row="0" Grid.Column="0" Content="ASB"
+                        <Label Grid.Row="0"
+                               Grid.Column="0"
+                               Content="ASB"
                                Margin="3"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center">
@@ -798,16 +824,18 @@
                                 <Style TargetType="Label">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailAsb}" Value="true">
-                                            <Setter Property="Background" Value="#FF18C818"/>
+                                            <Setter Property="Background" Value="#FF18C818" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailAsb}" Value="false">
-                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                            <Setter Property="Background" Value="#FFBC1414" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </Label.Style>
                         </Label>
-                        <Label x:Name="lblRadarBoo" Grid.Row="0" Grid.Column="1" Content="BOO"
+                        <Label Grid.Row="0"
+                               Grid.Column="1"
+                               Content="BOO"
                                Margin="3"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center">
@@ -815,16 +843,18 @@
                                 <Style TargetType="Label">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailBoo}" Value="true">
-                                            <Setter Property="Background" Value="#FF18C818"/>
+                                            <Setter Property="Background" Value="#FF18C818" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailBoo}" Value="false">
-                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                            <Setter Property="Background" Value="#FFBC1414" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </Label.Style>
                         </Label>
-                        <Label x:Name="lblRadarDrs" Grid.Row="0" Grid.Column="2" Content="DRS"
+                        <Label Grid.Row="0"
+                               Grid.Column="2"
+                               Content="DRS"
                                Margin="3"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center">
@@ -832,16 +862,18 @@
                                 <Style TargetType="Label">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailDrs}" Value="true">
-                                            <Setter Property="Background" Value="#FF18C818"/>
+                                            <Setter Property="Background" Value="#FF18C818" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailDrs}" Value="false">
-                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                            <Setter Property="Background" Value="#FFBC1414" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </Label.Style>
                         </Label>
-                        <Label x:Name="lblRadarEis" Grid.Row="0" Grid.Column="3" Content="EIS"
+                        <Label Grid.Row="0"
+                               Grid.Column="3"
+                               Content="EIS"
                                Margin="3"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center">
@@ -849,16 +881,18 @@
                                 <Style TargetType="Label">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailEis}" Value="true">
-                                            <Setter Property="Background" Value="#FF18C818"/>
+                                            <Setter Property="Background" Value="#FF18C818" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailEis}" Value="false">
-                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                            <Setter Property="Background" Value="#FFBC1414" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </Label.Style>
                         </Label>
-                        <Label x:Name="lblRadarEss" Grid.Row="0" Grid.Column="4" Content="ESS"
+                        <Label Grid.Row="0"
+                               Grid.Column="4"
+                               Content="ESS"
                                Margin="3"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center">
@@ -866,16 +900,18 @@
                                 <Style TargetType="Label">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailEss}" Value="true">
-                                            <Setter Property="Background" Value="#FF18C818"/>
+                                            <Setter Property="Background" Value="#FF18C818" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailEss}" Value="false">
-                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                            <Setter Property="Background" Value="#FFBC1414" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </Label.Style>
                         </Label>
-                        <Label x:Name="lblRadarFbg" Grid.Row="0" Grid.Column="5" Content="FBG"
+                        <Label Grid.Row="0"
+                               Grid.Column="5"
+                               Content="FBG"
                                Margin="3"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center">
@@ -883,16 +919,18 @@
                                 <Style TargetType="Label">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailFbg}" Value="true">
-                                            <Setter Property="Background" Value="#FF18C818"/>
+                                            <Setter Property="Background" Value="#FF18C818" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailFbg}" Value="false">
-                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                            <Setter Property="Background" Value="#FFBC1414" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </Label.Style>
                         </Label>
-                        <Label x:Name="lblRadarFld" Grid.Row="1" Grid.Column="0" Content="FLD"
+                        <Label Grid.Row="1"
+                               Grid.Column="0"
+                               Content="FLD"
                                Margin="3"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center">
@@ -900,16 +938,18 @@
                                 <Style TargetType="Label">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailFld}" Value="true">
-                                            <Setter Property="Background" Value="#FF18C818"/>
+                                            <Setter Property="Background" Value="#FF18C818" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailFld}" Value="false">
-                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                            <Setter Property="Background" Value="#FFBC1414" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </Label.Style>
                         </Label>
-                        <Label x:Name="lblRadarHnr" Grid.Row="1" Grid.Column="1" Content="HNR"
+                        <Label Grid.Row="1"
+                               Grid.Column="1"
+                               Content="HNR"
                                Margin="3"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center">
@@ -917,16 +957,18 @@
                                 <Style TargetType="Label">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailHnr}" Value="true">
-                                            <Setter Property="Background" Value="#FF18C818"/>
+                                            <Setter Property="Background" Value="#FF18C818" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailHnr}" Value="false">
-                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                            <Setter Property="Background" Value="#FFBC1414" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </Label.Style>
                         </Label>
-                        <Label x:Name="lblRadarIsn" Grid.Row="1" Grid.Column="2" Content="ISN"
+                        <Label Grid.Row="1"
+                               Grid.Column="2"
+                               Content="ISN"
                                Margin="3"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center">
@@ -934,16 +976,18 @@
                                 <Style TargetType="Label">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailIsn}" Value="true">
-                                            <Setter Property="Background" Value="#FF18C818"/>
+                                            <Setter Property="Background" Value="#FF18C818" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailIsn}" Value="false">
-                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                            <Setter Property="Background" Value="#FFBC1414" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </Label.Style>
                         </Label>
-                        <Label x:Name="lblRadarMem" Grid.Row="1" Grid.Column="3" Content="MEM"
+                        <Label Grid.Row="1"
+                               Grid.Column="3"
+                               Content="MEM"
                                Margin="3"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center">
@@ -951,16 +995,18 @@
                                 <Style TargetType="Label">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailMem}" Value="true">
-                                            <Setter Property="Background" Value="#FF18C818"/>
+                                            <Setter Property="Background" Value="#FF18C818" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailMem}" Value="false">
-                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                            <Setter Property="Background" Value="#FFBC1414" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </Label.Style>
                         </Label>
-                        <Label x:Name="lblRadarNeu" Grid.Row="1" Grid.Column="4" Content="NEU"
+                        <Label Grid.Row="1"
+                               Grid.Column="4"
+                               Content="NEU"
                                Margin="3"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center">
@@ -968,16 +1014,18 @@
                                 <Style TargetType="Label">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailNeu}" Value="true">
-                                            <Setter Property="Background" Value="#FF18C818"/>
+                                            <Setter Property="Background" Value="#FF18C818" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailNeu}" Value="false">
-                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                            <Setter Property="Background" Value="#FFBC1414" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </Label.Style>
                         </Label>
-                        <Label x:Name="lblRadarNhb" Grid.Row="1" Grid.Column="5" Content="NHB"
+                        <Label Grid.Row="1"
+                               Grid.Column="5"
+                               Content="NHB"
                                Margin="3"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center">
@@ -985,16 +1033,18 @@
                                 <Style TargetType="Label">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailNhb}" Value="true">
-                                            <Setter Property="Background" Value="#FF18C818"/>
+                                            <Setter Property="Background" Value="#FF18C818" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailNhb}" Value="false">
-                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                            <Setter Property="Background" Value="#FFBC1414" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </Label.Style>
                         </Label>
-                        <Label x:Name="lblRadarOft" Grid.Row="2" Grid.Column="0" Content="OFT"
+                        <Label Grid.Row="2"
+                               Grid.Column="0"
+                               Content="OFT"
                                Margin="3"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center">
@@ -1002,16 +1052,18 @@
                                 <Style TargetType="Label">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailOft}" Value="true">
-                                            <Setter Property="Background" Value="#FF18C818"/>
+                                            <Setter Property="Background" Value="#FF18C818" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailOft}" Value="false">
-                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                            <Setter Property="Background" Value="#FFBC1414" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </Label.Style>
                         </Label>
-                        <Label x:Name="lblRadarPro" Grid.Row="2" Grid.Column="1" Content="PRO"
+                        <Label Grid.Row="2"
+                               Grid.Column="1"
+                               Content="PRO"
                                Margin="3"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center">
@@ -1019,16 +1071,18 @@
                                 <Style TargetType="Label">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailPro}" Value="true">
-                                            <Setter Property="Background" Value="#FF18C818"/>
+                                            <Setter Property="Background" Value="#FF18C818" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailPro}" Value="false">
-                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                            <Setter Property="Background" Value="#FFBC1414" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </Label.Style>
                         </Label>
-                        <Label x:Name="lblRadarRos" Grid.Row="2" Grid.Column="2" Content="ROS"
+                        <Label Grid.Row="2"
+                               Grid.Column="2"
+                               Content="ROS"
                                Margin="3"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center">
@@ -1036,16 +1090,18 @@
                                 <Style TargetType="Label">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailRos}" Value="true">
-                                            <Setter Property="Background" Value="#FF18C818"/>
+                                            <Setter Property="Background" Value="#FF18C818" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailRos}" Value="false">
-                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                            <Setter Property="Background" Value="#FFBC1414" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </Label.Style>
                         </Label>
-                        <Label x:Name="lblRadarTur" Grid.Row="2" Grid.Column="3" Content="TUR"
+                        <Label Grid.Row="2"
+                               Grid.Column="3"
+                               Content="TUR"
                                Margin="3"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center">
@@ -1053,16 +1109,18 @@
                                 <Style TargetType="Label">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailTur}" Value="true">
-                                            <Setter Property="Background" Value="#FF18C818"/>
+                                            <Setter Property="Background" Value="#FF18C818" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailTur}" Value="false">
-                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                            <Setter Property="Background" Value="#FFBC1414" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </Label.Style>
                         </Label>
-                        <Label x:Name="lblRadarUmd" Grid.Row="2" Grid.Column="4" Content="UMD"
+                        <Label Grid.Row="2"
+                               Grid.Column="4"
+                               Content="UMD"
                                Margin="3"
                                HorizontalContentAlignment="Center"
                                VerticalContentAlignment="Center">
@@ -1070,10 +1128,10 @@
                                 <Style TargetType="Label">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailUmd}" Value="true">
-                                            <Setter Property="Background" Value="#FF18C818"/>
+                                            <Setter Property="Background" Value="#FF18C818" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding SelectedElement.StationAvailUmd}" Value="false">
-                                            <Setter Property="Background" Value="#FFBC1414"/>
+                                            <Setter Property="Background" Value="#FFBC1414" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>

@@ -45,6 +45,8 @@ namespace MecyInformation
 
         private int _intensity;
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         #region properties
         public int Id
         {
@@ -383,9 +385,6 @@ namespace MecyInformation
             }
         }
         #endregion properties
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
 
         private void OnPropertyChanged(string propertyName)
         {

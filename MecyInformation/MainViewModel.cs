@@ -27,6 +27,7 @@ namespace MecyInformation
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        #region properties
         public ObservableCollection<OpenDataElement> OpenDataElements
         {
             get
@@ -116,6 +117,8 @@ namespace MecyInformation
                 OnPropertyChanged("TimeLoc");
             }
         }
+        #endregion properties
+
         public MainViewModel()
         {
             ParseData();

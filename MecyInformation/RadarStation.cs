@@ -8,7 +8,7 @@ namespace MecyInformation
 {
     public class RadarStation
     {
-        static List<string> ALL_STATIONS = new List<string>()
+        public static List<string> ALL_STATIONS = new List<string>()
         {
             "ASB",
             "BOO",
