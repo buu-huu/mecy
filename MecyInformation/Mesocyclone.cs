@@ -385,11 +385,6 @@ namespace MecyInformation
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        
-        public Mesocyclone()
-        {
-
-        }
 
         private void OnPropertyChanged(string propertyName)
         {
