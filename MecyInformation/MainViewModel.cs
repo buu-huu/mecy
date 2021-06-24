@@ -8,18 +8,22 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace MecyInformation
 {
     class MainViewModel : INotifyPropertyChanged
     {
-        private ObservableCollection<OpenDataElement> _openDataElements;
+        ObservableCollection<OpenDataElement> _openDataElements;
         OpenDataElement _selectedElement;
 
         List<Mesocyclone> _mesocyclones;
         Mesocyclone _selectedMesocyclone;
         
         bool _isDownloading = false;
+
+        DateTime _timeUtc;
+        DateTime _timeLoc;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -76,9 +80,60 @@ namespace MecyInformation
             }
         }
 
+        public bool IsDownloading
+        {
+            get
+            {
+                return _isDownloading;
+            }
+            set
+            {
+                _isDownloading = value;
+                OnPropertyChanged("IsDownloading");
+            }
+        }
+        public DateTime TimeUtc
+        {
+            get
+            {
+                return _timeUtc;
+            }
+            set
+            {
+                _timeUtc = value;
+                OnPropertyChanged("TimeUtc");
+            }
+        }
+        public DateTime TimeLoc
+        {
+            get
+            {
+                return _timeLoc;
+            }
+            set
+            {
+                _timeLoc = value;
+                OnPropertyChanged("TimeLoc");
+            }
+        }
         public MainViewModel()
         {
             ParseData();
+            SetupClocks();
+        }
+
+        private void SetupClocks()
+        {
+            DispatcherTimer clockTimer = new DispatcherTimer();
+            clockTimer.Interval = TimeSpan.FromSeconds(1);
+            clockTimer.Tick += ClocksTick;
+            clockTimer.Start();
+        }
+
+        private void ClocksTick(object sender, EventArgs e)
+        {
+            TimeUtc = DateTime.UtcNow;
+            TimeLoc = DateTime.Now;
         }
 
         private void ParseData()
@@ -113,9 +168,9 @@ namespace MecyInformation
                 {
                     downloadWindow.Show();
                 });
-                _isDownloading = true;
+                IsDownloading = true;
                 OpenDataDownloader.DownloadAllData();
-                _isDownloading = false;
+                IsDownloading = false;
             }).ContinueWith(task =>
             {
                 ParseData();
@@ -130,7 +185,7 @@ namespace MecyInformation
                 return new RelayCommand(e => true, this.OpenMesoMapWindow);
             }
         }
-        
+
         private void OpenMesoMapWindow(object obj)
         {
             if (SelectedMesocyclone != null)

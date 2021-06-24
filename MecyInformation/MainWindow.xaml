@@ -37,9 +37,9 @@
                 <ItemsPanelTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="180" />
                             <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="180" />
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
@@ -49,13 +49,15 @@
                 </ItemsPanelTemplate>
             </StatusBar.ItemsPanel>
             <StatusBarItem Grid.Column="0">
-                <Label x:Name="lblClockUtc"
+                <Label Content="{Binding Path=TimeUtc}"
+                       ContentStringFormat="UTC: dd.MM.yyyy HH:mm:ss"
                        Padding="0"
                        FontSize="12"/>
             </StatusBarItem>
             <Separator Grid.Column="1" />
             <StatusBarItem Grid.Column="2">
-                <Label x:Name="lblClockLocal"
+                <Label Content="{Binding Path=TimeLoc}"
+                       ContentStringFormat="LOCAL: dd.MM.yyyy HH:mm:ss"
                        Padding="0"
                        FontSize="12"/>
             </StatusBarItem>
