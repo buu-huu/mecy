@@ -133,9 +133,9 @@ namespace MecyInformation
         
         private void OpenMesoMapWindow(object obj)
         {
-            if (_selectedMesocyclone != null)
+            if (SelectedMesocyclone != null)
             {
-                new MapWindow(_selectedMesocyclone).Show();
+                new MapWindow(SelectedMesocyclone).Show();
             }
         }
     }

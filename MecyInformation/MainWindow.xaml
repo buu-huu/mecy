@@ -649,6 +649,7 @@
                                  Background="#FFFFDEB8"/>
                         <ListView Margin="5" x:Name="lvElevations"
                             Grid.Row="28"
+                                  ItemsSource="{Binding Elevations}"
                                   Grid.ColumnSpan="3"
                                   Height="150">
                             <ListView.View>
