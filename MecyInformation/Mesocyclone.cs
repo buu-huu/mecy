@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ using System.Windows.Media.Imaging;
 
 namespace MecyInformation
 {
-    public class Mesocyclone
+    public class Mesocyclone :INotifyPropertyChanged
     {
         private int _id;
         private DateTime _time;
@@ -43,135 +44,391 @@ namespace MecyInformation
 
         private int _intensity;
 
-        /* PROPERTIES */
-        public int Id { get => _id; set => _id = value; }
-        public DateTime Time { get => _time; set => _time = value; }
-        public double Latitude { get => _latitude; set => _latitude = value; }
-        public double Longitude { get => _longitude; set => _longitude = value; }
-        public double PolarMotion { get => _polarMotion; set => _polarMotion = value; }
-        public double MajorAxis { get => _majorAxis; set => _majorAxis = value; }
-        public double MinorAxis { get => _minorAxis; set => _minorAxis = value; }
-        public int Orientation { get => _orientation; set => _orientation = value; }
-        public double ShearMean { get => _shearMean; set => _shearMean = value; }
-        public double ShearMax { get => _shearMax; set => _shearMax = value; }
-        public double MomentumMean { get => _momentumMean; set => _momentumMean = value; }
-        public double MomentumMax { get => _momentumMax; set => _momentumMax = value; }
-        public double Diameter { get => _diameter; set => _diameter = value; }
-        public double DiameterEquivalent { get => _diameterEquivalent; set => _diameterEquivalent = value; }
-        public double Top { get => _top; set => _top = value; }
-        public double MesoBase { get => _mesoBase; set => _mesoBase = value; }
-        public double Echotop { get => _echotop; set => _echotop = value; }
-        public double Vil { get => _vil; set => _vil = value; }
-        public int ShearVectors { get => _shearVectors; set => _shearVectors = value; }
-        public int ShearFeatures { get => _shearFeatures; set => _shearFeatures = value; }
-        public double MeanDBZ { get => _meanDBZ; set => _meanDBZ = value; }
-        public double MaxDBZ { get => _maxDBZ; set => _maxDBZ = value; }
-        public double VelocityMax { get => _velocityMax; set => _velocityMax = value; }
-        public double VelocityRotationalMax { get => _velocityRotationalMax; set => _velocityRotationalMax = value; }
-        public double VelocityRotationalMean { get => _velocityRotationalMean; set => _velocityRotationalMean = value; }
-        public double VelocityRotationalMaxClosestToGround { get => _velocityRotationalMaxClosestToGround; set => _velocityRotationalMaxClosestToGround = value; }
-        public int Intensity { get => _intensity; set => _intensity = value; }
-        internal List<Elevation> Elevations { get => _elevations; set => _elevations = value; }
+        #region properties
+        public int Id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                _id = value;
+                OnPropertyChanged("Id");
+            }
+        }
+        public DateTime Time
+        {
+            get
+            {
+                return _time;
+            }
+            set
+            {
+                _time = value;
+                OnPropertyChanged("Time");
+            }
+        }
+        public double Latitude
+        {
+            get
+            {
+                return _latitude;
+            }
+            set
+            {
+                _latitude = value;
+                OnPropertyChanged("Latitude");
+            }
+        }
+        public double Longitude
+        {
+            get
+            {
+                return _longitude;
+            }
+            set
+            {
+                _longitude = value;
+                OnPropertyChanged("Longitude");
+            }
+        }
+        public double PolarMotion
+        {
+            get
+            {
+                return _polarMotion;
+            }
+            set
+            {
+                _polarMotion = value;
+                OnPropertyChanged("PolarMotion");
+            }
+        }
+        public double MajorAxis
+        {
+            get
+            {
+                return _majorAxis;
+            }
+            set
+            {
+                _majorAxis = value;
+                OnPropertyChanged("MajorAxis");
+            }
+        }
+        public double MinorAxis
+        {
+            get
+            {
+                return _minorAxis;
+            }
+            set
+            {
+                _minorAxis = value;
+                OnPropertyChanged("MinorAxis");
+            }
+        }
+        public int Orientation
+        {
+            get
+            {
+                return _orientation;
+            }
+            set
+            {
+                _orientation = value;
+                OnPropertyChanged("Orientation");
+            }
+        }
+        public double ShearMean
+        {
+            get
+            {
+                return _shearMean;
+            }
+            set
+            {
+                _shearMean = value;
+                OnPropertyChanged("ShearMean");
+            }
+        }
+        public double ShearMax
+        {
+            get
+            {
+                return _shearMax;
+            }
+            set
+            {
+                _shearMax = value;
+                OnPropertyChanged("ShearMax");
+            }
+        }
+        public double MomentumMean
+        {
+            get
+            {
+                return _momentumMean;
+            }
+            set
+            {
+                _momentumMean = value;
+                OnPropertyChanged("MomentumMean");
+            }
+        }
+        public double MomentumMax
+        {
+            get
+            {
+                return _momentumMax;
+            }
+            set
+            {
+                _momentumMax = value;
+                OnPropertyChanged("MomentumMax");
+            }
+        }
+        public double Diameter
+        {
+            get
+            {
+                return _diameter;
+            }
+            set
+            {
+                _diameter = value;
+                OnPropertyChanged("Diameter");
+            }
+        }
+        public double DiameterEquivalent
+        {
+            get
+            {
+                return _diameterEquivalent;
+            }
+            set
+            {
+                _diameterEquivalent = value;
+                OnPropertyChanged("DiameterEquivalent");
+            }
+        }
+        public double Top
+        {
+            get
+            {
+                return _top;
+            }
+            set
+            {
+                _top = value;
+                OnPropertyChanged("Top");
+            }
+        }
+        public double MesoBase
+        {
+            get
+            {
+                return _mesoBase;
+            }
+            set
+            {
+                _mesoBase = value;
+                OnPropertyChanged("MesoBase");
+            }
+        }
+        public double Echotop
+        {
+            get
+            {
+                return _echotop;
+            }
+            set
+            {
+                _echotop = value;
+                OnPropertyChanged("Echotop");
+            }
+        }
+        public double Vil
+        {
+            get
+            {
+                return _vil;
+            }
+            set
+            {
+                _vil = value;
+                OnPropertyChanged("Vil");
+            }
+        }
+        public int ShearVectors
+        {
+            get
+            {
+                return _shearVectors;
+            }
+            set
+            {
+                _shearVectors = value;
+                OnPropertyChanged("ShearVectors");
+            }
+        }
+        public int ShearFeatures
+        {
+            get
+            {
+                return _shearFeatures;
+            }
+            set
+            {
+                _shearFeatures = value;
+                OnPropertyChanged("ShearFeatures");
+            }
+        }
+        public List<Elevation> Elevations
+        {
+            get
+            {
+                return _elevations;
+            }
+            set
+            {
+                _elevations = value;
+                OnPropertyChanged("Elevations");
+            }
+        }
+        public double MeanDBZ
+        {
+            get
+            {
+                return _meanDBZ;
+            }
+            set
+            {
+                _meanDBZ = value;
+                OnPropertyChanged("MeanDBZ");
+            }
+        }
+        public double MaxDBZ
+        {
+            get
+            {
+                return _maxDBZ;
+            }
+            set
+            {
+                _maxDBZ = value;
+                OnPropertyChanged("MaxDBZ");
+            }
+        }
+        public double VelocityMax
+        {
+            get
+            {
+                return _velocityMax;
+            }
+            set
+            {
+                _velocityMax = value;
+                OnPropertyChanged("VelocityMax");
+            }
+        }
+        public double VelocityRotationalMax
+        {
+            get
+            {
+                return _velocityRotationalMax;
+            }
+            set
+            {
+                _velocityRotationalMax = value;
+                OnPropertyChanged("VelocityRotationalMax");
+            }
+        }
+        public double VelocityRotationalMean
+        {
+            get
+            {
+                return _velocityRotationalMean;
+            }
+            set
+            {
+                _velocityRotationalMean = value;
+                OnPropertyChanged("VelocityRotationalMean");
+            }
+        }
+        public double VelocityRotationalMaxClosestToGround
+        {
+            get
+            {
+                return _velocityRotationalMaxClosestToGround;
+            }
+            set
+            {
+                _velocityRotationalMaxClosestToGround = value;
+                OnPropertyChanged("VelocityRotationalMaxClosestToGround");
+            }
+        }
+        public int Intensity
+        {
+            get
+            {
+                return _intensity;
+            }
+            set
+            {
+                _intensity = value;
+                OnPropertyChanged("Intensity");
+            }
+        }
+        #endregion properties
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        
         public Mesocyclone()
         {
 
         }
 
-        public Mesocyclone(int id, string time, double latitude, double longitude, double polarMotion,
-                   double majorAxis, double minorAxis, int orientation, double shearMean, double shearMax,
-                   double momentumMean, double momentumMax, double diameter, double diameterEquivalent,
-                   double top, double mesoBase, double echotop, double vil, int shearVectors, int shearFeatures,
-                   List<Elevation> elevations, double meanDBZ, double maxDBZ, double velocityMax,
-                   double velocityRotationalMax, double velocityRotationalMean,
-                   double velocityRotationalMaxClosestToGround, int intensity)
+        private void OnPropertyChanged(string propertyName)
         {
-            this._id = id;
-            this._time = DateTime.Parse(time);
-            this._latitude = latitude;
-            this._longitude = longitude;
-            this._polarMotion = polarMotion;
-            this._majorAxis = majorAxis;
-            this._minorAxis = minorAxis;
-            this._orientation = orientation;
-            this._shearMean = shearMean;
-            this._shearMax = shearMax;
-            this._momentumMean = momentumMean;
-            this._momentumMax = momentumMax;
-            this._diameter = diameter;
-            this._diameterEquivalent = diameterEquivalent;
-            this._top = top;
-            this._mesoBase = mesoBase;
-            this._echotop = echotop;
-            this._vil = vil;
-            this._shearVectors = shearVectors;
-            this._shearFeatures = shearFeatures;
-            this._elevations = elevations;
-            this._meanDBZ = meanDBZ;
-            this._maxDBZ = maxDBZ;
-            this._velocityMax = velocityMax;
-            this._velocityRotationalMax = velocityRotationalMax;
-            this._velocityRotationalMean = velocityRotationalMean;
-            this._velocityRotationalMaxClosestToGround = velocityRotationalMaxClosestToGround;
-            this._intensity = intensity;
-        }
-
-        public static DateTime GetEarliestDateTime(Dictionary<DateTime, List<Mesocyclone>> mesoDict)
-        {
-            DateTime earliest = mesoDict.Keys.First();
-            foreach (var dictEntry in mesoDict)
+            if (PropertyChanged != null)
             {
-                if (DateTime.Compare(dictEntry.Key, earliest) < 0)
-                {
-                    earliest = dictEntry.Key;
-                }
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
-            return earliest;
-        }
-
-        public static DateTime GetLatestDateTime(Dictionary<DateTime, List<Mesocyclone>> mesoDict)
-        {
-            DateTime latest = mesoDict.Keys.First();
-            foreach (var dictEntry in mesoDict)
-            {
-                if (DateTime.Compare(dictEntry.Key, latest) > 0)
-                {
-                    latest = dictEntry.Key;
-                }
-            }
-            return latest;
         }
 
         public override string ToString()
         {
             return "Mesocyclone{" +
-                "id=" + _id +
-                ", time='" + _time + '\'' +
-                ", latitude=" + _latitude +
-                ", longitude=" + _longitude +
-                ", polarMotion=" + _polarMotion +
-                ", majorAxis=" + _majorAxis +
-                ", minorAxis=" + _minorAxis +
-                ", orientation=" + _orientation +
-                ", shearMean=" + _shearMean +
-                ", shearMax=" + _shearMax +
-                ", momentumMean=" + _momentumMean +
-                ", momentumMax=" + _momentumMax +
-                ", diameter=" + _diameter +
-                ", diameterEquivalent=" + _diameterEquivalent +
-                ", top=" + _top +
-                ", base=" + _mesoBase +
-                ", echotop=" + _echotop +
-                ", vil=" + _vil +
-                ", shearVectors=" + _shearVectors +
-                ", shearFeatures=" + _shearFeatures +
-                ", meanDBZ=" + _meanDBZ +
-                ", maxDBZ=" + _maxDBZ +
-                ", velocityMax=" + _velocityMax +
-                ", velocityRotationalMax=" + _velocityRotationalMax +
-                ", velocityRotationalMean=" + _velocityRotationalMean +
-                ", velocityRotationalMaxClosestToGround=" + _velocityRotationalMaxClosestToGround +
-                ", intensity=" + _intensity +
+                "id=" + Id +
+                ", time='" + Time + '\'' +
+                ", latitude=" + Latitude +
+                ", longitude=" + Longitude +
+                ", polarMotion=" + PolarMotion +
+                ", majorAxis=" + MajorAxis +
+                ", minorAxis=" + MinorAxis +
+                ", orientation=" + Orientation +
+                ", shearMean=" + ShearMean +
+                ", shearMax=" + ShearMax +
+                ", momentumMean=" + MomentumMean +
+                ", momentumMax=" + MomentumMax +
+                ", diameter=" + Diameter +
+                ", diameterEquivalent=" + DiameterEquivalent +
+                ", top=" + Top +
+                ", base=" + MesoBase +
+                ", echotop=" + Echotop +
+                ", vil=" + Vil +
+                ", shearVectors=" + ShearVectors +
+                ", shearFeatures=" + ShearFeatures +
+                ", meanDBZ=" + MeanDBZ +
+                ", maxDBZ=" + MaxDBZ +
+                ", velocityMax=" + VelocityMax +
+                ", velocityRotationalMax=" + VelocityRotationalMax +
+                ", velocityRotationalMean=" + VelocityRotationalMean +
+                ", velocityRotationalMaxClosestToGround=" + VelocityRotationalMaxClosestToGround +
+                ", intensity=" + Intensity +
                 '}';
         }
     }
