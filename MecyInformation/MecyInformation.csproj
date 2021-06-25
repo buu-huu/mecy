@@ -183,9 +183,6 @@
     <Resource Include="Resources\Logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\ToolbarDownload.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources\meso_icon_map_1.png" />
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +196,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\meso_icon_map_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ToolbarDownload.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\ToolbarMapStyleGoogleMaps.png" />
