@@ -21,7 +21,8 @@ namespace MecyInformation
 
         List<Mesocyclone> _mesocyclones;
         Mesocyclone _selectedMesocyclone;
-        
+
+        bool _openDataServerReachable = false;
         bool _isDownloading = false;
 
         DateTime _timeUtc;
@@ -83,6 +84,19 @@ namespace MecyInformation
             }
         }
 
+        public bool OpenDataServerReachable
+        {
+            get
+            {
+                return _openDataServerReachable;
+            }
+            set
+            {
+                _openDataServerReachable = value;
+                OnPropertyChanged("OpenDataServerReachable");
+            }
+        }
+
         public bool IsDownloading
         {
             get
@@ -125,6 +139,7 @@ namespace MecyInformation
         {
             ParseData();
             SetupClocks();
+            SetupConnectionWatcher();
         }
 
         private void SetupClocks()
@@ -133,6 +148,26 @@ namespace MecyInformation
             clockTimer.Interval = TimeSpan.FromSeconds(1);
             clockTimer.Tick += ClocksTick;
             clockTimer.Start();
+        }
+
+        private void SetupConnectionWatcher()
+        {
+            DispatcherTimer connectionTimer = new DispatcherTimer();
+            connectionTimer.Interval = TimeSpan.FromSeconds(5);
+            connectionTimer.Tick += ConnectionWatcherTick;
+            connectionTimer.Start();
+        }
+
+        private void ConnectionWatcherTick(object sender, EventArgs e)
+        {
+            if (OpenDataDownloader.CheckServerConnection())
+            {
+                OpenDataServerReachable = true;
+            }
+            else
+            {
+                OpenDataServerReachable = false;
+            }
         }
 
         private void ClocksTick(object sender, EventArgs e)

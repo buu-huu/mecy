@@ -48,6 +48,8 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="180" />
                             <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="120" />
+                            <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="100" />
@@ -71,16 +73,34 @@
                        Padding="0"
                        FontSize="12" />
             </StatusBarItem>
-            
+
             <Separator Grid.Column="3" />
-            
-            <StatusBarItem Grid.Column="4">
-                <TextBlock x:Name="stsTxtInfo" />
+
+            <StatusBarItem Grid.Column="4"
+                           HorizontalContentAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="OD Connection" />
+                    <Ellipse Height="15"
+                             Width="15">
+                        <Ellipse.Style>
+                            <Style TargetType="Ellipse">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding OpenDataServerReachable}" Value="true">
+                                        <Setter Property="Fill" Value="#0cc93f" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding OpenDataServerReachable}" Value="false">
+                                        <Setter Property="Fill" Value="#c90c0c" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Ellipse.Style>
+                    </Ellipse>
+                </StackPanel>
             </StatusBarItem>
-            
+
             <Separator Grid.Column="5" />
             
-            <StatusBarItem Grid.Column="6">
+            <StatusBarItem Grid.Column="8">
                 <ProgressBar Value="50"
                              Width="90"
                              Height="16" />
