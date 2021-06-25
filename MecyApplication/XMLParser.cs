@@ -117,7 +117,6 @@ namespace MecyApplication
                                                 meso.MomentumMax = Convert.ToDouble(paramNode.InnerText, CultureInfo.InvariantCulture);
                                                 break;
                                             case "mesocyclone_diameter":
-                                                Console.WriteLine(paramNode.InnerText);
                                                 meso.Diameter = Convert.ToDouble(paramNode.InnerText, CultureInfo.InvariantCulture);
                                                 break;
                                             case "mesocyclone_diameter_equivalent":
