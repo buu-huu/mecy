@@ -53,7 +53,27 @@ namespace MecyInformation
             
             this.MainViewModel = mainViewModel;
             this.DataContext = MainViewModel;
-            mapControl.Map = MapBuilder.CreateMap(new List<Mesocyclone>());
+            RefreshMap();
+
+            /* EVENT SUBSCRIPTIONS */
+            SetUpEvents();
+        }
+
+        private void SetUpEvents()
+        {
+            MainViewModel.RefreshMapEvent += RefreshMap;
+        }
+
+        private void RefreshMap()
+        {
+            if (MainViewModel.SelectedElement != null)
+            {
+                mapControl.Map = MapBuilder.CreateMap(MainViewModel.SelectedElement.Mesocyclones);
+            }
+            else
+            {
+                mapControl.Map = MapBuilder.CreateMap(new List<Mesocyclone>());
+            }
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)

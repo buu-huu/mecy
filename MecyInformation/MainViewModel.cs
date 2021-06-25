@@ -279,9 +279,13 @@ namespace MecyInformation
             }
         }
 
+        public delegate void RefreshMapEventAction();
+        public event RefreshMapEventAction RefreshMapEvent;
+
         private void SelectOpenStreetMapStyle(object obj)
         {
             MapBuilder.SelectedTileSource = MapBuilder.TileSource.OpenStreetMap;
+            RefreshMapEvent?.Invoke();
         }
         
         public ICommand SelectGoogleMapsStyleCommand
@@ -295,6 +299,7 @@ namespace MecyInformation
         private void SelectGoogleMapsStyle(object obj)
         {
             MapBuilder.SelectedTileSource = MapBuilder.TileSource.GoogleMaps;
+            RefreshMapEvent?.Invoke();
         }
     }
 }
