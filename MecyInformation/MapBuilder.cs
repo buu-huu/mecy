@@ -19,16 +19,16 @@ namespace MecyInformation
 {
     public static class MapBuilder
     {
-        private const string GOOGLE_MAPS_TILE_URL = "http://mt{s}.google.com/vt/lyrs=t@125,r@130&hl=en&x={x}&y={y}&z={z}";
-        private static TileSource _selectedTileSource = TileSource.OpenStreetMap;
-
-        public static TileSource SelectedTileSource { get => _selectedTileSource; set => _selectedTileSource = value; }
-
         public enum TileSource
         {
             OpenStreetMap,
             GoogleMaps
         }
+
+        private const string GOOGLE_MAPS_TILE_URL = "http://mt{s}.google.com/vt/lyrs=t@125,r@130&hl=en&x={x}&y={y}&z={z}";
+        private static TileSource _selectedTileSource = TileSource.OpenStreetMap;
+
+        public static TileSource SelectedTileSource { get => _selectedTileSource; set => _selectedTileSource = value; }
 
         public static Map CreateMap(List<Mesocyclone> mesocyclones)
         {
