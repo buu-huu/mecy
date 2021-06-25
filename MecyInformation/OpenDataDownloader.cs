@@ -46,5 +46,23 @@ namespace MecyInformation
                 Directory.CreateDirectory(LOCAL_DOWNLOAD_PATH);
             }
         }
+
+        public static bool CheckServerConnection()
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(String.Format("https://{0}", HOST_NAME));
+            request.Timeout = 2000;
+            request.Method = "HEAD";
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                {
+                    return (response.StatusCode == HttpStatusCode.OK);
+                }
+            }
+            catch (WebException)
+            {
+                return false;
+            }
+        }
     }
 }

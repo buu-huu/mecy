@@ -30,17 +30,24 @@ namespace MecyInformation
             Thread.Sleep(1500);
             var scheduler = TaskScheduler.FromCurrentSynchronizationContext();
             _ = Task.Factory.StartNew(() =>
-              {
-                  //OpenDataDownloader.DownloadAllData();
-              }).ContinueWith(task =>
-              {
-                  MainWindow mainWindow = new MainWindow();
-                  MainViewModel mainViewModel = new MainViewModel();
+            {
+                if (OpenDataDownloader.CheckServerConnection())
+                {
+                    //OpenDataDownloader.DownloadAllData();
+                }
+                else
+                {
+                    MessageBox.Show("OpenData server not reachable.");
+                }
+            }).ContinueWith(task =>
+            {
+                MainWindow mainWindow = new MainWindow();
+                MainViewModel mainViewModel = new MainViewModel();
 
-                  mainWindow.DataContext = mainViewModel;
-                  mainWindow.Show();
-                  this.Close();
-              }, scheduler);
+                mainWindow.DataContext = mainViewModel;
+                mainWindow.Show();
+                this.Close();
+            }, scheduler);            
         }
     }
 }

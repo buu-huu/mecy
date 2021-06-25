@@ -26,7 +26,7 @@
                 <ProgressBar IsIndeterminate="True" Grid.Row="1" />
                 <TextBlock HorizontalAlignment="Center"
                    Grid.Row="2"
-                   VerticalAlignment="Center">Downloading data from OpenData server...</TextBlock>
+                   VerticalAlignment="Center">Loading...</TextBlock>
             </Grid>
         </Border>
     </Grid>

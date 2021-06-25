@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Net;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
@@ -166,16 +167,24 @@ namespace MecyInformation
             if (!IsDownloading)
             {
                 DownloadWindow downloadWindow = new DownloadWindow();
+                IsDownloading = true;
 
                 var scheduler = TaskScheduler.FromCurrentSynchronizationContext();
                 _ = Task.Factory.StartNew(() =>
                 {
-                    Application.Current.Dispatcher.Invoke((Action)delegate
+                    if (OpenDataDownloader.CheckServerConnection())
                     {
-                        downloadWindow.Show();
-                    });
-                    IsDownloading = true;
-                    OpenDataDownloader.DownloadAllData();
+                        Application.Current.Dispatcher.Invoke((Action)delegate
+                        {
+                            downloadWindow.Show();
+                        });
+                        OpenDataDownloader.DownloadAllData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("OpenData server not reachable.");
+                    }
+
                 }).ContinueWith(task =>
                 {
                     ParseData();
