@@ -14,10 +14,10 @@
             <RowDefinition />
             <RowDefinition Height=".4*" />
         </Grid.RowDefinitions>
-        <Label Content="Downloading..."
+        <Label Content="Downloading data..."
                VerticalAlignment="Center"
                HorizontalAlignment="Center"
-               FontSize="20" />
+               FontSize="15" />
         <ProgressBar IsIndeterminate="True"
                      Grid.Row="1"
                      Margin="3" />
