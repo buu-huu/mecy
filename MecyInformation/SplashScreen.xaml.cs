@@ -44,7 +44,6 @@ namespace MecyInformation
                 MainViewModel mainViewModel = new MainViewModel();
                 MainWindow mainWindow = new MainWindow(mainViewModel);
 
-                mainWindow.DataContext = mainViewModel;
                 mainWindow.Show();
                 this.Close();
             }, scheduler);            

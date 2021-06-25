@@ -52,6 +52,7 @@ namespace MecyInformation
             InitializeComponent();
             
             this.MainViewModel = mainViewModel;
+            this.DataContext = MainViewModel;
             mapControl.Map = MapBuilder.CreateMap(new List<Mesocyclone>());
         }
 
