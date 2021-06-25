@@ -134,7 +134,7 @@
                             <ColumnDefinition Width="60" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="50" />
+                            <RowDefinition Height="80" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
@@ -165,26 +165,11 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <Label Content="Mecy Information"
-                               HorizontalContentAlignment="Center"
-                               HorizontalAlignment="Stretch"
-                               VerticalContentAlignment="Center"
-                               VerticalAlignment="Stretch"
-                               FontSize="22"
-                               FontWeight="Bold" 
-                               Grid.ColumnSpan="3"
-                               FontFamily="Franklin Gothic Demi"
-                               Foreground="#FF4C4C4C">
-                            <Label.Background>
-                                <LinearGradientBrush EndPoint="0.5,1"
-                                                     StartPoint="0.5,0">
-                                    <GradientStop Color="Orange"
-                                                  Offset="0" />
-                                    <GradientStop Color="#FFDFDFDF"
-                                                  Offset="1" />
-                                </LinearGradientBrush>
-                            </Label.Background>
-                        </Label>
+                        <Border Grid.ColumnSpan="3"
+                                Margin="3"
+                                Background="LightGray">
+                            <Image Source="Resources/LogoWithoutSubtitle.png" />
+                        </Border>
 
                         <Label Content="ID"
                                HorizontalAlignment="Right"

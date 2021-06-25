@@ -63,9 +63,19 @@ namespace Mecy.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Logo {
+        internal static System.Drawing.Bitmap LogoWithoutSubtitle {
             get {
-                object obj = ResourceManager.GetObject("Logo", resourceCulture);
+                object obj = ResourceManager.GetObject("LogoWithoutSubtitle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LogoWithSubtitle {
+            get {
+                object obj = ResourceManager.GetObject("LogoWithSubtitle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

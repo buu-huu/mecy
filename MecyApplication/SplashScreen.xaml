@@ -9,20 +9,30 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-        Title="Mecy Information" Height="250" Width="500"
+        Title="Mecy Information" Height="300" Width="550"
         ContentRendered="Window_ContentRendered">
     <Grid>
-        <Border CornerRadius="20" Background="Beige">
+        <Border CornerRadius="20">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFE1A3FF" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="250"/>
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Image Source="Resources/Logo.png"
-                       Width="300"
-               Margin="20"
-               Grid.Row="0" />
+                <StackPanel Grid.Row="0"
+                            VerticalAlignment="Center">
+                    <Image Source="Resources/LogoWithSubtitle.png"
+                       Width="350"
+                       Margin="20" />
+                    <Label
+                        HorizontalAlignment="Center">Version 1.0</Label>
+                </StackPanel>
                 <ProgressBar IsIndeterminate="True" Grid.Row="1" />
                 <TextBlock HorizontalAlignment="Center"
                    Grid.Row="2"
