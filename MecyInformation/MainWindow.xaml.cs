@@ -61,9 +61,9 @@ namespace MecyInformation
 
         private void lvOpenDataElements_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (lvOpenDataElements.SelectedItem != null)
+            if (MainViewModel.SelectedElement != null)
             {
-                var selectedElement = (OpenDataElement)lvOpenDataElements.SelectedItem;
+                var selectedElement = MainViewModel.SelectedElement;
                 mapControl.Map = MapBuilder.CreateMap(selectedElement.Mesocyclones);
             }
             else
