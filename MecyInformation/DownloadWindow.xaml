@@ -8,11 +8,18 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Topmost="True"
-        Title="DownloadWindow" Height="80" Width="250">
+        Title="DownloadWindow" Height="100" Width="350">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height=".4*" />
+        </Grid.RowDefinitions>
         <Label Content="Downloading..."
                VerticalAlignment="Center"
                HorizontalAlignment="Center"
-               FontSize="20"/>
+               FontSize="20" />
+        <ProgressBar IsIndeterminate="True"
+                     Grid.Row="1"
+                     Margin="3" />
     </Grid>
 </Window>
