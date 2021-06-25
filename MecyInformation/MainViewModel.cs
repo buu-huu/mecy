@@ -270,5 +270,31 @@ namespace MecyInformation
         {
             new AboutWindow().Show();
         }
+
+        public ICommand SelectOpenStreetMapStyleCommand
+        {
+            get
+            {
+                return new RelayCommand(e => true, this.SelectOpenStreetMapStyle);
+            }
+        }
+
+        private void SelectOpenStreetMapStyle(object obj)
+        {
+            MapBuilder.SelectedTileSource = MapBuilder.TileSource.OpenStreetMap;
+        }
+        
+        public ICommand SelectGoogleMapsStyleCommand
+        {
+            get
+            {
+                return new RelayCommand(e => true, this.SelectGoogleMapsStyle);
+            }
+        }
+
+        private void SelectGoogleMapsStyle(object obj)
+        {
+            MapBuilder.SelectedTileSource = MapBuilder.TileSource.GoogleMaps;
+        }
     }
 }

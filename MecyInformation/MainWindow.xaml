@@ -34,6 +34,12 @@
                     <Button Command="{Binding DownloadDataCommand}">
                         <Image Source="Resources/ToolbarDownload.png" />
                     </Button>
+                    <Button Command="{Binding SelectOpenStreetMapStyleCommand}">
+                        <Image Source="Resources/ToolbarDownload.png" />
+                    </Button>
+                    <Button Command="{Binding SelectGoogleMapsStyleCommand}">
+                        <Image Source="Resources/ToolbarDownload.png" />
+                    </Button>
                 </ToolBar>
             </ToolBarTray>
         </StackPanel>

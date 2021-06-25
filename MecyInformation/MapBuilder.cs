@@ -19,6 +19,17 @@ namespace MecyInformation
 {
     public static class MapBuilder
     {
+        private const string GOOGLE_MAPS_TILE_URL = "http://mt{s}.google.com/vt/lyrs=t@125,r@130&hl=en&x={x}&y={y}&z={z}";
+        private static TileSource _selectedTileSource = TileSource.OpenStreetMap;
+
+        public static TileSource SelectedTileSource { get => _selectedTileSource; set => _selectedTileSource = value; }
+
+        public enum TileSource
+        {
+            OpenStreetMap,
+            GoogleMaps
+        }
+
         public static Map CreateMap(List<Mesocyclone> mesocyclones)
         {
             if (mesocyclones == null)
@@ -31,7 +42,15 @@ namespace MecyInformation
                 CRS = "EPSG:3857",
                 BackColor = Color.Gray
             };
-            map.Layers.Add(OpenStreetMap.CreateTileLayer());
+
+            if (SelectedTileSource == TileSource.OpenStreetMap)
+            {
+                map.Layers.Add(OpenStreetMap.CreateTileLayer());
+            }
+            else if (SelectedTileSource == TileSource.GoogleMaps)
+            {
+                map.Layers.Add(new TileLayer(CreateGoogleTileSource(GOOGLE_MAPS_TILE_URL)));
+            }
             map.Layers.Add(CreateMesoLayer(mesocyclones));
             return map;
         }
@@ -93,6 +112,22 @@ namespace MecyInformation
             var assembly = typeof(MapWindow).GetTypeInfo().Assembly;
             var image = assembly.GetManifestResourceStream(imagePath);
             return BitmapRegistry.Instance.Register(image);
+        }
+
+        private static ITileSource CreateGoogleTileSource(string urlFormatter)
+        {
+            return new HttpTileSource(new GlobalSphericalMercator(), urlFormatter, new[] { "0", "1", "2", "3" },
+                tileFetcher: FetchGoogleTile);
+        }
+
+        private static byte[] FetchGoogleTile(Uri arg)
+        {
+            var httpClient = new HttpClient();
+
+            httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Referer", "http://maps.google.com/");
+            httpClient.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", @"Mozilla / 5.0(Windows; U; Windows NT 6.0; en - US; rv: 1.9.1.7) Gecko / 20091221 Firefox / 3.5.7");
+
+            return httpClient.GetByteArrayAsync(arg).ConfigureAwait(false).GetAwaiter().GetResult();
         }
     }
 }
