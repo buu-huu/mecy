@@ -64,7 +64,7 @@ namespace MecyInformation
             }
             else
             {
-                mapControl.Map = MapBuilder.CreateMap(null);
+                mapControl.Map = MapBuilder.CreateMap(new List<Mesocyclone>());
             }
         }
 

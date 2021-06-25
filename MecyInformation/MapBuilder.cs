@@ -32,6 +32,23 @@ namespace MecyInformation
             return map;
         }
 
+        public static Map CreateMap(Mesocyclone mesocyclone)
+        {
+            if (mesocyclone == null)
+            {
+                return new Map();
+            }
+            var map = new Map
+            {
+                Transformation = new MinimalTransformation(),
+                CRS = "EPSG:3857",
+                BackColor = Color.Gray
+            };
+            map.Layers.Add(OpenStreetMap.CreateTileLayer());
+            map.Layers.Add(CreateMesoLayer(new List<Mesocyclone> { mesocyclone }));
+            return map;
+        }
+
         private static Layer CreateMesoLayer(List<Mesocyclone> mesocyclones)
         {
             var features = new Features();
