@@ -179,5 +179,25 @@ namespace MecyInformation.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ToolbarMapStyleGoogleMaps {
+            get {
+                object obj = ResourceManager.GetObject("ToolbarMapStyleGoogleMaps", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ToolbarMapStyleOpenStreetMap {
+            get {
+                object obj = ResourceManager.GetObject("ToolbarMapStyleOpenStreetMap", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
