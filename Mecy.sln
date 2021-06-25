@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MecyApplication", "MecyApplication\MecyApplication.csproj", "{86801EC8-F5FD-4584-A86A-2DD3DE2339EC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{86801EC8-F5FD-4584-A86A-2DD3DE2339EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86801EC8-F5FD-4584-A86A-2DD3DE2339EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86801EC8-F5FD-4584-A86A-2DD3DE2339EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86801EC8-F5FD-4584-A86A-2DD3DE2339EC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AB70C201-6CF3-4144-9105-E6AB43893078}
+	EndGlobalSection
+EndGlobal
