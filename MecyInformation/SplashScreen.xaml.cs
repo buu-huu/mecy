@@ -41,8 +41,8 @@ namespace MecyInformation
                 }
             }).ContinueWith(task =>
             {
-                MainWindow mainWindow = new MainWindow();
                 MainViewModel mainViewModel = new MainViewModel();
+                MainWindow mainWindow = new MainWindow(mainViewModel);
 
                 mainWindow.DataContext = mainViewModel;
                 mainWindow.Show();

@@ -41,14 +41,31 @@ namespace MecyInformation
         bool isDownloading = false;
         */
 
-        public MainWindow()
+        MainViewModel mainViewModel;
+
+        public MainWindow(MainViewModel mainViewModel)
         {
             InitializeComponent();
+
+            this.mainViewModel = mainViewModel;
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void lvOpenDataElements_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lvOpenDataElements.SelectedItem != null)
+            {
+                var selectedElement = (OpenDataElement)lvOpenDataElements.SelectedItem;
+                mapControl.Map = MapBuilder.CreateMap(selectedElement.Mesocyclones);
+            }
+            else
+            {
+                mapControl.Map = MapBuilder.CreateMap(null);
+            }
         }
 
         /*

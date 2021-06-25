@@ -14,7 +14,7 @@ using System.Windows.Threading;
 
 namespace MecyInformation
 {
-    class MainViewModel : INotifyPropertyChanged
+    public class MainViewModel : INotifyPropertyChanged
     {
         ObservableCollection<OpenDataElement> _openDataElements;
         OpenDataElement _selectedElement;

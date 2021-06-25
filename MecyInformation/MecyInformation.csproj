@@ -84,6 +84,7 @@
     <Compile Include="Elevation.cs" />
     <Compile Include="ListToStringConverter.cs" />
     <Compile Include="MainViewModel.cs" />
+    <Compile Include="MapBuilder.cs" />
     <Compile Include="MapWindow.xaml.cs">
       <DependentUpon>MapWindow.xaml</DependentUpon>
     </Compile>

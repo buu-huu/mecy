@@ -796,7 +796,9 @@
                     <RowDefinition/>
                     <RowDefinition Height="120" />
                 </Grid.RowDefinitions>
-                <ListView Margin="0"
+                <ListView x:Name="lvOpenDataElements"
+                          SelectionChanged="lvOpenDataElements_SelectionChanged"
+                          Margin="0"
                           ItemsSource="{Binding OpenDataElements}"
                           SelectedItem="{Binding SelectedElement}"
                           SelectionMode="Single"
