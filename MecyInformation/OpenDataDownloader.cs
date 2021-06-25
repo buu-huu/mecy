@@ -33,7 +33,7 @@ namespace MecyInformation
             using (Session session = new Session())
             {
                 session.Open(sessionOptions);
-                session.GetFiles(DWD_MESO_DIRECTORY+"*", LOCAL_DOWNLOAD_PATH+"\\").Check();
+                session.GetFiles(DWD_MESO_DIRECTORY + "*", LOCAL_DOWNLOAD_PATH + "\\").Check();
                 session.Close();
             }
         }

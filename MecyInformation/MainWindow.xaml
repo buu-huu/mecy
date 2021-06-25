@@ -11,6 +11,7 @@
         Height="1080" Width="1920"
         Background="#FFE8E8E8"
         Closing="Window_Closing"
+        WindowState="Maximized"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <local:ListToStringConverter x:Key="ListToStringConverter" />
@@ -19,9 +20,13 @@
         <StackPanel DockPanel.Dock="Top">
             <Menu>
                 <MenuItem Header="_File">
-                    <MenuItem Header="_Exit" />
+                    <MenuItem Header="_Download Data"
+                              Command="{Binding DownloadDataCommand}"/>
+                    <MenuItem Header="_Exit"
+                              Command="{Binding ExitApplicationCommand}"/>
                 </MenuItem>
-                <MenuItem Header="_About" />
+                <MenuItem Header="_About"
+                          Command="{Binding ShowAboutWindowCommand}"/>
             </Menu>
             
             <ToolBarTray>
@@ -760,7 +765,7 @@
                         </ListView>
                     </TabItem>
                     <TabItem Header="Map">
-                        <xaml:MapControl Name="mapControl"
+                        <xaml:MapControl x:Name="mapControl"
                                          Grid.Row="0"
                                          Grid.RowSpan="2" />
                     </TabItem>

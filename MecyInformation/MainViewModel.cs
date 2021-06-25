@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -198,6 +199,32 @@ namespace MecyInformation
             {
                 new MapWindow(SelectedMesocyclone).Show();
             }
+        }
+
+        public ICommand ExitApplicationCommand
+        {
+            get
+            {
+                return new RelayCommand(e => true, this.ExitApplication);
+            }
+        }
+
+        private void ExitApplication(object obj)
+        {
+            Environment.Exit(0);
+        }
+
+        public ICommand ShowAboutWindowCommand
+        {
+            get
+            {
+                return new RelayCommand(e => true, this.ShowAboutWindow);
+            }
+        }
+
+        private void ShowAboutWindow(object obj)
+        {
+            new AboutWindow().Show();
         }
     }
 }
