@@ -1,2 +1,2 @@
-# MecyInformation
+# Mecy
 Coming soon...
