@@ -27,7 +27,7 @@ namespace MecyInformation
             InitializeComponent();
             
             this.meso = meso;
-            mapControl.Map = MapBuilder.CreateMap(meso);
+            mapControl.Map = MapBuilder.CreateMap(new List<Mesocyclone> { meso });
             gridInformation.DataContext = meso;
         }
     }

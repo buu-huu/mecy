@@ -1,4 +1,7 @@
-﻿using Mapsui;
+﻿using BruTile;
+using BruTile.Predefined;
+using BruTile.Web;
+using Mapsui;
 using Mapsui.Layers;
 using Mapsui.Projection;
 using Mapsui.Providers;
@@ -7,6 +10,7 @@ using Mapsui.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,23 +33,6 @@ namespace MecyInformation
             };
             map.Layers.Add(OpenStreetMap.CreateTileLayer());
             map.Layers.Add(CreateMesoLayer(mesocyclones));
-            return map;
-        }
-
-        public static Map CreateMap(Mesocyclone mesocyclone)
-        {
-            if (mesocyclone == null)
-            {
-                return new Map();
-            }
-            var map = new Map
-            {
-                Transformation = new MinimalTransformation(),
-                CRS = "EPSG:3857",
-                BackColor = Color.Gray
-            };
-            map.Layers.Add(OpenStreetMap.CreateTileLayer());
-            map.Layers.Add(CreateMesoLayer(new List<Mesocyclone> { mesocyclone }));
             return map;
         }
 
