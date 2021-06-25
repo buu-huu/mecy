@@ -217,7 +217,11 @@ namespace MecyInformation
                     }
                     else
                     {
-                        MessageBox.Show("OpenData server not reachable.");
+                        MessageBox.Show(
+                            "OpenData server not reachable.",
+                            "Mecy Information",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Information);
                     }
 
                 }).ContinueWith(task =>
