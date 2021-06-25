@@ -20,13 +20,10 @@ namespace MecyInformation
     /// </summary>
     public partial class MapWindow : Window
     {
-        Mesocyclone meso;
-
         public MapWindow(Mesocyclone meso)
         {
             InitializeComponent();
             
-            this.meso = meso;
             mapControl.Map = MapBuilder.CreateMap(new List<Mesocyclone> { meso });
             gridInformation.DataContext = meso;
         }
