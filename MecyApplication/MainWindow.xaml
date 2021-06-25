@@ -7,7 +7,7 @@
         xmlns:xaml="clr-namespace:Mapsui.UI.Wpf;assembly=Mapsui.UI.Wpf"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
-        Title="Mecy Information"
+        Title="Mecy"
         Height="1080" Width="1920"
         Background="#FFE8E8E8"
         Closing="Window_Closing"

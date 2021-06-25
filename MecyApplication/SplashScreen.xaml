@@ -9,7 +9,7 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-        Title="Mecy Information" Height="300" Width="550"
+        Title="Mecy" Height="300" Width="550"
         ContentRendered="Window_ContentRendered">
     <Grid>
         <Border CornerRadius="20">
