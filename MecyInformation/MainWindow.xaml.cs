@@ -50,8 +50,9 @@ namespace MecyInformation
         public MainWindow(MainViewModel mainViewModel)
         {
             InitializeComponent();
-
+            
             this.MainViewModel = mainViewModel;
+            mapControl.Map = MapBuilder.CreateMap(new List<Mesocyclone>());
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
