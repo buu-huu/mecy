@@ -39,7 +39,7 @@ namespace MecyApplication
                 {
                     MessageBox.Show(
                         "OpenData server not reachable. Using existing data.",
-                        "Mecy Information",
+                        "Mecy",
                         MessageBoxButton.OK,
                         MessageBoxImage.Information);
                 }

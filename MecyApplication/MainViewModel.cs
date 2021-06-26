@@ -187,7 +187,7 @@ namespace MecyApplication
             {
                 MessageBox.Show(
                         "Can't find data. Try to download data again.",
-                        "Mecy Information",
+                        "Mecy",
                         MessageBoxButton.OK,
                         MessageBoxImage.Information);
             }
@@ -231,7 +231,7 @@ namespace MecyApplication
                     {
                         MessageBox.Show(
                             "OpenData server not reachable.",
-                            "Mecy Information",
+                            "Mecy",
                             MessageBoxButton.OK,
                             MessageBoxImage.Information);
                     }
