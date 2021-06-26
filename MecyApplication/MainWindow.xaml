@@ -31,7 +31,8 @@
             
             <ToolBarTray>
                 <ToolBar Height="50">
-                    <Button Command="{Binding DownloadDataCommand}">
+                    <Button Command="{Binding DownloadDataCommand}"
+                            ToolTip="Download data from OpenData server">
                         <Image Source="Resources/ToolbarDownload.png" />
                     </Button>
                     
