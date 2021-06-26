@@ -36,7 +36,7 @@ namespace MecyApplication
 
         public static Map CreateMap(List<Mesocyclone> mesocyclones)
         {
-            if (mesocyclones == null || mesocyclones.Count == 0)
+            if (mesocyclones == null)
             {
                 return new Map();
             }
