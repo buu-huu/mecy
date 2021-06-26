@@ -21,6 +21,7 @@ namespace MecyApplication
         private bool _showHistoricMesocyclones;
         private bool _showMesocycloneDiameter;
         private bool _showScaleBar;
+        private bool _showZoomWidget;
 
         public TileSource ActiveTileSource
         {
@@ -70,6 +71,18 @@ namespace MecyApplication
             }
         }
 
+        public bool ShowZoomWidget
+        {
+            get
+            {
+                return _showZoomWidget;
+            }
+            set
+            {
+                _showZoomWidget = value;
+            }
+        }
+
 
         MapConfiguration() { }
 
@@ -95,7 +108,7 @@ namespace MecyApplication
             mapConfig.ShowHistoricMesocyclones = true;
             mapConfig.ShowMesocycloneDiameter = true;
             mapConfig.ShowScaleBar = true;
-            
+            mapConfig.ShowZoomWidget = true;            
 
             return mapConfig;
         }

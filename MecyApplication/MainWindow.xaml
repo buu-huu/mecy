@@ -77,6 +77,11 @@
                                   ToolTip="Show scale bar in map">
                         <Image Source="Resources/ToolbarScaleBar.png" />
                     </ToggleButton>
+                    <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowZoomWidget, Mode=TwoWay}"
+                                  Command="{Binding RefreshMapAndMapConfigurationCommand}"
+                                  ToolTip="Show zoom buttons in map">
+                        <Image Source="Resources/ToolbarZoom.png" />
+                    </ToggleButton>
                 </ToolBar>
             </ToolBarTray>
         </StackPanel>

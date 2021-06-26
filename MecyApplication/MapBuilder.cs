@@ -9,6 +9,7 @@ using Mapsui.Providers;
 using Mapsui.Styles;
 using Mapsui.Utilities;
 using Mapsui.Widgets.ScaleBar;
+using Mapsui.Widgets.Zoom;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,6 +44,10 @@ namespace MecyApplication
             if (mapConfiguration.ShowScaleBar)
             {
                 map.Widgets.Add(new ScaleBarWidget(map));
+            }
+            if (mapConfiguration.ShowZoomWidget)
+            {
+                map.Widgets.Add(new ZoomInOutWidget());
             }
 
             /* Layers */
