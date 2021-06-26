@@ -178,7 +178,19 @@ namespace MecyApplication
 
         private void ParseData()
         {
-            OpenDataElements = new ObservableCollection<OpenDataElement>(XMLParser.ParseAllMesos(OpenDataDownloader.LOCAL_DOWNLOAD_PATH));
+            var parsedElements = XMLParser.ParseAllMesos(OpenDataDownloader.LOCAL_DOWNLOAD_PATH);
+            if (parsedElements.Count > 0)
+            {
+                OpenDataElements = new ObservableCollection<OpenDataElement>(parsedElements);
+            }
+            else
+            {
+                MessageBox.Show(
+                        "Can't find data. Try to download data again.",
+                        "Mecy Information",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
+            }
         }
 
         private void OnPropertyChanged(string propertyName)

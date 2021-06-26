@@ -16,15 +16,22 @@ namespace MecyApplication
         public static List<OpenDataElement> ParseAllMesos(string path)
         {
             List<OpenDataElement> openDataElements = new List<OpenDataElement>();
-            foreach (var mesoFile in Directory.GetFiles(path))
+            try
             {
-                var openDataElement = ParseMesoFile(mesoFile);
-                if (!(openDataElement.Time == DateTime.Parse("01.01.001 00:00")))
+                foreach (var mesoFile in Directory.GetFiles(path))
                 {
-                    openDataElements.Add(openDataElement);
+                    var openDataElement = ParseMesoFile(mesoFile);
+                    if (!(openDataElement.Time == DateTime.Parse("01.01.001 00:00"))) // This happens, when an error occurs while parsing the XML File
+                    {
+                        openDataElements.Add(openDataElement);
+                    }
                 }
+                openDataElements = openDataElements.OrderBy(x => x.Time).Reverse().ToList();
             }
-            openDataElements = openDataElements.OrderBy(x => x.Time).Reverse().ToList();
+            catch
+            {
+                // Todo logging (directory not exists)...
+            }
             return openDataElements;
         }
 
@@ -183,11 +190,10 @@ namespace MecyApplication
                 }
                 return new OpenDataElement(timeStamp, stations, parsedMesos);
             }
-            catch (Exception e)
+            catch
             {
-                return new OpenDataElement();
+                return null;
             }
-            
         }
     }
 }
