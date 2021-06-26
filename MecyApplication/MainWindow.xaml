@@ -865,7 +865,7 @@
                             <Setter Property="Height" Value="30" />
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding MesoCountIndicator}" Value="0">
-                                    <Setter Property="Background" Value="#FF94FF99" />
+                                    <Setter Property="Background" Value="#FFD2FFD4" />
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding MesoCountIndicator}" Value="1">
                                     <Setter Property="Background" Value="#FFEFFF94" />
@@ -894,11 +894,41 @@
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="UTC"
-                                            Width="120"
+                                            Width="110"
                                             DisplayMemberBinding="{Binding Path=Time, StringFormat='dd.MM.yyy HH:mm'}" />
-                            <GridViewColumn Header="Mesocyclones"
-                                            Width="120"
+                            <GridViewColumn Header="Σ Meso"
+                                            Width="55"
                                             DisplayMemberBinding="{Binding Mesocyclones.Count}" />
+                            <GridViewColumn Header="Max Meso"
+                                            Width="60">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Image.Style>
+                                                <Style TargetType="{x:Type Image}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding HighestMesocycloneIntensity}" Value="1">
+                                                            <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_1.png" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding HighestMesocycloneIntensity}" Value="2">
+                                                            <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_2.png" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding HighestMesocycloneIntensity}" Value="3">
+                                                            <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_3.png" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding HighestMesocycloneIntensity}" Value="4">
+                                                            <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_4.png" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding HighestMesocycloneIntensity}" Value="5">
+                                                            <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_5.png" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Image.Style>
+                                        </Image>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
                         </GridView>
                     </ListView.View>
                 </ListView>

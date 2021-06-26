@@ -305,6 +305,21 @@ namespace MecyApplication
             }
         }
 
+        public int HighestMesocycloneIntensity
+        {
+            get
+            {
+                if (Mesocyclones.Count > 0)
+                {
+                    return Mesocyclones.Max(x => x.Intensity);
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
         public OpenDataElement() { }
         public OpenDataElement(DateTime time, List<RadarStation> radarStations, List<Mesocyclone> mesocyclones)
         {
