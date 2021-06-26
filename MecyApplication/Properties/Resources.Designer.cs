@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Mecy.Properties {
+namespace MecyApplication.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Mecy.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Mecy.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MecyApplication.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -246,6 +246,16 @@ namespace Mecy.Properties {
         internal static System.Drawing.Bitmap ToolbarDownload {
             get {
                 object obj = ResourceManager.GetObject("ToolbarDownload", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ToolbarHistMeso {
+            get {
+                object obj = ResourceManager.GetObject("ToolbarHistMeso", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

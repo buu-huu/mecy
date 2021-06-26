@@ -45,8 +45,8 @@
                     <Separator />
 
                     <ToggleButton IsChecked="{Binding ShowHistoricMesocyclones, Mode=TwoWay}"
-                                  Command="{Binding RefreshMapCommand}">
-                        <Image Source="Resources/ToolbarMapStyleGoogleMaps.png" />
+                                  Command="{Binding RefreshMapAndMapConfigurationCommand}">
+                        <Image Source="Resources/ToolbarHistMeso.png" />
                     </ToggleButton>
                 </ToolBar>
             </ToolBarTray>

@@ -22,6 +22,8 @@ namespace MecyApplication
         List<Mesocyclone> _mesocyclones;
         Mesocyclone _selectedMesocyclone;
 
+        MapConfiguration _mapConfiguration;
+
         bool _openDataServerReachable = false;
         bool _isDownloading = false;
         bool _showHistoricMesocyclones = false;
@@ -82,6 +84,19 @@ namespace MecyApplication
             {
                 _selectedMesocyclone = value;
                 OnPropertyChanged("SelectedMesocyclone");
+            }
+        }
+
+        public MapConfiguration MapConfiguration
+        {
+            get
+            {
+                return _mapConfiguration;
+            }
+            set
+            {
+                _mapConfiguration = value;
+                OnPropertyChanged("MapConfiguration");
             }
         }
 
@@ -155,6 +170,11 @@ namespace MecyApplication
             ParseData();
             SetupClocks();
             SetupConnectionWatcher();
+        }
+
+        private void SetupMapConfiguration()
+        {
+            this.MapConfiguration = MapConfiguration.CreateDefaultMapConfiguration();
         }
 
         private void SetupClocks()
