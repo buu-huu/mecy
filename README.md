@@ -1,4 +1,4 @@
-# Mecy
+# Mecy - Mesocyclone Visualization
 
 ![Header Image](Resources/Readme_Images/Header_Image.jpg)
 
