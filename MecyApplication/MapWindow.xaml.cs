@@ -25,7 +25,7 @@ namespace MecyApplication
         {
             InitializeComponent();
             
-            mapControl.Map = MapBuilder.CreateMap(new List<Mesocyclone> { meso }, MapConfiguration.Instance);
+            mapControl.Map = MapBuilder.CreateMap(new List<Mesocyclone> { meso }, null, MapConfiguration.Instance);
             gridInformation.DataContext = meso;
         }
     }

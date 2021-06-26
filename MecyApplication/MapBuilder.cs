@@ -8,6 +8,7 @@ using Mapsui.Projection;
 using Mapsui.Providers;
 using Mapsui.Styles;
 using Mapsui.Utilities;
+using Mapsui.Widgets.ScaleBar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,41 +26,6 @@ namespace MecyApplication
         
         private const string GOOGLE_MAPS_TILE_URL = "http://mt{s}.google.com/vt/lyrs=t@125,r@130&hl=en&x={x}&y={y}&z={z}";
         
-        public static Map CreateMap(List<Mesocyclone> mesocyclones, MapConfiguration mapConfiguration)
-        {
-            if (mesocyclones == null)
-            {
-                return new Map();
-            }
-            var map = new Map
-            {
-                Transformation = new MinimalTransformation(),
-                CRS = "EPSG:3857",
-                BackColor = Color.Gray
-            };
-
-            /* Layers */
-            if (mapConfiguration.ActiveTileSource == MapConfiguration.TileSource.OpenStreetMap)
-            {
-                map.Layers.Add(OpenStreetMap.CreateTileLayer());
-            }
-            else if (mapConfiguration.ActiveTileSource == MapConfiguration.TileSource.GoogleMaps)
-            {
-                map.Layers.Add(new TileLayer(CreateGoogleTileSource(GOOGLE_MAPS_TILE_URL)));
-            }
-
-            if (mapConfiguration.ShowMesocycloneDiameter)
-            {
-                map.Layers.Add(CreateMesoDiameterLayer(mesocyclones));
-            }
-            map.Layers.Add(CreateMesoLayer(mesocyclones));
-
-            /* Center Map */
-            map.Home = n => n.NavigateTo(FromLongLat(CENTER_LONGITUDE, CENTER_LATITUDE), map.Resolutions[6]);
-
-            return map;
-        }
-
         public static Map CreateMap(List<Mesocyclone> mesocyclones, List<Mesocyclone> historicMesocyclones, MapConfiguration mapConfiguration)
         {
             if (mesocyclones == null)
@@ -72,6 +38,12 @@ namespace MecyApplication
                 CRS = "EPSG:3857",
                 BackColor = Color.Gray
             };
+            
+            /* Widgets */
+            if (mapConfiguration.ShowScaleBar)
+            {
+                map.Widgets.Add(new ScaleBarWidget(map));
+            }
 
             /* Layers */
             if (mapConfiguration.ActiveTileSource == MapConfiguration.TileSource.OpenStreetMap)
@@ -82,11 +54,15 @@ namespace MecyApplication
             {
                 map.Layers.Add(new TileLayer(CreateGoogleTileSource(GOOGLE_MAPS_TILE_URL)));
             }
+
             if (mapConfiguration.ShowMesocycloneDiameter)
             {
                 map.Layers.Add(CreateMesoDiameterLayer(mesocyclones));
             }
-            map.Layers.Add(CreateHistoricMesoLayer(historicMesocyclones));
+            if (historicMesocyclones != null)
+            {
+                map.Layers.Add(CreateHistoricMesoLayer(historicMesocyclones));
+            }
             map.Layers.Add(CreateMesoLayer(mesocyclones));
 
             /* Center Map */

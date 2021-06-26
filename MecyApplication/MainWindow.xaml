@@ -70,6 +70,13 @@
                                   ToolTip="Show mesocyclone diameter in map">
                         <Image Source="Resources/ToolbarDiameter.png" />
                     </ToggleButton>
+
+                    <Separator />
+                    <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowScaleBar, Mode=TwoWay}"
+                                  Command="{Binding RefreshMapAndMapConfigurationCommand}"
+                                  ToolTip="Show scale bar in map">
+                        <Image Source="Resources/ToolbarScaleBar.png" />
+                    </ToggleButton>
                 </ToolBar>
             </ToolBarTray>
         </StackPanel>

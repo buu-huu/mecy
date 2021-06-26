@@ -76,7 +76,9 @@ namespace MecyApplication
 
                     if (previousElement == null)
                     {
-                        mapControl.Map = MapBuilder.CreateMap(MainViewModel.SelectedElement.Mesocyclones, MainViewModel.CurrentMapConfiguration);
+                        mapControl.Map = MapBuilder.CreateMap(MainViewModel.SelectedElement.Mesocyclones,
+                            null,
+                            MainViewModel.CurrentMapConfiguration);
                     }
                     else
                     {
@@ -88,12 +90,16 @@ namespace MecyApplication
                 }
                 else
                 {
-                    mapControl.Map = MapBuilder.CreateMap(MainViewModel.SelectedElement.Mesocyclones, MainViewModel.CurrentMapConfiguration);
+                    mapControl.Map = MapBuilder.CreateMap(MainViewModel.SelectedElement.Mesocyclones,
+                        null,
+                        MainViewModel.CurrentMapConfiguration);
                 }
             }
             else
             {
-                mapControl.Map = MapBuilder.CreateMap(new List<Mesocyclone>(), MainViewModel.CurrentMapConfiguration);
+                mapControl.Map = MapBuilder.CreateMap(new List<Mesocyclone>(),
+                    null,
+                    MainViewModel.CurrentMapConfiguration);
             }
         }
 

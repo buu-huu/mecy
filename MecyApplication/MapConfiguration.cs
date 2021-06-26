@@ -20,6 +20,7 @@ namespace MecyApplication
         private static TileSource _activeTileSource;
         private bool _showHistoricMesocyclones;
         private bool _showMesocycloneDiameter;
+        private bool _showScaleBar;
 
         public TileSource ActiveTileSource
         {
@@ -57,6 +58,18 @@ namespace MecyApplication
             }
         }
 
+        public bool ShowScaleBar
+        {
+            get
+            {
+                return _showScaleBar;
+            }
+            set
+            {
+                _showScaleBar = value;
+            }
+        }
+
 
         MapConfiguration() { }
 
@@ -78,9 +91,11 @@ namespace MecyApplication
         public static MapConfiguration CreateDefaultMapConfiguration()
         {
             var mapConfig = Instance;
+            mapConfig.ActiveTileSource = TileSource.OpenStreetMap;
             mapConfig.ShowHistoricMesocyclones = true;
             mapConfig.ShowMesocycloneDiameter = true;
-            mapConfig.ActiveTileSource = TileSource.OpenStreetMap;
+            mapConfig.ShowScaleBar = true;
+            
 
             return mapConfig;
         }

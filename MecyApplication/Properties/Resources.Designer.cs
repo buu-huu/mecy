@@ -289,5 +289,15 @@ namespace MecyApplication.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ToolbarScaleBar {
+            get {
+                object obj = ResourceManager.GetObject("ToolbarScaleBar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
