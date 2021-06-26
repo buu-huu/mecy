@@ -73,7 +73,7 @@ namespace MecyApplication
             {
                 var mesoFeature = new Feature
                 {
-                    Geometry = new Mapsui.Geometries.Point(meso.Longitude, meso.Latitude),
+                    Geometry = new Point(meso.Longitude, meso.Latitude),
                 };
                 SymbolStyle style = new SymbolStyle();
                 switch (meso.Intensity)
@@ -114,36 +114,6 @@ namespace MecyApplication
         private static Layer CreateMesoDiameterLayer(List<Mesocyclone> mesocyclones)
         {
             var features = new Features();
-
-            foreach (var meso in mesocyclones)
-            {
-                var mesoFeature = new Feature
-                {
-                    Geometry = new Mapsui.Geometries.Point(meso.Longitude, meso.Latitude),
-                };
-                SymbolStyle style = new SymbolStyle();
-                switch (meso.Intensity)
-                {
-                    case 1:
-                        style = CreatePngStyle("Mecy.Resources.meso_icon_map_1.png", 0.6);
-                        break;
-                    case 2:
-                        style = CreatePngStyle("Mecy.Resources.meso_icon_map_2.png", 0.6);
-                        break;
-                    case 3:
-                        style = CreatePngStyle("Mecy.Resources.meso_icon_map_3.png", 0.6);
-                        break;
-                    case 4:
-                        style = CreatePngStyle("Mecy.Resources.meso_icon_map_4.png", 0.6);
-                        break;
-                    case 5:
-                        style = CreatePngStyle("Mecy.Resources.meso_icon_map_5.png", 0.6);
-                        break;
-                }
-                mesoFeature.Styles.Add(style);
-                features.Add(mesoFeature);
-            }
-
             return new Layer("Diameter Layer")
             {
                 DataSource = new MemoryProvider(CreateDiameterCircles(mesocyclones)),
