@@ -92,6 +92,7 @@
     <Compile Include="MapWindow.xaml.cs">
       <DependentUpon>MapWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MesoCountConverter.cs" />
     <Compile Include="OpenDataDownloader.cs" />
     <Compile Include="OpenDataElement.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

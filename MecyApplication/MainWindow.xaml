@@ -15,6 +15,7 @@
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <local:ListToStringConverter x:Key="ListToStringConverter" />
+        <local:MesoCountConverter x:Key="MesoCountConverter" />
     </Window.Resources>
     <DockPanel>
         <StackPanel DockPanel.Dock="Top">
@@ -883,7 +884,8 @@
                                     <Setter Property="Background" Value="#FFAE94FF" />
                                 </DataTrigger>
                                 <Trigger Property="IsSelected" Value="True">
-                                    <Setter Property="BorderBrush" Value="#FFFF3CAC" />
+                                    <Setter Property="BorderBrush" Value="Black" />
+                                    <Setter Property="BorderThickness" Value="1" />
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="BorderBrush" Value="#FFFF70C2" />
@@ -898,7 +900,7 @@
                                             DisplayMemberBinding="{Binding Path=Time, StringFormat='dd.MM.yyy HH:mm'}" />
                             <GridViewColumn Header="Σ Meso"
                                             Width="55"
-                                            DisplayMemberBinding="{Binding Mesocyclones.Count}" />
+                                            DisplayMemberBinding="{Binding Path=Mesocyclones.Count, Converter={StaticResource MesoCountConverter}}" />
                             <GridViewColumn Header="Max Meso"
                                             Width="60">
                                 <GridViewColumn.CellTemplate>
