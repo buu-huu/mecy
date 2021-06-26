@@ -44,7 +44,8 @@
                                  BorderThickness="0"
                                  IsChecked="True"
                                  Command="{Binding SelectOpenStreetMapStyleCommand}"
-                                 GroupName="MapStyle">
+                                 GroupName="MapStyle"
+                                 ToolTip="Select OpenStreetMap style for map">
                         <Image Source="Resources/ToolbarMapStyleOpenStreetMap.png" />
                     </RadioButton>
 
@@ -52,18 +53,21 @@
                                  Background="Transparent"
                                  BorderThickness="0"
                                  Command="{Binding SelectGoogleMapsStyleCommand}"
-                                 GroupName="MapStyle">
+                                 GroupName="MapStyle"
+                                 ToolTip="Select Google Maps style for map">
                         <Image Source="Resources/ToolbarMapStyleGoogleMaps.png" />
                     </RadioButton>
 
                     <Separator />
 
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowHistoricMesocyclones, Mode=TwoWay}"
-                                  Command="{Binding RefreshMapAndMapConfigurationCommand}">
+                                  Command="{Binding RefreshMapAndMapConfigurationCommand}"
+                                  ToolTip="Show historic mesocyclones in map">
                         <Image Source="Resources/ToolbarHistMeso.png" />
                     </ToggleButton>
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowMesocycloneDiameter, Mode=TwoWay}"
-                                  Command="{Binding RefreshMapAndMapConfigurationCommand}">
+                                  Command="{Binding RefreshMapAndMapConfigurationCommand}"
+                                  ToolTip="Show mesocyclone diameter in map">
                         <Image Source="Resources/ToolbarDiameter.png" />
                     </ToggleButton>
                 </ToolBar>
