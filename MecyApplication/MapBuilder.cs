@@ -2,6 +2,7 @@
 using BruTile.Predefined;
 using BruTile.Web;
 using Mapsui;
+using Mapsui.Geometries;
 using Mapsui.Layers;
 using Mapsui.Projection;
 using Mapsui.Providers;
@@ -32,6 +33,7 @@ namespace MecyApplication
 
         public static TileSource SelectedTileSource { get => _selectedTileSource; set => _selectedTileSource = value; }
 
+
         public static Map CreateMap(List<Mesocyclone> mesocyclones)
         {
             if (mesocyclones == null || mesocyclones.Count == 0)
@@ -45,6 +47,7 @@ namespace MecyApplication
                 BackColor = Color.Gray
             };
 
+            /* Layers */
             if (SelectedTileSource == TileSource.OpenStreetMap)
             {
                 map.Layers.Add(OpenStreetMap.CreateTileLayer());
@@ -53,12 +56,11 @@ namespace MecyApplication
             {
                 map.Layers.Add(new TileLayer(CreateGoogleTileSource(GOOGLE_MAPS_TILE_URL)));
             }
-            map.Layers.Add(CreateMesoLayer(mesocyclones));
             map.Layers.Add(CreateMesoDiameterLayer(mesocyclones));
+            map.Layers.Add(CreateMesoLayer(mesocyclones));
 
             /* Center Map */
-            var centerPosition = SphericalMercator.FromLonLat(CENTER_LONGITUDE, CENTER_LATITUDE);
-            map.Home = n => n.NavigateTo(centerPosition, map.Resolutions[6]);
+            map.Home = n => n.NavigateTo(FromLongLat(CENTER_LONGITUDE, CENTER_LATITUDE), map.Resolutions[6]);
 
             return map;
         }
@@ -142,18 +144,47 @@ namespace MecyApplication
                 features.Add(mesoFeature);
             }
 
-            var dataSource = new MemoryProvider(features)
+            return new Layer("Diameter Layer")
             {
-                CRS = "EPSG:4326"
-            };
-
-            return new Layer
-            {
-                DataSource = dataSource,
-                Name = "Meso Point",
-                Style = null
+                DataSource = new MemoryProvider(CreateDiameterCircles(mesocyclones)),
+                Style = new VectorStyle
+                {
+                    Fill = new Brush(new Color(255, 97, 247, 50)),
+                    Outline = new Pen
+                    {
+                        Color = new Color(121, 97, 255, 200),
+                        Width = 2,
+                        PenStyle = PenStyle.LongDashDot,
+                        PenStrokeCap = PenStrokeCap.Butt
+                    }
+                }
             };
         }
+
+        private static List<Polygon> CreateDiameterCircles(List<Mesocyclone> mesocyclones)
+        {
+            var result = new List<Polygon>();
+
+            foreach (var meso in mesocyclones)
+            {
+                var polygon = new Polygon();
+                var middle = FromLongLat(meso.Longitude, meso.Latitude);
+                double radius = 100000; // Currently default value...
+
+                for (double angle = 0; angle <= 2 * Math.PI; angle += 0.2)
+                {
+                    polygon.ExteriorRing.Vertices.Add(
+                        new Point(
+                            middle.X + radius * Math.Cos(angle),
+                            middle.Y + radius * Math.Sin(angle)));
+                }
+
+                result.Add(polygon);
+            }
+
+            return result;
+        }
+
 
         private static SymbolStyle CreatePngStyle(string embeddedResourcePath, double scale)
         {
@@ -182,6 +213,11 @@ namespace MecyApplication
             httpClient.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", @"Mozilla / 5.0(Windows; U; Windows NT 6.0; en - US; rv: 1.9.1.7) Gecko / 20091221 Firefox / 3.5.7");
 
             return httpClient.GetByteArrayAsync(arg).ConfigureAwait(false).GetAwaiter().GetResult();
+        }
+
+        private static Point FromLongLat(double longitude, double latitude)
+        {
+            return SphericalMercator.FromLonLat(longitude, latitude);
         }
     }
 }
