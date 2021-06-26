@@ -30,8 +30,7 @@
                     <Image Source="Resources/LogoWithSubtitle.png"
                        Width="350"
                        Margin="20" />
-                    <Label
-                        HorizontalAlignment="Center">Version 1.0</Label>
+                    <Label HorizontalAlignment="Center">Version 1.0</Label>
                 </StackPanel>
                 <ProgressBar IsIndeterminate="True" Grid.Row="1" />
                 <TextBlock HorizontalAlignment="Center"

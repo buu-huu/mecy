@@ -6,6 +6,7 @@ using Mapsui.Providers;
 using Mapsui.Rendering.Skia;
 using Mapsui.Styles;
 using Mapsui.UI;
+using Mapsui.UI.Wpf;
 using Mapsui.Utilities;
 using System.Collections.Generic;
 using System.IO;
@@ -26,6 +27,16 @@ namespace MecyApplication
             
             mapControl.Map = MapBuilder.CreateMap(new List<Mesocyclone> { meso });
             gridInformation.DataContext = meso;
+        }
+
+        private void mapControl_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            
+        }
+
+        private void Test(object sender, MapInfoEventArgs e)
+        {
+
         }
     }
 }
