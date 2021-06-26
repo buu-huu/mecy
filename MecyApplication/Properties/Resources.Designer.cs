@@ -243,6 +243,16 @@ namespace MecyApplication.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ToolbarDiameter {
+            get {
+                object obj = ResourceManager.GetObject("ToolbarDiameter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ToolbarDownload {
             get {
                 object obj = ResourceManager.GetObject("ToolbarDownload", resourceCulture);

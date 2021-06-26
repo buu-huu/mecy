@@ -50,7 +50,7 @@
                     </ToggleButton>
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowMesocycloneDiameter, Mode=TwoWay}"
                                   Command="{Binding RefreshMapAndMapConfigurationCommand}">
-                        <Image Source="Resources/ToolbarHistMeso.png" />
+                        <Image Source="Resources/ToolbarDiameter.png" />
                     </ToggleButton>
                 </ToolBar>
             </ToolBarTray>
