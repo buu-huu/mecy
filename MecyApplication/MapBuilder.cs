@@ -19,6 +19,8 @@ namespace MecyApplication
 {
     public static class MapBuilder
     {
+        private const double CENTER_LONGITUDE = 10.160549;
+        private const double CENTER_LATITUDE  = 51.024813;
         public enum TileSource
         {
             OpenStreetMap,
@@ -32,7 +34,7 @@ namespace MecyApplication
 
         public static Map CreateMap(List<Mesocyclone> mesocyclones)
         {
-            if (mesocyclones == null)
+            if (mesocyclones == null || mesocyclones.Count == 0)
             {
                 return new Map();
             }
@@ -52,6 +54,12 @@ namespace MecyApplication
                 map.Layers.Add(new TileLayer(CreateGoogleTileSource(GOOGLE_MAPS_TILE_URL)));
             }
             map.Layers.Add(CreateMesoLayer(mesocyclones));
+            map.Layers.Add(CreateMesoDiameterLayer(mesocyclones));
+
+            /* Center Map */
+            var centerPosition = SphericalMercator.FromLonLat(CENTER_LONGITUDE, CENTER_LATITUDE);
+            map.Home = n => n.NavigateTo(centerPosition, map.Resolutions[6]);
+
             return map;
         }
 
@@ -100,7 +108,53 @@ namespace MecyApplication
                 Style = null
             };
         }
-        
+
+        private static Layer CreateMesoDiameterLayer(List<Mesocyclone> mesocyclones)
+        {
+            var features = new Features();
+
+            foreach (var meso in mesocyclones)
+            {
+                var mesoFeature = new Feature
+                {
+                    Geometry = new Mapsui.Geometries.Point(meso.Longitude, meso.Latitude),
+                };
+                SymbolStyle style = new SymbolStyle();
+                switch (meso.Intensity)
+                {
+                    case 1:
+                        style = CreatePngStyle("Mecy.Resources.meso_icon_map_1.png", 0.6);
+                        break;
+                    case 2:
+                        style = CreatePngStyle("Mecy.Resources.meso_icon_map_2.png", 0.6);
+                        break;
+                    case 3:
+                        style = CreatePngStyle("Mecy.Resources.meso_icon_map_3.png", 0.6);
+                        break;
+                    case 4:
+                        style = CreatePngStyle("Mecy.Resources.meso_icon_map_4.png", 0.6);
+                        break;
+                    case 5:
+                        style = CreatePngStyle("Mecy.Resources.meso_icon_map_5.png", 0.6);
+                        break;
+                }
+                mesoFeature.Styles.Add(style);
+                features.Add(mesoFeature);
+            }
+
+            var dataSource = new MemoryProvider(features)
+            {
+                CRS = "EPSG:4326"
+            };
+
+            return new Layer
+            {
+                DataSource = dataSource,
+                Name = "Meso Point",
+                Style = null
+            };
+        }
+
         private static SymbolStyle CreatePngStyle(string embeddedResourcePath, double scale)
         {
             var bitmapId = GetBitmapIdForEmbeddedResource(embeddedResourcePath);

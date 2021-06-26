@@ -42,7 +42,7 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <ApplicationIcon>256x256.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\256x256.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Toolkit.Win32.UI.XamlHost.Managed, Version=6.1.0.0, Culture=neutral, PublicKeyToken=4aff67a105548ee2, processorArchitecture=MSIL">
@@ -213,7 +213,7 @@
     <Resource Include="Resources\LogoWithoutSubtitle.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="256x256.ico" />
+    <None Include="Resources\256x256.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
