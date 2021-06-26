@@ -22,11 +22,10 @@ namespace MecyApplication
         List<Mesocyclone> _mesocyclones;
         Mesocyclone _selectedMesocyclone;
 
-        MapConfiguration _mapConfiguration;
+        MapConfiguration _currentMapConfiguration = MapConfiguration.CreateDefaultMapConfiguration();
 
         bool _openDataServerReachable = false;
         bool _isDownloading = false;
-        bool _showHistoricMesocyclones = false;
 
         DateTime _timeUtc;
         DateTime _timeLoc;
@@ -87,16 +86,16 @@ namespace MecyApplication
             }
         }
 
-        public MapConfiguration MapConfiguration
+        public MapConfiguration CurrentMapConfiguration
         {
             get
             {
-                return _mapConfiguration;
+                return _currentMapConfiguration;
             }
             set
             {
-                _mapConfiguration = value;
-                OnPropertyChanged("MapConfiguration");
+                _currentMapConfiguration = value;
+                OnPropertyChanged("CurrentMapConfiguration");
             }
         }
 
@@ -123,19 +122,6 @@ namespace MecyApplication
             {
                 _isDownloading = value;
                 OnPropertyChanged("IsDownloading");
-            }
-        }
-
-        public bool ShowHistoricMesocyclones
-        {
-            get
-            {
-                return _showHistoricMesocyclones;
-            }
-            set
-            {
-                _showHistoricMesocyclones = value;
-                OnPropertyChanged("ShowHistoricMesocyclones");
             }
         }
 
@@ -170,11 +156,6 @@ namespace MecyApplication
             ParseData();
             SetupClocks();
             SetupConnectionWatcher();
-        }
-
-        private void SetupMapConfiguration()
-        {
-            this.MapConfiguration = MapConfiguration.CreateDefaultMapConfiguration();
         }
 
         private void SetupClocks()
@@ -335,7 +316,7 @@ namespace MecyApplication
 
         private void SelectOpenStreetMapStyle(object obj)
         {
-            MapBuilder.SelectedTileSource = MapBuilder.TileSource.OpenStreetMap;
+            CurrentMapConfiguration.ActiveTileSource = MapConfiguration.TileSource.OpenStreetMap;
             RefreshMapEvent?.Invoke();
         }
         
@@ -349,19 +330,19 @@ namespace MecyApplication
 
         private void SelectGoogleMapsStyle(object obj)
         {
-            MapBuilder.SelectedTileSource = MapBuilder.TileSource.GoogleMaps;
+            CurrentMapConfiguration.ActiveTileSource = MapConfiguration.TileSource.GoogleMaps;
             RefreshMapEvent?.Invoke();
         }
 
-        public ICommand RefreshMapCommand
+        public ICommand RefreshMapAndMapConfigurationCommand
         {
             get
             {
-                return new RelayCommand(e => true, this.RefreshMap);
+                return new RelayCommand(e => true, this.RefreshMapAndMapConfiguration);
             }
         }
 
-        private void RefreshMap(object obj)
+        private void RefreshMapAndMapConfiguration(object obj)
         {
             RefreshMapEvent?.Invoke();
         }

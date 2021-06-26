@@ -68,7 +68,7 @@ namespace MecyApplication
         {
             if (MainViewModel.SelectedElement != null)
             {
-                if (MainViewModel.ShowHistoricMesocyclones)
+                if (MainViewModel.CurrentMapConfiguration.ShowHistoricMesocyclones)
                 {
                     OpenDataElement previousElement = OpenDataElement.GetPreviousOpenDataElement(
                         MainViewModel.OpenDataElements.ToList(),
@@ -76,23 +76,24 @@ namespace MecyApplication
 
                     if (previousElement == null)
                     {
-                        mapControl.Map = MapBuilder.CreateMap(MainViewModel.SelectedElement.Mesocyclones);
+                        mapControl.Map = MapBuilder.CreateMap(MainViewModel.SelectedElement.Mesocyclones, MainViewModel.CurrentMapConfiguration);
                     }
                     else
                     {
                         mapControl.Map = MapBuilder.CreateMap(
                             MainViewModel.SelectedElement.Mesocyclones,
-                            previousElement.Mesocyclones);
+                            previousElement.Mesocyclones,
+                            MainViewModel.CurrentMapConfiguration);
                     }
                 }
                 else
                 {
-                    mapControl.Map = MapBuilder.CreateMap(MainViewModel.SelectedElement.Mesocyclones);
+                    mapControl.Map = MapBuilder.CreateMap(MainViewModel.SelectedElement.Mesocyclones, MainViewModel.CurrentMapConfiguration);
                 }
             }
             else
             {
-                mapControl.Map = MapBuilder.CreateMap(new List<Mesocyclone>());
+                mapControl.Map = MapBuilder.CreateMap(new List<Mesocyclone>(), MainViewModel.CurrentMapConfiguration);
             }
         }
 

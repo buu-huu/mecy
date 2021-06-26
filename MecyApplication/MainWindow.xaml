@@ -44,7 +44,11 @@
 
                     <Separator />
 
-                    <ToggleButton IsChecked="{Binding ShowHistoricMesocyclones, Mode=TwoWay}"
+                    <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowHistoricMesocyclones, Mode=TwoWay}"
+                                  Command="{Binding RefreshMapAndMapConfigurationCommand}">
+                        <Image Source="Resources/ToolbarHistMeso.png" />
+                    </ToggleButton>
+                    <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowMesocycloneDiameter, Mode=TwoWay}"
                                   Command="{Binding RefreshMapAndMapConfigurationCommand}">
                         <Image Source="Resources/ToolbarHistMeso.png" />
                     </ToggleButton>

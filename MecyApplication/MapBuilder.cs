@@ -22,19 +22,10 @@ namespace MecyApplication
     {
         private const double CENTER_LONGITUDE = 10.160549;
         private const double CENTER_LATITUDE  = 51.024813;
-        public enum TileSource
-        {
-            OpenStreetMap,
-            GoogleMaps
-        }
-
+        
         private const string GOOGLE_MAPS_TILE_URL = "http://mt{s}.google.com/vt/lyrs=t@125,r@130&hl=en&x={x}&y={y}&z={z}";
-        private static TileSource _selectedTileSource = TileSource.OpenStreetMap;
-
-        public static TileSource SelectedTileSource { get => _selectedTileSource; set => _selectedTileSource = value; }
-
-
-        public static Map CreateMap(List<Mesocyclone> mesocyclones)
+        
+        public static Map CreateMap(List<Mesocyclone> mesocyclones, MapConfiguration mapConfiguration)
         {
             if (mesocyclones == null)
             {
@@ -48,15 +39,19 @@ namespace MecyApplication
             };
 
             /* Layers */
-            if (SelectedTileSource == TileSource.OpenStreetMap)
+            if (mapConfiguration.ActiveTileSource == MapConfiguration.TileSource.OpenStreetMap)
             {
                 map.Layers.Add(OpenStreetMap.CreateTileLayer());
             }
-            else if (SelectedTileSource == TileSource.GoogleMaps)
+            else if (mapConfiguration.ActiveTileSource == MapConfiguration.TileSource.GoogleMaps)
             {
                 map.Layers.Add(new TileLayer(CreateGoogleTileSource(GOOGLE_MAPS_TILE_URL)));
             }
-            map.Layers.Add(CreateMesoDiameterLayer(mesocyclones));
+
+            if (mapConfiguration.ShowMesocycloneDiameter)
+            {
+                map.Layers.Add(CreateMesoDiameterLayer(mesocyclones));
+            }
             map.Layers.Add(CreateMesoLayer(mesocyclones));
 
             /* Center Map */
@@ -65,7 +60,7 @@ namespace MecyApplication
             return map;
         }
 
-        public static Map CreateMap(List<Mesocyclone> mesocyclones, List<Mesocyclone> historicMesocyclones)
+        public static Map CreateMap(List<Mesocyclone> mesocyclones, List<Mesocyclone> historicMesocyclones, MapConfiguration mapConfiguration)
         {
             if (mesocyclones == null)
             {
@@ -79,15 +74,18 @@ namespace MecyApplication
             };
 
             /* Layers */
-            if (SelectedTileSource == TileSource.OpenStreetMap)
+            if (mapConfiguration.ActiveTileSource == MapConfiguration.TileSource.OpenStreetMap)
             {
                 map.Layers.Add(OpenStreetMap.CreateTileLayer());
             }
-            else if (SelectedTileSource == TileSource.GoogleMaps)
+            else if (mapConfiguration.ActiveTileSource == MapConfiguration.TileSource.GoogleMaps)
             {
                 map.Layers.Add(new TileLayer(CreateGoogleTileSource(GOOGLE_MAPS_TILE_URL)));
             }
-            map.Layers.Add(CreateMesoDiameterLayer(mesocyclones));
+            if (mapConfiguration.ShowMesocycloneDiameter)
+            {
+                map.Layers.Add(CreateMesoDiameterLayer(mesocyclones));
+            }
             map.Layers.Add(CreateHistoricMesoLayer(historicMesocyclones));
             map.Layers.Add(CreateMesoLayer(mesocyclones));
 
@@ -111,19 +109,19 @@ namespace MecyApplication
                 switch (meso.Intensity)
                 {
                     case 1:
-                        style = CreatePngStyle("Mecy.Resources.meso_icon_map_1.png", 0.6);
+                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_1.png", 0.6);
                         break;
                     case 2:
-                        style = CreatePngStyle("Mecy.Resources.meso_icon_map_2.png", 0.6);
+                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_2.png", 0.6);
                         break;
                     case 3:
-                        style = CreatePngStyle("Mecy.Resources.meso_icon_map_3.png", 0.6);
+                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_3.png", 0.6);
                         break;
                     case 4:
-                        style = CreatePngStyle("Mecy.Resources.meso_icon_map_4.png", 0.6);
+                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_4.png", 0.6);
                         break;
                     case 5:
-                        style = CreatePngStyle("Mecy.Resources.meso_icon_map_5.png", 0.6);
+                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_5.png", 0.6);
                         break;
                 }
                 mesoFeature.Styles.Add(style);
@@ -157,19 +155,19 @@ namespace MecyApplication
                 switch (meso.Intensity)
                 {
                     case 1:
-                        style = CreatePngStyle("Mecy.Resources.meso_icon_map_hist_1.png", 0.6);
+                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_hist_1.png", 0.6);
                         break;
                     case 2:
-                        style = CreatePngStyle("Mecy.Resources.meso_icon_map_hist_2.png", 0.6);
+                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_hist_2.png", 0.6);
                         break;
                     case 3:
-                        style = CreatePngStyle("Mecy.Resources.meso_icon_map_hist_3.png", 0.6);
+                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_hist_3.png", 0.6);
                         break;
                     case 4:
-                        style = CreatePngStyle("Mecy.Resources.meso_icon_map_hist_4.png", 0.6);
+                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_hist_4.png", 0.6);
                         break;
                     case 5:
-                        style = CreatePngStyle("Mecy.Resources.meso_icon_map_hist_5.png", 0.6);
+                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_hist_5.png", 0.6);
                         break;
                 }
                 mesoFeature.Styles.Add(style);
