@@ -31,8 +31,6 @@ namespace MecyApplication
         private bool _stationAvailTur;
         private bool _stationAvailUmd;
 
-        private int _mesoCountIndicator;
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         public DateTime Time
@@ -304,11 +302,6 @@ namespace MecyApplication
                 {
                     return 5;
                 }
-            }
-            set
-            {
-                _mesoCountIndicator = value;
-                OnPropertyChanged("MesoCountIndicator");
             }
         }
 
