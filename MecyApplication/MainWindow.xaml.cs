@@ -68,7 +68,20 @@ namespace MecyApplication
         {
             if (MainViewModel.SelectedElement != null)
             {
-                mapControl.Map = MapBuilder.CreateMap(MainViewModel.SelectedElement.Mesocyclones);
+                OpenDataElement previousElement = OpenDataElement.GetPreviousOpenDataElement(
+                    MainViewModel.OpenDataElements.ToList(),
+                    MainViewModel.SelectedElement);
+
+                if (previousElement == null)
+                {
+                    mapControl.Map = MapBuilder.CreateMap(MainViewModel.SelectedElement.Mesocyclones);
+                }
+                else
+                {
+                    mapControl.Map = MapBuilder.CreateMap(
+                        MainViewModel.SelectedElement.Mesocyclones,
+                        previousElement.Mesocyclones);
+                }
             }
             else
             {
@@ -83,15 +96,7 @@ namespace MecyApplication
 
         private void lvOpenDataElements_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (MainViewModel.SelectedElement != null)
-            {
-                var selectedElement = MainViewModel.SelectedElement;
-                mapControl.Map = MapBuilder.CreateMap(selectedElement.Mesocyclones);
-            }
-            else
-            {
-                mapControl.Map = MapBuilder.CreateMap(new List<Mesocyclone>());
-            }
+            RefreshMap();
         }
     }
 }

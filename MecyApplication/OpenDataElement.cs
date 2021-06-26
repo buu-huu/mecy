@@ -381,6 +381,14 @@ namespace MecyApplication
             }
         }
 
+        public static OpenDataElement GetPreviousOpenDataElement(List<OpenDataElement> elementList, OpenDataElement referenceElement)
+        {
+            DateTime elementTime = referenceElement.Time;
+            DateTime searchTime = elementTime.Subtract(new TimeSpan(0, 5, 0));
+            OpenDataElement previousElement = elementList.Find(x => x.Time == searchTime);
+            return previousElement;
+        }
+
         private void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)

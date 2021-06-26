@@ -65,6 +65,38 @@ namespace MecyApplication
             return map;
         }
 
+        public static Map CreateMap(List<Mesocyclone> mesocyclones, List<Mesocyclone> historicMesocyclones)
+        {
+            if (mesocyclones == null)
+            {
+                return new Map();
+            }
+            var map = new Map
+            {
+                Transformation = new MinimalTransformation(),
+                CRS = "EPSG:3857",
+                BackColor = Color.Gray
+            };
+
+            /* Layers */
+            if (SelectedTileSource == TileSource.OpenStreetMap)
+            {
+                map.Layers.Add(OpenStreetMap.CreateTileLayer());
+            }
+            else if (SelectedTileSource == TileSource.GoogleMaps)
+            {
+                map.Layers.Add(new TileLayer(CreateGoogleTileSource(GOOGLE_MAPS_TILE_URL)));
+            }
+            map.Layers.Add(CreateMesoDiameterLayer(mesocyclones));
+            map.Layers.Add(CreateHistoricMesoLayer(historicMesocyclones));
+            map.Layers.Add(CreateMesoLayer(mesocyclones));
+
+            /* Center Map */
+            map.Home = n => n.NavigateTo(FromLongLat(CENTER_LONGITUDE, CENTER_LATITUDE), map.Resolutions[6]);
+
+            return map;
+        }
+
         private static Layer CreateMesoLayer(List<Mesocyclone> mesocyclones)
         {
             var features = new Features();
@@ -92,6 +124,52 @@ namespace MecyApplication
                         break;
                     case 5:
                         style = CreatePngStyle("Mecy.Resources.meso_icon_map_5.png", 0.6);
+                        break;
+                }
+                mesoFeature.Styles.Add(style);
+                features.Add(mesoFeature);
+            }
+
+            var dataSource = new MemoryProvider(features)
+            {
+                CRS = "EPSG:4326"
+            };
+
+            return new Layer
+            {
+                DataSource = dataSource,
+                Name = "Meso Point",
+                Style = null
+            };
+        }
+
+        private static Layer CreateHistoricMesoLayer(List<Mesocyclone> mesocyclones)
+        {
+            var features = new Features();
+
+            foreach (var meso in mesocyclones)
+            {
+                var mesoFeature = new Feature
+                {
+                    Geometry = new Point(meso.Longitude, meso.Latitude),
+                };
+                SymbolStyle style = new SymbolStyle();
+                switch (meso.Intensity)
+                {
+                    case 1:
+                        style = CreatePngStyle("Mecy.Resources.meso_icon_map_hist_1.png", 0.6);
+                        break;
+                    case 2:
+                        style = CreatePngStyle("Mecy.Resources.meso_icon_map_hist_2.png", 0.6);
+                        break;
+                    case 3:
+                        style = CreatePngStyle("Mecy.Resources.meso_icon_map_hist_3.png", 0.6);
+                        break;
+                    case 4:
+                        style = CreatePngStyle("Mecy.Resources.meso_icon_map_hist_4.png", 0.6);
+                        break;
+                    case 5:
+                        style = CreatePngStyle("Mecy.Resources.meso_icon_map_hist_5.png", 0.6);
                         break;
                 }
                 mesoFeature.Styles.Add(style);
