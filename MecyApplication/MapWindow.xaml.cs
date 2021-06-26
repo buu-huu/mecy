@@ -28,15 +28,5 @@ namespace MecyApplication
             mapControl.Map = MapBuilder.CreateMap(new List<Mesocyclone> { meso }, MapConfiguration.Instance);
             gridInformation.DataContext = meso;
         }
-
-        private void mapControl_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            
-        }
-
-        private void Test(object sender, MapInfoEventArgs e)
-        {
-
-        }
     }
 }

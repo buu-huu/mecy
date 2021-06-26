@@ -14,7 +14,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <xaml:MapControl Name="mapControl" MouseDown="mapControl_MouseDown" Grid.Row="0" Grid.RowSpan="2"></xaml:MapControl>
+        <xaml:MapControl Name="mapControl" Grid.Row="0" Grid.RowSpan="2"></xaml:MapControl>
         <Grid Grid.Row="0" x:Name="gridInformation">
             <Grid.Background>
                 <SolidColorBrush Color="#FFCDCDCD" Opacity="0.7"/>

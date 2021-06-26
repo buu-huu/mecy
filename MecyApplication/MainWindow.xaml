@@ -754,9 +754,7 @@
                             </ListView>
                         </Grid>
                     </ScrollViewer>
-
                 </Grid>
-               
             </Border>
             
             <DockPanel Grid.Column="1">
