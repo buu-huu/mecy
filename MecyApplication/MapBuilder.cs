@@ -139,7 +139,7 @@ namespace MecyApplication
             {
                 var polygon = new Polygon();
                 var middle = FromLongLat(meso.Longitude, meso.Latitude);
-                double radius = 100000; // Currently default value...
+                double radius = 10000; // Currently default value...
 
                 for (double angle = 0; angle <= 2 * Math.PI; angle += 0.2)
                 {

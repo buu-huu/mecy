@@ -15,39 +15,61 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" VerticalAlignment="Center">
-            <Image Source="Resources/Logo.png" VerticalAlignment="Top" Margin="10" />
-            <TextBlock HorizontalAlignment="Center">
+        <Border Grid.Column="0">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFE1A3FF" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <StackPanel VerticalAlignment="Center">
+                <Image Source="Resources/LogoWithSubtitle.png" VerticalAlignment="Top" Margin="10" />
+                <TextBlock HorizontalAlignment="Center">
                 <Hyperlink NavigateUri="https://github.com/buu-huu/mecy-information"
                            RequestNavigate="Hyperlink_RequestNavigate">
                     https://github.com/buu-huu/mecy-information
                 </Hyperlink>
-            </TextBlock>
-        </StackPanel>
+                </TextBlock>
+            </StackPanel>
+        </Border>
 
-        <RichTextBox Grid.Column="1" Margin="10" IsReadOnly="True">
-            <FlowDocument>
-                <Paragraph FontSize="18">
-                    Mecy Information
-                </Paragraph>
-                <Paragraph>
-                    Version 1.0.0
-                </Paragraph>
-                <Paragraph>
-                    Author: buu-huu
-                </Paragraph>
-                <Paragraph>
-                    Mecy Information is a meteorological software for mesocyclones. It comes with many helpful features
+        <Border Grid.Column="1">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFE1A3FF" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <RichTextBox  Margin="10"
+                          IsReadOnly="True">
+                <FlowDocument>
+                    <Paragraph FontSize="18">
+                        Mecy Information
+                    </Paragraph>
+                    <Paragraph>
+                        Version 1.0.0
+                    </Paragraph>
+                    <Paragraph>
+                        © 2021 buu-huu (https://github.com/buu-huu/)
+                    </Paragraph>
+                    <Paragraph>
+                        Mecy Information is a meteorological software for mesocyclones. It comes with many helpful features
                     to examine, track and display information about them.
-                </Paragraph>
-                <Paragraph>
-                    Data source: DWD OpenData server (https://opendata.dwd.de/)
-                </Paragraph>
-                <Paragraph>
-                    License: MIT
-                </Paragraph>
-            </FlowDocument>
-        </RichTextBox>
+                    </Paragraph>
+                    <Paragraph>
+                        Data source: DWD OpenData server (https://opendata.dwd.de/)
+                    </Paragraph>
+                    <Paragraph>
+                        License: MIT
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+        </Border>
+
+        
+
+
         
     </Grid>
 </Window>
