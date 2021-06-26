@@ -798,13 +798,30 @@
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="Height" Value="30" />
-                            <Setter Property="Background" Value="AliceBlue" />
                             <Style.Triggers>
+                                <DataTrigger Binding="{Binding MesoCountIndicator}" Value="0">
+                                    <Setter Property="Background" Value="#FF94FF99" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding MesoCountIndicator}" Value="1">
+                                    <Setter Property="Background" Value="#FFEFFF94" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding MesoCountIndicator}" Value="2">
+                                    <Setter Property="Background" Value="#FFFFD994" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding MesoCountIndicator}" Value="3">
+                                    <Setter Property="Background" Value="#FFFF9494" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding MesoCountIndicator}" Value="4">
+                                    <Setter Property="Background" Value="#FFFF94D9" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding MesoCountIndicator}" Value="5">
+                                    <Setter Property="Background" Value="#FFAE94FF" />
+                                </DataTrigger>
                                 <Trigger Property="IsSelected" Value="True">
-                                    <Setter Property="Background" Value="Aquamarine" />
+                                    <Setter Property="BorderBrush" Value="#FFFF3CAC" />
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="Aquamarine" />
+                                    <Setter Property="BorderBrush" Value="#FFFF70C2" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>

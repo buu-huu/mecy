@@ -31,6 +31,8 @@ namespace MecyApplication
         private bool _stationAvailTur;
         private bool _stationAvailUmd;
 
+        private int _mesoCountIndicator;
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public DateTime Time
@@ -271,6 +273,42 @@ namespace MecyApplication
             {
                 _stationAvailUmd = value;
                 OnPropertyChanged("StationAvailUmd");
+            }
+        }
+
+        public int MesoCountIndicator
+        {
+            get
+            {
+                if (Mesocyclones.Count <= 0)
+                {
+                    return 0;
+                }
+                else if (Mesocyclones.Count < 2)
+                {
+                    return 1;
+                }
+                else if (Mesocyclones.Count < 4)
+                {
+                    return 2;
+                }
+                else if (Mesocyclones.Count < 8)
+                {
+                    return 3;
+                }
+                else if (Mesocyclones.Count < 10)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+            set
+            {
+                _mesoCountIndicator = value;
+                OnPropertyChanged("MesoCountIndicator");
             }
         }
 
