@@ -24,6 +24,7 @@ namespace MecyApplication
 
         bool _openDataServerReachable = false;
         bool _isDownloading = false;
+        bool _showHistoricMesocyclones = false;
 
         DateTime _timeUtc;
         DateTime _timeLoc;
@@ -109,6 +110,20 @@ namespace MecyApplication
                 OnPropertyChanged("IsDownloading");
             }
         }
+
+        public bool ShowHistoricMesocyclones
+        {
+            get
+            {
+                return _showHistoricMesocyclones;
+            }
+            set
+            {
+                _showHistoricMesocyclones = value;
+                OnPropertyChanged("ShowHistoricMesocyclones");
+            }
+        }
+
         public DateTime TimeUtc
         {
             get
@@ -315,6 +330,19 @@ namespace MecyApplication
         private void SelectGoogleMapsStyle(object obj)
         {
             MapBuilder.SelectedTileSource = MapBuilder.TileSource.GoogleMaps;
+            RefreshMapEvent?.Invoke();
+        }
+
+        public ICommand RefreshMapCommand
+        {
+            get
+            {
+                return new RelayCommand(e => true, this.RefreshMap);
+            }
+        }
+
+        private void RefreshMap(object obj)
+        {
             RefreshMapEvent?.Invoke();
         }
     }

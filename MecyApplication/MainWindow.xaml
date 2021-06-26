@@ -41,6 +41,13 @@
                     <Button Command="{Binding SelectGoogleMapsStyleCommand}">
                         <Image Source="Resources/ToolbarMapStyleGoogleMaps.png" />
                     </Button>
+
+                    <Separator />
+
+                    <ToggleButton IsChecked="{Binding ShowHistoricMesocyclones, Mode=TwoWay}"
+                                  Command="{Binding RefreshMapCommand}">
+                        <Image Source="Resources/ToolbarMapStyleGoogleMaps.png" />
+                    </ToggleButton>
                 </ToolBar>
             </ToolBarTray>
         </StackPanel>

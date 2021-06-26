@@ -68,19 +68,26 @@ namespace MecyApplication
         {
             if (MainViewModel.SelectedElement != null)
             {
-                OpenDataElement previousElement = OpenDataElement.GetPreviousOpenDataElement(
-                    MainViewModel.OpenDataElements.ToList(),
-                    MainViewModel.SelectedElement);
-
-                if (previousElement == null)
+                if (MainViewModel.ShowHistoricMesocyclones)
                 {
-                    mapControl.Map = MapBuilder.CreateMap(MainViewModel.SelectedElement.Mesocyclones);
+                    OpenDataElement previousElement = OpenDataElement.GetPreviousOpenDataElement(
+                        MainViewModel.OpenDataElements.ToList(),
+                        MainViewModel.SelectedElement);
+
+                    if (previousElement == null)
+                    {
+                        mapControl.Map = MapBuilder.CreateMap(MainViewModel.SelectedElement.Mesocyclones);
+                    }
+                    else
+                    {
+                        mapControl.Map = MapBuilder.CreateMap(
+                            MainViewModel.SelectedElement.Mesocyclones,
+                            previousElement.Mesocyclones);
+                    }
                 }
                 else
                 {
-                    mapControl.Map = MapBuilder.CreateMap(
-                        MainViewModel.SelectedElement.Mesocyclones,
-                        previousElement.Mesocyclones);
+                    mapControl.Map = MapBuilder.CreateMap(MainViewModel.SelectedElement.Mesocyclones);
                 }
             }
             else
