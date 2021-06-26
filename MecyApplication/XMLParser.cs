@@ -24,6 +24,7 @@ namespace MecyApplication
                     openDataElements.Add(openDataElement);
                 }
             }
+            openDataElements = openDataElements.OrderBy(x => x.Time).Reverse().ToList();
             return openDataElements;
         }
 
