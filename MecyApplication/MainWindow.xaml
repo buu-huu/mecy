@@ -29,7 +29,7 @@
                           Command="{Binding ShowAboutWindowCommand}"/>
             </Menu>
             
-            <ToolBarTray>
+            <ToolBarTray IsLocked="True">
                 <ToolBar Height="50">
                     <Button Command="{Binding DownloadDataCommand}"
                             ToolTip="Download data from OpenData server">
