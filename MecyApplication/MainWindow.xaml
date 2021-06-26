@@ -34,13 +34,26 @@
                     <Button Command="{Binding DownloadDataCommand}">
                         <Image Source="Resources/ToolbarDownload.png" />
                     </Button>
+                    
                     <Separator />
-                    <Button Command="{Binding SelectOpenStreetMapStyleCommand}">
+
+
+                    <RadioButton Style="{StaticResource {x:Type ToggleButton}}"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 IsChecked="True"
+                                 Command="{Binding SelectOpenStreetMapStyleCommand}"
+                                 GroupName="MapStyle">
                         <Image Source="Resources/ToolbarMapStyleOpenStreetMap.png" />
-                    </Button>
-                    <Button Command="{Binding SelectGoogleMapsStyleCommand}">
+                    </RadioButton>
+
+                    <RadioButton Style="{StaticResource {x:Type ToggleButton}}"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 Command="{Binding SelectGoogleMapsStyleCommand}"
+                                 GroupName="MapStyle">
                         <Image Source="Resources/ToolbarMapStyleGoogleMaps.png" />
-                    </Button>
+                    </RadioButton>
 
                     <Separator />
 
@@ -57,7 +70,7 @@
         </StackPanel>
 
 
-        <StatusBar DockPanel.Dock="Bottom">
+        <StatusBar DockPanel.Dock="Bottom" Height="25">
             <StatusBar.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Grid>
@@ -97,9 +110,10 @@
             <StatusBarItem Grid.Column="4"
                            HorizontalContentAlignment="Center">
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="OD Connection" />
+                    <Label Content="OD Connection" Padding="0" />
                     <Ellipse Height="15"
-                             Width="15">
+                             Width="15"
+                             Margin="5 0 0 0">
                         <Ellipse.Style>
                             <Style TargetType="Ellipse">
                                 <Style.Triggers>
