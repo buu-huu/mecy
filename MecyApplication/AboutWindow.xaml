@@ -8,7 +8,7 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="ToolWindow"
         Background="Beige"
-        Title="About | Mecy Information" Height="450" Width="800">
+        Title="About | Mecy" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
@@ -28,7 +28,7 @@
                 <TextBlock HorizontalAlignment="Center">
                 <Hyperlink NavigateUri="https://github.com/buu-huu/mecy-information"
                            RequestNavigate="Hyperlink_RequestNavigate">
-                    https://github.com/buu-huu/mecy-information
+                    https://github.com/buu-huu/mecy
                 </Hyperlink>
                 </TextBlock>
             </StackPanel>
@@ -45,7 +45,7 @@
                           IsReadOnly="True">
                 <FlowDocument>
                     <Paragraph FontSize="18">
-                        Mecy Information
+                        Mecy
                     </Paragraph>
                     <Paragraph>
                         Version 1.0.0
@@ -54,7 +54,7 @@
                         © 2021 buu-huu (https://github.com/buu-huu/)
                     </Paragraph>
                     <Paragraph>
-                        Mecy Information is a meteorological software for mesocyclones. It comes with many helpful features
+                        Mecy is a meteorological software for mesocyclones. It comes with many helpful features
                     to examine, track and display information about them.
                     </Paragraph>
                     <Paragraph>
