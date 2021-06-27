@@ -24,7 +24,9 @@ namespace MecyApplication
     {
         private const double CENTER_LONGITUDE = 10.160549;
         private const double CENTER_LATITUDE  = 51.024813;
-        
+
+        private const double RADIUS_EQUATOR = 6378.1;
+
         private const string GOOGLE_MAPS_TILE_URL = "http://mt{s}.google.com/vt/lyrs=t@125,r@130&hl=en&x={x}&y={y}&z={z}";
         
         public static Map CreateMap(List<Mesocyclone> mesocyclones, List<Mesocyclone> historicMesocyclones, MapConfiguration mapConfiguration)
@@ -201,23 +203,37 @@ namespace MecyApplication
             foreach (var meso in mesocyclones)
             {
                 var polygon = new Polygon();
-                var middle = FromLongLat(meso.Longitude, meso.Latitude);
-                double radius = 10000; // Currently default value...
+                var mesoCenterLon = meso.Longitude;
+                var mesoCenterLat = meso.Latitude;
+                double radius = meso.Diameter/2;
 
-                for (double angle = 0; angle <= 2 * Math.PI; angle += 0.2)
+                for (int step = 0; step <= 360; step += 5)
                 {
                     polygon.ExteriorRing.Vertices.Add(
-                        new Point(
-                            middle.X + radius * Math.Cos(angle),
-                            middle.Y + radius * Math.Sin(angle)));
+                        GetDistancePoint(mesoCenterLon, mesoCenterLat, step, radius));
                 }
-
                 result.Add(polygon);
             }
-
             return result;
         }
 
+        private static Point GetDistancePoint(double longitude, double latitude, double rotation, double distance)
+        {
+            double brng = ConvertDegreesToRadians(rotation); // In radians! 90° == 1.57
+
+            double latitudeRad = ConvertDegreesToRadians(latitude);
+            double longitudeRad = ConvertDegreesToRadians(longitude);
+
+            double latitudeResult = Math.Asin(Math.Sin(latitudeRad) * Math.Cos(distance / RADIUS_EQUATOR) +
+                Math.Cos(latitudeRad) * Math.Sin(distance / RADIUS_EQUATOR) * Math.Cos(brng));
+
+            double longitudeResult = longitudeRad + Math.Atan2(Math.Sin(brng) * Math.Sin(distance / RADIUS_EQUATOR) * Math.Cos(latitudeRad),
+                Math.Cos(distance / RADIUS_EQUATOR) - Math.Sin(latitudeRad) * Math.Sin(latitudeResult));
+
+            latitudeResult = ConvertRadiansToDegrees(latitudeResult);
+            longitudeResult = ConvertRadiansToDegrees(longitudeResult);
+            return FromLongLat(longitudeResult, latitudeResult);
+        }
 
         private static SymbolStyle CreatePngStyle(string embeddedResourcePath, double scale)
         {
@@ -248,9 +264,23 @@ namespace MecyApplication
             return httpClient.GetByteArrayAsync(arg).ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
+        /* Math Helpers */
+
         private static Point FromLongLat(double longitude, double latitude)
         {
             return SphericalMercator.FromLonLat(longitude, latitude);
+        }
+
+        public static double ConvertRadiansToDegrees(double radians)
+        {
+            double degrees = (180 / Math.PI) * radians;
+            return degrees;
+        }
+
+        public static double ConvertDegreesToRadians(double degrees)
+        {
+            double radians = (Math.PI / 180) * degrees;
+            return radians;
         }
     }
 }
