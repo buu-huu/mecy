@@ -29,14 +29,14 @@
                 <MenuItem Header="_About"
                           Command="{Binding ShowAboutWindowCommand}"/>
             </Menu>
-            
+
             <ToolBarTray IsLocked="True">
                 <ToolBar Height="50">
                     <Button Command="{Binding DownloadDataCommand}"
                             ToolTip="Download data from OpenData server">
                         <Image Source="Resources/ToolbarDownload.png" />
                     </Button>
-                    
+
                     <Separator />
 
 
@@ -111,16 +111,16 @@
                     </Grid>
                 </ItemsPanelTemplate>
             </StatusBar.ItemsPanel>
-            
+
             <StatusBarItem Grid.Column="0">
                 <Label Content="{Binding Path=TimeUtc}"
                        ContentStringFormat="UTC: dd.MM.yyyy HH:mm:ss"
                        Padding="0"
                        FontSize="12"/>
             </StatusBarItem>
-            
+
             <Separator Grid.Column="1" />
-            
+
             <StatusBarItem Grid.Column="2">
                 <Label Content="{Binding Path=TimeLoc}"
                        ContentStringFormat="LOCAL: dd.MM.yyyy HH:mm:ss"
@@ -169,7 +169,7 @@
             </StatusBarItem>
 
             <Separator Grid.Column="5" />
-            
+
             <StatusBarItem Grid.Column="8">
                 <ProgressBar Value="50"
                              Width="90"
@@ -194,8 +194,13 @@
                     <Border Grid.ColumnSpan="3"
                             Margin="3"
                             BorderBrush="Black"
-                            BorderThickness="1"
-                            Background="LightGray">
+                            BorderThickness="1">
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE1A3FF" Offset="0"/>
+                                <GradientStop Color="White" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
                         <Image Source="Resources/LogoWithoutSubtitle.png" />
                     </Border>
                     <ScrollViewer Grid.Row="1"
@@ -775,12 +780,12 @@
                     </ScrollViewer>
                 </Grid>
             </Border>
-            
+
             <DockPanel Grid.Column="1">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition />
-                        <RowDefinition Height="2" />
+                        <RowDefinition Height="4" />
                         <RowDefinition Height="200" />
                     </Grid.RowDefinitions>
 
@@ -860,7 +865,7 @@
                     </ListView>
 
                 </Grid>
-                
+
             </DockPanel>
             <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
