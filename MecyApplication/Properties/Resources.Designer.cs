@@ -273,6 +273,16 @@ namespace MecyApplication.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ToolbarHistMesoTrans {
+            get {
+                object obj = ResourceManager.GetObject("ToolbarHistMesoTrans", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ToolbarMapStyleGoogleMaps {
             get {
                 object obj = ResourceManager.GetObject("ToolbarMapStyleGoogleMaps", resourceCulture);

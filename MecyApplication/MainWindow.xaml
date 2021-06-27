@@ -83,6 +83,11 @@
                                   ToolTip="Show zoom buttons in map">
                         <Image Source="Resources/ToolbarZoom.png" />
                     </ToggleButton>
+                    <ToggleButton IsChecked="{Binding CurrentMapConfiguration.HistoricMesocyclonesTransparent, Mode=TwoWay}"
+                                  Command="{Binding RefreshMapAndMapConfigurationCommand}"
+                                  ToolTip="Enable transparency for historic mesocyclones">
+                        <Image Source="Resources/ToolbarHistMesoTrans.png" />
+                    </ToggleButton>
                 </ToolBar>
             </ToolBarTray>
         </StackPanel>

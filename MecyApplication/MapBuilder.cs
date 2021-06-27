@@ -158,7 +158,10 @@ namespace MecyApplication
                         style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_hist_5.png", 0.6);
                         break;
                 }
-                style.Opacity = mapConfiguration.HistoricMesocyclonesOpacity;
+                if (mapConfiguration.HistoricMesocyclonesTransparent)
+                {
+                    style.Opacity = mapConfiguration.HistoricMesocyclonesOpacity;
+                }
                 mesoFeature.Styles.Add(style);
                 features.Add(mesoFeature);
             }

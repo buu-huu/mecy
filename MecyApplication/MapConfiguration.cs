@@ -22,6 +22,7 @@ namespace MecyApplication
         private bool _showMesocycloneDiameter;
         private bool _showScaleBar;
         private bool _showZoomWidget;
+        private bool _historicMesocyclonesTransparent;
 
         private float _historicMesocyclonesOpacity;
 
@@ -85,6 +86,18 @@ namespace MecyApplication
             }
         }
 
+        public bool HistoricMesocyclonesTransparent
+        {
+            get
+            {
+                return _historicMesocyclonesTransparent;
+            }
+            set
+            {
+                _historicMesocyclonesTransparent = value;
+            }
+        }
+
         public float HistoricMesocyclonesOpacity
         {
             get
@@ -123,7 +136,8 @@ namespace MecyApplication
             mapConfig.ShowMesocycloneDiameter = true;
             mapConfig.ShowScaleBar = true;
             mapConfig.ShowZoomWidget = true;
-            mapConfig.HistoricMesocyclonesOpacity = 0.65f;
+            mapConfig.HistoricMesocyclonesTransparent = true;
+            mapConfig.HistoricMesocyclonesOpacity = 0.55f;
 
             return mapConfig;
         }
