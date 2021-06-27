@@ -88,6 +88,11 @@
                                   ToolTip="Enable transparency for historic mesocyclones">
                         <Image Source="Resources/ToolbarHistMesoTrans.png" />
                     </ToggleButton>
+                    <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowMesocycloneIdLabel, Mode=TwoWay}"
+                                  Command="{Binding RefreshMapAndMapConfigurationCommand}"
+                                  ToolTip="Show mesocyclone ID on map">
+                        <Image Source="Resources/ToolbarMesoId.png" />
+                    </ToggleButton>
                 </ToolBar>
             </ToolBarTray>
         </StackPanel>

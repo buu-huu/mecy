@@ -70,7 +70,12 @@ namespace MecyApplication
                 map.Layers.Add(CreateHistoricMesoLayer(historicMesocyclones, mapConfiguration));
             }
             map.Layers.Add(CreateMesoLayer(mesocyclones));
-            map.Layers.Add(CreateMesoLabelLayer(mesocyclones));
+
+            /* Labels */
+            if (mapConfiguration.ShowMesocycloneIdLabel)
+            {
+                map.Layers.Add(CreateMesoLabelLayer(mesocyclones));
+            }
 
             /* Center Map */
             if (mesocyclones.Count == 1)
