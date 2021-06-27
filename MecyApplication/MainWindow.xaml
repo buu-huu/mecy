@@ -714,18 +714,19 @@
                                Grid.Row="25"
                                Grid.Column="2" />
 
-                            <Label Content="Velocity Rot Max Closest To Gnd"
+                            <TextBlock Text="Velocity Rotational Max Closest To Ground"
                                HorizontalAlignment="Right"
                                VerticalAlignment="Center"
                                Margin="0 0 10 0"
                                Grid.Row="26"
-                               Grid.Column="0" />
+                               Grid.Column="0" TextWrapping="WrapWithOverflow" TextAlignment="Right" />
                             <TextBox Text="{Binding VelocityRotationalMaxClosestToGround, StringFormat=N2}"
                                  VerticalContentAlignment="Center"
                                  Margin="2"
                                  IsReadOnly="True"
                                  Grid.Row="26"
                                  Grid.Column="1"
+                                     Height="23"
                                  Background="#FFFFDEB8" />
                             <Label Content="m/s"
                                HorizontalAlignment="Left"
