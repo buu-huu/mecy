@@ -17,11 +17,13 @@ namespace MecyApplication
         private static MapConfiguration instance = null;
         private static readonly object padlock = new object();
 
-        private static TileSource _activeTileSource;
+        private TileSource _activeTileSource;
         private bool _showHistoricMesocyclones;
         private bool _showMesocycloneDiameter;
         private bool _showScaleBar;
         private bool _showZoomWidget;
+
+        private float _historicMesocyclonesOpacity;
 
         public TileSource ActiveTileSource
         {
@@ -83,6 +85,18 @@ namespace MecyApplication
             }
         }
 
+        public float HistoricMesocyclonesOpacity
+        {
+            get
+            {
+                return _historicMesocyclonesOpacity;
+            }
+            set
+            {
+                _historicMesocyclonesOpacity = value;
+            }
+        }
+
 
         MapConfiguration() { }
 
@@ -108,7 +122,8 @@ namespace MecyApplication
             mapConfig.ShowHistoricMesocyclones = true;
             mapConfig.ShowMesocycloneDiameter = true;
             mapConfig.ShowScaleBar = true;
-            mapConfig.ShowZoomWidget = true;            
+            mapConfig.ShowZoomWidget = true;
+            mapConfig.HistoricMesocyclonesOpacity = 0.65f;
 
             return mapConfig;
         }

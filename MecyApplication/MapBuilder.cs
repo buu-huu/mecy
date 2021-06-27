@@ -24,8 +24,7 @@ namespace MecyApplication
     {
         private const double CENTER_LONGITUDE = 10.160549;
         private const double CENTER_LATITUDE  = 51.024813;
-
-        private const double RADIUS_EQUATOR = 6378.1;
+        private const double RADIUS_EQUATOR   = 6378.1;
 
         private const string GOOGLE_MAPS_TILE_URL = "http://mt{s}.google.com/vt/lyrs=t@125,r@130&hl=en&x={x}&y={y}&z={z}";
         
@@ -68,7 +67,7 @@ namespace MecyApplication
             }
             if (historicMesocyclones != null)
             {
-                map.Layers.Add(CreateHistoricMesoLayer(historicMesocyclones));
+                map.Layers.Add(CreateHistoricMesoLayer(historicMesocyclones, mapConfiguration));
             }
             map.Layers.Add(CreateMesoLayer(mesocyclones));
 
@@ -130,7 +129,7 @@ namespace MecyApplication
             };
         }
 
-        private static Layer CreateHistoricMesoLayer(List<Mesocyclone> mesocyclones)
+        private static Layer CreateHistoricMesoLayer(List<Mesocyclone> mesocyclones, MapConfiguration mapConfiguration)
         {
             var features = new Features();
 
@@ -159,7 +158,7 @@ namespace MecyApplication
                         style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_hist_5.png", 0.6);
                         break;
                 }
-                style.Opacity = 0.65f;
+                style.Opacity = mapConfiguration.HistoricMesocyclonesOpacity;
                 mesoFeature.Styles.Add(style);
                 features.Add(mesoFeature);
             }
