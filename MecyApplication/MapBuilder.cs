@@ -70,6 +70,7 @@ namespace MecyApplication
                 map.Layers.Add(CreateHistoricMesoLayer(historicMesocyclones, mapConfiguration));
             }
             map.Layers.Add(CreateMesoLayer(mesocyclones));
+            map.Layers.Add(CreateMesoLabelLayer(mesocyclones));
 
             /* Center Map */
             if (mesocyclones.Count == 1)
@@ -115,6 +116,7 @@ namespace MecyApplication
                 mesoFeature.Styles.Add(style);
                 features.Add(mesoFeature);
             }
+            
 
             var dataSource = new MemoryProvider(features)
             {
@@ -124,7 +126,7 @@ namespace MecyApplication
             return new Layer
             {
                 DataSource = dataSource,
-                Name = "Meso Point",
+                Name = "Mesocyclones",
                 Style = null
             };
         }
@@ -199,6 +201,51 @@ namespace MecyApplication
             };
         }
 
+        private static Layer CreateMesoLabelLayer(List<Mesocyclone> mesocyclones)
+        {
+            var features = new Features();
+            foreach (Mesocyclone meso in mesocyclones)
+            {
+                Brush backColor;
+                switch (meso.Intensity)
+                {
+                    case 1:
+                        backColor = new Brush(new Color(0, 255, 0));
+                        break;
+                    case 2:
+                        backColor = new Brush(new Color(255, 255, 0));
+                        break;
+                    case 3:
+                        backColor = new Brush(new Color(241, 130, 36));
+                        break;
+                    case 4:
+                        backColor = new Brush(new Color(255, 0, 0));
+                        break;
+                    case 5:
+                        backColor = new Brush(new Color(255, 255, 0));
+                        break;
+                    default:
+                        backColor = new Brush(Color.White);
+                        break;
+                }
+
+                var mesoLabel = new Feature { Geometry = FromLongLat(meso.Longitude, meso.Latitude) };
+                mesoLabel.Styles.Add(new LabelStyle
+                {
+                    Offset = new Offset(0.0, -6.5, true),
+                    Text = meso.Id.ToString(),
+                    BackColor = backColor,
+                    ForeColor = Color.Black
+                });
+                features.Add(mesoLabel);
+            }
+            return new Layer("Meso Label Layer")
+            {
+                DataSource = new MemoryProvider(features),
+                Style = null
+            };
+        }
+
         private static List<Polygon> CreateDiameterCircles(List<Mesocyclone> mesocyclones)
         {
             var result = new List<Polygon>();
@@ -217,24 +264,6 @@ namespace MecyApplication
                 result.Add(polygon);
             }
             return result;
-        }
-
-        private static Point GetDistancePoint(double longitude, double latitude, double rotation, double distance)
-        {
-            double brng = ConvertDegreesToRadians(rotation); // In radians! 90° == 1.57
-
-            double latitudeRad = ConvertDegreesToRadians(latitude);
-            double longitudeRad = ConvertDegreesToRadians(longitude);
-
-            double latitudeResult = Math.Asin(Math.Sin(latitudeRad) * Math.Cos(distance / RADIUS_EQUATOR) +
-                Math.Cos(latitudeRad) * Math.Sin(distance / RADIUS_EQUATOR) * Math.Cos(brng));
-
-            double longitudeResult = longitudeRad + Math.Atan2(Math.Sin(brng) * Math.Sin(distance / RADIUS_EQUATOR) * Math.Cos(latitudeRad),
-                Math.Cos(distance / RADIUS_EQUATOR) - Math.Sin(latitudeRad) * Math.Sin(latitudeResult));
-
-            latitudeResult = ConvertRadiansToDegrees(latitudeResult);
-            longitudeResult = ConvertRadiansToDegrees(longitudeResult);
-            return FromLongLat(longitudeResult, latitudeResult);
         }
 
         private static SymbolStyle CreatePngStyle(string embeddedResourcePath, double scale)
@@ -267,6 +296,23 @@ namespace MecyApplication
         }
 
         /* Math Helpers */
+        private static Point GetDistancePoint(double longitude, double latitude, double rotation, double distance)
+        {
+            double brng = ConvertDegreesToRadians(rotation); // In radians! 90° == 1.57
+
+            double latitudeRad = ConvertDegreesToRadians(latitude);
+            double longitudeRad = ConvertDegreesToRadians(longitude);
+
+            double latitudeResult = Math.Asin(Math.Sin(latitudeRad) * Math.Cos(distance / RADIUS_EQUATOR) +
+                Math.Cos(latitudeRad) * Math.Sin(distance / RADIUS_EQUATOR) * Math.Cos(brng));
+
+            double longitudeResult = longitudeRad + Math.Atan2(Math.Sin(brng) * Math.Sin(distance / RADIUS_EQUATOR) * Math.Cos(latitudeRad),
+                Math.Cos(distance / RADIUS_EQUATOR) - Math.Sin(latitudeRad) * Math.Sin(latitudeResult));
+
+            latitudeResult = ConvertRadiansToDegrees(latitudeResult);
+            longitudeResult = ConvertRadiansToDegrees(longitudeResult);
+            return FromLongLat(longitudeResult, latitudeResult);
+        }
 
         private static Point FromLongLat(double longitude, double latitude)
         {
