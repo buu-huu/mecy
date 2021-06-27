@@ -71,8 +71,14 @@ namespace MecyApplication
             map.Layers.Add(CreateMesoLayer(mesocyclones));
 
             /* Center Map */
-            map.Home = n => n.NavigateTo(FromLongLat(CENTER_LONGITUDE, CENTER_LATITUDE), map.Resolutions[6]);
-
+            if (mesocyclones.Count == 1)
+            {
+                map.Home = n => n.NavigateTo(FromLongLat(mesocyclones[0].Longitude, mesocyclones[0].Latitude), map.Resolutions[7]);
+            }
+            else
+            {
+                map.Home = n => n.NavigateTo(FromLongLat(CENTER_LONGITUDE, CENTER_LATITUDE), map.Resolutions[6]);
+            }
             return map;
         }
 

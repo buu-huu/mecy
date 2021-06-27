@@ -902,7 +902,7 @@
                             <GridViewColumn Header="Σ Meso"
                                             Width="55"
                                             DisplayMemberBinding="{Binding Path=Mesocyclones.Count, Converter={StaticResource MesoCountConverter}}" />
-                            <GridViewColumn Header="Max Meso"
+                            <GridViewColumn Header="Int Max"
                                             Width="60">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
