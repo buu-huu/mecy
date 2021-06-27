@@ -92,7 +92,7 @@ namespace MecyApplication
             {
                 var mesoFeature = new Feature
                 {
-                    Geometry = new Point(meso.Longitude, meso.Latitude),
+                    Geometry = new Point(meso.Longitude, meso.Latitude)
                 };
                 SymbolStyle style = new SymbolStyle();
                 switch (meso.Intensity)
@@ -159,6 +159,7 @@ namespace MecyApplication
                         style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_hist_5.png", 0.6);
                         break;
                 }
+                style.Opacity = 0.65f;
                 mesoFeature.Styles.Add(style);
                 features.Add(mesoFeature);
             }
@@ -199,7 +200,6 @@ namespace MecyApplication
         private static List<Polygon> CreateDiameterCircles(List<Mesocyclone> mesocyclones)
         {
             var result = new List<Polygon>();
-
             foreach (var meso in mesocyclones)
             {
                 var polygon = new Polygon();
