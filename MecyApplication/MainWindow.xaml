@@ -780,14 +780,17 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition />
+                        <RowDefinition Height="2" />
                         <RowDefinition Height="200" />
                     </Grid.RowDefinitions>
 
                     <xaml:MapControl x:Name="mapControl"
                                      Grid.Row="0" />
 
+                    <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" />
+
                     <ListView Margin="0"
-                              Grid.Row="1"
+                              Grid.Row="2"
                               ItemsSource="{Binding SelectedElement.Mesocyclones}"
                               SelectedItem="{Binding SelectedMesocyclone}"
                               SelectionMode="Single"
