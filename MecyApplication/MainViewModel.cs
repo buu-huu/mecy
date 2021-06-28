@@ -248,22 +248,6 @@ namespace MecyApplication
             }
         }
 
-        public ICommand OpenMesoMapWindowCommand
-        {
-            get
-            {
-                return new RelayCommand(e => true, this.OpenMesoMapWindow);
-            }
-        }
-
-        private void OpenMesoMapWindow(object obj)
-        {
-            if (SelectedMesocyclone != null)
-            {
-                new MapWindow(SelectedMesocyclone).Show();
-            }
-        }
-
         public ICommand ExitApplicationCommand
         {
             get

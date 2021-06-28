@@ -87,11 +87,7 @@
     <Compile Include="Elevation.cs" />
     <Compile Include="ListToStringConverter.cs" />
     <Compile Include="MainViewModel.cs" />
-    <Compile Include="MapBuilder.cs" />
     <Compile Include="MapConfiguration.cs" />
-    <Compile Include="MapWindow.xaml.cs">
-      <DependentUpon>MapWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MesoCountConverter.cs" />
     <Compile Include="OpenDataDownloader.cs" />
     <Compile Include="OpenDataElement.cs" />
@@ -126,10 +122,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MapWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="SplashScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

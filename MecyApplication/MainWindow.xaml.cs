@@ -189,7 +189,6 @@ namespace MecyApplication
                         break;
                 }
             }
-
             feature.Styles.Add(style);
             return feature;
         }
@@ -202,7 +201,7 @@ namespace MecyApplication
 
         private static int GetBitmapIdForEmbeddedResource(string imagePath)
         {
-            var assembly = typeof(MapWindow).GetTypeInfo().Assembly;
+            var assembly = typeof(MainWindow).GetTypeInfo().Assembly;
             var image = assembly.GetManifestResourceStream(imagePath);
             return BitmapRegistry.Instance.Register(image);
         }

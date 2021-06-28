@@ -806,12 +806,6 @@
                               SelectionMode="Single"
                               SelectionChanged="lvMesocyclones_SelectionChanged"
                               Background="#FFC2C2C2">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseDoubleClick">
-                                <i:InvokeCommandAction Command="{Binding OpenMesoMapWindowCommand}" />
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="Height" Value="60" />
