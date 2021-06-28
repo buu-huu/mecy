@@ -56,17 +56,25 @@ namespace MecyApplication
             //MainViewModel.RefreshMapEvent += RefreshMap;
         }
 
-        public Map CreateMap()
+        private Map CreateMap()
         {
             var map = new Map();
 
             map.Layers.Add(OpenStreetMap.CreateTileLayer());
             map.Layers.Add(CreateMesoDiameterLayer());
-            //map.Layers.Add(CreateMesoHistLayer());
+            map.Layers.Add(CreateMesoHistLayer());
             map.Layers.Add(CreateMesoLayer());
-            //map.Layers.Add(CreateMesoLayelLayer());
+            map.Layers.Add(CreateMesoLayelLayer());
 
             return map;
+        }
+
+        private void RefreshMap()
+        {
+            DrawMesoDiametersToLayer();
+            DrawMesosHistToLayer();
+            DrawMesosToLayer();
+            DrawMesoLabelsToLayer();
         }
 
         // -------------------- MESO LAYER --------------------
@@ -198,24 +206,132 @@ namespace MecyApplication
             mapControl.RefreshGraphics();
         }
 
-        private static List<Polygon> CreateDiameterCircles(List<Mesocyclone> mesocyclones)
+        // -------------------- MESO LABEL LAYER --------------------
+        private WritableLayer CreateMesoLayelLayer()
         {
-            var result = new List<Polygon>();
-            foreach (var meso in mesocyclones)
+            var layer = new WritableLayer
             {
-                var polygon = new Polygon();
-                var mesoCenterLon = meso.Longitude;
-                var mesoCenterLat = meso.Latitude;
-                double radius = meso.Diameter / 2;
+                Name = "MesoLabelLayer",
+                Style = null
+            };
+            return layer;
+        }
 
-                for (int step = 0; step <= 360; step += 5)
-                {
-                    polygon.ExteriorRing.Vertices.Add(
-                        GetDistancePoint(mesoCenterLon, mesoCenterLat, step, radius));
-                }
-                result.Add(polygon);
+        private Feature CreateMesoLabelFeature(Mesocyclone meso)
+        {
+            var feature = new Feature
+            {
+                Geometry = FromLongLat(meso.Longitude, meso.Latitude)
+            };
+            Brush backColor;
+            switch (meso.Intensity)
+            {
+                case 1:
+                    backColor = new Brush(new Color(0, 255, 0));
+                    break;
+                case 2:
+                    backColor = new Brush(new Color(255, 255, 0));
+                    break;
+                case 3:
+                    backColor = new Brush(new Color(241, 130, 36));
+                    break;
+                case 4:
+                    backColor = new Brush(new Color(255, 0, 0));
+                    break;
+                case 5:
+                    backColor = new Brush(new Color(255, 255, 0));
+                    break;
+                default:
+                    backColor = new Brush(Color.White);
+                    break;
             }
-            return result;
+            feature.Styles.Add(new LabelStyle
+            {
+                Offset = new Offset(0.0, -6.5, true),
+                Text = meso.Id.ToString(),
+                BackColor = backColor,
+                ForeColor = Color.Black
+            });
+            return feature;
+        }
+
+        private void DrawMesoLabelsToLayer()
+        {
+            var layer = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == "MesoLabelLayer");
+            layer.Clear();
+            mapControl.RefreshGraphics();
+            if (MainViewModel.SelectedElement == null || MainViewModel.SelectedElement.Mesocyclones == null)
+            {
+                return;
+            }
+
+            foreach (var meso in MainViewModel.SelectedElement.Mesocyclones)
+            {
+                layer.Add(CreateMesoLabelFeature(meso));
+            }
+            mapControl.RefreshGraphics();
+        }
+
+        // -------------------- MESO HIST LAYER --------------------
+        private WritableLayer CreateMesoHistLayer()
+        {
+            var layer = new WritableLayer
+            {
+                Name = "MesoHistLayer",
+                Style = null
+            };
+            return layer;
+        }
+
+        private Feature CreateMesoHistFeature(Mesocyclone meso)
+        {
+            var feature = new Feature
+            {
+                Geometry = FromLongLat(meso.Longitude, meso.Latitude)
+            };
+            var style = new SymbolStyle();
+            switch (meso.Intensity)
+            {
+                case 1:
+                    style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_hist_1.png", 0.6);
+                    break;
+                case 2:
+                    style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_hist_2.png", 0.6);
+                    break;
+                case 3:
+                    style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_hist_3.png", 0.6);
+                    break;
+                case 4:
+                    style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_hist_4.png", 0.6);
+                    break;
+                case 5:
+                    style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_hist_5.png", 0.6);
+                    break;
+            }
+            feature.Styles.Add(style);
+            return feature;
+        }
+
+        private void DrawMesosHistToLayer()
+        {
+            var layer = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == "MesoHistLayer");
+            layer.Clear();
+            mapControl.RefreshGraphics();
+            if (MainViewModel.SelectedElement == null || MainViewModel.SelectedElement.Mesocyclones == null)
+            {
+                return;
+            }
+
+            OpenDataElement previousElement = OpenDataElement.GetPreviousOpenDataElement(
+                MainViewModel.OpenDataElements.ToList(),
+                MainViewModel.SelectedElement);
+            if (previousElement == null) return;
+
+            foreach (var meso in previousElement.Mesocyclones)
+            {
+                layer.Add(CreateMesoHistFeature(meso));
+            }
+            mapControl.RefreshGraphics();
         }
 
         // -------------------- EVENT HANDLING --------------------
@@ -240,8 +356,7 @@ namespace MecyApplication
 
         private void lvOpenDataElements_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            DrawMesosToLayer();
-            DrawMesoDiametersToLayer();
+            RefreshMap();
         }
 
         private void lvMesocyclones_SelectionChanged(object sender, SelectionChangedEventArgs e)
