@@ -301,10 +301,13 @@ namespace MecyApplication
         public delegate void RefreshMapEventAction();
         public event RefreshMapEventAction RefreshMapEvent;
 
+        public delegate void RefreshMapWidgetsEventAction();
+        public event RefreshMapWidgetsEventAction RefreshMapWidgetsEvent;
+
         private void SelectOpenStreetMapStyle(object obj)
         {
             CurrentMapConfiguration.ActiveTileSource = MapConfiguration.TileSource.OpenStreetMap;
-            RefreshMapEvent?.Invoke();
+            RefreshMapWidgetsEvent?.Invoke();
         }
         
         public ICommand SelectGoogleMapsStyleCommand
@@ -318,7 +321,7 @@ namespace MecyApplication
         private void SelectGoogleMapsStyle(object obj)
         {
             CurrentMapConfiguration.ActiveTileSource = MapConfiguration.TileSource.GoogleMaps;
-            RefreshMapEvent?.Invoke();
+            RefreshMapWidgetsEvent?.Invoke();
         }
 
         public ICommand RefreshMapAndMapConfigurationCommand
@@ -332,6 +335,19 @@ namespace MecyApplication
         private void RefreshMapAndMapConfiguration(object obj)
         {
             RefreshMapEvent?.Invoke();
+        }
+
+        public ICommand RefreshMapWidgetsCommand
+        {
+            get
+            {
+                return new RelayCommand(e => true, this.RefreshMapWidgets);
+            }
+        }
+
+        private void RefreshMapWidgets(object obj)
+        {
+            RefreshMapWidgetsEvent?.Invoke();
         }
     }
 }

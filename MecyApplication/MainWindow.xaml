@@ -74,12 +74,12 @@
 
                     <Separator />
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowScaleBar, Mode=TwoWay}"
-                                  Command="{Binding RefreshMapAndMapConfigurationCommand}"
+                                  Command="{Binding RefreshMapWidgetsCommand}"
                                   ToolTip="Show scale bar in map">
                         <Image Source="Resources/ToolbarScaleBar.png" />
                     </ToggleButton>
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowZoomWidget, Mode=TwoWay}"
-                                  Command="{Binding RefreshMapAndMapConfigurationCommand}"
+                                  Command="{Binding RefreshMapWidgetsCommand}"
                                   ToolTip="Show zoom buttons in map">
                         <Image Source="Resources/ToolbarZoom.png" />
                     </ToggleButton>

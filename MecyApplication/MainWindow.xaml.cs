@@ -1,4 +1,7 @@
-﻿using Mapsui;
+﻿using BruTile;
+using BruTile.Predefined;
+using BruTile.Web;
+using Mapsui;
 using Mapsui.Geometries;
 using Mapsui.Geometries.WellKnownText;
 using Mapsui.Layers;
@@ -9,10 +12,13 @@ using Mapsui.Styles.Thematics;
 using Mapsui.UI;
 using Mapsui.UI.Wpf;
 using Mapsui.Utilities;
+using Mapsui.Widgets.ScaleBar;
+using Mapsui.Widgets.Zoom;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.Http;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
@@ -29,6 +35,8 @@ namespace MecyApplication
         private const double CENTER_LONGITUDE = 10.160549;
         private const double CENTER_LATITUDE = 51.024813;
         private const double RADIUS_EQUATOR = 6378.1;
+        private const string GOOGLE_MAPS_TILE_URL = "http://mt{s}.google.com/vt/lyrs=t@125,r@130&hl=en&x={x}&y={y}&z={z}";
+
         private MainViewModel _mainViewModel;
 
         public MainViewModel MainViewModel
@@ -51,20 +59,35 @@ namespace MecyApplication
             this.DataContext = MainViewModel;
 
             mapControl.Map = CreateMap();
+            RefreshMap();
             
             // Event subscriptions
             MainViewModel.RefreshMapEvent += RefreshMap;
+            MainViewModel.RefreshMapWidgetsEvent += RefreshMapWithWidgets;
         }
 
         private Map CreateMap()
         {
-            var map = new Map();
+            var map = new Map
+            {
+                Transformation = new MinimalTransformation(),
+                CRS = "EPSG:3857",
+                BackColor = Color.Gray
+            };
 
-            map.Layers.Add(OpenStreetMap.CreateTileLayer());
+            // Tile Source
+            if (MainViewModel.CurrentMapConfiguration.ActiveTileSource == MapConfiguration.TileSource.OpenStreetMap) map.Layers.Add(OpenStreetMap.CreateTileLayer());
+            else if (MainViewModel.CurrentMapConfiguration.ActiveTileSource == MapConfiguration.TileSource.GoogleMaps) map.Layers.Add(new TileLayer(CreateGoogleTileSource(GOOGLE_MAPS_TILE_URL)));
+
+            // Layers
             map.Layers.Add(CreateMesoDiameterLayer());
             map.Layers.Add(CreateMesoHistLayer());
             map.Layers.Add(CreateMesoLayer());
             map.Layers.Add(CreateMesoLayelLayer());
+
+            // Widgets
+            if (MainViewModel.CurrentMapConfiguration.ShowScaleBar) map.Widgets.Add(new ScaleBarWidget(map));
+            if (MainViewModel.CurrentMapConfiguration.ShowZoomWidget) map.Widgets.Add(new ZoomInOutWidget());
 
             return map;
         }
@@ -72,13 +95,23 @@ namespace MecyApplication
         private void RefreshMap()
         {
             ClearMap();
+
             if (MainViewModel.SelectedElement == null) return;
 
+            // Layers
             if (MainViewModel.CurrentMapConfiguration.ShowMesocycloneDiameter) DrawMesoDiametersToLayer();
             if (MainViewModel.CurrentMapConfiguration.ShowHistoricMesocyclones) DrawMesosHistToLayer();
             if (MainViewModel.CurrentMapConfiguration.ShowMesocycloneIdLabel) DrawMesoLabelsToLayer();
 
             DrawMesosToLayer();
+        }
+
+        private void RefreshMapWithWidgets()
+        {
+            var map = CreateMap();
+            mapControl.Map = map;
+
+            RefreshMap();
         }
 
         private void ClearMap()
@@ -257,7 +290,7 @@ namespace MecyApplication
                     backColor = new Brush(new Color(255, 0, 0));
                     break;
                 case 5:
-                    backColor = new Brush(new Color(255, 255, 0));
+                    backColor = new Brush(new Color(255, 0, 255));
                     break;
                 default:
                     backColor = new Brush(Color.White);
@@ -326,6 +359,10 @@ namespace MecyApplication
                     style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_hist_5.png", 0.6);
                     break;
             }
+            if (MainViewModel.CurrentMapConfiguration.HistoricMesocyclonesTransparent)
+            {
+                style.Opacity = MainViewModel.CurrentMapConfiguration.HistoricMesocyclonesOpacity;
+            }
             feature.Styles.Add(style);
             return feature;
         }
@@ -379,12 +416,29 @@ namespace MecyApplication
 
         private void lvMesocyclones_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //RefreshMap();
+            RefreshMap();
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             System.Environment.Exit(0);
+        }
+
+        // -------------------- GOOGLE MAPS TILE DOWNLOAD --------------------
+        private static ITileSource CreateGoogleTileSource(string urlFormatter)
+        {
+            return new HttpTileSource(new GlobalSphericalMercator(), urlFormatter, new[] { "0", "1", "2", "3" },
+                tileFetcher: FetchGoogleTile);
+        }
+
+        private static byte[] FetchGoogleTile(Uri arg)
+        {
+            var httpClient = new HttpClient();
+
+            httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Referer", "http://maps.google.com/");
+            httpClient.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", @"Mozilla / 5.0(Windows; U; Windows NT 6.0; en - US; rv: 1.9.1.7) Gecko / 20091221 Firefox / 3.5.7");
+
+            return httpClient.GetByteArrayAsync(arg).ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
         // -------------------- MATH HELPERS --------------------
