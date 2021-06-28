@@ -89,6 +89,9 @@ namespace MecyApplication
             if (MainViewModel.CurrentMapConfiguration.ShowScaleBar) map.Widgets.Add(new ScaleBarWidget(map));
             if (MainViewModel.CurrentMapConfiguration.ShowZoomWidget) map.Widgets.Add(new ZoomInOutWidget());
 
+            // Center map to Germany
+            map.Home = n => n.NavigateTo(FromLongLat(CENTER_LONGITUDE, CENTER_LATITUDE), map.Resolutions[6]);
+
             return map;
         }
 
