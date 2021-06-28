@@ -288,6 +288,12 @@ namespace MecyApplication
         public delegate void RefreshMapWidgetsEventAction();
         public event RefreshMapWidgetsEventAction RefreshMapWidgetsEvent;
 
+        public delegate void CenterMapEventAction();
+        public event CenterMapEventAction CenterMapEvent;
+
+        public delegate void CenterMapToMesoEventAction();
+        public event CenterMapToMesoEventAction CenterMapToMesoEvent;
+
         private void SelectOpenStreetMapStyle(object obj)
         {
             CurrentMapConfiguration.ActiveTileSource = MapConfiguration.TileSource.OpenStreetMap;
@@ -332,6 +338,32 @@ namespace MecyApplication
         private void RefreshMapWidgets(object obj)
         {
             RefreshMapWidgetsEvent?.Invoke();
+        }
+
+        public ICommand CenterMapCommand
+        {
+            get
+            {
+                return new RelayCommand(e => true, this.CenterMap);
+            }
+        }
+
+        public void CenterMap(object obj)
+        {
+            CenterMapEvent?.Invoke();
+        }
+
+        public ICommand CenterMapToMesoCommand
+        {
+            get
+            {
+                return new RelayCommand(e => true, this.CenterMapToMeso);
+            }
+        }
+
+        public void CenterMapToMeso(object obj)
+        {
+            CenterMapToMesoEvent?.Invoke();
         }
     }
 }

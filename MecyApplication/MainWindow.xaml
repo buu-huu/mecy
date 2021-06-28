@@ -71,9 +71,20 @@
                                   ToolTip="Show zoom buttons in map">
                         <Image Source="Resources/ToolbarZoom.png" />
                     </ToggleButton>
+                    <Button Command="{Binding CenterMapCommand}"
+                            ToolTip="Center the map to Germany">
+                        <Image Source="Resources/ToolbarCenter.png" />
+                    </Button>
 
                     <Separator />
+
+                    <Button Command="{Binding CenterMapToMesoCommand}"
+                            ToolTip="Center the map to the selected mesocyclone">
+                        <Image Source="Resources/ToolbarCenterMeso.png" />
+                    </Button>
                     
+                    <Separator />
+
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowHistoricMesocyclones, Mode=TwoWay}"
                                   Command="{Binding RefreshMapAndMapConfigurationCommand}"
                                   ToolTip="Show historic mesocyclones in map">

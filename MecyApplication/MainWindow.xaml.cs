@@ -60,10 +60,12 @@ namespace MecyApplication
 
             mapControl.Map = CreateMap();
             RefreshMap();
-            
+
             // Event subscriptions
             MainViewModel.RefreshMapEvent += RefreshMap;
             MainViewModel.RefreshMapWidgetsEvent += RefreshMapWithWidgets;
+            MainViewModel.CenterMapEvent += CenterMap;
+            MainViewModel.CenterMapToMesoEvent += CenterMapToMeso;
         }
 
         private Map CreateMap()
@@ -89,7 +91,7 @@ namespace MecyApplication
             if (MainViewModel.CurrentMapConfiguration.ShowScaleBar) map.Widgets.Add(new ScaleBarWidget(map));
             if (MainViewModel.CurrentMapConfiguration.ShowZoomWidget) map.Widgets.Add(new ZoomInOutWidget());
 
-            // Center map to Germany
+            // Center Map
             map.Home = n => n.NavigateTo(FromLongLat(CENTER_LONGITUDE, CENTER_LATITUDE), map.Resolutions[6]);
 
             return map;
@@ -129,6 +131,24 @@ namespace MecyApplication
             layerMesoHist.Clear();
             layerMesoLabel.Clear();
             mapControl.RefreshGraphics();
+        }
+
+        private void CenterMap()
+        {
+            mapControl.Map = CreateMap();
+            RefreshMap();
+        }
+
+        private void CenterMapToMeso()
+        {
+            var map = CreateMap();
+            var selectedMeso = MainViewModel.SelectedMesocyclone;
+
+            if (selectedMeso == null) return;
+
+            map.Home = n => n.NavigateTo(FromLongLat(selectedMeso.Longitude, selectedMeso.Latitude), map.Resolutions[8]);
+            mapControl.Map = map;
+            RefreshMap();
         }
 
         // -------------------- MESO LAYER --------------------
