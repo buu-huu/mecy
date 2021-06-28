@@ -227,7 +227,6 @@ namespace MecyApplication
 
         private static Layer CreateMesoDiameterLayer(List<Mesocyclone> mesocyclones)
         {
-            var features = new Features();
             return new Layer("Diameter Layer")
             {
                 DataSource = new MemoryProvider(CreateDiameterCircles(mesocyclones)),

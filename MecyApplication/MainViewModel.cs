@@ -19,7 +19,6 @@ namespace MecyApplication
         ObservableCollection<OpenDataElement> _openDataElements;
         OpenDataElement _selectedElement;
 
-        List<Mesocyclone> _mesocyclones;
         Mesocyclone _selectedMesocyclone;
 
         MapConfiguration _currentMapConfiguration = MapConfiguration.CreateDefaultMapConfiguration();
@@ -59,18 +58,6 @@ namespace MecyApplication
             {
                 _selectedElement = value;
                 OnPropertyChanged("SelectedElement");
-            }
-        }
-        public List<Mesocyclone> Mesocyclones
-        {
-            get
-            {
-                return _mesocyclones;
-            }
-            set
-            {
-                _mesocyclones = value;
-                OnPropertyChanged("Mesocyclones");
             }
         }
         public Mesocyclone SelectedMesocyclone
