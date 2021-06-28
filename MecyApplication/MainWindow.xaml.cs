@@ -81,9 +81,9 @@ namespace MecyApplication
 
             // Layers
             map.Layers.Add(CreateMesoDiameterLayer());
+            map.Layers.Add(CreateMesoLayelLayer());
             map.Layers.Add(CreateMesoHistLayer());
             map.Layers.Add(CreateMesoLayer());
-            map.Layers.Add(CreateMesoLayelLayer());
 
             // Widgets
             if (MainViewModel.CurrentMapConfiguration.ShowScaleBar) map.Widgets.Add(new ScaleBarWidget(map));
@@ -99,9 +99,9 @@ namespace MecyApplication
             if (MainViewModel.SelectedElement == null) return;
 
             // Layers
+            if (MainViewModel.CurrentMapConfiguration.ShowMesocycloneIdLabel) DrawMesoLabelsToLayer();
             if (MainViewModel.CurrentMapConfiguration.ShowMesocycloneDiameter) DrawMesoDiametersToLayer();
             if (MainViewModel.CurrentMapConfiguration.ShowHistoricMesocyclones) DrawMesosHistToLayer();
-            if (MainViewModel.CurrentMapConfiguration.ShowMesocycloneIdLabel) DrawMesoLabelsToLayer();
 
             DrawMesosToLayer();
         }
@@ -140,31 +140,56 @@ namespace MecyApplication
             return layer;
         }
 
-        private Feature CreateMesoFeature(Mesocyclone meso)
+        private Feature CreateMesoFeature(Mesocyclone meso, Mesocyclone selectedMeso)
         {
             var feature = new Feature
             {
                 Geometry = FromLongLat(meso.Longitude, meso.Latitude)
             };
             var style = new SymbolStyle();
-            switch (meso.Intensity)
+            if (meso == selectedMeso)
             {
-                case 1:
-                    style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_1.png", 0.6);
-                    break;
-                case 2:
-                    style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_2.png", 0.6);
-                    break;
-                case 3:
-                    style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_3.png", 0.6);
-                    break;
-                case 4:
-                    style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_4.png", 0.6);
-                    break;
-                case 5:
-                    style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_5.png", 0.6);
-                    break;
+                switch (meso.Intensity)
+                {
+                    case 1:
+                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_selected_1.png", 0.6);
+                        break;
+                    case 2:
+                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_selected_2.png", 0.6);
+                        break;
+                    case 3:
+                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_selected_3.png", 0.6);
+                        break;
+                    case 4:
+                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_selected_4.png", 0.6);
+                        break;
+                    case 5:
+                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_selected_5.png", 0.6);
+                        break;
+                }
             }
+            else
+            {
+                switch (meso.Intensity)
+                {
+                    case 1:
+                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_1.png", 0.6);
+                        break;
+                    case 2:
+                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_2.png", 0.6);
+                        break;
+                    case 3:
+                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_3.png", 0.6);
+                        break;
+                    case 4:
+                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_4.png", 0.6);
+                        break;
+                    case 5:
+                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_5.png", 0.6);
+                        break;
+                }
+            }
+
             feature.Styles.Add(style);
             return feature;
         }
@@ -194,7 +219,7 @@ namespace MecyApplication
 
             foreach (var meso in MainViewModel.SelectedElement.Mesocyclones)
             {
-                layer.Add(CreateMesoFeature(meso));
+                layer.Add(CreateMesoFeature(meso, MainViewModel.SelectedMesocyclone));
             }
             mapControl.RefreshGraphics();
         }
