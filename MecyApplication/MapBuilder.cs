@@ -28,7 +28,10 @@ namespace MecyApplication
 
         private const string GOOGLE_MAPS_TILE_URL = "http://mt{s}.google.com/vt/lyrs=t@125,r@130&hl=en&x={x}&y={y}&z={z}";
         
-        public static Map CreateMap(List<Mesocyclone> mesocyclones, List<Mesocyclone> historicMesocyclones, MapConfiguration mapConfiguration)
+        public static Map CreateMap(List<Mesocyclone> mesocyclones,
+            List<Mesocyclone> historicMesocyclones,
+            MapConfiguration mapConfiguration,
+            Mesocyclone selectedMesocyclone)
         {
             if (mesocyclones == null)
             {
@@ -69,7 +72,7 @@ namespace MecyApplication
             {
                 map.Layers.Add(CreateHistoricMesoLayer(historicMesocyclones, mapConfiguration));
             }
-            map.Layers.Add(CreateMesoLayer(mesocyclones));
+            map.Layers.Add(CreateMesoLayer(mesocyclones, selectedMesocyclone));
 
             /* Labels */
             if (mapConfiguration.ShowMesocycloneIdLabel)
@@ -89,7 +92,7 @@ namespace MecyApplication
             return map;
         }
 
-        private static Layer CreateMesoLayer(List<Mesocyclone> mesocyclones)
+        private static Layer CreateMesoLayer(List<Mesocyclone> mesocyclones, Mesocyclone selectedMesocyclone)
         {
             var features = new Features();
 
@@ -103,19 +106,54 @@ namespace MecyApplication
                 switch (meso.Intensity)
                 {
                     case 1:
-                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_1.png", 0.6);
+                        if (meso == selectedMesocyclone)
+                        {
+                            style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_selected_1.png", 0.6);
+                        }
+                        else
+                        {
+                            style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_1.png", 0.6);
+                        }
                         break;
                     case 2:
-                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_2.png", 0.6);
+                        if (meso == selectedMesocyclone)
+                        {
+                            style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_selected_2.png", 0.6);
+                        }
+                        else
+                        {
+                            style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_2.png", 0.6);
+                        }
                         break;
                     case 3:
-                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_3.png", 0.6);
+                        if (meso == selectedMesocyclone)
+                        {
+                            style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_selected_3.png", 0.6);
+                        }
+                        else
+                        {
+                            style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_3.png", 0.6);
+                        }
                         break;
                     case 4:
-                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_4.png", 0.6);
+                        if (meso == selectedMesocyclone)
+                        {
+                            style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_selected_4.png", 0.6);
+                        }
+                        else
+                        {
+                            style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_4.png", 0.6);
+                        }
                         break;
                     case 5:
-                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_5.png", 0.6);
+                        if (meso == selectedMesocyclone)
+                        {
+                            style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_selected_5.png", 0.6);
+                        }
+                        else
+                        {
+                            style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_5.png", 0.6);
+                        }
                         break;
                 }
                 mesoFeature.Styles.Add(style);
@@ -130,6 +168,7 @@ namespace MecyApplication
 
             return new Layer
             {
+                IsMapInfoLayer = true,
                 DataSource = dataSource,
                 Name = "Mesocyclones",
                 Style = null

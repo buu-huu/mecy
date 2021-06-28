@@ -250,6 +250,21 @@
   <ItemGroup>
     <Resource Include="Resources\ToolbarMesoId.png" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\meso_icon_map_selected_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\meso_icon_map_selected_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\meso_icon_map_selected_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\meso_icon_map_selected_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\meso_icon_map_selected_5.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

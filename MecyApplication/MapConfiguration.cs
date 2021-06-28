@@ -144,6 +144,7 @@ namespace MecyApplication
         public static MapConfiguration CreateDefaultMapConfiguration()
         {
             var mapConfig = Instance;
+
             mapConfig.ActiveTileSource = TileSource.OpenStreetMap;
             mapConfig.ShowHistoricMesocyclones = true;
             mapConfig.ShowMesocycloneDiameter = true;

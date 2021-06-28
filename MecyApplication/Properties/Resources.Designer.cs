@@ -243,6 +243,56 @@ namespace MecyApplication.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap meso_icon_map_selected_1 {
+            get {
+                object obj = ResourceManager.GetObject("meso_icon_map_selected_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap meso_icon_map_selected_2 {
+            get {
+                object obj = ResourceManager.GetObject("meso_icon_map_selected_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap meso_icon_map_selected_3 {
+            get {
+                object obj = ResourceManager.GetObject("meso_icon_map_selected_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap meso_icon_map_selected_4 {
+            get {
+                object obj = ResourceManager.GetObject("meso_icon_map_selected_4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap meso_icon_map_selected_5 {
+            get {
+                object obj = ResourceManager.GetObject("meso_icon_map_selected_5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ToolbarDiameter {
             get {
                 object obj = ResourceManager.GetObject("ToolbarDiameter", resourceCulture);

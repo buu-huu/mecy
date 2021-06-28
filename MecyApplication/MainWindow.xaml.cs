@@ -4,6 +4,8 @@ using Mapsui.Layers;
 using Mapsui.Projection;
 using Mapsui.Providers;
 using Mapsui.Styles;
+using Mapsui.UI;
+using Mapsui.UI.Wpf;
 using Mapsui.Utilities;
 using System;
 using System.Collections.Generic;
@@ -55,51 +57,68 @@ namespace MecyApplication
             this.DataContext = MainViewModel;
             RefreshMap();
 
-            /* EVENT SUBSCRIPTIONS */
+            /* Event Subscriptions */
             SetUpEvents();
         }
 
         private void SetUpEvents()
         {
             MainViewModel.RefreshMapEvent += RefreshMap;
+            mapControl.MouseLeftButtonDown += MapControlOnMouseLeftButtonDown;
+        }
+
+        private void HandleMouseDown(Mapsui.Geometries.Point screenPosition)
+        {
+            if (mapControl.GetMapInfo(screenPosition).Feature != null)
+            {
+                MessageBox.Show(mapControl.GetMapInfo(screenPosition).Feature.ToString());
+            }
+        }
+
+        private void MapControlOnMouseLeftButtonDown(object sender, MouseButtonEventArgs args)
+        {
+            HandleMouseDown(args.GetPosition(mapControl).ToMapsui());
         }
 
         private void RefreshMap()
         {
-            if (MainViewModel.SelectedElement != null)
+            if (MainViewModel.SelectedElement == null)
             {
-                if (MainViewModel.CurrentMapConfiguration.ShowHistoricMesocyclones)
-                {
-                    OpenDataElement previousElement = OpenDataElement.GetPreviousOpenDataElement(
-                        MainViewModel.OpenDataElements.ToList(),
-                        MainViewModel.SelectedElement);
+                mapControl.Map = MapBuilder.CreateMap(new List<Mesocyclone>(),
+                    null,
+                    MainViewModel.CurrentMapConfiguration,
+                    null);
+                return;
+            }
 
-                    if (previousElement == null)
-                    {
-                        mapControl.Map = MapBuilder.CreateMap(MainViewModel.SelectedElement.Mesocyclones,
-                            null,
-                            MainViewModel.CurrentMapConfiguration);
-                    }
-                    else
-                    {
-                        mapControl.Map = MapBuilder.CreateMap(
-                            MainViewModel.SelectedElement.Mesocyclones,
-                            previousElement.Mesocyclones,
-                            MainViewModel.CurrentMapConfiguration);
-                    }
-                }
-                else
+            if (MainViewModel.CurrentMapConfiguration.ShowHistoricMesocyclones)
+            {
+                OpenDataElement previousElement = OpenDataElement.GetPreviousOpenDataElement(
+                    MainViewModel.OpenDataElements.ToList(),
+                    MainViewModel.SelectedElement);
+
+                if (previousElement == null)
                 {
                     mapControl.Map = MapBuilder.CreateMap(MainViewModel.SelectedElement.Mesocyclones,
                         null,
-                        MainViewModel.CurrentMapConfiguration);
+                        MainViewModel.CurrentMapConfiguration,
+                        MainViewModel.SelectedMesocyclone);
+                }
+                else
+                {
+                    mapControl.Map = MapBuilder.CreateMap(
+                        MainViewModel.SelectedElement.Mesocyclones,
+                        previousElement.Mesocyclones,
+                        MainViewModel.CurrentMapConfiguration,
+                        MainViewModel.SelectedMesocyclone);
                 }
             }
             else
             {
-                mapControl.Map = MapBuilder.CreateMap(new List<Mesocyclone>(),
+                mapControl.Map = MapBuilder.CreateMap(MainViewModel.SelectedElement.Mesocyclones,
                     null,
-                    MainViewModel.CurrentMapConfiguration);
+                    MainViewModel.CurrentMapConfiguration,
+                    MainViewModel.SelectedMesocyclone);
             }
         }
 
@@ -109,6 +128,11 @@ namespace MecyApplication
         }
 
         private void lvOpenDataElements_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            RefreshMap();
+        }
+
+        private void lvMesocyclones_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             RefreshMap();
         }

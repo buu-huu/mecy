@@ -8,10 +8,12 @@ using Mapsui.Styles;
 using Mapsui.UI;
 using Mapsui.UI.Wpf;
 using Mapsui.Utilities;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
 namespace MecyApplication
@@ -25,7 +27,7 @@ namespace MecyApplication
         {
             InitializeComponent();
             
-            mapControl.Map = MapBuilder.CreateMap(new List<Mesocyclone> { meso }, null, MapConfiguration.Instance);
+            mapControl.Map = MapBuilder.CreateMap(new List<Mesocyclone> { meso }, null, MapConfiguration.Instance, null);
             gridInformation.DataContext = meso;
         }
     }

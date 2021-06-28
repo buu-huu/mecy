@@ -799,11 +799,12 @@
 
                     <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" />
 
-                    <ListView Margin="0"
+                    <ListView x:Name="lvMesocyclones" Margin="0"
                               Grid.Row="2"
                               ItemsSource="{Binding SelectedElement.Mesocyclones}"
                               SelectedItem="{Binding SelectedMesocyclone}"
                               SelectionMode="Single"
+                              SelectionChanged="lvMesocyclones_SelectionChanged"
                               Background="#FFC2C2C2">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseDoubleClick">
