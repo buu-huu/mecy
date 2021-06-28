@@ -51,9 +51,9 @@ namespace MecyApplication
             this.DataContext = MainViewModel;
 
             mapControl.Map = CreateMap();
-
-            // Event Subscriptions 
-            //MainViewModel.RefreshMapEvent += RefreshMap;
+            
+            // Event subscriptions
+            MainViewModel.RefreshMapEvent += RefreshMap;
         }
 
         private Map CreateMap()
@@ -71,10 +71,28 @@ namespace MecyApplication
 
         private void RefreshMap()
         {
-            DrawMesoDiametersToLayer();
-            DrawMesosHistToLayer();
+            ClearMap();
+            if (MainViewModel.SelectedElement == null) return;
+
+            if (MainViewModel.CurrentMapConfiguration.ShowMesocycloneDiameter) DrawMesoDiametersToLayer();
+            if (MainViewModel.CurrentMapConfiguration.ShowHistoricMesocyclones) DrawMesosHistToLayer();
+            if (MainViewModel.CurrentMapConfiguration.ShowMesocycloneIdLabel) DrawMesoLabelsToLayer();
+
             DrawMesosToLayer();
-            DrawMesoLabelsToLayer();
+        }
+
+        private void ClearMap()
+        {
+            var layerMeso = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == "MesoLayer");
+            var layerMesoDiameter = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == "MesoDiameterLayer");
+            var layerMesoHist = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == "MesoHistLayer");
+            var layerMesoLabel = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == "MesoLabelLayer");
+
+            layerMeso.Clear();
+            layerMesoDiameter.Clear();
+            layerMesoHist.Clear();
+            layerMesoLabel.Clear();
+            mapControl.RefreshGraphics();
         }
 
         // -------------------- MESO LAYER --------------------
