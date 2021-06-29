@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace MecyApplication
 {
     /// <summary>
-    /// Interaktionslogik für AboutWindow.xaml
+    /// AboutWindow with a little bit event handling
     /// </summary>
     public partial class AboutWindow : Window
     {
