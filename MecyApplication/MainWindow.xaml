@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         Title="Mecy"
         Height="1080" Width="1920"
-        Background="#FFE8E8E8"
+        Background="#FFC8C8C8"
         Closing="Window_Closing"
         WindowState="Maximized"
         WindowStartupLocation="CenterScreen">
@@ -30,8 +30,8 @@
                           Command="{Binding ShowAboutWindowCommand}"/>
             </Menu>
 
-            <ToolBarTray IsLocked="True">
-                <ToolBar Height="50">
+            <ToolBarTray IsLocked="True" Background="#FFA2A2A2">
+                <ToolBar Height="50" Background="#FFBDBDBD">
                     <Button Command="{Binding DownloadDataCommand}"
                             ToolTip="Download data from OpenData server">
                         <Image Source="Resources/ToolbarDownload.png" />
@@ -216,7 +216,7 @@
                         <Border.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FFE1A3FF" Offset="0"/>
-                                <GradientStop Color="White" Offset="1"/>
+                                <GradientStop Color="#FFBDBDBD" Offset="1"/>
                             </LinearGradientBrush>
                         </Border.Background>
                         <Image Source="Resources/LogoWithoutSubtitle.png" />
