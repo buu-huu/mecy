@@ -847,7 +847,7 @@
                                 <GridViewColumn Header="Intensity" Width="70">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Image Width="55" Height="55" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Image Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center">
                                                 <Image.Style>
                                                     <Style TargetType="{x:Type Image}">
                                                         <Style.Triggers>
