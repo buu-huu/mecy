@@ -26,11 +26,13 @@ namespace MecyApplication
             List<double> list = (List<double>)value;
             string result = "";
 
-            foreach(double item in list)
+            for (int i = 0; i < (list.Count - 1); i++)
             {
-                result += item.ToString();
-                result += " ";
+                result += list[i];
+                result += "° | ";
             }
+            result += list[list.Count - 1];
+            result += "°";
             return result;
         }
 
