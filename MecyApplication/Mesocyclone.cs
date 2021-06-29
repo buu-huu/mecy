@@ -11,6 +11,9 @@ using System.Windows.Media.Imaging;
 
 namespace MecyApplication
 {
+    /// <summary>
+    /// Holds all the information of a mesocyclone.
+    /// </summary>
     public class Mesocyclone : INotifyPropertyChanged
     {
         private int _id;
@@ -44,8 +47,6 @@ namespace MecyApplication
         private double _velocityRotationalMaxClosestToGround;
 
         private int _intensity;
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         #region properties
         public int Id
@@ -386,6 +387,7 @@ namespace MecyApplication
         }
         #endregion properties
 
+        public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)

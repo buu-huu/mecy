@@ -8,9 +8,20 @@ using System.Windows.Data;
 
 namespace MecyApplication
 {
+    /// <summary>
+    /// Converter for MainWindow
+    /// </summary>
     [ValueConversion(typeof(int), typeof(string))]
     public class MesoCountConverter : IValueConverter
     {
+        /// <summary>
+        /// Converts a number of mesocyclones to a string.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="targetType"></param>
+        /// <param name="parameter"></param>
+        /// <param name="culture"></param>
+        /// <returns></returns>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             int mesoCount = (int)value;
@@ -22,8 +33,6 @@ namespace MecyApplication
             {
                 return mesoCount.ToString();
             }
-
-            throw new NotImplementedException();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

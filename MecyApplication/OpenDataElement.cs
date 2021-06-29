@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace MecyApplication
 {
+    /// <summary>
+    /// Holds information about an opendata element.
+    /// </summary>
     public class OpenDataElement : INotifyPropertyChanged
     {
         private DateTime _time;
@@ -30,8 +33,6 @@ namespace MecyApplication
         private bool _stationAvailRos;
         private bool _stationAvailTur;
         private bool _stationAvailUmd;
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public DateTime Time
         {
@@ -274,6 +275,10 @@ namespace MecyApplication
             }
         }
 
+        /// <summary>
+        /// Converts the count of the mesocyclones for an opendata element to a "severity" index.
+        /// Used for adding background colors in listview.
+        /// </summary>
         public int MesoCountIndicator
         {
             get
@@ -305,6 +310,9 @@ namespace MecyApplication
             }
         }
 
+        /// <summary>
+        /// Get the highest mesocyclone intensity of all mesocyclones.
+        /// </summary>
         public int HighestMesocycloneIntensity
         {
             get
@@ -321,6 +329,12 @@ namespace MecyApplication
         }
 
         public OpenDataElement() { }
+        /// <summary>
+        /// Creates a new opendata element from parameters.
+        /// </summary>
+        /// <param name="time">Timestamp</param>
+        /// <param name="radarStations">List of radar stations</param>
+        /// <param name="mesocyclones">List of mesocyclones</param>
         public OpenDataElement(DateTime time, List<RadarStation> radarStations, List<Mesocyclone> mesocyclones)
         {
             this.Time = time;
@@ -389,6 +403,12 @@ namespace MecyApplication
             }
         }
 
+        /// <summary>
+        /// Returns the previous opendata element of a reference element.
+        /// </summary>
+        /// <param name="elementList">List of opendata elements</param>
+        /// <param name="referenceElement">Reference element for comparing</param>
+        /// <returns></returns>
         public static OpenDataElement GetPreviousOpenDataElement(List<OpenDataElement> elementList, OpenDataElement referenceElement)
         {
             DateTime elementTime = referenceElement.Time;
@@ -397,6 +417,7 @@ namespace MecyApplication
             return previousElement;
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)

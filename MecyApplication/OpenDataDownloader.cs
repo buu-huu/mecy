@@ -9,6 +9,9 @@ using WinSCP;
 
 namespace MecyApplication
 {
+    /// <summary>
+    /// Downloading of data and storing connection constants.
+    /// </summary>
     static class OpenDataDownloader
     {
         public const string HOST_NAME = "opendata.dwd.de";
@@ -17,6 +20,9 @@ namespace MecyApplication
         public const string DWD_MESO_DIRECTORY = "weather/radar/mesocyclones/";
         public const string LOCAL_DOWNLOAD_PATH = @"xml_data";
 
+        /// <summary>
+        /// Downloads all XML files from opendata server.
+        /// </summary>
         public static void DownloadAllData()
         {
             DeleteAllData();
@@ -38,6 +44,9 @@ namespace MecyApplication
             }
         }
 
+        /// <summary>
+        /// Deletes the folder for XML files.
+        /// </summary>
         private static void DeleteAllData()
         {
             if (Directory.Exists(LOCAL_DOWNLOAD_PATH))
@@ -47,6 +56,10 @@ namespace MecyApplication
             }
         }
 
+        /// <summary>
+        /// Checks if the DWD opendata server is up.
+        /// </summary>
+        /// <returns>Opendata server up</returns>
         public static bool CheckServerConnection()
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(String.Format("https://{0}", HOST_NAME));

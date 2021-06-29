@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace MecyApplication
 {
+    /// <summary>
+    /// Singleton that holds all the configuration settings for the map.
+    /// </summary>
     public sealed class MapConfiguration
     {
+        /// <summary>
+        /// Available tile sources
+        /// </summary>
         public enum TileSource
         {
             OpenStreetMap,
@@ -137,8 +143,11 @@ namespace MecyApplication
         }
 
 
-        MapConfiguration() { }
+        private MapConfiguration() { }
 
+        /// <summary>
+        /// Returns singleton instance of the class.
+        /// </summary>
         public static MapConfiguration Instance
         {
             get
@@ -154,6 +163,10 @@ namespace MecyApplication
             }
         }
 
+        /// <summary>
+        /// Creates the default map configuration.
+        /// </summary>
+        /// <returns>Map configuration</returns>
         public static MapConfiguration CreateDefaultMapConfiguration()
         {
             var mapConfig = Instance;

@@ -8,7 +8,7 @@ using System.Windows.Data;
 namespace MecyApplication
 {
     /// <summary>
-    /// Converter class for MainWindow
+    /// Converter for MainWindow
     /// </summary>
     [ValueConversion(typeof(List<string>), typeof(string))]
     public class ListToStringConverter : IValueConverter
