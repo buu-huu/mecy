@@ -70,7 +70,8 @@ namespace MecyApplication
             MainViewModel.RefreshMapWidgetsEvent += RefreshMapWithWidgets;
             MainViewModel.CenterMapEvent += CenterMap;
             MainViewModel.CenterMapToMesoEvent += CenterMapToMeso;
-        }
+            mapControl.Info += HandleMapClick;
+        }        
 
         /// <summary>
         /// Creates a fresh map with all layers. According to some MapConfigurations, widgets and tilesources
@@ -523,27 +524,17 @@ namespace MecyApplication
 
         // -------------------- EVENT HANDLING --------------------
         /// <summary>
-        /// Handles mouse clicks (left button) on mapcontrol.
+        /// Handles the click on the map.
         /// </summary>
         /// <param name="sender">Sender</param>
         /// <param name="args">Arguments</param>
-        private void MapControlOnMouseLeftButtonDown(object sender, MouseButtonEventArgs args)
+        public void HandleMapClick(object sender, MapInfoEventArgs args)
         {
-            var position = args.GetPosition(mapControl).ToMapsui();
-            var mapInfo = mapControl.GetMapInfo(position);
+            var mapInfo = args.MapInfo;
 
-            if (mapInfo.Feature != null)
-            {
-                var layer = (WritableLayer)mapControl.Map.Layers.First(l => l.Name == "MesoLayer");
-                var feature = new Feature
-                {
-                    Geometry = new Mapsui.Geometries.Point(100009.715432, 41.513456),
-                };
-                feature.Styles.Add(
-                    CreatePngStyle("MecyApplication.Resources.meso_icon_map_selected_5.png", 0.6));
-                layer.Add(feature);
-                MessageBox.Show("Yes");
-            }
+            // Select clicked mesocyclone
+            var meso = GetBestMesocyclone((Feature)mapInfo.Feature);
+            if (meso != null) MainViewModel.SelectedMesocyclone = meso;
         }
 
         /// <summary>
@@ -628,6 +619,39 @@ namespace MecyApplication
             latitudeResult = ConvertRadiansToDegrees(latitudeResult);
             longitudeResult = ConvertRadiansToDegrees(longitudeResult);
             return FromLongLat(longitudeResult, latitudeResult);
+        }
+
+        /// <summary>
+        /// Returns the nearest mesocyclone instance to a feature.
+        /// </summary>
+        /// <param name="feature">Feature</param>
+        /// <returns>Nearest mesocyclone</returns>
+        private Mesocyclone GetBestMesocyclone(Feature feature)
+        {
+            if (feature == null) return null;
+
+            Point point = (Point)feature.Geometry;
+            Point pos = SphericalMercator.ToLonLat(point.X, point.Y);
+            double longitude = Math.Round(pos.X, 6, MidpointRounding.AwayFromZero);
+            double latitude = Math.Round(pos.Y, 6, MidpointRounding.AwayFromZero);
+
+            Mesocyclone bestMeso = MainViewModel.SelectedElement.Mesocyclones[0];
+            double diffBestLong = 1000;
+            double diffBestLat = 1000;
+
+            foreach (var meso in MainViewModel.SelectedElement.Mesocyclones)
+            {
+                double longMeso = Math.Round(meso.Longitude, 6, MidpointRounding.AwayFromZero);
+                double latMeso = Math.Round(meso.Latitude, 6, MidpointRounding.AwayFromZero);
+
+                if (Math.Abs(longMeso - longitude) < diffBestLong || Math.Abs(latMeso - latitude) < diffBestLat)
+                {
+                    diffBestLong = Math.Abs(longMeso - longitude);
+                    diffBestLat = Math.Abs(latMeso - latitude);
+                    bestMeso = meso;
+                }
+            }
+            return bestMeso;
         }
 
         /// <summary>
