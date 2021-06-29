@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 namespace MecyApplication
 {
     /// <summary>
-    /// Interaktionslogik für DownloadWindow.xaml
+    /// Simple download window
     /// </summary>
     public partial class DownloadWindow : Window
     {

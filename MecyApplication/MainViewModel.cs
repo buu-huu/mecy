@@ -14,6 +14,9 @@ using System.Windows.Threading;
 
 namespace MecyApplication
 {
+    /// <summary>
+    /// MainViewModel for application.
+    /// </summary>
     public class MainViewModel : INotifyPropertyChanged
     {
         ObservableCollection<OpenDataElement> _openDataElements;
@@ -28,8 +31,6 @@ namespace MecyApplication
 
         DateTime _timeUtc;
         DateTime _timeLoc;
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         #region properties
         public ObservableCollection<OpenDataElement> OpenDataElements
@@ -138,6 +139,9 @@ namespace MecyApplication
         }
         #endregion properties
 
+        /// <summary>
+        /// Constructor that prepares everything to work.
+        /// </summary>
         public MainViewModel()
         {
             ParseData();
@@ -145,6 +149,9 @@ namespace MecyApplication
             SetupConnectionWatcher();
         }
 
+        /// <summary>
+        /// Sets up clocks with timers.
+        /// </summary>
         private void SetupClocks()
         {
             DispatcherTimer clockTimer = new DispatcherTimer();
@@ -153,6 +160,9 @@ namespace MecyApplication
             clockTimer.Start();
         }
 
+        /// <summary>
+        /// Sets up the watcher, that checks for an existing connection to the opendata server.
+        /// </summary>
         private void SetupConnectionWatcher()
         {
             DispatcherTimer connectionTimer = new DispatcherTimer();
@@ -161,6 +171,11 @@ namespace MecyApplication
             connectionTimer.Start();
         }
 
+        /// <summary>
+        /// Tick for the connection watcher.
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Arguments</param>
         private void ConnectionWatcherTick(object sender, EventArgs e)
         {
             if (OpenDataDownloader.CheckServerConnection())
@@ -173,12 +188,20 @@ namespace MecyApplication
             }
         }
 
+        /// <summary>
+        /// Ticks for the clocks.
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Arguments</param>
         private void ClocksTick(object sender, EventArgs e)
         {
             TimeUtc = DateTime.UtcNow;
             TimeLoc = DateTime.Now;
         }
 
+        /// <summary>
+        /// Parses all opendata elements.
+        /// </summary>
         private void ParseData()
         {
             var parsedElements = XMLParser.ParseAllMesos(OpenDataDownloader.LOCAL_DOWNLOAD_PATH);
@@ -196,6 +219,7 @@ namespace MecyApplication
             }
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
@@ -204,6 +228,7 @@ namespace MecyApplication
             }
         }
 
+        // -------------------- COMMANDS --------------------
         public ICommand DownloadDataCommand
         {
             get
@@ -212,6 +237,10 @@ namespace MecyApplication
             }
         }
 
+        /// <summary>
+        /// Downloads current data from opendata server.
+        /// </summary>
+        /// <param name="obj">Object</param>
         private void DownloadData(object obj)
         {
             if (!IsDownloading)
@@ -256,6 +285,10 @@ namespace MecyApplication
             }
         }
 
+        /// <summary>
+        /// Exits the application.
+        /// </summary>
+        /// <param name="obj">Object</param>
         private void ExitApplication(object obj)
         {
             Environment.Exit(0);
@@ -269,6 +302,10 @@ namespace MecyApplication
             }
         }
 
+        /// <summary>
+        /// Shows the about window.
+        /// </summary>
+        /// <param name="obj">Object</param>
         private void ShowAboutWindow(object obj)
         {
             new AboutWindow().Show();
@@ -282,6 +319,7 @@ namespace MecyApplication
             }
         }
 
+        // -------------------- DELEGATES --------------------
         public delegate void RefreshMapEventAction();
         public event RefreshMapEventAction RefreshMapEvent;
 
@@ -294,6 +332,10 @@ namespace MecyApplication
         public delegate void CenterMapToMesoEventAction();
         public event CenterMapToMesoEventAction CenterMapToMesoEvent;
 
+        /// <summary>
+        /// Selects the Open Street Map style
+        /// </summary>
+        /// <param name="obj">Object</param>
         private void SelectOpenStreetMapStyle(object obj)
         {
             CurrentMapConfiguration.ActiveTileSource = MapConfiguration.TileSource.OpenStreetMap;
@@ -308,6 +350,10 @@ namespace MecyApplication
             }
         }
 
+        /// <summary>
+        /// Select the Google Maps style
+        /// </summary>
+        /// <param name="obj">Object</param>
         private void SelectGoogleMapsStyle(object obj)
         {
             CurrentMapConfiguration.ActiveTileSource = MapConfiguration.TileSource.GoogleMaps;
@@ -322,6 +368,10 @@ namespace MecyApplication
             }
         }
 
+        /// <summary>
+        /// Fires the event to refresh the map and the current map configuration.
+        /// </summary>
+        /// <param name="obj">Object</param>
         private void RefreshMapAndMapConfiguration(object obj)
         {
             RefreshMapEvent?.Invoke();
@@ -335,6 +385,10 @@ namespace MecyApplication
             }
         }
 
+        /// <summary>
+        /// Fires the event to refresh the map and its widgets.
+        /// </summary>
+        /// <param name="obj">Object</param>
         private void RefreshMapWidgets(object obj)
         {
             RefreshMapWidgetsEvent?.Invoke();
@@ -348,6 +402,10 @@ namespace MecyApplication
             }
         }
 
+        /// <summary>
+        /// Fires the event to center the map.
+        /// </summary>
+        /// <param name="obj">Object</param>
         public void CenterMap(object obj)
         {
             CenterMapEvent?.Invoke();
@@ -361,6 +419,10 @@ namespace MecyApplication
             }
         }
 
+        /// <summary>
+        /// Fires the event to center the map to a mesocyclone.
+        /// </summary>
+        /// <param name="obj">Object</param>
         public void CenterMapToMeso(object obj)
         {
             CenterMapToMesoEvent?.Invoke();

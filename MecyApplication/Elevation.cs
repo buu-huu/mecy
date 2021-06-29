@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace MecyApplication
 {
+    /// <summary>
+    /// Elevation class for mesocyclone
+    /// </summary>
     public class Elevation : INotifyPropertyChanged
     {
         private string _radarSite;
@@ -40,14 +43,27 @@ namespace MecyApplication
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        /// <summary>
+        /// Parses a string of elevations to a list of double values.
+        /// </summary>
+        /// <param name="elevations">String of elevations</param>
+        /// <returns>List of elevations</returns>
         public static List<double> ParseElevationsFromString(string elevations)
         {
             List<double> parsedElevations = new List<double>();
-            List<string> listElevations = elevations.Split(',').ToList();
+            List<string> listElevations = elevations.Split(',').ToList(); // We need the elevations commaseparated
 
-            foreach (string item in listElevations)
+            try
             {
-                parsedElevations.Add(Convert.ToDouble(item, CultureInfo.InvariantCulture));
+                foreach (string item in listElevations)
+                {
+                    parsedElevations.Add(Convert.ToDouble(item, CultureInfo.InvariantCulture));
+                }
+            }
+            catch
+            {
+                // TODO: Logging
+                return new List<double>();
             }
             return parsedElevations;
         }
