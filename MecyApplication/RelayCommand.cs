@@ -7,6 +7,9 @@ using System.Windows.Input;
 
 namespace MecyApplication
 {
+    /// <summary>
+    /// Helper class for commands.
+    /// </summary>
     public class RelayCommand : ICommand
     {
         private readonly Predicate<object> _canExecute;

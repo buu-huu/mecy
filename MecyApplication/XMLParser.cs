@@ -11,8 +11,16 @@ using System.Xml.Linq;
 
 namespace MecyApplication
 {
+    /// <summary>
+    /// Class for XML parsing.
+    /// </summary>
     static class XMLParser
     {
+        /// <summary>
+        /// Parses all mesocyclones in a directory.
+        /// </summary>
+        /// <param name="path">Path to XML files</param>
+        /// <returns>List of opendata elements</returns>
         public static List<OpenDataElement> ParseAllMesos(string path)
         {
             List<OpenDataElement> openDataElements = new List<OpenDataElement>();
@@ -30,11 +38,16 @@ namespace MecyApplication
             }
             catch
             {
-                // Todo logging (directory not exists)...
+                // TODO: logging (directory not exists)...
             }
             return openDataElements;
         }
 
+        /// <summary>
+        /// Parses a XML file.
+        /// </summary>
+        /// <param name="path">Path to a XML file.</param>
+        /// <returns>Opendata element</returns>
         public static OpenDataElement ParseMesoFile(string path)
         {
             try

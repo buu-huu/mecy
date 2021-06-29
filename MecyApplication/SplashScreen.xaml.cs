@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace MecyApplication
 {
     /// <summary>
-    /// Interaktionslogik für SplashScreen.xaml
+    /// Handles the splash screen.
     /// </summary>
     public partial class SplashScreen : Window
     {
@@ -25,6 +25,11 @@ namespace MecyApplication
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Starts here, when the content of the splash screen is rendered.
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Arguments</param>
         private void Window_ContentRendered(object sender, EventArgs e)
         {
             Thread.Sleep(1500);

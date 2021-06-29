@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace MecyApplication
 {
+    /// <summary>
+    /// Radar station class.
+    /// </summary>
     public class RadarStation
     {
         public static List<string> ALL_STATIONS = new List<string>()
@@ -34,10 +37,15 @@ namespace MecyApplication
         public string Name { get => _name; set => _name = value; }
         public bool IsAvailable { get => _isAvailable; set => _isAvailable = value; }
 
+        /// <summary>
+        /// Parses a string of radar stations to a list of radar stations.
+        /// </summary>
+        /// <param name="stations">Radar stations</param>
+        /// <returns>List of radar stations</returns>
         public static List<RadarStation> ParseStationsFromString(string stations)
         {
             List<RadarStation> parsedStations = new List<RadarStation>();
-            List<string> stationsInString = stations.Split(',').ToList<string>();
+            List<string> stationsInString = stations.Split(',').ToList<string>(); // We need a string with commaseparated stations
 
             foreach (string item in stationsInString)
             {
