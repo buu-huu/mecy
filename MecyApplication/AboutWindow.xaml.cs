@@ -20,11 +20,19 @@ namespace MecyApplication
     /// </summary>
     public partial class AboutWindow : Window
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public AboutWindow()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Event handler for clicking the hyperlink to GitHub repository
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Arguments</param>
         private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
         {
             Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
