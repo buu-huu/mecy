@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:MecyApplication"
              StartupUri="SplashScreen.xaml">
     <Application.Resources>
-         
+         <!-- Define startup window above -->
     </Application.Resources>
 </Application>
