@@ -28,7 +28,7 @@ using Point = Mapsui.Geometries.Point;
 namespace MecyApplication
 {
     /// <summary>
-    /// Interaktionslogik für MainWindow.xaml
+    /// MainWindow logic, that mainly handles map and event stuff.
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -51,6 +51,10 @@ namespace MecyApplication
             }
         }
 
+        /// <summary>
+        /// Constructor, that holds an instance of the MainViewModel.
+        /// </summary>
+        /// <param name="mainViewModel">MainViewModel of the application.</param>
         public MainWindow(MainViewModel mainViewModel)
         {
             InitializeComponent();
@@ -68,6 +72,11 @@ namespace MecyApplication
             MainViewModel.CenterMapToMesoEvent += CenterMapToMeso;
         }
 
+        /// <summary>
+        /// Creates a fresh map with all layers. According to some MapConfigurations, widgets and tilesources
+        /// get set.
+        /// </summary>
+        /// <returns>Created map</returns>
         private Map CreateMap()
         {
             var map = new Map
@@ -97,6 +106,9 @@ namespace MecyApplication
             return map;
         }
 
+        /// <summary>
+        /// Refreshes the map.
+        /// </summary>
         private void RefreshMap()
         {
             ClearMap();
@@ -111,6 +123,9 @@ namespace MecyApplication
             DrawMesosToLayer();
         }
 
+        /// <summary>
+        /// Refreshes the map and the widgets.
+        /// </summary>
         private void RefreshMapWithWidgets()
         {
             var map = CreateMap();
@@ -119,6 +134,9 @@ namespace MecyApplication
             RefreshMap();
         }
 
+        /// <summary>
+        /// Clears the map.
+        /// </summary>
         private void ClearMap()
         {
             var layerMeso = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == "MesoLayer");
@@ -133,12 +151,18 @@ namespace MecyApplication
             mapControl.RefreshGraphics();
         }
 
+        /// <summary>
+        /// Centers the map to the standard position.
+        /// </summary>
         private void CenterMap()
         {
             mapControl.Map = CreateMap();
             RefreshMap();
         }
 
+        /// <summary>
+        /// Centers the map to the selected mesocyclone.
+        /// </summary>
         private void CenterMapToMeso()
         {
             var map = CreateMap();
@@ -152,6 +176,10 @@ namespace MecyApplication
         }
 
         // -------------------- MESO LAYER --------------------
+        /// <summary>
+        /// Creates a mesocyclone layer.
+        /// </summary>
+        /// <returns>Mesocyclone layer</returns>
         private WritableLayer CreateMesoLayer()
         {
             var layer = new WritableLayer
@@ -163,6 +191,13 @@ namespace MecyApplication
             return layer;
         }
 
+        /// <summary>
+        /// Creates a mesocyclone feature. Checks, if the mesocyclone is the currently selected mesocyclone
+        /// and loads the correct image file.
+        /// </summary>
+        /// <param name="meso">Mesocyclone</param>
+        /// <param name="selectedMeso">Currently selected mesocyclone</param>
+        /// <returns>Mesocyclone feature</returns>
         private Feature CreateMesoFeature(Mesocyclone meso, Mesocyclone selectedMeso)
         {
             var feature = new Feature
@@ -216,12 +251,23 @@ namespace MecyApplication
             return feature;
         }
 
+        /// <summary>
+        /// Creates a PNG symbol style.
+        /// </summary>
+        /// <param name="embeddedResourcePath">Path of the embedded resource</param>
+        /// <param name="scale">Scale of the image</param>
+        /// <returns></returns>
         private static SymbolStyle CreatePngStyle(string embeddedResourcePath, double scale)
         {
             var bitmapId = GetBitmapIdForEmbeddedResource(embeddedResourcePath);
             return new SymbolStyle { BitmapId = bitmapId, SymbolScale = scale, SymbolOffset = new Offset(0.0, 0.5, true) };
         }
 
+        /// <summary>
+        /// Returns the bitmap ID for an embedded resource.
+        /// </summary>
+        /// <param name="imagePath">Path of the image</param>
+        /// <returns>ID of the embedded resource</returns>
         private static int GetBitmapIdForEmbeddedResource(string imagePath)
         {
             var assembly = typeof(MainWindow).GetTypeInfo().Assembly;
@@ -229,6 +275,9 @@ namespace MecyApplication
             return BitmapRegistry.Instance.Register(image);
         }
 
+        /// <summary>
+        /// Draws mesocyclones of the currently selected opendata element to the mesocyclone layer.
+        /// </summary>
         private void DrawMesosToLayer()
         {
             var layer = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == "MesoLayer");
@@ -247,6 +296,10 @@ namespace MecyApplication
         }
 
         // -------------------- MESO DIAMETER LAYER --------------------
+        /// <summary>
+        /// Creates a mesocyclone diameter layer.
+        /// </summary>
+        /// <returns>Mesocyclone diameter layer</returns>
         private WritableLayer CreateMesoDiameterLayer()
         {
             var layer = new WritableLayer
@@ -257,6 +310,11 @@ namespace MecyApplication
             return layer;
         }
 
+        /// <summary>
+        /// Creates a mesocyclone diameter polygon.
+        /// </summary>
+        /// <param name="meso">Mesocyclone</param>
+        /// <returns>Mesocyclone diameter polygon</returns>
         private Polygon CreateMesoDiameterPolygon(Mesocyclone meso)
         {
             var polygon = new Polygon();
@@ -273,6 +331,9 @@ namespace MecyApplication
             return polygon;
         }
 
+        /// <summary>
+        /// Draws mesocyclone diameters to layer.
+        /// </summary>
         private void DrawMesoDiametersToLayer()
         {
             var layer = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == "MesoDiameterLayer");
@@ -305,6 +366,10 @@ namespace MecyApplication
         }
 
         // -------------------- MESO LABEL LAYER --------------------
+        /// <summary>
+        /// Creates a mesocyclone label layer.
+        /// </summary>
+        /// <returns>Mesocyclone label layer</returns>
         private WritableLayer CreateMesoLayelLayer()
         {
             var layer = new WritableLayer
@@ -315,6 +380,11 @@ namespace MecyApplication
             return layer;
         }
 
+        /// <summary>
+        /// Creates a mesocyclone label feature.
+        /// </summary>
+        /// <param name="meso">Mesocyclone</param>
+        /// <returns>Mesocyclone label feature</returns>
         private Feature CreateMesoLabelFeature(Mesocyclone meso)
         {
             var feature = new Feature
@@ -353,6 +423,9 @@ namespace MecyApplication
             return feature;
         }
 
+        /// <summary>
+        /// Draws mesocyclone labels to layer.
+        /// </summary>
         private void DrawMesoLabelsToLayer()
         {
             var layer = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == "MesoLabelLayer");
@@ -371,6 +444,10 @@ namespace MecyApplication
         }
 
         // -------------------- MESO HIST LAYER --------------------
+        /// <summary>
+        /// Creates a historic mesocyclone layer.
+        /// </summary>
+        /// <returns>Historic mesocyclone layer</returns>
         private WritableLayer CreateMesoHistLayer()
         {
             var layer = new WritableLayer
@@ -381,6 +458,11 @@ namespace MecyApplication
             return layer;
         }
 
+        /// <summary>
+        /// Creates a historic mesocyclone feature.
+        /// </summary>
+        /// <param name="meso">Historic mesocyclone</param>
+        /// <returns>Historic mesocyclone feature</returns>
         private Feature CreateMesoHistFeature(Mesocyclone meso)
         {
             var feature = new Feature
@@ -414,6 +496,9 @@ namespace MecyApplication
             return feature;
         }
 
+        /// <summary>
+        /// Draws historic mesocyclones to layer.
+        /// </summary>
         private void DrawMesosHistToLayer()
         {
             var layer = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == "MesoHistLayer");
@@ -437,6 +522,11 @@ namespace MecyApplication
         }
 
         // -------------------- EVENT HANDLING --------------------
+        /// <summary>
+        /// Handles mouse clicks (left button) on mapcontrol.
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="args">Arguments</param>
         private void MapControlOnMouseLeftButtonDown(object sender, MouseButtonEventArgs args)
         {
             var position = args.GetPosition(mapControl).ToMapsui();
@@ -456,39 +546,72 @@ namespace MecyApplication
             }
         }
 
+        /// <summary>
+        /// Handles selection changes on <c>lvOpenDataElements</c>
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Arguments</param>
         private void lvOpenDataElements_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             RefreshMap();
         }
 
+        /// <summary>
+        /// Handles selection changes on <c>lvMesocyclones</c>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lvMesocyclones_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             RefreshMap();
         }
 
+        /// <summary>
+        /// Handles window close event.
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Arguments</param>
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            System.Environment.Exit(0);
+            System.Environment.Exit(0); // Close whole application. Not only the window.
         }
 
         // -------------------- GOOGLE MAPS TILE DOWNLOAD --------------------
+        /// <summary>
+        /// Creates a tilesource for google maps.
+        /// </summary>
+        /// <param name="urlFormatter">URL formatter</param>
+        /// <returns>Tilesource</returns>
         private static ITileSource CreateGoogleTileSource(string urlFormatter)
         {
             return new HttpTileSource(new GlobalSphericalMercator(), urlFormatter, new[] { "0", "1", "2", "3" },
                 tileFetcher: FetchGoogleTile);
         }
 
-        private static byte[] FetchGoogleTile(Uri arg)
+        /// <summary>
+        /// Creates a byte array of google maps tiles.
+        /// </summary>
+        /// <param name="uri">URI</param>
+        /// <returns>Tilebytes</returns>
+        private static byte[] FetchGoogleTile(Uri uri)
         {
             var httpClient = new HttpClient();
 
             httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Referer", "http://maps.google.com/");
             httpClient.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", @"Mozilla / 5.0(Windows; U; Windows NT 6.0; en - US; rv: 1.9.1.7) Gecko / 20091221 Firefox / 3.5.7");
 
-            return httpClient.GetByteArrayAsync(arg).ConfigureAwait(false).GetAwaiter().GetResult();
+            return httpClient.GetByteArrayAsync(uri).ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
         // -------------------- MATH HELPERS --------------------
+        /// <summary>
+        /// Creates a point from a given coordinate, rotation and distance.
+        /// </summary>
+        /// <param name="longitude">Longitude</param>
+        /// <param name="latitude">Latitude</param>
+        /// <param name="rotation">Rotation</param>
+        /// <param name="distance">Distance</param>
+        /// <returns>Distance point</returns>
         private static Point GetDistancePoint(double longitude, double latitude, double rotation, double distance)
         {
             double brng = ConvertDegreesToRadians(rotation); // In radians! 90° == 1.57
@@ -507,239 +630,37 @@ namespace MecyApplication
             return FromLongLat(longitudeResult, latitudeResult);
         }
 
+        /// <summary>
+        /// Creates an Mapsui point from a coordinate.
+        /// </summary>
+        /// <param name="longitude">Longitude</param>
+        /// <param name="latitude">Latitude</param>
+        /// <returns>Point</returns>
         private static Point FromLongLat(double longitude, double latitude)
         {
             return SphericalMercator.FromLonLat(longitude, latitude);
         }
 
+        /// <summary>
+        /// Converts a radians value to degrees value
+        /// </summary>
+        /// <param name="radians">Radians</param>
+        /// <returns>Degrees value</returns>
         public static double ConvertRadiansToDegrees(double radians)
         {
             double degrees = (180 / Math.PI) * radians;
             return degrees;
         }
 
+        /// <summary>
+        /// Converts a degrees value to radians value
+        /// </summary>
+        /// <param name="degrees">Degrees</param>
+        /// <returns>Radians value</returns>
         public static double ConvertDegreesToRadians(double degrees)
         {
             double radians = (Math.PI / 180) * degrees;
             return radians;
         }
-
-
-
-        /*
-
-
-        private void MapControlOnMouseLeftButtonDown(object sender, MouseButtonEventArgs args)
-        {
-            var position = args.GetPosition(mapControl).ToMapsui();
-            var mapInfo = mapControl.GetMapInfo(position);
-
-            if (mapInfo.Feature != null)
-            {
-                var layer = (WritableLayer) mapControl.Map.Layers.First(l => l.Name == "MesoLayer");
-                var feature = new Feature
-                {
-                    Geometry = new Mapsui.Geometries.Point(100009.715432, 41.513456),
-                };
-                feature.Styles.Add(
-                    CreatePngStyle("MecyApplication.Resources.meso_icon_map_selected_5.png", 0.6));
-                layer.Add(feature);
-                MessageBox.Show("Yes");
-            }
-        }
-
-        private static WritableLayer CreateEditLayer()
-        {
-            return new WritableLayer
-            {
-                Name = "EditLayer",
-                Style = CreateEditLayerStyle(),
-                IsMapInfoLayer = true
-            };
-        }
-
-        private static StyleCollection CreateEditLayerStyle()
-        {
-            // The edit layer has two styles. That is why it needs to use a StyleCollection.
-            // In a future version of Mapsui the ILayer will have a Styles collections just
-            // as the IFeature has right now.
-            // The first style is the basic style of the features in edit mode.
-            // The second style is the way to show a feature is selected.
-            return new StyleCollection
-            {
-                CreateEditLayerBasicStyle(),
-                CreateSelectedStyle()
-            };
-        }
-
-        private static IStyle CreateEditLayerBasicStyle()
-        {
-            // Note: VectorStyle does not function in the current release Mapsui version.
-            // You need the package deployed from the build server.
-            var editStyle = new VectorStyle
-            {
-                Fill = new Brush(EditModeColor),
-                Line = new Pen(EditModeColor, 3),
-                Outline = new Pen(EditModeColor, 3)
-            };
-            return editStyle;
-        }
-
-        private static readonly Color EditModeColor = new Color(124, 22, 111, 180);
-        private static readonly Color PointLayerColor = new Color(240, 240, 240, 240);
-        private static readonly Color LineLayerColor = new Color(150, 150, 150, 240);
-        private static readonly Color PolygonLayerColor = new Color(20, 20, 20, 240);
-
-
-        private static readonly SymbolStyle SelectedStyle = new SymbolStyle
-        {
-            Fill = null,
-            Outline = new Pen(Color.Red, 3),
-            Line = new Pen(Color.Red, 3)
-        };
-        private static readonly SymbolStyle DisableStyle = new SymbolStyle { Enabled = false };
-
-        private static IStyle CreateSelectedStyle()
-        {
-            // The selected style use a ThemeStyle which takes a method to determing the style based
-            // on the feature. In this case is checks it the "Selected" field is set to true.
-            return new ThemeStyle(f => (bool?)f["Selected"] == true ? SelectedStyle : DisableStyle);
-        }
-
-        private static WritableLayer CreatePointLayer()
-        {
-            var pointLayer = new WritableLayer
-            {
-                Name = "MesoLayer",
-                Style = CreatePointStyle(),
-                IsMapInfoLayer = true
-            };
-
-            var feature = new Feature
-            {
-                Geometry = new Mapsui.Geometries.Point(9.715432, 41.513456)
-            };
-            feature.Styles.Add(CreatePngStyle("MecyApplication.Resources.meso_icon_map_selected_5.png", 0.6));
-
-            pointLayer.Add(feature);
-            return pointLayer;
-        }
-
-        
-
-        private static WritableLayer CreateLineLayer()
-        {
-            var lineLayer = new WritableLayer
-            {
-                Name = "LineLayer",
-                Style = CreateLineStyle()
-            };
-
-            // todo: add data
-
-            return lineLayer;
-        }
-
-        private static WritableLayer CreatePolygonLayer()
-        {
-            var polygonLayer = new WritableLayer
-            {
-                Name = "PolygonLayer",
-                Style = CreatePolygonStyle()
-            };
-
-            var wkt = "POLYGON ((1261416.17275404 5360656.05714234, 1261367.50386493 5360614.2556425, 1261353.47050427 5360599.62511755, 1261338.83997932 5360576.03712836, 1261337.34706862 5360570.6626498, 1261375.8641649 5360511.2448036, 1261383.92588273 5360483.17808227, 1261391.98760055 5360485.56673941, 1261393.48051126 5360480.490843, 1261411.99260405 5360487.6568144, 1261430.50469684 5360496.9128608, 1261450.21111819 5360507.06465361, 1261472.00761454 5360525.5767464, 1261488.13105019 5360544.98458561, 1261488.1310502 5360545.28316775, 1261481.26366093 5360549.76189988, 1261489.6239609 5360560.21227484, 1261495.59560374 5360555.13637843, 1261512.91336796 5360573.05130694, 1261535.00844645 5360598.43078898, 1261540.08434286 5360619.03295677, 1261535.90419287 5360621.12303176, 1261526.64814648 5360623.21310675, 1261489.32537876 5360644.41243881, 1261458.27283602 5360661.73020303, 1261438.26783253 5360662.02878517, 1261427.22029328 5360660.23729232, 1261416.17275404 5360656.05714234))";
-            var polygon = GeometryFromWKT.Parse(wkt);
-            polygonLayer.Add(new Feature { Geometry = polygon });
-
-            return polygonLayer;
-        }
-
-        private static IStyle CreatePointStyle()
-        {
-            return new VectorStyle
-            {
-                Fill = new Mapsui.Styles.Brush(PointLayerColor),
-                Line = new Mapsui.Styles.Pen(PointLayerColor, 3),
-                Outline = new Pen(Color.Gray, 2)
-            };
-        }
-
-        private static IStyle CreateLineStyle()
-        {
-            return new VectorStyle
-            {
-                Fill = new Brush(LineLayerColor),
-                Line = new Pen(LineLayerColor, 3),
-                Outline = new Pen(LineLayerColor, 3)
-            };
-        }
-        private static IStyle CreatePolygonStyle()
-        {
-            return new VectorStyle
-            {
-                Fill = new Brush(new Color(PolygonLayerColor)),
-                Line = new Pen(PolygonLayerColor, 3),
-                Outline = new Pen(PolygonLayerColor, 3)
-            };
-        }
-
-        private void RefreshMap()
-        {
-            if (MainViewModel.SelectedElement == null)
-            {
-                mapControl.Map = MapBuilder.CreateMap(new List<Mesocyclone>(),
-                    null,
-                    MainViewModel.CurrentMapConfiguration,
-                    null);
-                return;
-            }
-
-            if (MainViewModel.CurrentMapConfiguration.ShowHistoricMesocyclones)
-            {
-                OpenDataElement previousElement = OpenDataElement.GetPreviousOpenDataElement(
-                    MainViewModel.OpenDataElements.ToList(),
-                    MainViewModel.SelectedElement);
-
-                if (previousElement == null)
-                {
-                    mapControl.Map = MapBuilder.CreateMap(MainViewModel.SelectedElement.Mesocyclones,
-                        null,
-                        MainViewModel.CurrentMapConfiguration,
-                        MainViewModel.SelectedMesocyclone);
-                }
-                else
-                {
-                    mapControl.Map = MapBuilder.CreateMap(
-                        MainViewModel.SelectedElement.Mesocyclones,
-                        previousElement.Mesocyclones,
-                        MainViewModel.CurrentMapConfiguration,
-                        MainViewModel.SelectedMesocyclone);
-                }
-            }
-            else
-            {
-                mapControl.Map = MapBuilder.CreateMap(MainViewModel.SelectedElement.Mesocyclones,
-                    null,
-                    MainViewModel.CurrentMapConfiguration,
-                    MainViewModel.SelectedMesocyclone);
-            }
-        }
-
-        private void Window_Closing(object sender, CancelEventArgs e)
-        {
-            Environment.Exit(0);
-        }
-
-        private void lvOpenDataElements_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //RefreshMap();
-        }
-
-        private void lvMesocyclones_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //RefreshMap();
-        }
-    */
-        }
     }
+}
