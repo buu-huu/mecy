@@ -506,7 +506,7 @@
                                  IsReadOnly="True"
                                  Grid.Row="13"
                                  Grid.Column="1"
-                                 Background="#FFFFDEB8" />
+                                 Background="#FFE3B8FF" />
                             <Label Content="km"
                                HorizontalAlignment="Left"
                                VerticalAlignment="Center"
@@ -775,8 +775,34 @@
                                  Margin="2"
                                  IsReadOnly="True"
                                  Grid.Row="27"
-                                 Grid.Column="1"
-                                 Background="#FFFFDEB8" />
+                                 Grid.Column="1">
+                                <TextBox.Style>
+                                    <Style TargetType="TextBox">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Intensity}" Value="1">
+                                                <Setter Property="Background" Value="#FF51FF51" />
+                                                <Setter Property="Foreground" Value="Black" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Intensity}" Value="2">
+                                                <Setter Property="Background" Value="Yellow" />
+                                                <Setter Property="Foreground" Value="Black" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Intensity}" Value="3">
+                                                <Setter Property="Background" Value="Orange" />
+                                                <Setter Property="Foreground" Value="Black" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Intensity}" Value="4">
+                                                <Setter Property="Background" Value="#FFFF2727" />
+                                                <Setter Property="Foreground" Value="Black" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Intensity}" Value="5">
+                                                <Setter Property="Background" Value="Purple" />
+                                                <Setter Property="Foreground" Value="White" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
 
                             <ListView ItemsSource="{Binding Elevations}"
                                   Margin="5"
