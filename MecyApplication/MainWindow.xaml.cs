@@ -550,13 +550,22 @@ namespace MecyApplication
             {
                 Geometry = FromLongLat(station.Longitude, station.Latitude)
             };
-            feature.Styles.Add(new LabelStyle
+            LabelStyle style = new LabelStyle
             {
                 Offset = new Offset(0.0, 0.0, true),
-                Text = station.Name,
-                BackColor = new Brush(Color.White),
-                ForeColor = Color.Black
-            });
+                Text = station.Name
+            };
+            if (station.IsAvailable)
+            {
+                style.ForeColor = Color.Green;
+                style.BackColor = new Brush(Color.White);
+            }
+            else
+            {
+                style.ForeColor = Color.White;
+                style.BackColor = new Brush(Color.Red);
+            }
+            feature.Styles.Add(style);
             return feature;
         }
 
@@ -613,19 +622,22 @@ namespace MecyApplication
             {
                 return;
             }
-            var style = new VectorStyle
-            {
-                Fill = new Brush(new Color(97, 134, 255, 20)),
-                Outline = new Pen
-                {
-                    Color = new Color(20, 75, 255, 200),
-                    Width = 2,
-                    PenStyle = PenStyle.LongDashDot,
-                    PenStrokeCap = PenStrokeCap.Butt
-                }
-            };
+            
             foreach (var radar in MainViewModel.SelectedElement.RadarStations)
             {
+                
+                var style = new VectorStyle
+                {
+                    Fill = new Brush(new Color(84, 84, 255, 10)),
+                    Outline = new Pen
+                    {
+                        Color = new Color(23, 23, 255, 100),
+                        Width = 2,
+                        PenStyle = PenStyle.ShortDash,
+                        PenStrokeCap = PenStrokeCap.Round
+                    }
+                };
+
                 layer.Add(new Feature
                 {
                     Geometry = CreateRadarDiameterPolygon(radar)
