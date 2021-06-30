@@ -216,21 +216,6 @@
     <EmbeddedResource Include="Resources\meso_icon_map_5.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\meso_icon_map_hist_1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\meso_icon_map_hist_2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\meso_icon_map_hist_3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\meso_icon_map_hist_4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\meso_icon_map_hist_5.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources\meso_icon_map_selected_1.png" />
   </ItemGroup>
   <ItemGroup>
@@ -265,6 +250,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\LogoWithSubtitle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\meso_icon_map_hist_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\meso_icon_map_hist_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\meso_icon_map_hist_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\meso_icon_map_hist_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\meso_icon_map_hist_3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
