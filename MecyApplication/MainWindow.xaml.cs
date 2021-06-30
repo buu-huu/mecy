@@ -92,6 +92,8 @@ namespace MecyApplication
             else if (MainViewModel.CurrentMapConfiguration.ActiveTileSource == MapConfiguration.TileSource.GoogleMaps) map.Layers.Add(new TileLayer(CreateGoogleTileSource(GOOGLE_MAPS_TILE_URL)));
 
             // Layers
+            map.Layers.Add(CreateRadarDiameterLayer());
+            map.Layers.Add(CreateRadarLabelLayer());
             map.Layers.Add(CreateMesoDiameterLayer());
             map.Layers.Add(CreateMesoLayelLayer());
             map.Layers.Add(CreateMesoHistLayer());
@@ -117,6 +119,11 @@ namespace MecyApplication
             if (MainViewModel.SelectedElement == null) return;
 
             // Layers
+            if (MainViewModel.CurrentMapConfiguration.ShowRadars)
+            {
+                DrawRadarDiametersToMap();
+                DrawRadarLabelsToLayer();
+            }
             if (MainViewModel.CurrentMapConfiguration.ShowMesocycloneIdLabel) DrawMesoLabelsToLayer();
             if (MainViewModel.CurrentMapConfiguration.ShowMesocycloneDiameter) DrawMesoDiametersToLayer();
             if (MainViewModel.CurrentMapConfiguration.ShowHistoricMesocyclones) DrawMesosHistToLayer();
@@ -144,11 +151,15 @@ namespace MecyApplication
             var layerMesoDiameter = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == "MesoDiameterLayer");
             var layerMesoHist = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == "MesoHistLayer");
             var layerMesoLabel = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == "MesoLabelLayer");
+            var layerRadarDiameter = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == "RadarDiameterLayer");
+            var layerRadarLabel = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == "RadarLabelLayer");
 
             layerMeso.Clear();
             layerMesoDiameter.Clear();
             layerMesoHist.Clear();
             layerMesoLabel.Clear();
+            layerRadarDiameter.Clear();
+            layerRadarLabel.Clear();
             mapControl.RefreshGraphics();
         }
 
@@ -518,6 +529,108 @@ namespace MecyApplication
             foreach (var meso in previousElement.Mesocyclones)
             {
                 layer.Add(CreateMesoHistFeature(meso));
+            }
+            mapControl.RefreshGraphics();
+        }
+
+        // -------------------- RADAR LABEL LAYER --------------------
+        private WritableLayer CreateRadarLabelLayer()
+        {
+            var layer = new WritableLayer
+            {
+                Name = "RadarLabelLayer",
+                Style = null
+            };
+            return layer;
+        }
+
+        private Feature CreateRadarLabelFeature(RadarStation station)
+        {
+            var feature = new Feature
+            {
+                Geometry = FromLongLat(station.Longitude, station.Latitude)
+            };
+            feature.Styles.Add(new LabelStyle
+            {
+                Offset = new Offset(0.0, 0.0, true),
+                Text = station.Name,
+                BackColor = new Brush(Color.White),
+                ForeColor = Color.Black
+            });
+            return feature;
+        }
+
+        private void DrawRadarLabelsToLayer()
+        {
+            var layer = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == "RadarLabelLayer");
+            layer.Clear();
+            mapControl.RefreshGraphics();
+            if (MainViewModel.SelectedElement == null)
+            {
+                return;
+            }
+
+            foreach (var station in MainViewModel.SelectedElement.RadarStations)
+            {
+                layer.Add(CreateRadarLabelFeature(station));
+            }
+            mapControl.RefreshGraphics();
+        }
+
+        // -------------------- RADAR DIAMETER LAYER --------------------
+        private WritableLayer CreateRadarDiameterLayer()
+        {
+            var layer = new WritableLayer
+            {
+                Name = "RadarDiameterLayer",
+                Style = null
+            };
+            return layer;
+        }
+
+        private Polygon CreateRadarDiameterPolygon(RadarStation radar)
+        {
+            var polygon = new Polygon();
+
+            var radarCenterLon = radar.Longitude;
+            var radarCenterLat = radar.Latitude;
+            double radius = 150;
+
+            for (int step = 0; step <= 360; step += 5)
+            {
+                polygon.ExteriorRing.Vertices.Add(
+                    GetDistancePoint(radarCenterLon, radarCenterLat, step, radius));
+            }
+            return polygon;
+        }
+
+        private void DrawRadarDiametersToMap()
+        {
+            var layer = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == "RadarDiameterLayer");
+            layer.Clear();
+            mapControl.RefreshGraphics();
+            if (MainViewModel.SelectedElement == null)
+            {
+                return;
+            }
+            var style = new VectorStyle
+            {
+                Fill = new Brush(new Color(97, 134, 255, 20)),
+                Outline = new Pen
+                {
+                    Color = new Color(20, 75, 255, 200),
+                    Width = 2,
+                    PenStyle = PenStyle.LongDashDot,
+                    PenStrokeCap = PenStrokeCap.Butt
+                }
+            };
+            foreach (var radar in MainViewModel.SelectedElement.RadarStations)
+            {
+                layer.Add(new Feature
+                {
+                    Geometry = CreateRadarDiameterPolygon(radar)
+                });
+                layer.Style = style;
             }
             mapControl.RefreshGraphics();
         }

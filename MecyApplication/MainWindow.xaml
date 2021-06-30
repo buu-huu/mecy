@@ -39,7 +39,6 @@
 
                     <Separator />
 
-
                     <RadioButton Style="{StaticResource {x:Type ToggleButton}}"
                                  Background="Transparent"
                                  BorderThickness="0"
@@ -84,6 +83,12 @@
                     </Button>
                     
                     <Separator />
+
+                    <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowRadars, Mode=TwoWay}"
+                                  Command="{Binding RefreshMapAndMapConfigurationCommand}"
+                                  ToolTip="Show radar sites on map">
+                        <Image Source="Resources/ToolbarHistMeso.png" />
+                    </ToggleButton>
 
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowHistoricMesocyclones, Mode=TwoWay}"
                                   Command="{Binding RefreshMapAndMapConfigurationCommand}"
