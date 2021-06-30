@@ -174,28 +174,16 @@
     <None Include="Resources\256x256.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\ToolbarHistMeso.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\ToolbarDiameter.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\ToolbarScaleBar.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\ToolbarZoom.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\ToolbarHistMesoTrans.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\ToolbarMesoId.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\ToolbarCenter.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\ToolbarCenterMeso.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\ToolbarMapStyleOpenStreetMap.png" />
@@ -265,6 +253,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\meso_icon_map_hist_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ToolbarHistMesoTrans.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ToolbarCenterMeso.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ToolbarDiameter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ToobarHistMeso.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

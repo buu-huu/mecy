@@ -191,7 +191,7 @@ namespace MecyApplication
             mapConfig.ShowZoomWidget = true;
             mapConfig.ShowMesocycloneIdLabel = true;
             mapConfig.HistoricMesocyclonesTransparent = true;
-            mapConfig.HistoricMesocyclonesOpacity = 0.55f;
+            mapConfig.HistoricMesocyclonesOpacity = 0.7f;
             mapConfig.AutoMoveActiveMeso = false;
             mapConfig.ShowRadars = false;
 

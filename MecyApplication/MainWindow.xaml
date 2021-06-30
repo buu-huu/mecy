@@ -93,7 +93,7 @@
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowHistoricMesocyclones, Mode=TwoWay}"
                                   Command="{Binding RefreshMapAndMapConfigurationCommand}"
                                   ToolTip="Show historic mesocyclones in map">
-                        <Image Source="Resources/ToolbarHistMeso.png" />
+                        <Image Source="Resources/ToobarHistMeso.png" />
                     </ToggleButton>
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowMesocycloneDiameter, Mode=TwoWay}"
                                   Command="{Binding RefreshMapAndMapConfigurationCommand}"
