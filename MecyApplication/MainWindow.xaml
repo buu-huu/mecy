@@ -87,7 +87,7 @@
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowRadars, Mode=TwoWay}"
                                   Command="{Binding RefreshMapAndMapConfigurationCommand}"
                                   ToolTip="Show radar sites on map">
-                        <Image Source="Resources/ToolbarHistMeso.png" />
+                        <Image Source="Resources/ToolbarRadarStations.png" />
                     </ToggleButton>
 
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowHistoricMesocyclones, Mode=TwoWay}"

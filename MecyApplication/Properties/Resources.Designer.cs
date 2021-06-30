@@ -383,6 +383,16 @@ namespace MecyApplication.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ToolbarRadarStations {
+            get {
+                object obj = ResourceManager.GetObject("ToolbarRadarStations", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ToolbarScaleBar {
             get {
                 object obj = ResourceManager.GetObject("ToolbarScaleBar", resourceCulture);
