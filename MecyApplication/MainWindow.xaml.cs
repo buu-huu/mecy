@@ -534,6 +534,10 @@ namespace MecyApplication
         }
 
         // -------------------- RADAR LABEL LAYER --------------------
+        /// <summary>
+        /// Creates a radar label layer.
+        /// </summary>
+        /// <returns>Radar label layer</returns>
         private WritableLayer CreateRadarLabelLayer()
         {
             var layer = new WritableLayer
@@ -544,6 +548,11 @@ namespace MecyApplication
             return layer;
         }
 
+        /// <summary>
+        /// Creates a radar label feature.
+        /// </summary>
+        /// <param name="station">Radar station</param>
+        /// <returns>Radar label feature</returns>
         private Feature CreateRadarLabelFeature(RadarStation station)
         {
             var feature = new Feature
@@ -569,6 +578,9 @@ namespace MecyApplication
             return feature;
         }
 
+        /// <summary>
+        /// Draws the radar labels to the layer.
+        /// </summary>
         private void DrawRadarLabelsToLayer()
         {
             var layer = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == "RadarLabelLayer");
@@ -587,6 +599,10 @@ namespace MecyApplication
         }
 
         // -------------------- RADAR DIAMETER LAYER --------------------
+        /// <summary>
+        /// Creates a radar diameter layer.
+        /// </summary>
+        /// <returns>Radar diameter layer</returns>
         private WritableLayer CreateRadarDiameterLayer()
         {
             var layer = new WritableLayer
@@ -597,6 +613,11 @@ namespace MecyApplication
             return layer;
         }
 
+        /// <summary>
+        /// Creates a radar diameter polygon.
+        /// </summary>
+        /// <param name="radar">Radar station</param>
+        /// <returns>Radar diameter polygon</returns>
         private Polygon CreateRadarDiameterPolygon(RadarStation radar)
         {
             var polygon = new Polygon();
@@ -613,6 +634,9 @@ namespace MecyApplication
             return polygon;
         }
 
+        /// <summary>
+        /// Draws the radar diameters to the map.
+        /// </summary>
         private void DrawRadarDiametersToMap()
         {
             var layer = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == "RadarDiameterLayer");
