@@ -204,60 +204,69 @@ namespace MecyApplication
         }
 
         /// <summary>
-        /// Creates a mesocyclone feature. Checks, if the mesocyclone is the currently selected mesocyclone
+        /// Creates a mesocyclone feature
         /// and loads the correct image file.
         /// </summary>
         /// <param name="meso">Mesocyclone</param>
-        /// <param name="selectedMeso">Currently selected mesocyclone</param>
         /// <returns>Mesocyclone feature</returns>
-        private Feature CreateMesoFeature(Mesocyclone meso, Mesocyclone selectedMeso)
+        private Feature CreateMesoFeature(Mesocyclone meso)
         {
             var feature = new Feature
             {
                 Geometry = FromLongLat(meso.Longitude, meso.Latitude)
             };
             var style = new SymbolStyle();
-            if (meso == selectedMeso)
+            switch (meso.Intensity)
             {
-                switch (meso.Intensity)
-                {
-                    case 1:
-                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_selected_1.png", 0.6);
-                        break;
-                    case 2:
-                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_selected_2.png", 0.6);
-                        break;
-                    case 3:
-                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_selected_3.png", 0.6);
-                        break;
-                    case 4:
-                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_selected_4.png", 0.6);
-                        break;
-                    case 5:
-                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_selected_5.png", 0.6);
-                        break;
-                }
+                case 1:
+                    style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_1.png", 0.6);
+                    break;
+                case 2:
+                    style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_2.png", 0.6);
+                    break;
+                case 3:
+                    style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_3.png", 0.6);
+                    break;
+                case 4:
+                    style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_4.png", 0.6);
+                    break;
+                case 5:
+                    style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_5.png", 0.6);
+                    break;
             }
-            else
+            feature.Styles.Add(style);
+            return feature;
+        }
+
+        /// <summary>
+        /// Creates a highlightes mesocyclone feature.
+        /// </summary>
+        /// <param name="meso"></param>
+        /// <returns>Selected mesocyclone feature</returns>
+        private Feature CreateMesoFeatureSelected(Mesocyclone meso)
+        {
+            var feature = new Feature
             {
-                switch (meso.Intensity)
-                {
-                    case 1:
-                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_1.png", 0.6);
-                        break;
-                    case 2:
-                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_2.png", 0.6);
-                        break;
-                    case 3:
-                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_3.png", 0.6);
-                        break;
-                    case 4:
-                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_4.png", 0.6);
-                        break;
-                    case 5:
-                        style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_5.png", 0.6);
-                        break;
-                }
+                Geometry = FromLongLat(meso.Longitude, meso.Latitude)
+            };
+            var style = new SymbolStyle();
+            switch (meso.Intensity)
+            {
+                case 1:
+                    style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_selected_1.png", 0.6);
+                    break;
+                case 2:
+                    style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_selected_2.png", 0.6);
+                    break;
+                case 3:
+                    style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_selected_3.png", 0.6);
+                    break;
+                case 4:
+                    style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_selected_4.png", 0.6);
+                    break;
+                case 5:
+                    style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_selected_5.png", 0.6);
+                    break;
             }
             feature.Styles.Add(style);
             return feature;
@@ -293,7 +302,6 @@ namespace MecyApplication
         private void DrawMesosToLayer()
         {
             var layer = (MemoryLayer)mapControl.Map.Layers.First(i => i.Name == "MesoLayer");
-            //layer.Clear();
             mapControl.RefreshGraphics();
             if (MainViewModel.SelectedElement == null || MainViewModel.SelectedElement.Mesocyclones == null)
             {
@@ -301,14 +309,13 @@ namespace MecyApplication
             }
 
             var features = new Features();
-
             var selectedMeso = MainViewModel.SelectedMesocyclone;
 
             foreach (var meso in MainViewModel.SelectedElement.Mesocyclones)
             {
-                if (selectedMeso != meso) features.Add(CreateMesoFeature(meso, MainViewModel.SelectedMesocyclone));
+                if (selectedMeso != meso) features.Add(CreateMesoFeature(meso));
             }
-            if (selectedMeso != null) features.Add(CreateMesoFeature(selectedMeso, selectedMeso));
+            if (selectedMeso != null) features.Add(CreateMesoFeatureSelected(selectedMeso));
             layer.DataSource = new MemoryProvider(features);
             mapControl.RefreshGraphics();
         }
