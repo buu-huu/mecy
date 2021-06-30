@@ -70,13 +70,13 @@
                                   ToolTip="Show zoom buttons in map">
                         <Image Source="Resources/ToolbarZoom.png" />
                     </ToggleButton>
+                    
+                    <Separator />
+
                     <Button Command="{Binding CenterMapCommand}"
                             ToolTip="Center the map to Germany">
                         <Image Source="Resources/ToolbarCenter.png" />
                     </Button>
-
-                    <Separator />
-
                     <Button Command="{Binding CenterMapToMesoCommand}"
                             ToolTip="Center the map to the selected mesocyclone">
                         <Image Source="Resources/ToolbarCenterMeso.png" />
@@ -84,10 +84,15 @@
                     
                     <Separator />
 
-                    <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowRadars, Mode=TwoWay}"
+                    <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowRadarLabels, Mode=TwoWay}"
                                   Command="{Binding RefreshMapAndMapConfigurationCommand}"
-                                  ToolTip="Show radar sites on map">
-                        <Image Source="Resources/ToolbarRadarStations.png" />
+                                  ToolTip="Show radar labels on map">
+                        <Image Source="Resources/ToolbarRadarLabels.png" />
+                    </ToggleButton>
+                    <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowRadarDiameters, Mode=TwoWay}"
+                                  Command="{Binding RefreshMapAndMapConfigurationCommand}"
+                                  ToolTip="Show radar diameters on map">
+                        <Image Source="Resources/ToolbarRadarDiameters.png" />
                     </ToggleButton>
 
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowHistoricMesocyclones, Mode=TwoWay}"

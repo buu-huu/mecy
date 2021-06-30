@@ -234,9 +234,6 @@
     <Resource Include="Resources\meso_icon_5.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\ToolbarRadarStations.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\LogoWithSubtitle.png" />
   </ItemGroup>
   <ItemGroup>
@@ -265,6 +262,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\ToobarHistMeso.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ToolbarRadarDiameters.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ToolbarRadarLabels.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

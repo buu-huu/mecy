@@ -130,11 +130,8 @@ namespace MecyApplication
             if (MainViewModel.SelectedElement == null) return;
 
             // Layers
-            if (MainViewModel.CurrentMapConfiguration.ShowRadars)
-            {
-                DrawRadarDiametersToMap();
-                DrawRadarLabelsToLayer();
-            }
+            if (MainViewModel.CurrentMapConfiguration.ShowRadarLabels) DrawRadarLabelsToLayer();
+            if (MainViewModel.CurrentMapConfiguration.ShowRadarDiameters) DrawRadarDiametersToMap();
             if (MainViewModel.CurrentMapConfiguration.ShowMesocycloneIdLabel) DrawMesoLabelsToLayer();
             if (MainViewModel.CurrentMapConfiguration.ShowMesocycloneDiameter) DrawMesoDiametersToLayer();
             if (MainViewModel.CurrentMapConfiguration.ShowHistoricMesocyclones) DrawMesosHistToLayer();

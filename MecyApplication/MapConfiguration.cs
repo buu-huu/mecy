@@ -31,7 +31,8 @@ namespace MecyApplication
         private bool _showMesocycloneIdLabel;
         private bool _historicMesocyclonesTransparent;
         private bool _autoMoveActiveMeso;
-        private bool _showRadars;
+        private bool _showRadarLabels;
+        private bool _showRadarDiameters;
 
         private float _historicMesocyclonesOpacity;
 
@@ -131,15 +132,27 @@ namespace MecyApplication
             }
         }
 
-        public bool ShowRadars
+        public bool ShowRadarLabels
         {
             get
             {
-                return _showRadars;
+                return _showRadarLabels;
             }
             set
             {
-                _showRadars = value;
+                _showRadarLabels = value;
+            }
+        }
+
+        public bool ShowRadarDiameters
+        {
+            get
+            {
+                return _showRadarDiameters;
+            }
+            set
+            {
+                _showRadarDiameters = value;
             }
         }
 
@@ -193,7 +206,8 @@ namespace MecyApplication
             mapConfig.HistoricMesocyclonesTransparent = true;
             mapConfig.HistoricMesocyclonesOpacity = 0.7f;
             mapConfig.AutoMoveActiveMeso = false;
-            mapConfig.ShowRadars = false;
+            mapConfig.ShowRadarLabels = true;
+            mapConfig.ShowRadarDiameters = false;
 
             return mapConfig;
         }
