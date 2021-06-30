@@ -147,14 +147,14 @@ namespace MecyApplication
         /// </summary>
         private void ClearMap()
         {
-            var layerMeso = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == "MesoLayer");
+            var layerMeso = (MemoryLayer)mapControl.Map.Layers.First(i => i.Name == "MesoLayer");
             var layerMesoDiameter = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == "MesoDiameterLayer");
             var layerMesoHist = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == "MesoHistLayer");
             var layerMesoLabel = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == "MesoLabelLayer");
             var layerRadarDiameter = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == "RadarDiameterLayer");
             var layerRadarLabel = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == "RadarLabelLayer");
 
-            layerMeso.Clear();
+            //layerMeso.DataSource = null;
             layerMesoDiameter.Clear();
             layerMesoHist.Clear();
             layerMesoLabel.Clear();
@@ -192,9 +192,9 @@ namespace MecyApplication
         /// Creates a mesocyclone layer.
         /// </summary>
         /// <returns>Mesocyclone layer</returns>
-        private WritableLayer CreateMesoLayer()
+        private MemoryLayer CreateMesoLayer()
         {
-            var layer = new WritableLayer
+            var layer = new MemoryLayer
             {
                 Name = "MesoLayer",
                 Style = null,
@@ -292,18 +292,24 @@ namespace MecyApplication
         /// </summary>
         private void DrawMesosToLayer()
         {
-            var layer = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == "MesoLayer");
-            layer.Clear();
+            var layer = (MemoryLayer)mapControl.Map.Layers.First(i => i.Name == "MesoLayer");
+            //layer.Clear();
             mapControl.RefreshGraphics();
             if (MainViewModel.SelectedElement == null || MainViewModel.SelectedElement.Mesocyclones == null)
             {
                 return;
             }
 
+            var features = new Features();
+
+            var selectedMeso = MainViewModel.SelectedMesocyclone;
+
             foreach (var meso in MainViewModel.SelectedElement.Mesocyclones)
             {
-                layer.Add(CreateMesoFeature(meso, MainViewModel.SelectedMesocyclone));
+                if (selectedMeso != meso) features.Add(CreateMesoFeature(meso, MainViewModel.SelectedMesocyclone));
             }
+            if (selectedMeso != null) features.Add(CreateMesoFeature(selectedMeso, selectedMeso));
+            layer.DataSource = new MemoryProvider(features);
             mapControl.RefreshGraphics();
         }
 
@@ -680,6 +686,12 @@ namespace MecyApplication
         public void HandleMapClick(object sender, MapInfoEventArgs args)
         {
             var mapInfo = args.MapInfo;
+            if (mapInfo.Feature == null)
+            {
+                MainViewModel.SelectedMesocyclone = null;
+                RefreshMap();
+                return;
+            }
 
             // Select clicked mesocyclone
             var meso = GetBestMesocyclone((Feature)mapInfo.Feature);
