@@ -357,10 +357,10 @@ namespace MecyApplication
             }
             var style = new VectorStyle
             {
-                Fill = new Brush(new Color(255, 97, 247, 50)),
+                Fill = new Brush(new Color(255, 97, 247, 70)),
                 Outline = new Pen
                 {
-                    Color = new Color(121, 97, 255, 200),
+                    Color = new Color(121, 97, 255, 220),
                     Width = 2,
                     PenStyle = PenStyle.LongDashDot,
                     PenStrokeCap = PenStrokeCap.Butt
