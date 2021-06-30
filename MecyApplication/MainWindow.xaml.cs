@@ -560,7 +560,8 @@ namespace MecyApplication
             var layer = new WritableLayer
             {
                 Name = NAME_RADAR_LABEL_LAYER,
-                Style = null
+                Style = null,
+                IsMapInfoLayer = true
             };
             return layer;
         }
@@ -705,7 +706,18 @@ namespace MecyApplication
 
             // Select clicked mesocyclone
             var meso = GetBestMesocyclone((Feature)mapInfo.Feature);
-            if (meso != null) MainViewModel.SelectedMesocyclone = meso;
+            if (meso != null)
+            {
+                MainViewModel.SelectedMesocyclone = meso;
+                return;
+            }
+
+            // If no meso found, let's have a look, if there is a radar station instead...
+            var station = GetBestRadarStation((Feature)mapInfo.Feature);
+            if (station != null)
+            {
+                new RadarStationDetailsWindow(station).Show();
+            }
         }
 
         /// <summary>
@@ -824,7 +836,42 @@ namespace MecyApplication
                     bestMeso = meso;
                 }
             }
-            return bestMeso;
+            if (diffBest > 0.00001) return null;    // If difference is too big, return with null
+            else return bestMeso;
+        }
+
+        /// <summary>
+        /// Returns the nearest radar station instance to a feature.
+        /// </summary>
+        /// <param name="feature">Feature</param>
+        /// <returns>Nearest radar station</returns>
+        private RadarStation GetBestRadarStation(Feature feature)
+        {
+            if (feature == null) return null;
+
+            Point point = (Point)feature.Geometry;
+            Point pos = SphericalMercator.ToLonLat(point.X, point.Y);
+            double longitude = Math.Round(pos.X, 6, MidpointRounding.AwayFromZero);
+            double latitude = Math.Round(pos.Y, 6, MidpointRounding.AwayFromZero);
+
+            RadarStation bestStation = MainViewModel.SelectedElement.RadarStations[0];
+            double diffBest = 1000;
+
+            foreach (var station in MainViewModel.SelectedElement.RadarStations)
+            {
+                double longMeso = Math.Round(station.Longitude, 6, MidpointRounding.AwayFromZero);
+                double latMeso = Math.Round(station.Latitude, 6, MidpointRounding.AwayFromZero);
+
+                double diffAbsoluteLongitude = Math.Abs(longMeso - longitude);
+                double diffAbsoluteLatitude = Math.Abs(latMeso - latitude);
+                if ((diffAbsoluteLatitude + diffAbsoluteLatitude) < diffBest)
+                {
+                    diffBest = diffAbsoluteLongitude + diffAbsoluteLatitude;
+                    bestStation = station;
+                }
+            }
+            if (diffBest > 0.00001) return null;
+            else return bestStation;
         }
 
         /// <summary>
