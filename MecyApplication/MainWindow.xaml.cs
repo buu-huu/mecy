@@ -165,7 +165,7 @@ namespace MecyApplication
             var layerRadarDiameter = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == NAME_RADAR_DIAMETER_LAYER);
             var layerRadarLabel = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == NAME_RADAR_LABEL_LAYER);
 
-            //layerMeso.DataSource = null;
+            layerMeso.DataSource = null;
             layerMesoDiameter.Clear();
             layerMesoHist.Clear();
             layerMesoLabel.Clear();
