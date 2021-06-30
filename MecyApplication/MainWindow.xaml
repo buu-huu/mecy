@@ -119,7 +119,7 @@
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.CurrentlyMeasuringDistance, Mode=TwoWay}"
                                   Command="{Binding RefreshMapAndMapConfigurationCommand}"
                                   ToolTip="Measure a distance on the map">
-                        <Image Source="Resources/ToolbarMesoId.png" />
+                        <Image Source="Resources/ToolbarMeasureDistance.png" />
                     </ToggleButton>
                 </ToolBar>
             </ToolBarTray>
