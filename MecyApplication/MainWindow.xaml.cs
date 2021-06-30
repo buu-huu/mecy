@@ -45,6 +45,10 @@ namespace MecyApplication
         private const double RADIUS_EQUATOR = 6378.1;
         private const string GOOGLE_MAPS_TILE_URL = "http://mt{s}.google.com/vt/lyrs=t@125,r@130&hl=en&x={x}&y={y}&z={z}";
 
+        private bool _isMeasuringDistance = false;
+        private double _measuringStartLongitude;
+        private double _measuringStartLatitude;
+
         private MainViewModel _mainViewModel;
 
         public MainViewModel MainViewModel
@@ -78,8 +82,9 @@ namespace MecyApplication
             MainViewModel.RefreshMapWidgetsEvent += RefreshMapWithWidgets;
             MainViewModel.CenterMapEvent += CenterMap;
             MainViewModel.CenterMapToMesoEvent += CenterMapToMeso;
-            mapControl.Info += HandleMapClick;
-        }        
+            mapControl.Info += HandleFeatureClick;
+            mapControl.MouseLeftButtonDown += HandleLeftClick;
+        }
 
         /// <summary>
         /// Creates a fresh map with all layers. According to some MapConfigurations, widgets and tilesources
@@ -694,7 +699,7 @@ namespace MecyApplication
         /// </summary>
         /// <param name="sender">Sender</param>
         /// <param name="args">Arguments</param>
-        public void HandleMapClick(object sender, MapInfoEventArgs args)
+        public void HandleFeatureClick(object sender, MapInfoEventArgs args)
         {
             var mapInfo = args.MapInfo;
             if (mapInfo.Feature == null)
@@ -717,6 +722,38 @@ namespace MecyApplication
             if (station != null)
             {
                 new RadarStationDetailsWindow(station).Show();
+            }
+        }
+
+        /// <summary>
+        /// Handles the left click on the map.
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Arguments</param>
+        private void HandleLeftClick(object sender, MouseButtonEventArgs e)
+        {
+            Point pos = mapControl.Viewport.ScreenToWorld(e.GetPosition(mapControl).ToMapsui());
+            if (MainViewModel.CurrentMapConfiguration.CurrentlyMeasuringDistance == true)
+            {
+                var coordinates = SphericalMercator.ToLonLat(pos.X, pos.Y);
+
+                if (!_isMeasuringDistance)
+                {
+                    _isMeasuringDistance = true;
+                    _measuringStartLongitude = coordinates.X;
+                    _measuringStartLatitude = coordinates.Y;
+                }
+                else
+                {
+                    _isMeasuringDistance = false;
+                    var measuringEndLongitude = coordinates.X;
+                    var measuringEndLatitude = coordinates.Y;
+
+                    var distance = GetDistanceBetweenCoordinates(
+                        _measuringStartLongitude, measuringEndLongitude, _measuringStartLatitude, measuringEndLatitude);
+                    MessageBox.Show(distance.ToString());
+                    MainViewModel.CurrentMapConfiguration.CurrentlyMeasuringDistance = false;
+                }
             }
         }
 
@@ -872,6 +909,29 @@ namespace MecyApplication
             }
             if (diffBest > 0.00001) return null;
             else return bestStation;
+        }
+
+        /// <summary>
+        /// Returns the distance between two coordinates in km.
+        /// </summary>
+        /// <param name="lon1">Longitude point 1</param>
+        /// <param name="lon2">Longitude point 2</param>
+        /// <param name="lat1">Latitude point 1</param>
+        /// <param name="lat2">Latitude point 2</param>
+        /// <returns>Distance in km</returns>
+        private double GetDistanceBetweenCoordinates(double lon1, double lon2, double lat1, double lat2)
+        {
+            var distanceRadiansLat = ConvertDegreesToRadians(lat2 - lat1);
+            var distanceRadiansLon = ConvertDegreesToRadians(lon2 - lon1);
+
+            lat1 = ConvertDegreesToRadians(lat1);
+            lat2 = ConvertDegreesToRadians(lat2);
+
+            var a = Math.Sin(distanceRadiansLat / 2) * Math.Sin(distanceRadiansLat / 2) +
+                Math.Sin(distanceRadiansLon / 2) * Math.Sin(distanceRadiansLon / 2) *
+                Math.Cos(lat1) * Math.Cos(lat2);
+            var c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+            return RADIUS_EQUATOR * c;
         }
 
         /// <summary>

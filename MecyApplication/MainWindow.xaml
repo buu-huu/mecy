@@ -116,6 +116,11 @@
                                   ToolTip="Show mesocyclone ID on map">
                         <Image Source="Resources/ToolbarMesoId.png" />
                     </ToggleButton>
+                    <ToggleButton IsChecked="{Binding CurrentMapConfiguration.CurrentlyMeasuringDistance, Mode=TwoWay}"
+                                  Command="{Binding RefreshMapAndMapConfigurationCommand}"
+                                  ToolTip="Measure a distance on the map">
+                        <Image Source="Resources/ToolbarMesoId.png" />
+                    </ToggleButton>
                 </ToolBar>
             </ToolBarTray>
         </StackPanel>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace MecyApplication
     /// <summary>
     /// Singleton that holds all the configuration settings for the map.
     /// </summary>
-    public sealed class MapConfiguration
+    public sealed class MapConfiguration : INotifyPropertyChanged
     {
         /// <summary>
         /// Available tile sources
@@ -33,6 +34,7 @@ namespace MecyApplication
         private bool _autoMoveActiveMeso;
         private bool _showRadarLabels;
         private bool _showRadarDiameters;
+        private bool _currentlyMeasuringDistance;
 
         private float _historicMesocyclonesOpacity;
 
@@ -156,6 +158,19 @@ namespace MecyApplication
             }
         }
 
+        public bool CurrentlyMeasuringDistance
+        {
+            get
+            {
+                return _currentlyMeasuringDistance;
+            }
+            set
+            {
+                _currentlyMeasuringDistance = value;
+                OnPropertyChanged("CurrentlyMeasuringDistance");
+            }
+        }
+
         public float HistoricMesocyclonesOpacity
         {
             get
@@ -208,8 +223,19 @@ namespace MecyApplication
             mapConfig.AutoMoveActiveMeso = false;
             mapConfig.ShowRadarLabels = true;
             mapConfig.ShowRadarDiameters = false;
+            mapConfig.CurrentlyMeasuringDistance = false;
 
             return mapConfig;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }
