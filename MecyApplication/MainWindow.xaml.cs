@@ -84,7 +84,11 @@ namespace MecyApplication
             {
                 Transformation = new MinimalTransformation(),
                 CRS = "EPSG:3857",
-                BackColor = Color.Gray
+                BackColor = Color.Gray,
+                Limiter = new ViewportLimiterKeepWithin()
+                {
+                    PanLimits = new BoundingBox(FromLongLat(-170, 86), FromLongLat(180, -86))
+                }
             };
 
             // Tile Source
