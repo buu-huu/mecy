@@ -810,14 +810,11 @@ namespace MecyApplication
                 _isMeasuringDistance = false;
                 var measuringEndLongitude = coordinates.X;
                 var measuringEndLatitude = coordinates.Y;
-
                 var distance = GetDistanceBetweenCoordinates(
                     _measuringStartLongitude, measuringEndLongitude, _measuringStartLatitude, measuringEndLatitude);
-                MessageBox.Show(String.Format("Distance: {0}km", Math.Round(distance, 2)));
+                new DistanceDetailsWindow(_measuringStartLongitude, _measuringStartLatitude, measuringEndLongitude, measuringEndLatitude, distance).Show();
 
-                MainViewModel.CurrentMapConfiguration.CurrentlyMeasuringDistance = false;
-                var layerMeasuring = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == NAME_MEASURING_LAYER);
-                layerMeasuring.Clear();
+                ResetMeasuring();
                 _measuringStartLongitude = 0;
                 _measuringStartLatitude = 0;
                 RefreshMap();
