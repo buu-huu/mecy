@@ -86,6 +86,7 @@
                HorizontalAlignment="Center"
                VerticalAlignment="Center"
                Foreground="White"
-               Content="{Binding Station.AntennaHeight}" />
+               Content="{Binding Station.AntennaHeight}"
+               ContentStringFormat="{}{0}müNN"/>
     </Grid>
 </Window>
