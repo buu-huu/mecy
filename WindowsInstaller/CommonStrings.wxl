@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="en-us" xmlns="http://schemas.microsoft.com/wix/2006/localization">
+	<String Id="Developer">buu-huu</String>
+
+	<String Id="ProductName_x86">Mecy (x86)</String>
+	<String Id="ProductName_x64">Mecy (x64)</String>
+	
+	<String Id="Language">1033</String>
+</WixLocalization>

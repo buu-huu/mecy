@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="WindowsInstaller" Language="1033" Version="1.0.0.0" Manufacturer="" UpgradeCode="1fc0c768-f49f-492a-9944-c2a0fb6742d3">
+	<?if $(var.Platform)=x64 ?>
+	<?define ProductCode="{2140CA3D-6547-4FAA-8523-6A8EF414CEE3}"?>
+	<?else?>
+	<?define ProductCode="{8B080B22-00CA-4843-954E-360DAA4211FB}"?>
+	<?endif?>
+	
+	<?define BuildVersion = 1.0.0.0 ?>
+	<?define UpgradeCode = "{C3DF8857-A7AC-4A08-9C21-09379169F22F}" ?>
+	
+	<Product Id="$(var.ProductCode)"
+			 Name="!(loc.ProductName_$(var.Platform))"
+			 Language="!(loc.Language)"
+			 Version="$(var.BuildVersion)"
+			 Manufacturer="!(loc.Developer)"
+			 UpgradeCode="$(var.UpgradeCode)">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
