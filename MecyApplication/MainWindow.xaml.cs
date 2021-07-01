@@ -33,12 +33,14 @@ namespace MecyApplication
     public partial class MainWindow : Window
     {
         private const double MESO_ICON_SCALE = 0.6;
+
         private const string NAME_MESO_LAYER = "MesoLayer";
         private const string NAME_MESO_HIST_LAYER = "MesoHistLayer";
         private const string NAME_MESO_DIAMETER_LAYER = "MesoDiameterLayer";
         private const string NAME_MESO_LABEL_LAYER = "MesoLabelLayer";
         private const string NAME_RADAR_DIAMETER_LAYER = "RadarDiameterLayer";
         private const string NAME_RADAR_LABEL_LAYER = "RadarLabelLayer";
+        private const string NAME_MEASURING_LAYER = "MeasuringLayer";
 
         private const double CENTER_LONGITUDE = 10.160549;
         private const double CENTER_LATITUDE = 51.024813;
@@ -46,8 +48,8 @@ namespace MecyApplication
         private const string GOOGLE_MAPS_TILE_URL = "http://mt{s}.google.com/vt/lyrs=t@125,r@130&hl=en&x={x}&y={y}&z={z}";
 
         private bool _isMeasuringDistance = false;
-        private double _measuringStartLongitude;
-        private double _measuringStartLatitude;
+        private double _measuringStartLongitude = 0;
+        private double _measuringStartLatitude = 0;
 
         private MainViewModel _mainViewModel;
 
@@ -82,8 +84,8 @@ namespace MecyApplication
             MainViewModel.RefreshMapWidgetsEvent += RefreshMapWithWidgets;
             MainViewModel.CenterMapEvent += CenterMap;
             MainViewModel.CenterMapToMesoEvent += CenterMapToMeso;
-            mapControl.Info += HandleFeatureClick;
-            mapControl.MouseLeftButtonDown += HandleLeftClick;
+            mapControl.Info += HandleMapClick;
+            //mapControl.MouseLeftButtonDown += HandleLeftClick;
         }
 
         /// <summary>
@@ -115,6 +117,7 @@ namespace MecyApplication
             map.Layers.Add(CreateMesoLayelLayer());
             map.Layers.Add(CreateMesoHistLayer());
             map.Layers.Add(CreateMesoLayer());
+            map.Layers.Add(CreateMeasuringLayer());
 
             // Widgets
             if (MainViewModel.CurrentMapConfiguration.ShowScaleBar) map.Widgets.Add(new ScaleBarWidget(map));
@@ -693,67 +696,131 @@ namespace MecyApplication
             mapControl.RefreshGraphics();
         }
 
+        // -------------------- MEASURING --------------------
+        /// <summary>
+        /// Creates a radar diameter layer.
+        /// </summary>
+        /// <returns>Radar diameter layer</returns>
+        private WritableLayer CreateMeasuringLayer()
+        {
+            var layer = new WritableLayer
+            {
+                Name = NAME_MEASURING_LAYER,
+                Style = null
+            };
+            return layer;
+        }
+
+        private Feature CreateMeasuringLabel(double longitude, double latitude)
+        {
+            var feature = new Feature
+            {
+                Geometry = FromLongLat(longitude, latitude)
+            };
+            LabelStyle style = new LabelStyle
+            {
+                Offset = new Offset(0.0, 0.0, true),
+                Text = String.Format("Lon: {0} Lat: {1}", Math.Round(longitude, 6), Math.Round(latitude, 6)),
+                BackColor = new Brush(Color.Gray)
+            };
+            feature.Styles.Add(style);
+            return feature;
+        }
+
+        /// <summary>
+        /// Draws the radar diameters to the map.
+        /// </summary>
+        private void DrawMeasuringLabel()
+        {
+            var layer = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == NAME_MEASURING_LAYER);
+            layer.Clear();
+            mapControl.RefreshGraphics();
+
+            layer.Add(CreateMeasuringLabel(_measuringStartLongitude, _measuringStartLatitude));
+            mapControl.RefreshGraphics();
+        }
+
+        /// <summary>
+        /// Resets the necessary variables and layer of measuring.
+        /// </summary>
+        private void ResetMeasuring()
+        {
+            var layer = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == NAME_MEASURING_LAYER);
+            layer.Clear();
+            mapControl.RefreshGraphics();
+            _measuringStartLongitude = 0;
+            _measuringStartLatitude = 0;
+            _isMeasuringDistance = false;
+            MainViewModel.CurrentMapConfiguration.CurrentlyMeasuringDistance = false;
+        }
+
         // -------------------- EVENT HANDLING --------------------
         /// <summary>
         /// Handles the click on the map.
         /// </summary>
         /// <param name="sender">Sender</param>
         /// <param name="args">Arguments</param>
-        public void HandleFeatureClick(object sender, MapInfoEventArgs args)
+        public void HandleMapClick(object sender, MapInfoEventArgs args)
         {
             var mapInfo = args.MapInfo;
-            if (mapInfo.Feature == null)
-            {
-                MainViewModel.SelectedMesocyclone = null;
-                RefreshMap();
-                return;
-            }
+            Point pos = mapControl.Viewport.ScreenToWorld(mapInfo.ScreenPosition);
+            Feature feature = (Feature) mapInfo.Feature;
 
-            // Select clicked mesocyclone
-            var meso = GetBestMesocyclone((Feature)mapInfo.Feature);
+            // Select meso
+            var meso = GetBestMesocyclone(feature);
             if (meso != null)
             {
                 MainViewModel.SelectedMesocyclone = meso;
+                ResetMeasuring();
                 return;
             }
 
             // If no meso found, let's have a look, if there is a radar station instead...
-            var station = GetBestRadarStation((Feature)mapInfo.Feature);
-            if (station != null)
+            var station = GetBestRadarStation(feature);
+            if (station != null && args.NumTaps == 2) // Only open details window if double clicked
             {
                 new RadarStationDetailsWindow(station).Show();
+                ResetMeasuring();
+                return;
             }
-        }
 
-        /// <summary>
-        /// Handles the left click on the map.
-        /// </summary>
-        /// <param name="sender">Sender</param>
-        /// <param name="e">Arguments</param>
-        private void HandleLeftClick(object sender, MouseButtonEventArgs e)
-        {
-            Point pos = mapControl.Viewport.ScreenToWorld(e.GetPosition(mapControl).ToMapsui());
-            if (MainViewModel.CurrentMapConfiguration.CurrentlyMeasuringDistance == true)
+            // No feature clicked, okay, then deselect selected meso...
+            MainViewModel.SelectedMesocyclone = null;
+            RefreshMap();
+
+            // Handle measuring if no feature found
+            if (MainViewModel.CurrentMapConfiguration.CurrentlyMeasuringDistance == false) return;
+            if (MainViewModel.SelectedElement == null)
             {
-                var coordinates = SphericalMercator.ToLonLat(pos.X, pos.Y);
+                MainViewModel.CurrentMapConfiguration.CurrentlyMeasuringDistance = false;
+                MessageBox.Show("Please select an element before measuring.");
+                return;
+            }
+            var coordinates = SphericalMercator.ToLonLat(pos.X, pos.Y);
 
-                if (!_isMeasuringDistance)
-                {
-                    _isMeasuringDistance = true;
-                    _measuringStartLongitude = coordinates.X;
-                    _measuringStartLatitude = coordinates.Y;
-                }
-                else
-                {
-                    _isMeasuringDistance = false;
-                    var measuringEndLongitude = coordinates.X;
-                    var measuringEndLatitude = coordinates.Y;
+            if (!_isMeasuringDistance)
+            {
+                _isMeasuringDistance = true;
+                _measuringStartLongitude = coordinates.X;
+                _measuringStartLatitude = coordinates.Y;
+                DrawMeasuringLabel();
+            }
+            else
+            {
+                _isMeasuringDistance = false;
+                var measuringEndLongitude = coordinates.X;
+                var measuringEndLatitude = coordinates.Y;
 
-                    var distance = GetDistanceBetweenCoordinates(
-                        _measuringStartLongitude, measuringEndLongitude, _measuringStartLatitude, measuringEndLatitude);
-                    MessageBox.Show(distance.ToString());
-                    MainViewModel.CurrentMapConfiguration.CurrentlyMeasuringDistance = false;
-                }
+                var distance = GetDistanceBetweenCoordinates(
+                    _measuringStartLongitude, measuringEndLongitude, _measuringStartLatitude, measuringEndLatitude);
+                MessageBox.Show(String.Format("Distance: {0}km", Math.Round(distance, 2)));
+
+                MainViewModel.CurrentMapConfiguration.CurrentlyMeasuringDistance = false;
+                var layerMeasuring = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == NAME_MEASURING_LAYER);
+                layerMeasuring.Clear();
+                _measuringStartLongitude = 0;
+                _measuringStartLatitude = 0;
+                RefreshMap();
             }
         }
 
