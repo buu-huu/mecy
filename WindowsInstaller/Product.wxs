@@ -1,44 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<!-- Product ID per platform -->
 	<?if $(var.Platform)=x64 ?>
 	<?define ProductCode="{2140CA3D-6547-4FAA-8523-6A8EF414CEE3}"?>
 	<?else?>
 	<?define ProductCode="{8B080B22-00CA-4843-954E-360DAA4211FB}"?>
 	<?endif?>
 	
+	<!-- Upgrade Id and build version -->
 	<?define BuildVersion = 1.0.0.0 ?>
 	<?define UpgradeCode = "{C3DF8857-A7AC-4A08-9C21-09379169F22F}" ?>
 	
+	<!-- Main product -->
 	<Product Id="$(var.ProductCode)"
 			 Name="!(loc.ProductName_$(var.Platform))"
 			 Language="!(loc.Language)"
 			 Version="$(var.BuildVersion)"
 			 Manufacturer="!(loc.Developer)"
 			 UpgradeCode="$(var.UpgradeCode)">
-		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+		<!-- Package -->
+		<Package InstallerVersion="200"
+				 Compressed="yes"
+				 InstallScope="perMachine"
+				 Platform="$(var.Platform)"
+				 Manufacturer="!(loc.Developer)"
+				 Description="!(loc.Description)"
+				 Languages="!(loc.Language)" />
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
-		<MediaTemplate />
+		<MediaTemplate EmbedCab="yes" />
 
-		<Feature Id="ProductFeature" Title="WindowsInstaller" Level="1">
+		<!-- Icon -->
+		<Icon Id="icon.ico" SourceFile="$(var.MecyApplication.ProjectDir)\Resources\256x256.ico" />
+		
+		<!-- Properties -->
+		<Property Id="APPPRODUCTICON">icon.ico</Property>
+		<Property Id="APPURLINFOABOUT">https://github.com/buu-huu/mecy</Property>
+		
+		<!-- UI -->
+		<UIRef Id="WixUI_Minimal" />
+		<WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\Assets\License.rtf" />
+
+		<Feature Id="ProductFeature"
+				 Title="Mecy Installer"
+				 Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
 		</Feature>
 	</Product>
-
-	<Fragment>
-		<Directory Id="TARGETDIR" Name="SourceDir">
-			<Directory Id="ProgramFilesFolder">
-				<Directory Id="INSTALLFOLDER" Name="WindowsInstaller" />
-			</Directory>
-		</Directory>
-	</Fragment>
-
-	<Fragment>
-		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
-			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
-			<!-- <Component Id="ProductComponent"> -->
-				<!-- TODO: Insert files, registry keys, and other resources here. -->
-			<!-- </Component> -->
-		</ComponentGroup>
-	</Fragment>
 </Wix>

@@ -6,4 +6,5 @@
 	<String Id="ProductName_x64">Mecy (x64)</String>
 	
 	<String Id="Language">1033</String>
+	<String Id="Description">Mesocyclone Visualization Software</String>
 </WixLocalization>
