@@ -43,7 +43,7 @@ namespace MecyApplication
                 else
                 {
                     MessageBox.Show(
-                        "OpenData server not reachable. Using existing data.",
+                        "No internet connection. Mecy can't load map data. Please check your internet connection and restart.",
                         "Mecy",
                         MessageBoxButton.OK,
                         MessageBoxImage.Information);

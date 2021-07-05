@@ -209,14 +209,6 @@ namespace MecyApplication
             {
                 OpenDataElements = new ObservableCollection<OpenDataElement>(parsedElements);
             }
-            else
-            {
-                MessageBox.Show(
-                        "Can't find data. Try to download data again.",
-                        "Mecy",
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Information);
-            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
