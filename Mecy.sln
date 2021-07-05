@@ -1,38 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.31410.357
+VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MecyApplication", "MecyApplication\MecyApplication.csproj", "{86801EC8-F5FD-4584-A86A-2DD3DE2339EC}"
-EndProject
-Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "WindowsInstaller", "WindowsInstaller\WindowsInstaller.wixproj", "{D2C3E71A-8E6A-47DC-BD0E-5AD6586EC1BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MecyApplication", "MecyApplication\MecyApplication.csproj", "{F88F622A-C49E-4804-AD45-966E69883E24}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{86801EC8-F5FD-4584-A86A-2DD3DE2339EC}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{86801EC8-F5FD-4584-A86A-2DD3DE2339EC}.Debug|x64.Build.0 = Debug|Any CPU
-		{86801EC8-F5FD-4584-A86A-2DD3DE2339EC}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{86801EC8-F5FD-4584-A86A-2DD3DE2339EC}.Debug|x86.Build.0 = Debug|Any CPU
-		{86801EC8-F5FD-4584-A86A-2DD3DE2339EC}.Release|x64.ActiveCfg = Release|Any CPU
-		{86801EC8-F5FD-4584-A86A-2DD3DE2339EC}.Release|x64.Build.0 = Release|Any CPU
-		{86801EC8-F5FD-4584-A86A-2DD3DE2339EC}.Release|x86.ActiveCfg = Release|Win32
-		{86801EC8-F5FD-4584-A86A-2DD3DE2339EC}.Release|x86.Build.0 = Release|Win32
-		{D2C3E71A-8E6A-47DC-BD0E-5AD6586EC1BA}.Debug|x64.ActiveCfg = Debug|x64
-		{D2C3E71A-8E6A-47DC-BD0E-5AD6586EC1BA}.Debug|x86.ActiveCfg = Debug|x86
-		{D2C3E71A-8E6A-47DC-BD0E-5AD6586EC1BA}.Release|x64.ActiveCfg = Release|x86
-		{D2C3E71A-8E6A-47DC-BD0E-5AD6586EC1BA}.Release|x86.ActiveCfg = Release|x86
-		{D2C3E71A-8E6A-47DC-BD0E-5AD6586EC1BA}.Release|x86.Build.0 = Release|x86
+		{F88F622A-C49E-4804-AD45-966E69883E24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F88F622A-C49E-4804-AD45-966E69883E24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F88F622A-C49E-4804-AD45-966E69883E24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F88F622A-C49E-4804-AD45-966E69883E24}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {AB70C201-6CF3-4144-9105-E6AB43893078}
+		SolutionGuid = {1659FEB6-5800-46AD-8454-8B414B23FC21}
 	EndGlobalSection
 EndGlobal
