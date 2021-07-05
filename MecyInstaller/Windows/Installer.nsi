@@ -1,9 +1,10 @@
-!include "MUI.nsh"
+!include "MUI2.nsh"
 !define INSTALLATIONNAME "Mecy"
 !define PRODUCT_NAME "Mecy"
 !define PRODUCT_VERSION "1.0"
 !define PRODUCT_PUBLISHER "buuhuu"
 !define PRODUCT_WEB_SITE "https://github.com/buu-huu/mecy"
+!define MUI_ICON "..\..\MecyApplication\Resources\256x256.ico"
 
 Name "Mecy Installer"
 
