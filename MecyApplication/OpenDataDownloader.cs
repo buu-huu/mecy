@@ -18,13 +18,16 @@ namespace MecyApplication
         public const string USER_NAME = "anonymous";
         public const string PASSWORD  = "anonymous";
         public const string DWD_MESO_DIRECTORY = "weather/radar/mesocyclones/";
-        public const string LOCAL_DOWNLOAD_PATH = @"xml_data";
+        public const string DATA_FOLDER_NAME = @"Mecy\dwd_data";
+        public static string LOCAL_DOWNLOAD_PATH = System.Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\" + DATA_FOLDER_NAME;
 
         /// <summary>
         /// Downloads all XML files from opendata server.
         /// </summary>
         public static void DownloadAllData()
         {
+            Console.WriteLine(LOCAL_DOWNLOAD_PATH);
+
             DeleteAllData();
             System.IO.Directory.CreateDirectory(LOCAL_DOWNLOAD_PATH); // Ignore if directory exists...
 
