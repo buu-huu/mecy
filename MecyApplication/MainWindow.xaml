@@ -649,7 +649,7 @@
                                  Grid.Column="1"
                                  Background="#FFFFDEB8" />
 
-                            <Label Content="Mean DBZ"
+                            <Label Content="Reflectivity Mean"
                                HorizontalAlignment="Right"
                                VerticalAlignment="Center"
                                Margin="0 0 10 0"
@@ -669,7 +669,7 @@
                                Grid.Row="21"
                                Grid.Column="2" />
 
-                            <Label Content="Max DBZ"
+                            <Label Content="Reflectivity Max"
                                HorizontalAlignment="Right"
                                VerticalAlignment="Center"
                                Margin="0 0 10 0"
