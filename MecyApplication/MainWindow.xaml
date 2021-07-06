@@ -855,14 +855,30 @@
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="Height" Value="60" />
-                                <Setter Property="Background" Value="Bisque" />
+                                <Setter Property="BorderThickness" Value="2" />
                                 <Style.Triggers>
                                     <Trigger Property="IsSelected" Value="True">
-                                        <Setter Property="Background" Value="#FFE88C1F" />
+                                        <Setter Property="BorderBrush" Value="#FF0070B4" />
                                     </Trigger>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#FFFFA841" />
+                                        <Setter Property="BorderBrush" Value="#FF73FFF2" />
                                     </Trigger>
+
+                                    <DataTrigger Binding="{Binding Intensity}" Value="1">
+                                        <Setter Property="Background" Value="#FF91FF95" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Intensity}" Value="2">
+                                        <Setter Property="Background" Value="#FFF6FF91" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Intensity}" Value="3">
+                                        <Setter Property="Background" Value="#FFFFE091" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Intensity}" Value="4">
+                                        <Setter Property="Background" Value="#FFFF9191" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Intensity}" Value="5">
+                                        <Setter Property="Background" Value="#FFD791FF" />
+                                    </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </ListView.ItemContainerStyle>
