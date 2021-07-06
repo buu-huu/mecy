@@ -15,7 +15,7 @@ Mecy has a user friendly interface and runs on Windows.
 Mecy automatically downloads the latest mesocyclone data from the OpenData server (DWD).
 
 ### Timestamps
-All data is stored in timestamps. You can select a timestamp and visualize the corresponding mesocyclones.
+All data is stored in timestamps. You can select a timestamp and visualize the corresponding mesocyclones. The timestamps are highlighted with a color that depends on the amount of mesocyclones for a time. Furthermore, the intensity of the mesocyclone with the highest intensity is displayed.
 
 ### Mesocyclone List
 Mesocyclones are visualized in a list with all important informations.
