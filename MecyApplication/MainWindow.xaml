@@ -200,14 +200,6 @@
                     </Ellipse>
                 </StackPanel>
             </StatusBarItem>
-
-            <Separator Grid.Column="5" />
-
-            <StatusBarItem Grid.Column="8">
-                <ProgressBar Value="50"
-                             Width="90"
-                             Height="16" />
-            </StatusBarItem>
         </StatusBar>
 
         <Grid>
