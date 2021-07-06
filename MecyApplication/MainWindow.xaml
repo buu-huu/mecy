@@ -298,8 +298,8 @@
                                      Grid.Column="1">
                                     <TextBox.Style>
                                         <Style TargetType="TextBox">
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding Intensity}" Value="1">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Intensity}" Value="1">
                                                     <Setter Property="Background" Value="#FF51FF51" />
                                                     <Setter Property="Foreground" Value="Black" />
                                                 </DataTrigger>
@@ -329,9 +329,9 @@
                                       Grid.ColumnSpan="3">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="200" />
+                                        <ColumnDefinition Width="180" />
                                         <ColumnDefinition/>
-                                        <ColumnDefinition Width="60" />
+                                        <ColumnDefinition Width="65" />
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
@@ -372,7 +372,7 @@
                                              Grid.Row="1"
                                              Grid.Column="1"
                                              Background="#FFFFDEB8" />
-                                    <Label Content="Polar Motion"
+                                    <Label Content="Polar motion"
                                            HorizontalAlignment="Right"
                                            VerticalAlignment="Center"
                                            Margin="0 0 10 0"
@@ -393,7 +393,7 @@
                                            Grid.Row="2"
                                            Grid.Column="2"
                                            IsEnabled="False" />
-                                    <Label Content="Major Axis"
+                                    <Label Content="Major axis"
                                            HorizontalAlignment="Right"
                                            VerticalAlignment="Center"
                                            Margin="0 0 10 0"
@@ -415,7 +415,7 @@
                                            Grid.Column="2"
                                            IsEnabled="False" />
 
-                                    <Label Content="Minor Axis"
+                                    <Label Content="Minor axis"
                                            HorizontalAlignment="Right"
                                            VerticalAlignment="Center"
                                            Margin="0 0 10 0"
@@ -478,7 +478,7 @@
                                            Grid.Row="6"
                                            Grid.Column="2" />
 
-                                    <Label Content="Diameter Equivalent"
+                                    <Label Content="Diameter equivalent"
                                            HorizontalAlignment="Right"
                                            VerticalAlignment="Center"
                                            Margin="0 0 10 0"
@@ -545,9 +545,9 @@
                                       Grid.ColumnSpan="3">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="200" />
+                                        <ColumnDefinition Width="180" />
                                         <ColumnDefinition/>
-                                        <ColumnDefinition Width="60" />
+                                        <ColumnDefinition Width="65" />
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
@@ -562,7 +562,7 @@
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
 
-                                    <Label Content="Shear Mean"
+                                    <Label Content="Azimuthal shear mean"
                                            HorizontalAlignment="Right"
                                            VerticalAlignment="Center"
                                            Margin="0 0 10 0"
@@ -582,7 +582,7 @@
                                            Grid.Row="0"
                                            Grid.Column="2" />
 
-                                    <Label Content="Shear Max"
+                                    <Label Content="Azimuthal shear max"
                                            HorizontalAlignment="Right"
                                            VerticalAlignment="Center"
                                            Margin="0 0 10 0"
@@ -602,7 +602,7 @@
                                            Grid.Row="1"
                                            Grid.Column="2" />
 
-                                    <Label Content="Momentum Mean"
+                                    <Label Content="Angular momentum mean"
                                            HorizontalAlignment="Right"
                                            VerticalAlignment="Center"
                                            Margin="0 0 10 0"
@@ -622,7 +622,7 @@
                                            Grid.Row="2"
                                            Grid.Column="2" />
 
-                                    <Label Content="Momentum Max"
+                                    <Label Content="Angular momentum max"
                                            HorizontalAlignment="Right"
                                            VerticalAlignment="Center"
                                            Margin="0 0 10 0"
@@ -642,7 +642,7 @@
                                            Grid.Row="3"
                                            Grid.Column="2" />
 
-                                    <Label Content="Shear Vectors"
+                                    <Label Content="Shear vectors"
                                            HorizontalAlignment="Right"
                                            VerticalAlignment="Center"
                                            Margin="0 0 10 0"
@@ -656,7 +656,7 @@
                                              Grid.Column="1"
                                              Background="#FFFFDEB8" />
 
-                                    <Label Content="Shear Features"
+                                    <Label Content="Shear features"
                                            HorizontalAlignment="Right"
                                            VerticalAlignment="Center"
                                            Margin="0 0 10 0"
@@ -670,7 +670,7 @@
                                              Grid.Column="1"
                                              Background="#FFFFDEB8" />
 
-                                    <Label Content="Velocity Max"
+                                    <Label Content="Velocity max"
                                            HorizontalAlignment="Right"
                                            VerticalAlignment="Center"
                                            Margin="0 0 10 0"
@@ -690,7 +690,7 @@
                                            Grid.Row="6"
                                            Grid.Column="2" />
 
-                                    <Label Content="Velocity Rotational Max"
+                                    <Label Content="Velocity rotational max"
                                            HorizontalAlignment="Right"
                                            VerticalAlignment="Center"
                                            Margin="0 0 10 0"
@@ -710,7 +710,7 @@
                                            Grid.Row="7"
                                            Grid.Column="2" />
 
-                                    <Label Content="Velocity Rotational Mean"
+                                    <Label Content="Velocity rotational mean"
                                            HorizontalAlignment="Right"
                                            VerticalAlignment="Center"
                                            Margin="0 0 10 0"
@@ -730,7 +730,7 @@
                                            Grid.Row="8"
                                            Grid.Column="2" />
 
-                                    <TextBlock Text="Velocity Rotational Max Closest To Ground"
+                                    <TextBlock Text="Velocity rotational max closest to ground"
                                                HorizontalAlignment="Right"
                                                VerticalAlignment="Center"
                                                Margin="0 0 10 0"
@@ -760,7 +760,7 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="200" />
                                         <ColumnDefinition/>
-                                        <ColumnDefinition Width="60" />
+                                        <ColumnDefinition Width="65" />
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
@@ -769,7 +769,7 @@
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
 
-                                    <Label Content="18db(Z)-Echo-Top"
+                                    <Label Content="18db(Z) echo-top height"
                                            HorizontalAlignment="Right"
                                            VerticalAlignment="Center"
                                            Margin="0 0 10 0"
@@ -809,7 +809,7 @@
                                            Grid.Row="1"
                                            Grid.Column="2" />
 
-                                    <Label Content="Reflectivity Mean"
+                                    <Label Content="Reflectivity mean"
                                            HorizontalAlignment="Right"
                                            VerticalAlignment="Center"
                                            Margin="0 0 10 0"
@@ -829,7 +829,7 @@
                                            Grid.Row="2"
                                            Grid.Column="2" />
 
-                                    <Label Content="Reflectivity Max"
+                                    <Label Content="Reflectivity max"
                                            HorizontalAlignment="Right"
                                            VerticalAlignment="Center"
                                            Margin="0 0 10 0"
