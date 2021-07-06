@@ -1,12 +1,12 @@
 !include "MUI2.nsh"
 !define INSTALLATIONNAME "Mecy"
 !define PRODUCT_NAME "Mecy"
-!define PRODUCT_VERSION "1.0"
+!define PRODUCT_VERSION "1.1"
 !define PRODUCT_PUBLISHER "buuhuu"
 !define PRODUCT_WEB_SITE "https://github.com/buu-huu/mecy"
 !define MUI_ICON "..\..\MecyApplication\Resources\256x256.ico"
 
-Name "Mecy 1.0"
+Name "Mecy 1.1"
 
 OutFile "MecyInstaller.exe"
 InstallDir $PROGRAMFILES\${INSTALLATIONNAME}
@@ -31,7 +31,7 @@ Section ""
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${INSTALLATIONNAME}" "URLInfoAbout" "https://github.com/buu-huu/mecy"
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${INSTALLATIONNAME}" "DisplayIcon" '"$INSTDIR\Resources\256x256.ico"'
     
-    WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${INSTALLATIONNAME}" "DisplayVersion" "1.0"
+    WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${INSTALLATIONNAME}" "DisplayVersion" "1.1"
 
     WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${INSTALLATIONNAME}" "NoModify" 1
     WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${INSTALLATIONNAME}" "NoRepair" 1
