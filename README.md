@@ -26,6 +26,8 @@ Mecy shows all mesocyclones of a timestamp on a map with the following informati
 - Intensity (visualized via color and number)
 - Diameter
 
+You can center the map to Germany or to the selected mesocyclone.
+
 ### Map Style
 You can customize the map by enabling and disabling the following features:
 - OpenStreetMap style / Google Maps style
