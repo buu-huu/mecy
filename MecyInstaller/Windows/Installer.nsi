@@ -6,7 +6,7 @@
 !define PRODUCT_WEB_SITE "https://github.com/buu-huu/mecy"
 !define MUI_ICON "..\..\MecyApplication\Resources\256x256.ico"
 
-Name "Mecy Installer"
+Name "Mecy 1.0"
 
 OutFile "MecyInstaller.exe"
 InstallDir $PROGRAMFILES\${INSTALLATIONNAME}
@@ -22,13 +22,14 @@ InstallDir $PROGRAMFILES\${INSTALLATIONNAME}
 # Install files
 Section ""
     SetOutPath $INSTDIR
-    File /r "..\..\MecyApplication\bin\Debug\*"
+    File /r "..\..\MecyApplication\bin\x64\Release\*"
     WriteUninstaller $INSTDIR\uninstall.exe
 
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${INSTALLATIONNAME}" "DisplayName" "Mecy"
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${INSTALLATIONNAME}" "UninstallString" '"$INSTDIR\uninstall.exe"'
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${INSTALLATIONNAME}" "Publisher" "buuhuu"
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${INSTALLATIONNAME}" "URLInfoAbout" "https://github.com/buu-huu/mecy"
+    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${INSTALLATIONNAME}" "DisplayIcon" '"$INSTDIR\Resources\256x256.ico"'
     
     WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${INSTALLATIONNAME}" "DisplayVersion" "1.0"
 
@@ -58,5 +59,5 @@ Section "Uninstall"
 
     Delete "$SMPROGRAMS\${INSTALLATIONNAME}\*.*"
     RMDir "$SMPROGRAMS\${INSTALLATIONNAME}"
-    Delete "$DESKTOP\Mecy.ink"
+    Delete "$DESKTOP\Mecy.lnk"
 SectionEnd
