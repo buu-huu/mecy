@@ -247,569 +247,609 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition/>
                             </Grid.RowDefinitions>
 
-
                             <Label Content="ID"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="1"
-                               Grid.Column="0" />
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0 0 10 0"
+                                   Grid.Row="1"
+                                   Grid.Column="0" />
                             <TextBox Text="{Binding Id}"
-                                 VerticalContentAlignment="Center"
-                                 Margin="2"
-                                 IsReadOnly="True"
-                                 Grid.Row="1"
-                                 Grid.Column="1"
-                                 Background="#FFE3B8FF" />
+                                     VerticalContentAlignment="Center"
+                                     Margin="2"
+                                     IsReadOnly="True"
+                                     Grid.Row="1"
+                                     Grid.Column="1"
+                                     Background="#FFE3B8FF" />
 
                             <Label Content="Time"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="2"
-                               Grid.Column="0" />
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0 0 10 0"
+                                   Grid.Row="2"
+                                   Grid.Column="0" />
                             <TextBox Text="{Binding Path=Time, StringFormat='dd.MM.yyy HH:mm'}"
-                                 VerticalContentAlignment="Center"
-                                 Margin="2"
-                                 IsReadOnly="True"
-                                 Grid.Row="2"
-                                 Grid.Column="1"
-                                 Background="#FFFFDEB8" />
-
-                            <Label Content="Latitude"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="3"
-                               Grid.Column="0" />
-                            <TextBox Text="{Binding Latitude}"
-                                 VerticalContentAlignment="Center"
-                                 Margin="2"
-                                 IsReadOnly="True"
-                                 Grid.Row="3"
-                                 Grid.Column="1"
-                                 Background="#FFFFDEB8" />
+                                     VerticalContentAlignment="Center"
+                                     Margin="2"
+                                     IsReadOnly="True"
+                                     Grid.Row="2"
+                                     Grid.Column="1"
+                                     Background="#FFFFDEB8" />
                             <Label Content="UTC"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="2"
-                               Grid.Column="2" />
-
-                            <Label Content="Longitude"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="4"
-                               Grid.Column="0" />
-                            <TextBox Text="{Binding Longitude}"
-                                 VerticalContentAlignment="Center"
-                                 Margin="2"
-                                 IsReadOnly="True"
-                                 Grid.Row="4"
-                                 Grid.Column="1"
-                                 Background="#FFFFDEB8" />
-
-                            <Label Content="Polar Motion"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="5"
-                               Grid.Column="0"
-                               IsEnabled="False" />
-                            <TextBox Text="{Binding PolarMotion}"
-                                 VerticalContentAlignment="Center"
-                                 Margin="2"
-                                 Grid.Row="5"
-                                 Grid.Column="1"
-                                 IsEnabled="False"
-                                 Background="#FFFFDEB8" />
-                            <Label Content="km/h"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="5"
-                               Grid.Column="2"
-                               IsEnabled="False" />
-
-                            <Label Content="Major Axis"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="6"
-                               Grid.Column="0"
-                               IsEnabled="False" />
-                            <TextBox Text="{Binding MajorAxis}"
-                                 VerticalContentAlignment="Center"
-                                 Margin="2"
-                                 Grid.Row="6"
-                                 Grid.Column="1"
-                                 IsEnabled="False"
-                                 Background="#FFFFDEB8" />
-                            <Label Content="km"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="6"
-                               Grid.Column="2"
-                               IsEnabled="False" />
-
-                            <Label Content="Minor Axis"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="7"
-                               Grid.Column="0"
-                               IsEnabled="False" />
-                            <TextBox Text="{Binding MinorAxis}"
-                                 VerticalContentAlignment="Center"
-                                 Margin="2"
-                                 Grid.Row="7"
-                                 Grid.Column="1"
-                                 IsEnabled="False"
-                                 Background="#FFFFDEB8" />
-                            <Label Content="km"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="7"
-                               Grid.Column="2"
-                               IsEnabled="False" />
-
-                            <Label Content="Orientation"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="8"
-                               Grid.Column="0"
-                               IsEnabled="False" />
-                            <TextBox Text="{Binding Orientation}"
-                                 VerticalContentAlignment="Center"
-                                 Margin="2"
-                                 Grid.Row="8"
-                                 Grid.Column="1"
-                                 IsEnabled="False"
-                                 Background="#FFFFDEB8" />
-                            <Label Content="°"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="8"
-                               Grid.Column="2"
-                               IsEnabled="False" />
-
-                            <Label Content="Shear Mean"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="9"
-                               Grid.Column="0" />
-                            <TextBox Text="{Binding ShearMean, StringFormat=N2}"
-                                 VerticalContentAlignment="Center"
-                                 Margin="2"
-                                 IsReadOnly="True"
-                                 Grid.Row="9"
-                                 Grid.Column="1"
-                                 Background="#FFFFDEB8" />
-                            <Label Content="m/s/km"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="9"
-                               Grid.Column="2" />
-
-                            <Label Content="Shear Max"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="10"
-                               Grid.Column="0" />
-                            <TextBox Text="{Binding ShearMax, StringFormat=N2}"
-                                 VerticalContentAlignment="Center"
-                                 Margin="2"
-                                 IsReadOnly="True"
-                                 Grid.Row="10"
-                                 Grid.Column="1"
-                                 Background="#FFFFDEB8" />
-                            <Label Content="m/s/km"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="10"
-                               Grid.Column="2" />
-
-                            <Label Content="Momentum Mean"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="11"
-                               Grid.Column="0" />
-                            <TextBox Text="{Binding MomentumMean, StringFormat=N2}"
-                                 VerticalContentAlignment="Center"
-                                 Margin="2"
-                                 IsReadOnly="True"
-                                 Grid.Row="11"
-                                 Grid.Column="1"
-                                 Background="#FFFFDEB8" />
-                            <Label Content="m/s/km"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="11"
-                       Grid.Column="2" />
-
-                            <Label Content="Momentum Max"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="12"
-                               Grid.Column="0" />
-                            <TextBox Text="{Binding MomentumMax, StringFormat=N2}"
-                                 VerticalContentAlignment="Center"
-                                 Margin="2"
-                                 IsReadOnly="True"
-                                 Grid.Row="12"
-                                 Grid.Column="1"
-                                 Background="#FFFFDEB8" />
-                            <Label Content="m/s/km"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="12"
-                               Grid.Column="2" />
-
-                            <Label Content="Diameter"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="13"
-                               Grid.Column="0" />
-                            <TextBox Text="{Binding Diameter, StringFormat=N2}"
-                                 VerticalContentAlignment="Center"
-                                 Margin="2"
-                                 IsReadOnly="True"
-                                 Grid.Row="13"
-                                 Grid.Column="1"
-                                 Background="#FFE3B8FF" />
-                            <Label Content="km"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="13"
-                               Grid.Column="2" />
-
-                            <Label Content="Diameter Equivalent"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="14"
-                               Grid.Column="0" />
-                            <TextBox Text="{Binding DiameterEquivalent, StringFormat=N2}"
-                                 VerticalContentAlignment="Center"
-                                 Margin="2"
-                                 IsReadOnly="True"
-                                 Grid.Row="14"
-                                 Grid.Column="1"
-                                 Background="#FFFFDEB8" />
-                            <Label Content="km"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="14"
-                               Grid.Column="2" />
-
-                            <Label Content="Top"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="15"
-                               Grid.Column="0" />
-                            <TextBox Text="{Binding Top, StringFormat=N2}"
-                                 VerticalContentAlignment="Center"
-                                 Margin="2"
-                                 IsReadOnly="True"
-                                 Grid.Row="15"
-                                 Grid.Column="1"
-                                 Background="#FFFFDEB8" />
-                            <Label Content="km"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="15"
-                               Grid.Column="2" />
-
-                            <Label Content="Base"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="16"
-                               Grid.Column="0" />
-                            <TextBox Text="{Binding MesoBase, StringFormat=N2}"
-                                 VerticalContentAlignment="Center"
-                                 Margin="2"
-                                 IsReadOnly="True"
-                                 Grid.Row="16"
-                                 Grid.Column="1"
-                                 Background="#FFFFDEB8" />
-                            <Label Content="km"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="16"
-                               Grid.Column="2" />
-
-                            <Label Content="18db(Z)-Echo-Top"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="17"
-                               Grid.Column="0" />
-                            <TextBox Text="{Binding Echotop, StringFormat=N2}"
-                                 VerticalContentAlignment="Center"
-                                 Margin="2"
-                                 IsReadOnly="True"
-                                 Grid.Row="17"
-                                 Grid.Column="1"
-                                 Background="#FFFFDEB8" />
-                            <Label Content="km"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="17"
-                               Grid.Column="2" />
-
-                            <Label Content="VIL"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="18"
-                               Grid.Column="0" />
-                            <TextBox Text="{Binding Vil, StringFormat=N2}"
-                                 VerticalContentAlignment="Center"
-                                 Margin="2"
-                                 IsReadOnly="True"
-                                 Grid.Row="18"
-                                 Grid.Column="1"
-                                 Background="#FFFFDEB8" />
-                            <Label Content="kg/m²"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="18"
-                               Grid.Column="2" />
-
-                            <Label Content="Shear Vectors"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="19"
-                               Grid.Column="0" />
-                            <TextBox Text="{Binding ShearVectors}"
-                                 VerticalContentAlignment="Center"
-                                 Margin="2"
-                                 IsReadOnly="True"
-                                 Grid.Row="19"
-                                 Grid.Column="1"
-                                 Background="#FFFFDEB8" />
-
-                            <Label Content="Shear Features"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="20"
-                               Grid.Column="0" />
-                            <TextBox Text="{Binding ShearFeatures}"
-                                 VerticalContentAlignment="Center"
-                                 Margin="2"
-                                 IsReadOnly="True"
-                                 Grid.Row="20"
-                                 Grid.Column="1"
-                                 Background="#FFFFDEB8" />
-
-                            <Label Content="Reflectivity Mean"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="21"
-                               Grid.Column="0" />
-                            <TextBox Text="{Binding MeanDBZ, StringFormat=N2}"
-                                 VerticalContentAlignment="Center"
-                                 Margin="2"
-                                 IsReadOnly="True"
-                                 Grid.Row="21"
-                                 Grid.Column="1"
-                                 Background="#FFFFDEB8" />
-                            <Label Content="dB(Z)"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="21"
-                               Grid.Column="2" />
-
-                            <Label Content="Reflectivity Max"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="22"
-                               Grid.Column="0" />
-                            <TextBox Text="{Binding MaxDBZ, StringFormat=N2}"
-                                 VerticalContentAlignment="Center"
-                                 Margin="2"
-                                 IsReadOnly="True"
-                                 Grid.Row="22"
-                                 Grid.Column="1"
-                                 Background="#FFFFDEB8" />
-                            <Label Content="dB(Z)"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="22"
-                               Grid.Column="2" />
-
-                            <Label Content="Velocity Max"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="23"
-                               Grid.Column="0" />
-                            <TextBox Text="{Binding VelocityMax, StringFormat=N2}"
-                                 VerticalContentAlignment="Center"
-                                 Margin="2"
-                                 IsReadOnly="True"
-                                 Grid.Row="23"
-                                 Grid.Column="1"
-                                 Background="#FFFFDEB8" />
-                            <Label Content="m/s"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="0 0 10 0"
-                       Grid.Row="23"
-                       Grid.Column="2" />
-
-                            <Label Content="Velocity Rotational Max"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="24"
-                               Grid.Column="0" />
-                            <TextBox Text="{Binding VelocityRotationalMax, StringFormat=N2}"
-                                 VerticalContentAlignment="Center"
-                                 Margin="2"
-                                 IsReadOnly="True"
-                                 Grid.Row="24"
-                                 Grid.Column="1"
-                                 Background="#FFFFDEB8" />
-                            <Label Content="m/s"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="24"
-                               Grid.Column="2" />
-
-                            <Label Content="Velocity Rotational Mean"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="25"
-                               Grid.Column="0" />
-                            <TextBox Text="{Binding VelocityRotationalMean, StringFormat=N2}"
-                                 VerticalContentAlignment="Center"
-                                 Margin="2"
-                                 IsReadOnly="True"
-                                 Grid.Row="25"
-                                 Grid.Column="1"
-                                 Background="#FFFFDEB8" />
-                            <Label Content="m/s"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="25"
-                               Grid.Column="2" />
-
-                            <TextBlock Text="Velocity Rotational Max Closest To Ground"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="26"
-                               Grid.Column="0" TextWrapping="WrapWithOverflow" TextAlignment="Right" />
-                            <TextBox Text="{Binding VelocityRotationalMaxClosestToGround, StringFormat=N2}"
-                                 VerticalContentAlignment="Center"
-                                 Margin="2"
-                                 IsReadOnly="True"
-                                 Grid.Row="26"
-                                 Grid.Column="1"
-                                     Height="23"
-                                 Background="#FFFFDEB8" />
-                            <Label Content="m/s"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="26"
-                               Grid.Column="2" />
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="0 0 10 0"
+                                   Grid.Row="2"
+                                   Grid.Column="2" />
 
                             <Label Content="Intensity"
-                               FontWeight="Bold"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0 0 10 0"
-                               Grid.Row="27"
-                               Grid.Column="0" />
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0 0 10 0"
+                                   Grid.Row="3"
+                                   Grid.Column="0" />
                             <TextBox Text="{Binding Intensity}"
-                                 VerticalContentAlignment="Center"
-                                 Margin="2"
-                                 IsReadOnly="True"
-                                 Grid.Row="27"
-                                 Grid.Column="1">
-                                <TextBox.Style>
-                                    <Style TargetType="TextBox">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding Intensity}" Value="1">
-                                                <Setter Property="Background" Value="#FF51FF51" />
-                                                <Setter Property="Foreground" Value="Black" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding Intensity}" Value="2">
-                                                <Setter Property="Background" Value="Yellow" />
-                                                <Setter Property="Foreground" Value="Black" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding Intensity}" Value="3">
-                                                <Setter Property="Background" Value="Orange" />
-                                                <Setter Property="Foreground" Value="Black" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding Intensity}" Value="4">
-                                                <Setter Property="Background" Value="#FFFF2727" />
-                                                <Setter Property="Foreground" Value="Black" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding Intensity}" Value="5">
-                                                <Setter Property="Background" Value="Purple" />
-                                                <Setter Property="Foreground" Value="White" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBox.Style>
+                                     VerticalContentAlignment="Center"
+                                     Margin="2"
+                                     IsReadOnly="True"
+                                     Grid.Row="3"
+                                     Grid.Column="1">
+                                    <TextBox.Style>
+                                        <Style TargetType="TextBox">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Intensity}" Value="1">
+                                                    <Setter Property="Background" Value="#FF51FF51" />
+                                                    <Setter Property="Foreground" Value="Black" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Intensity}" Value="2">
+                                                    <Setter Property="Background" Value="Yellow" />
+                                                    <Setter Property="Foreground" Value="Black" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Intensity}" Value="3">
+                                                    <Setter Property="Background" Value="Orange" />
+                                                    <Setter Property="Foreground" Value="Black" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Intensity}" Value="4">
+                                                    <Setter Property="Background" Value="#FFFF2727" />
+                                                    <Setter Property="Foreground" Value="Black" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Intensity}" Value="5">
+                                                    <Setter Property="Background" Value="Purple" />
+                                                    <Setter Property="Foreground" Value="White" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBox.Style>
                             </TextBox>
+
+                            <GroupBox Header="Coordinate and shape"
+                                      Grid.Row="4"
+                                      Grid.ColumnSpan="3">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="200" />
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="60" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Label Content="Latitude"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="0"
+                                           Grid.Column="0" />
+                                    <TextBox Text="{Binding Latitude}"
+                                             VerticalContentAlignment="Center"
+                                             Margin="2"
+                                             IsReadOnly="True"
+                                             Grid.Row="0"
+                                             Grid.Column="1"
+                                             Background="#FFFFDEB8" />
+                                    <Label Content="Longitude"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="1"
+                                           Grid.Column="0" />
+                                    <TextBox Text="{Binding Longitude}"
+                                             VerticalContentAlignment="Center"
+                                             Margin="2"
+                                             IsReadOnly="True"
+                                             Grid.Row="1"
+                                             Grid.Column="1"
+                                             Background="#FFFFDEB8" />
+                                    <Label Content="Polar Motion"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="2"
+                                           Grid.Column="0"
+                                           IsEnabled="False" />
+                                    <TextBox Text="{Binding PolarMotion}"
+                                             VerticalContentAlignment="Center"
+                                             Margin="2"
+                                             Grid.Row="2"
+                                             Grid.Column="1"
+                                             IsEnabled="False"
+                                             Background="#FFFFDEB8" />
+                                    <Label Content="km/h"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="2"
+                                           Grid.Column="2"
+                                           IsEnabled="False" />
+                                    <Label Content="Major Axis"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="3"
+                                           Grid.Column="0"
+                                           IsEnabled="False" />
+                                    <TextBox Text="{Binding MajorAxis}"
+                                             VerticalContentAlignment="Center"
+                                             Margin="2"
+                                             Grid.Row="3"
+                                             Grid.Column="1"
+                                             IsEnabled="False"
+                                             Background="#FFFFDEB8" />
+                                    <Label Content="km"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="3"
+                                           Grid.Column="2"
+                                           IsEnabled="False" />
+
+                                    <Label Content="Minor Axis"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="4"
+                                           Grid.Column="0"
+                                           IsEnabled="False" />
+                                    <TextBox Text="{Binding MinorAxis}"
+                                             VerticalContentAlignment="Center"
+                                             Margin="2"
+                                             Grid.Row="4"
+                                             Grid.Column="1"
+                                             IsEnabled="False"
+                                             Background="#FFFFDEB8" />
+                                    <Label Content="km"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="4"
+                                           Grid.Column="2"
+                                           IsEnabled="False" />
+
+                                    <Label Content="Orientation"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="5"
+                                           Grid.Column="0"
+                                           IsEnabled="False" />
+                                    <TextBox Text="{Binding Orientation}"
+                                             VerticalContentAlignment="Center"
+                                             Margin="2"
+                                             Grid.Row="5"
+                                             Grid.Column="1"
+                                             IsEnabled="False"
+                                             Background="#FFFFDEB8" />
+                                    <Label Content="°"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="5"
+                                           Grid.Column="2"
+                                           IsEnabled="False" />
+                                    <Label Content="Diameter"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="6"
+                                           Grid.Column="0" />
+                                    <TextBox Text="{Binding Diameter, StringFormat=N2}"
+                                             VerticalContentAlignment="Center"
+                                             Margin="2"
+                                             IsReadOnly="True"
+                                             Grid.Row="6"
+                                             Grid.Column="1"
+                                             Background="#FFE3B8FF" />
+                                    <Label Content="km"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="6"
+                                           Grid.Column="2" />
+
+                                    <Label Content="Diameter Equivalent"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="7"
+                                           Grid.Column="0" />
+                                    <TextBox Text="{Binding DiameterEquivalent, StringFormat=N2}"
+                                             VerticalContentAlignment="Center"
+                                             Margin="2"
+                                             IsReadOnly="True"
+                                             Grid.Row="7"
+                                             Grid.Column="1"
+                                             Background="#FFFFDEB8" />
+                                    <Label Content="km"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="7"
+                                           Grid.Column="2" />
+
+                                    <Label Content="Top"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="8"
+                                           Grid.Column="0" />
+                                    <TextBox Text="{Binding Top, StringFormat=N2}"
+                                             VerticalContentAlignment="Center"
+                                             Margin="2"
+                                             IsReadOnly="True"
+                                             Grid.Row="8"
+                                             Grid.Column="1"
+                                             Background="#FFFFDEB8" />
+                                    <Label Content="km"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="8"
+                                           Grid.Column="2" />
+
+                                    <Label Content="Base"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="9"
+                                           Grid.Column="0" />
+                                    <TextBox Text="{Binding MesoBase, StringFormat=N2}"
+                                             VerticalContentAlignment="Center"
+                                             Margin="2"
+                                             IsReadOnly="True"
+                                             Grid.Row="9"
+                                             Grid.Column="1"
+                                             Background="#FFFFDEB8" />
+                                    <Label Content="km"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="9"
+                                           Grid.Column="2" />
+                                </Grid>
+                            </GroupBox>
+
+                            <GroupBox Header="Doppler velocity"
+                                      Grid.Row="5"
+                                      Grid.ColumnSpan="3">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="200" />
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="60" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Label Content="Shear Mean"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="0"
+                                           Grid.Column="0" />
+                                    <TextBox Text="{Binding ShearMean, StringFormat=N2}"
+                                             VerticalContentAlignment="Center"
+                                             Margin="2"
+                                             IsReadOnly="True"
+                                             Grid.Row="0"
+                                             Grid.Column="1"
+                                             Background="#FFFFDEB8" />
+                                    <Label Content="m/s/km"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="0"
+                                           Grid.Column="2" />
+
+                                    <Label Content="Shear Max"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="1"
+                                           Grid.Column="0" />
+                                    <TextBox Text="{Binding ShearMax, StringFormat=N2}"
+                                             VerticalContentAlignment="Center"
+                                             Margin="2"
+                                             IsReadOnly="True"
+                                             Grid.Row="1"
+                                             Grid.Column="1"
+                                             Background="#FFFFDEB8" />
+                                    <Label Content="m/s/km"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="1"
+                                           Grid.Column="2" />
+
+                                    <Label Content="Momentum Mean"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="2"
+                                           Grid.Column="0" />
+                                    <TextBox Text="{Binding MomentumMean, StringFormat=N2}"
+                                             VerticalContentAlignment="Center"
+                                             Margin="2"
+                                             IsReadOnly="True"
+                                             Grid.Row="2"
+                                             Grid.Column="1"
+                                             Background="#FFFFDEB8" />
+                                    <Label Content="m/s/km"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="2"
+                                           Grid.Column="2" />
+
+                                    <Label Content="Momentum Max"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="3"
+                                           Grid.Column="0" />
+                                    <TextBox Text="{Binding MomentumMax, StringFormat=N2}"
+                                             VerticalContentAlignment="Center"
+                                             Margin="2"
+                                             IsReadOnly="True"
+                                             Grid.Row="3"
+                                             Grid.Column="1"
+                                             Background="#FFFFDEB8" />
+                                    <Label Content="m/s/km"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="3"
+                                           Grid.Column="2" />
+
+                                    <Label Content="Shear Vectors"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="4"
+                                           Grid.Column="0" />
+                                    <TextBox Text="{Binding ShearVectors}"
+                                             VerticalContentAlignment="Center"
+                                             Margin="2"
+                                             IsReadOnly="True"
+                                             Grid.Row="4"
+                                             Grid.Column="1"
+                                             Background="#FFFFDEB8" />
+
+                                    <Label Content="Shear Features"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="5"
+                                           Grid.Column="0" />
+                                    <TextBox Text="{Binding ShearFeatures}"
+                                             VerticalContentAlignment="Center"
+                                             Margin="2"
+                                             IsReadOnly="True"
+                                             Grid.Row="5"
+                                             Grid.Column="1"
+                                             Background="#FFFFDEB8" />
+
+                                    <Label Content="Velocity Max"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="6"
+                                           Grid.Column="0" />
+                                    <TextBox Text="{Binding VelocityMax, StringFormat=N2}"
+                                             VerticalContentAlignment="Center"
+                                             Margin="2"
+                                             IsReadOnly="True"
+                                             Grid.Row="6"
+                                             Grid.Column="1"
+                                             Background="#FFFFDEB8" />
+                                    <Label Content="m/s"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="6"
+                                           Grid.Column="2" />
+
+                                    <Label Content="Velocity Rotational Max"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="7"
+                                           Grid.Column="0" />
+                                    <TextBox Text="{Binding VelocityRotationalMax, StringFormat=N2}"
+                                             VerticalContentAlignment="Center"
+                                             Margin="2"
+                                             IsReadOnly="True"
+                                             Grid.Row="7"
+                                             Grid.Column="1"
+                                             Background="#FFFFDEB8" />
+                                    <Label Content="m/s"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="7"
+                                           Grid.Column="2" />
+
+                                    <Label Content="Velocity Rotational Mean"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="8"
+                                           Grid.Column="0" />
+                                    <TextBox Text="{Binding VelocityRotationalMean, StringFormat=N2}"
+                                             VerticalContentAlignment="Center"
+                                             Margin="2"
+                                             IsReadOnly="True"
+                                             Grid.Row="8"
+                                             Grid.Column="1"
+                                             Background="#FFFFDEB8" />
+                                    <Label Content="m/s"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="8"
+                                           Grid.Column="2" />
+
+                                    <TextBlock Text="Velocity Rotational Max Closest To Ground"
+                                               HorizontalAlignment="Right"
+                                               VerticalAlignment="Center"
+                                               Margin="0 0 10 0"
+                                               Grid.Row="9"
+                                               Grid.Column="0" TextWrapping="WrapWithOverflow" TextAlignment="Right" />
+                                    <TextBox Text="{Binding VelocityRotationalMaxClosestToGround, StringFormat=N2}"
+                                             VerticalContentAlignment="Center"
+                                             Margin="2"
+                                             IsReadOnly="True"
+                                             Grid.Row="9"
+                                             Grid.Column="1"
+                                                 Height="23"
+                                             Background="#FFFFDEB8" />
+                                    <Label Content="m/s"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="9"
+                                           Grid.Column="2" />
+                                </Grid>
+                            </GroupBox>
+
+                            <GroupBox Header="Reflectivity"
+                                      Grid.Row="6"
+                                      Grid.ColumnSpan="3">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="200" />
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="60" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Label Content="18db(Z)-Echo-Top"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="0"
+                                           Grid.Column="0" />
+                                    <TextBox Text="{Binding Echotop, StringFormat=N2}"
+                                             VerticalContentAlignment="Center"
+                                             Margin="2"
+                                             IsReadOnly="True"
+                                             Grid.Row="0"
+                                             Grid.Column="1"
+                                             Background="#FFFFDEB8" />
+                                    <Label Content="km"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="0"
+                                           Grid.Column="2" />
+
+                                    <Label Content="VIL"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="1"
+                                           Grid.Column="0" />
+                                    <TextBox Text="{Binding Vil, StringFormat=N2}"
+                                             VerticalContentAlignment="Center"
+                                             Margin="2"
+                                             IsReadOnly="True"
+                                             Grid.Row="1"
+                                             Grid.Column="1"
+                                             Background="#FFFFDEB8" />
+                                    <Label Content="kg/m²"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="1"
+                                           Grid.Column="2" />
+
+                                    <Label Content="Reflectivity Mean"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="2"
+                                           Grid.Column="0" />
+                                    <TextBox Text="{Binding MeanDBZ, StringFormat=N2}"
+                                             VerticalContentAlignment="Center"
+                                             Margin="2"
+                                             IsReadOnly="True"
+                                             Grid.Row="2"
+                                             Grid.Column="1"
+                                             Background="#FFFFDEB8" />
+                                    <Label Content="dB(Z)"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="2"
+                                           Grid.Column="2" />
+
+                                    <Label Content="Reflectivity Max"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="3"
+                                           Grid.Column="0" />
+                                    <TextBox Text="{Binding MaxDBZ, StringFormat=N2}"
+                                             VerticalContentAlignment="Center"
+                                             Margin="2"
+                                             IsReadOnly="True"
+                                             Grid.Row="3"
+                                             Grid.Column="1"
+                                             Background="#FFFFDEB8" />
+                                    <Label Content="dB(Z)"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 10 0"
+                                           Grid.Row="3"
+                                           Grid.Column="2" />
+                                </Grid>
+                            </GroupBox>
 
                             <ListView ItemsSource="{Binding Elevations}"
                                   Margin="5"
