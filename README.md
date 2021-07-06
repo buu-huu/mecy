@@ -8,7 +8,7 @@ Mecy shows mesocyclone objects on a map and lets you examine all details.
 ## Overview
 Mecy has a user friendly interface and runs on Windows.
 
-![Mecy Application](Resources/Readme_Images/mecy_preview.jpg)
+![Mecy Application](Resources/Readme_Images/mecy_application.jpg)
 
 ## Functionality
 ### Open Data Downloader
