@@ -470,7 +470,7 @@
                                              IsReadOnly="True"
                                              Grid.Row="6"
                                              Grid.Column="1"
-                                             Background="#FFE3B8FF" />
+                                             Background="#FFFFDEB8" />
                                     <Label Content="km"
                                            HorizontalAlignment="Left"
                                            VerticalAlignment="Center"
