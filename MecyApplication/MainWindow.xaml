@@ -234,7 +234,8 @@
                               VerticalScrollBarVisibility="Auto">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="200" />
+                                <ColumnDefinition Width="60" />
+                                <ColumnDefinition Width="100" />
                                 <ColumnDefinition/>
                                 <ColumnDefinition Width="60" />
                             </Grid.ColumnDefinitions>
@@ -249,18 +250,45 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
+                            <Image Grid.Row="1"
+                                   Grid.Column="0"
+                                   Grid.RowSpan="3"
+                                   Width="50">
+                                <Image.Style>
+                                    <Style TargetType="{x:Type Image}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Intensity}" Value="1">
+                                                <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_1.png" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Intensity}" Value="2">
+                                                <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_2.png" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Intensity}" Value="3">
+                                                <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_3.png" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Intensity}" Value="4">
+                                                <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_4.png" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Intensity}" Value="5">
+                                                <Setter Property="Source" Value="pack://application:,,,/Resources/meso_icon_5.png" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Image.Style>
+                            </Image>
+
                             <Label Content="ID"
                                    HorizontalAlignment="Right"
                                    VerticalAlignment="Center"
                                    Margin="0 0 10 0"
                                    Grid.Row="1"
-                                   Grid.Column="0" />
+                                   Grid.Column="1" />
                             <TextBox Text="{Binding Id}"
                                      VerticalContentAlignment="Center"
                                      Margin="2"
                                      IsReadOnly="True"
                                      Grid.Row="1"
-                                     Grid.Column="1"
+                                     Grid.Column="2"
                                      Background="#FFE3B8FF" />
 
                             <Label Content="Time"
@@ -268,20 +296,20 @@
                                    VerticalAlignment="Center"
                                    Margin="0 0 10 0"
                                    Grid.Row="2"
-                                   Grid.Column="0" />
+                                   Grid.Column="1" />
                             <TextBox Text="{Binding Path=Time, StringFormat='dd.MM.yyy HH:mm'}"
                                      VerticalContentAlignment="Center"
                                      Margin="2"
                                      IsReadOnly="True"
                                      Grid.Row="2"
-                                     Grid.Column="1"
+                                     Grid.Column="2"
                                      Background="#FFFFDEB8" />
                             <Label Content="UTC"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="0 0 10 0"
                                    Grid.Row="2"
-                                   Grid.Column="2" />
+                                   Grid.Column="3" />
 
                             <Label Content="Intensity"
                                    FontWeight="Bold"
@@ -289,13 +317,13 @@
                                    VerticalAlignment="Center"
                                    Margin="0 0 10 0"
                                    Grid.Row="3"
-                                   Grid.Column="0" />
+                                   Grid.Column="1" />
                             <TextBox Text="{Binding Intensity}"
                                      VerticalContentAlignment="Center"
                                      Margin="2"
                                      IsReadOnly="True"
                                      Grid.Row="3"
-                                     Grid.Column="1">
+                                     Grid.Column="2">
                                     <TextBox.Style>
                                         <Style TargetType="TextBox">
                                         <Style.Triggers>
@@ -326,7 +354,7 @@
 
                             <GroupBox Header="Coordinate and shape"
                                       Grid.Row="4"
-                                      Grid.ColumnSpan="3">
+                                      Grid.ColumnSpan="4">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="180" />
@@ -542,7 +570,7 @@
 
                             <GroupBox Header="Doppler velocity"
                                       Grid.Row="5"
-                                      Grid.ColumnSpan="3">
+                                      Grid.ColumnSpan="4">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="180" />
@@ -755,7 +783,7 @@
 
                             <GroupBox Header="Reflectivity"
                                       Grid.Row="6"
-                                      Grid.ColumnSpan="3">
+                                      Grid.ColumnSpan="4">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="200" />
@@ -854,7 +882,7 @@
                             <ListView ItemsSource="{Binding Elevations}"
                                   Margin="5"
                                   Grid.Row="28"
-                                  Grid.ColumnSpan="3"
+                                  Grid.ColumnSpan="4"
                                   Height="150">
                                 <ListView.View>
                                     <GridView>
