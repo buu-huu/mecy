@@ -26,6 +26,43 @@
                     <MenuItem Header="_Exit"
                               Command="{Binding ExitApplicationCommand}"/>
                 </MenuItem>
+
+                <MenuItem Header="_Map">
+                    <MenuItem Header="Show scalebar"
+                              IsCheckable="True"
+                              IsChecked="{Binding CurrentMapConfiguration.ShowScaleBar, Mode=TwoWay}"
+                              Command="{Binding RefreshMapWidgetsCommand}" />
+                    <MenuItem Header="Show zoom buttons"
+                              IsCheckable="True"
+                              IsChecked="{Binding CurrentMapConfiguration.ShowZoomWidget, Mode=TwoWay}"
+                              Command="{Binding RefreshMapWidgetsCommand}" />
+                    <Separator />
+                    <MenuItem Header="Show radar stations"
+                              IsCheckable="True"
+                              IsChecked="{Binding CurrentMapConfiguration.ShowRadarLabels, Mode=TwoWay}"
+                              Command="{Binding RefreshMapAndMapConfigurationCommand}" />
+                    <MenuItem Header="Show radar station diameters"
+                              IsCheckable="True"
+                              IsChecked="{Binding CurrentMapConfiguration.ShowRadarDiameters, Mode=TwoWay}"
+                              Command="{Binding RefreshMapAndMapConfigurationCommand}" />
+                    <MenuItem Header="Show historic mesocyclones"
+                              IsCheckable="True"
+                              IsChecked="{Binding CurrentMapConfiguration.ShowHistoricMesocyclones, Mode=TwoWay}"
+                              Command="{Binding Refresh}" />
+                    <MenuItem Header="Dim historic mesocyclones"
+                              IsCheckable="True"
+                              IsChecked="{Binding CurrentMapConfiguration.HistoricMesocyclonesTransparent, Mode=TwoWay}"
+                              Command="{Binding RefreshMapAndMapConfigurationCommand}" />
+                    <MenuItem Header="Show mesocyclone diameters"
+                              IsCheckable="True"
+                              IsChecked="{Binding CurrentMapConfiguration.ShowMesocycloneDiameter, Mode=TwoWay}"
+                              Command="{Binding RefreshMapAndMapConfigurationCommand}" />
+                    <MenuItem Header="Show mesocyclone IDs"
+                              IsCheckable="True"
+                              IsChecked="{Binding CurrentMapConfiguration.ShowMesocycloneIdLabel, Mode=TwoWay}"
+                              Command="{Binding RefreshMapAndMapConfigurationCommand}" />
+                </MenuItem>
+                
                 <MenuItem Header="_About"
                           Command="{Binding ShowAboutWindowCommand}"/>
             </Menu>
@@ -100,16 +137,15 @@
                                   ToolTip="Show historic mesocyclones in map">
                         <Image Source="Resources/ToobarHistMeso.png" />
                     </ToggleButton>
-                    <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowMesocycloneDiameter, Mode=TwoWay}"
-                                  Command="{Binding RefreshMapAndMapConfigurationCommand}"
-                                  ToolTip="Show mesocyclone diameter in map">
-                        <Image Source="Resources/ToolbarDiameter.png" />
-                    </ToggleButton>
-
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.HistoricMesocyclonesTransparent, Mode=TwoWay}"
                                   Command="{Binding RefreshMapAndMapConfigurationCommand}"
                                   ToolTip="Enable transparency for historic mesocyclones">
                         <Image Source="Resources/ToolbarHistMesoTrans.png" />
+                    </ToggleButton>
+                    <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowMesocycloneDiameter, Mode=TwoWay}"
+                                  Command="{Binding RefreshMapAndMapConfigurationCommand}"
+                                  ToolTip="Show mesocyclone diameter in map">
+                        <Image Source="Resources/ToolbarDiameter.png" />
                     </ToggleButton>
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowMesocycloneIdLabel, Mode=TwoWay}"
                                   Command="{Binding RefreshMapAndMapConfigurationCommand}"

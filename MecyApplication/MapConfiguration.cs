@@ -47,6 +47,7 @@ namespace MecyApplication
             set
             {
                 _activeTileSource = value;
+                OnPropertyChanged("ActiveTileSource");
             }
         }
 
@@ -59,6 +60,7 @@ namespace MecyApplication
             set
             {
                 _showHistoricMesocyclones = value;
+                OnPropertyChanged("ShowHistoricMesocyclones");
             }
         }
 
@@ -71,6 +73,7 @@ namespace MecyApplication
             set
             {
                 _showMesocycloneDiameter = value;
+                OnPropertyChanged("ShowMesocycloneDiameter");
             }
         }
 
@@ -83,6 +86,7 @@ namespace MecyApplication
             set
             {
                 _showScaleBar = value;
+                OnPropertyChanged("ShowScaleBar");
             }
         }
 
@@ -95,6 +99,7 @@ namespace MecyApplication
             set
             {
                 _showZoomWidget = value;
+                OnPropertyChanged("ShowZoomWidget");
             }
         }
 
@@ -107,6 +112,7 @@ namespace MecyApplication
             set
             {
                 _showMesocycloneIdLabel = value;
+                OnPropertyChanged("ShowMesocycloneIdLabel");
             }
         }
 
@@ -119,6 +125,7 @@ namespace MecyApplication
             set
             {
                 _historicMesocyclonesTransparent = value;
+                OnPropertyChanged("HistoricMesocyclonesTransparent");
             }
         }
 
@@ -131,6 +138,7 @@ namespace MecyApplication
             set
             {
                 _autoMoveActiveMeso = value;
+                OnPropertyChanged("AutoMoveActiveMeso");
             }
         }
 
@@ -143,6 +151,7 @@ namespace MecyApplication
             set
             {
                 _showRadarLabels = value;
+                OnPropertyChanged("ShowRadarLabels");
             }
         }
 
@@ -155,6 +164,7 @@ namespace MecyApplication
             set
             {
                 _showRadarDiameters = value;
+                OnPropertyChanged("ShowRadarDiameters");
             }
         }
 
@@ -180,6 +190,7 @@ namespace MecyApplication
             set
             {
                 _historicMesocyclonesOpacity = value;
+                OnPropertyChanged("HistoricMesocyclonesOpacity");
             }
         }
 
