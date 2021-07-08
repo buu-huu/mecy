@@ -955,7 +955,7 @@ namespace MecyApplication
             double latitude = Math.Round(pos.Y, 6, MidpointRounding.AwayFromZero);
 
             RadarStation bestStation = MainViewModel.SelectedElement.RadarStations[0];
-            double diffBest = 1000;
+            double diffBest = 1000; // Random high number
 
             foreach (var station in MainViewModel.SelectedElement.RadarStations)
             {
