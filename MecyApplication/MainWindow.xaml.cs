@@ -113,8 +113,8 @@ namespace MecyApplication
             map.Layers.Add(CreateRadarDiameterLayer());
             map.Layers.Add(CreateRadarLabelLayer());
             map.Layers.Add(CreateMesoDiameterLayer());
-            map.Layers.Add(CreateMesoLayelLayer());
             map.Layers.Add(CreateMesoHistLayer());
+            map.Layers.Add(CreateMesoLabelLayer());
             map.Layers.Add(CreateMesoLayer());
             map.Layers.Add(CreateMeasuringLayer());
 
@@ -406,7 +406,7 @@ namespace MecyApplication
         /// Creates a mesocyclone label layer.
         /// </summary>
         /// <returns>Mesocyclone label layer</returns>
-        private WritableLayer CreateMesoLayelLayer()
+        private WritableLayer CreateMesoLabelLayer()
         {
             var layer = new WritableLayer
             {
