@@ -833,7 +833,7 @@
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
 
-                                    <Label Content="18db(Z) echo-top height"
+                                    <Label Content="18dB(Z) echo-top height"
                                            HorizontalAlignment="Right"
                                            VerticalAlignment="Center"
                                            Margin="0 0 10 0"
