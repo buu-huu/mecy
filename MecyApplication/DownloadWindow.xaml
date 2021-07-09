@@ -8,7 +8,8 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Topmost="True"
-        Title="DownloadWindow" Height="100" Width="350">
+        Title="Downloading data" Height="100" Width="350"
+        Background="#FF4C4C4C">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -17,9 +18,10 @@
         <Label Content="Downloading data..."
                VerticalAlignment="Center"
                HorizontalAlignment="Center"
-               FontSize="15" />
+               FontSize="15"
+               Foreground="White"/>
         <ProgressBar IsIndeterminate="True"
                      Grid.Row="1"
-                     Margin="3" />
+                     Margin="3" Background="#FF4C4C4C" Foreground="#FFE1A3FF" />
     </Grid>
 </Window>
