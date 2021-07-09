@@ -26,8 +26,6 @@ namespace MecyApplication
         /// </summary>
         public static void DownloadAllData()
         {
-            Console.WriteLine(LOCAL_DOWNLOAD_PATH);
-
             DeleteAllData();
             System.IO.Directory.CreateDirectory(LOCAL_DOWNLOAD_PATH); // Ignore if directory exists...
 
