@@ -911,6 +911,7 @@ namespace MecyApplication
         private Mesocyclone GetBestMesocyclone(Feature feature)
         {
             if (feature == null) return null;
+            if (MainViewModel.SelectedElement.Mesocyclones.Count == 0) return null;
 
             Point point = (Point)feature.Geometry;
             Point pos = SphericalMercator.ToLonLat(point.X, point.Y);
