@@ -22,7 +22,7 @@ namespace MecyApplication
         public static string LOCAL_DOWNLOAD_PATH = System.Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\" + DATA_FOLDER_NAME;
 
         /// <summary>
-        /// Downloads all XML files from opendata server.
+        /// Downloads all mesocyclone XML files from opendata server.
         /// </summary>
         public static void DownloadAllData()
         {
