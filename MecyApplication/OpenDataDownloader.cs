@@ -77,6 +77,11 @@ namespace MecyApplication
             {
                 return false;
             }
+            catch (NotSupportedException) // Proxy HTTPS error
+            {
+                // Todo: logging
+                return false;
+            }
         }
     }
 }
