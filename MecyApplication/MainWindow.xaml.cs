@@ -150,8 +150,7 @@ namespace MecyApplication
         /// </summary>
         private void RefreshMapWithWidgets()
         {
-            var map = CreateMap();
-            mapControl.Map = map;
+            mapControl.Map = CreateMap();
             RefreshMap();
         }
 
