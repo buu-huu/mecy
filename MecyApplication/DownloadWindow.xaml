@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
+        ResizeMode="NoResize"
         Topmost="True"
         Title="Downloading data" Height="100" Width="350"
         Background="#FF4C4C4C">
