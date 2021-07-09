@@ -18,11 +18,12 @@ namespace MecyApplication
         public const string USER_NAME = "anonymous";
         public const string PASSWORD  = "anonymous";
         public const string DWD_MESO_DIRECTORY = "weather/radar/mesocyclones/";
-        public const string CURRENT_MESO_NAME = "meso_latest.xml";
+
+        public const string LATEST_MESO_NAME = "meso_latest.xml";
         public const string DATA_FOLDER_NAME = @"Mecy\dwd_data";
         public const string SINGLE_DATA_FOLDER_NAME = @"Mecy\";
         public static string LOCAL_DOWNLOAD_PATH = System.Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\" + DATA_FOLDER_NAME;
-        public static string LOCAL_DOWNLOAD_PATH_CURRENT_MESO = System.Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\" + SINGLE_DATA_FOLDER_NAME;
+        public static string LOCAL_DOWNLOAD_PATH_LATEST_MESO = System.Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\" + SINGLE_DATA_FOLDER_NAME;
 
         /// <summary>
         /// Downloads all mesocyclone XML files from opendata server.
@@ -54,12 +55,12 @@ namespace MecyApplication
         public static void DownloadLatestMeso()
         {
             // If a current meso exists, file will be overwritten
-            string address = String.Format("ftp://{0}/{1}{2}", HOST_NAME, DWD_MESO_DIRECTORY, CURRENT_MESO_NAME);
+            string address = String.Format("ftp://{0}/{1}{2}", HOST_NAME, DWD_MESO_DIRECTORY, LATEST_MESO_NAME);
             WebClient client = new WebClient();
             client.Credentials = new NetworkCredential("anonymous", "anonymous");
             client.DownloadFile(
                 address,
-                String.Format("{0}{1}", LOCAL_DOWNLOAD_PATH_CURRENT_MESO, CURRENT_MESO_NAME));
+                String.Format("{0}{1}", LOCAL_DOWNLOAD_PATH_LATEST_MESO, LATEST_MESO_NAME));
         }
 
         /// <summary>
