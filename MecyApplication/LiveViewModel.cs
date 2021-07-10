@@ -143,6 +143,9 @@ namespace MecyApplication
             connectionTimer.Start();
         }
 
+        /// <summary>
+        /// Sets up timer for automatic downloading of latest mesocyclone.
+        /// </summary>
         private void SetupAutoDownloader()
         {
             DispatcherTimer downloadTimer = new DispatcherTimer();
@@ -168,6 +171,11 @@ namespace MecyApplication
             }
         }
 
+        /// <summary>
+        /// Tick for auto downloader.
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Arguments</param>
         private void AutoDownloaderTick(object sender, EventArgs e)
         {
             if (OpenDataDownloader.CheckServerConnection())
