@@ -221,6 +221,19 @@ namespace MecyApplication
         }
 
         // -------------------- COMMANDS --------------------
+        public ICommand OpenLiveViewCommand
+        {
+            get
+            {
+                return new RelayCommand(e => true, this.OpenLiveView);
+            }
+        }
+
+        private void OpenLiveView(object obj)
+        {
+            new LiveWindow(new LiveViewModel()).Show();
+        }
+
         public ICommand DownloadDataCommand
         {
             get

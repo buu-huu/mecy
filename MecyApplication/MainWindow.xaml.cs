@@ -85,8 +85,6 @@ namespace MecyApplication
             MainViewModel.CenterMapEvent += CenterMap;
             MainViewModel.CenterMapToMesoEvent += CenterMapToMeso;
             mapControl.Info += HandleMapClick;
-
-            new LiveWindow(new LiveViewModel()).Show();
         }
 
         /// <summary>

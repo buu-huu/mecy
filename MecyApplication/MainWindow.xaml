@@ -69,6 +69,10 @@
 
             <ToolBarTray IsLocked="True" Background="#FFA2A2A2">
                 <ToolBar Height="50" Background="#FFBDBDBD">
+                    <Button Command="{Binding OpenLiveViewCommand}"
+                            ToolTip="Open live view">
+                        <Image Source="Resources/ToolbarLiveView.png" />
+                    </Button>
                     <Button Command="{Binding DownloadDataCommand}"
                             ToolTip="Download data from OpenData server">
                         <Image Source="Resources/ToolbarDownload.png" />
