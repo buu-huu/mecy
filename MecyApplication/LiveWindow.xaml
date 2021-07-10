@@ -160,9 +160,11 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="120" />
                             <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="100" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="100" />
                         </Grid.ColumnDefinitions>
                     </Grid>
                 </ItemsPanelTemplate>
@@ -222,6 +224,18 @@
                         </Ellipse.Style>
                     </Ellipse>
                 </StackPanel>
+            </StatusBarItem>
+            <Separator Grid.Column="5" />
+            <StatusBarItem Grid.Column="6">
+                <Label Content="Last download time (UTC):"
+                       Padding="0"
+                       FontSize="12" />
+            </StatusBarItem>
+            <StatusBarItem Grid.Column="7">
+                <Label Content="{Binding LastDownloadTime}"
+                       ContentStringFormat="dd.MM.yyyy HH:mm:ss"
+                       Padding="0"
+                       FontSize="12" />
             </StatusBarItem>
         </StatusBar>
 

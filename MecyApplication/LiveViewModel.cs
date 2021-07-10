@@ -26,6 +26,8 @@ namespace MecyApplication
         DateTime _timeUtc;
         DateTime _timeLoc;
 
+        DateTime _lastDownloadTime;
+
         #region properties
         public OpenDataElement SelectedElement
         {
@@ -101,6 +103,18 @@ namespace MecyApplication
                 OnPropertyChanged("TimeLoc");
             }
         }
+        public DateTime LastDownloadTime
+        {
+            get
+            {
+                return _lastDownloadTime;
+            }
+            set
+            {
+                _lastDownloadTime = value;
+                OnPropertyChanged("LastDownloadTime");
+            }
+        }
         #endregion properties
 
         /// <summary>
@@ -112,13 +126,7 @@ namespace MecyApplication
             SetupConnectionWatcher();
             SetupAutoDownloader();
 
-            if (OpenDataDownloader.CheckServerConnection())
-            {
-                OpenDataDownloader.DownloadLatestMeso();
-                ParseData();
-                RefreshMapAndMapConfiguration(this);
-            }
-            else MessageBox.Show("OpenData server not reachable!");
+            DownloadData(this);
         }
 
         /// <summary>
@@ -178,13 +186,7 @@ namespace MecyApplication
         /// <param name="e">Arguments</param>
         private void AutoDownloaderTick(object sender, EventArgs e)
         {
-            if (OpenDataDownloader.CheckServerConnection())
-            {
-                OpenDataDownloader.DownloadLatestMeso();
-                ParseData();
-                RefreshMapAndMapConfiguration(this);
-            }
-            else MessageBox.Show("OpenData server not reachable!");
+            DownloadData(this);
         }
 
         /// <summary>
@@ -231,7 +233,14 @@ namespace MecyApplication
         /// <param name="obj">Object</param>
         private void DownloadData(object obj)
         {
-            OpenDataDownloader.DownloadLatestMeso();
+            if (OpenDataDownloader.CheckServerConnection())
+            {
+                OpenDataDownloader.DownloadLatestMeso();
+                ParseData();
+                RefreshMapAndMapConfiguration(this);
+                LastDownloadTime = DateTime.UtcNow;
+            }
+            else MessageBox.Show("OpenData server not reachable!");
         }
 
         public ICommand ExitApplicationCommand
