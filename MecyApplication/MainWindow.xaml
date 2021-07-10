@@ -1086,10 +1086,10 @@
                             <GridViewColumn Header="UTC"
                                             Width="110"
                                             DisplayMemberBinding="{Binding Path=Time, StringFormat='dd.MM.yyy HH:mm'}" />
-                            <GridViewColumn Header="Σ Meso"
+                            <GridViewColumn Header="Σ Mesos"
                                             Width="55"
                                             DisplayMemberBinding="{Binding Path=Mesocyclones.Count, Converter={StaticResource MesoCountConverter}}" />
-                            <GridViewColumn Header="Int Max"
+                            <GridViewColumn Header="I Max"
                                             Width="60">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
