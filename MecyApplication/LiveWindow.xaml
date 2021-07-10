@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         Title="Mecy | Live"
         Height="800" Width="1100"
-        Background="#FFC8C8C8"
+        Background="#FF424242"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <local:ListToStringConverter x:Key="ListToStringConverter" />
@@ -65,11 +65,11 @@
                           Command="{Binding ShowAboutWindowCommand}"/>
             </Menu>
 
-            <ToolBarTray IsLocked="True" Background="#FFA2A2A2">
-                <ToolBar Height="50" Background="#FFBDBDBD">
+            <ToolBarTray IsLocked="True" Background="#FF6E6E6E">
+                <ToolBar Height="50" Background="#FF717171">
                     <Button Command="{Binding DownloadDataCommand}"
                             ToolTip="Download data from OpenData server">
-                        <Image Source="Resources/ToolbarDownload.png" />
+                        <Image Source="Resources/ToolbarDownloadLive.png" />
                     </Button>
 
                     <Separator />
@@ -98,23 +98,23 @@
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowScaleBar, Mode=TwoWay}"
                                   Command="{Binding RefreshMapWidgetsCommand}"
                                   ToolTip="Show scale bar in map">
-                        <Image Source="Resources/ToolbarScaleBar.png" />
+                        <Image Source="Resources/ToolbarScaleBarLive.png" />
                     </ToggleButton>
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowZoomWidget, Mode=TwoWay}"
                                   Command="{Binding RefreshMapWidgetsCommand}"
                                   ToolTip="Show zoom buttons in map">
-                        <Image Source="Resources/ToolbarZoom.png" />
+                        <Image Source="Resources/ToolbarZoomLive.png" />
                     </ToggleButton>
 
                     <Separator />
 
                     <Button Command="{Binding CenterMapCommand}"
                             ToolTip="Center the map to Germany">
-                        <Image Source="Resources/ToolbarCenter.png" />
+                        <Image Source="Resources/ToolbarCenterLive.png" />
                     </Button>
                     <Button Command="{Binding CenterMapToMesoCommand}"
                             ToolTip="Center the map to the selected mesocyclone">
-                        <Image Source="Resources/ToolbarCenterMeso.png" />
+                        <Image Source="Resources/ToolbarCenterMesoLive.png" />
                     </Button>
 
                     <Separator />
@@ -122,34 +122,34 @@
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowRadarLabels, Mode=TwoWay}"
                                   Command="{Binding RefreshMapAndMapConfigurationCommand}"
                                   ToolTip="Show radar labels on map">
-                        <Image Source="Resources/ToolbarRadarLabels.png" />
+                        <Image Source="Resources/ToolbarRadarLabelsLive.png" />
                     </ToggleButton>
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowRadarDiameters, Mode=TwoWay}"
                                   Command="{Binding RefreshMapAndMapConfigurationCommand}"
                                   ToolTip="Show radar diameters on map">
-                        <Image Source="Resources/ToolbarRadarDiameters.png" />
+                        <Image Source="Resources/ToolbarRadarDiametersLive.png" />
                     </ToggleButton>
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowMesocycloneDiameter, Mode=TwoWay}"
                                   Command="{Binding RefreshMapAndMapConfigurationCommand}"
                                   ToolTip="Show mesocyclone diameter in map">
-                        <Image Source="Resources/ToolbarDiameter.png" />
+                        <Image Source="Resources/ToolbarDiameterLive.png" />
                     </ToggleButton>
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowMesocycloneIdLabel, Mode=TwoWay}"
                                   Command="{Binding RefreshMapAndMapConfigurationCommand}"
                                   ToolTip="Show mesocyclone ID on map">
-                        <Image Source="Resources/ToolbarMesoId.png" />
+                        <Image Source="Resources/ToolbarMesoIdLive.png" />
                     </ToggleButton>
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.CurrentlyMeasuringDistance, Mode=TwoWay}"
                                   Command="{Binding RefreshMapAndMapConfigurationCommand}"
                                   ToolTip="Measure a distance on the map">
-                        <Image Source="Resources/ToolbarMeasureDistance.png" />
+                        <Image Source="Resources/ToolbarMeasureDistanceLive.png" />
                     </ToggleButton>
                 </ToolBar>
             </ToolBarTray>
         </StackPanel>
 
 
-        <StatusBar DockPanel.Dock="Bottom" Height="25">
+        <StatusBar DockPanel.Dock="Bottom" Height="25" Background="#FF484848">
             <StatusBar.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Grid>
@@ -174,7 +174,8 @@
                 <Label Content="{Binding Path=TimeUtc}"
                        ContentStringFormat="UTC: dd.MM.yyyy HH:mm:ss"
                        Padding="0"
-                       FontSize="12"/>
+                       FontSize="12"
+                       Foreground="White"/>
             </StatusBarItem>
 
             <Separator Grid.Column="1" />
@@ -183,7 +184,8 @@
                 <Label Content="{Binding Path=TimeLoc}"
                        ContentStringFormat="LOCAL: dd.MM.yyyy HH:mm:ss"
                        Padding="0"
-                       FontSize="12" />
+                       FontSize="12"
+                       Foreground="White" />
             </StatusBarItem>
 
             <Separator Grid.Column="3" />
@@ -191,7 +193,7 @@
             <StatusBarItem Grid.Column="4"
                            HorizontalContentAlignment="Center">
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="OD Connection" Padding="0" />
+                    <Label Content="OD Connection" Padding="0" Foreground="White" />
                     <Ellipse Height="15"
                              Width="15"
                              Margin="5 0 0 0">
@@ -229,13 +231,15 @@
             <StatusBarItem Grid.Column="6">
                 <Label Content="Last download time (UTC):"
                        Padding="0"
-                       FontSize="12" />
+                       FontSize="12"
+                       Foreground="White" />
             </StatusBarItem>
             <StatusBarItem Grid.Column="7">
                 <Label Content="{Binding LastDownloadTime}"
                        ContentStringFormat="dd.MM.yyyy HH:mm:ss"
                        Padding="0"
-                       FontSize="12" />
+                       FontSize="12"
+                       Foreground="White" />
             </StatusBarItem>
         </StatusBar>
 

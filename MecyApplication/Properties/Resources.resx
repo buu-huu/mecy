@@ -190,14 +190,26 @@
   <data name="ToolbarCenter" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ToolbarCenter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ToolbarCenterLive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ToolbarCenterLive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ToolbarCenterMeso" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ToolbarCenterMeso.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ToolbarCenterMesoLive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ToolbarCenterMesoLive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ToolbarDiameter" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ToolbarDiameter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ToolbarDiameterLive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ToolbarDiameterLive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ToolbarDownload" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ToolbarDownload.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ToolbarDownloadLive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ToolbarDownloadLive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ToolbarHistMesoTrans" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ToolbarHistMesoTrans.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -214,20 +226,38 @@
   <data name="ToolbarMeasureDistance" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ToolbarMeasureDistance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ToolbarMeasureDistanceLive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ToolbarMeasureDistanceLive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ToolbarMesoId" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ToolbarMesoId.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ToolbarMesoIdLive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ToolbarMesoIdLive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ToolbarRadarDiameters" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ToolbarRadarDiameters.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ToolbarRadarDiametersLive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ToolbarRadarDiametersLive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ToolbarRadarLabels" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ToolbarRadarLabels.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ToolbarRadarLabelsLive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ToolbarRadarLabelsLive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ToolbarScaleBar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ToolbarScaleBar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ToolbarScaleBarLive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ToolbarScaleBarLive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ToolbarZoom" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ToolbarZoom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ToolbarZoomLive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ToolbarZoomLive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_256x256" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\256x256.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

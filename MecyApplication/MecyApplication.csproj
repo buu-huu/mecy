@@ -425,6 +425,36 @@
   <ItemGroup>
     <Resource Include="Resources\ToolbarLiveView.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ToolbarDownloadLive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ToolbarCenterLive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ToolbarCenterMesoLive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ToolbarDiameterLive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ToolbarMeasureDistanceLive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ToolbarMesoIdLive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ToolbarRadarDiametersLive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ToolbarRadarLabelsLive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ToolbarScaleBarLive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ToolbarZoomLive.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\WinSCP.5.19.1\build\WinSCP.targets" Condition="Exists('..\packages\WinSCP.5.19.1\build\WinSCP.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
