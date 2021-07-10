@@ -788,6 +788,7 @@ namespace MecyApplication
             {
                 LiveViewModel.SelectedMesocyclone = meso;
                 ResetMeasuring();
+                RefreshMap();
                 return;
             }
 
@@ -797,6 +798,7 @@ namespace MecyApplication
             {
                 new RadarStationDetailsWindow(station).Show();
                 ResetMeasuring();
+                RefreshMap();
                 return;
             }
 
