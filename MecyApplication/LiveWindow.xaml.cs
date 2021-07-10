@@ -141,7 +141,7 @@ namespace MecyApplication
             if (LiveViewModel.CurrentMapConfiguration.ShowRadarDiameters) DrawRadarDiametersToMap();
             if (LiveViewModel.CurrentMapConfiguration.ShowMesocycloneIdLabel) DrawMesoLabelsToLayer();
             if (LiveViewModel.CurrentMapConfiguration.ShowMesocycloneDiameter) DrawMesoDiametersToLayer();
-            if (LiveViewModel.CurrentMapConfiguration.ShowHistoricMesocyclones) DrawMesosHistToLayer();
+            //if (LiveViewModel.CurrentMapConfiguration.ShowHistoricMesocyclones) DrawMesosHistToLayer();
             DrawMesosToLayer();
         }
 
@@ -498,63 +498,61 @@ namespace MecyApplication
         /// </summary>
         /// <param name="meso">Historic mesocyclone</param>
         /// <returns>Historic mesocyclone feature</returns>
-        private Feature CreateMesoHistFeature(Mesocyclone meso)
-        {
-            var feature = new Feature
-            {
-                Geometry = FromLongLat(meso.Longitude, meso.Latitude)
-            };
-            var style = new SymbolStyle();
-            switch (meso.Intensity)
-            {
-                case 1:
-                    style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_hist_1.png", 0.6);
-                    break;
-                case 2:
-                    style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_hist_2.png", 0.6);
-                    break;
-                case 3:
-                    style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_hist_3.png", 0.6);
-                    break;
-                case 4:
-                    style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_hist_4.png", 0.6);
-                    break;
-                case 5:
-                    style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_hist_5.png", 0.6);
-                    break;
-            }
-            if (LiveViewModel.CurrentMapConfiguration.HistoricMesocyclonesTransparent)
-            {
-                style.Opacity = LiveViewModel.CurrentMapConfiguration.HistoricMesocyclonesOpacity;
-            }
-            feature.Styles.Add(style);
-            return feature;
-        }
+        //private Feature CreateMesoHistFeature(Mesocyclone meso)
+        //{
+        //    var feature = new Feature
+        //    {
+        //        Geometry = FromLongLat(meso.Longitude, meso.Latitude)
+        //    };
+        //    var style = new SymbolStyle();
+        //    switch (meso.Intensity)
+        //    {
+        //        case 1:
+        //            style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_hist_1.png", 0.6);
+        //            break;
+        //        case 2:
+        //            style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_hist_2.png", 0.6);
+        //            break;
+        //        case 3:
+        //            style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_hist_3.png", 0.6);
+        //            break;
+        //        case 4:
+        //            style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_hist_4.png", 0.6);
+        //            break;
+        //        case 5:
+        //            style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_hist_5.png", 0.6);
+        //            break;
+        //    }
+        //    if (LiveViewModel.CurrentMapConfiguration.HistoricMesocyclonesTransparent)
+        //    {
+        //        style.Opacity = LiveViewModel.CurrentMapConfiguration.HistoricMesocyclonesOpacity;
+        //    }
+        //    feature.Styles.Add(style);
+        //    return feature;
+        //}
 
         /// <summary>
         /// Draws historic mesocyclones to layer.
         /// </summary>
-        private void DrawMesosHistToLayer()
-        {
-            //var layer = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == NAME_MESO_HIST_LAYER);
-            //layer.Clear();
-            //mapControl.RefreshGraphics();
-            //if (LiveViewModel.SelectedElement == null || LiveViewModel.SelectedElement.Mesocyclones == null)
-            //{
-            //    return;
-            //}
+        //private void DrawMesosHistToLayer()
+        //{
+        //    var layer = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == NAME_MESO_HIST_LAYER);
+        //    layer.Clear();
+        //    mapControl.RefreshGraphics();
+        //    if (LiveViewModel.SelectedElement == null || LiveViewModel.SelectedElement.Mesocyclones == null)
+        //    {
+        //        return;
+        //    }
 
-            //OpenDataElement previousElement = OpenDataElement.GetPreviousOpenDataElement(
-            //    LiveViewModel.OpenDataElements.ToList(),
-            //    LiveViewModel.SelectedElement);
+        //    OpenDataElement previousElement = LiveViewModel.PreviousElement;
 
-            //if (previousElement == null) return;
-            //foreach (var meso in previousElement.Mesocyclones)
-            //{
-            //    layer.Add(CreateMesoHistFeature(meso));
-            //}
-            //mapControl.RefreshGraphics();
-        }
+        //    if (previousElement == null) return;
+        //    foreach (var meso in previousElement.Mesocyclones)
+        //    {
+        //        layer.Add(CreateMesoHistFeature(meso));
+        //    }
+        //    mapControl.RefreshGraphics();
+        //}
 
         // -------------------- RADAR LABEL LAYER --------------------
         /// <summary>
