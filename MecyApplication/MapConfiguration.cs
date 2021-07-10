@@ -195,25 +195,8 @@ namespace MecyApplication
         }
 
 
-        private MapConfiguration() { }
+        public MapConfiguration() {}
 
-        /// <summary>
-        /// Returns singleton instance of the class.
-        /// </summary>
-        public static MapConfiguration Instance
-        {
-            get
-            {
-                lock (padlock)
-                {
-                    if (instance == null)
-                    {
-                        instance = new MapConfiguration();
-                    }
-                    return instance;
-                }
-            }
-        }
 
         /// <summary>
         /// Creates the default map configuration.
@@ -221,7 +204,7 @@ namespace MecyApplication
         /// <returns>Map configuration</returns>
         public static MapConfiguration CreateDefaultMapConfiguration()
         {
-            var mapConfig = Instance;
+            MapConfiguration mapConfig = new MapConfiguration();
 
             mapConfig.ActiveTileSource = TileSource.OpenStreetMap;
             mapConfig.ShowHistoricMesocyclones = true;

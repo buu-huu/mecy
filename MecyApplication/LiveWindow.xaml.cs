@@ -28,9 +28,9 @@ using Point = Mapsui.Geometries.Point;
 namespace MecyApplication
 {
     /// <summary>
-    /// MainWindow logic, that mainly handles map and event stuff.
+    /// Interaktionslogik für LiveWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LiveWindow : Window
     {
         private const double MESO_ICON_SCALE = 0.6;
 
@@ -51,17 +51,17 @@ namespace MecyApplication
         private double _measuringStartLongitude = 0;
         private double _measuringStartLatitude = 0;
 
-        private MainViewModel _mainViewModel;
+        private LiveViewModel _liveViewModel;
 
-        public MainViewModel MainViewModel
+        public LiveViewModel LiveViewModel
         {
             get
             {
-                return _mainViewModel;
+                return _liveViewModel;
             }
             set
             {
-                _mainViewModel = value;
+                _liveViewModel = value;
             }
         }
 
@@ -69,24 +69,22 @@ namespace MecyApplication
         /// Constructor, that holds an instance of the MainViewModel.
         /// </summary>
         /// <param name="mainViewModel">MainViewModel of the application.</param>
-        public MainWindow(MainViewModel mainViewModel)
+        public LiveWindow(LiveViewModel liveViewModel)
         {
             InitializeComponent();
 
-            this.MainViewModel = mainViewModel;
-            this.DataContext = MainViewModel;
+            this.LiveViewModel = liveViewModel;
+            this.DataContext = LiveViewModel;
 
             mapControl.Map = CreateMap();
             RefreshMap();
 
             // Event subscriptions
-            MainViewModel.RefreshMapEvent += RefreshMap;
-            MainViewModel.RefreshMapWidgetsEvent += RefreshMapWithWidgets;
-            MainViewModel.CenterMapEvent += CenterMap;
-            MainViewModel.CenterMapToMesoEvent += CenterMapToMeso;
+            LiveViewModel.RefreshMapEvent += RefreshMap;
+            LiveViewModel.RefreshMapWidgetsEvent += RefreshMapWithWidgets;
+            LiveViewModel.CenterMapEvent += CenterMap;
+            LiveViewModel.CenterMapToMesoEvent += CenterMapToMeso;
             mapControl.Info += HandleMapClick;
-
-            new LiveWindow(new LiveViewModel()).Show();
         }
 
         /// <summary>
@@ -108,8 +106,8 @@ namespace MecyApplication
             };
 
             // Tile Source
-            if (MainViewModel.CurrentMapConfiguration.ActiveTileSource == MapConfiguration.TileSource.OpenStreetMap) map.Layers.Add(OpenStreetMap.CreateTileLayer());
-            else if (MainViewModel.CurrentMapConfiguration.ActiveTileSource == MapConfiguration.TileSource.GoogleMaps) map.Layers.Add(new TileLayer(CreateGoogleTileSource(GOOGLE_MAPS_TILE_URL)));
+            if (LiveViewModel.CurrentMapConfiguration.ActiveTileSource == MapConfiguration.TileSource.OpenStreetMap) map.Layers.Add(OpenStreetMap.CreateTileLayer());
+            else if (LiveViewModel.CurrentMapConfiguration.ActiveTileSource == MapConfiguration.TileSource.GoogleMaps) map.Layers.Add(new TileLayer(CreateGoogleTileSource(GOOGLE_MAPS_TILE_URL)));
 
             // Layers
             map.Layers.Add(CreateRadarDiameterLayer());
@@ -121,8 +119,8 @@ namespace MecyApplication
             map.Layers.Add(CreateMeasuringLayer());
 
             // Widgets
-            if (MainViewModel.CurrentMapConfiguration.ShowScaleBar) map.Widgets.Add(new ScaleBarWidget(map));
-            if (MainViewModel.CurrentMapConfiguration.ShowZoomWidget) map.Widgets.Add(new ZoomInOutWidget());
+            if (LiveViewModel.CurrentMapConfiguration.ShowScaleBar) map.Widgets.Add(new ScaleBarWidget(map));
+            if (LiveViewModel.CurrentMapConfiguration.ShowZoomWidget) map.Widgets.Add(new ZoomInOutWidget());
 
             // Center Map
             map.Home = n => n.NavigateTo(FromLongLat(CENTER_LONGITUDE, CENTER_LATITUDE), map.Resolutions[6]);
@@ -136,14 +134,14 @@ namespace MecyApplication
         private void RefreshMap()
         {
             ClearMap();
-            if (MainViewModel.SelectedElement == null) return;
+            if (LiveViewModel.SelectedElement == null) return;
 
             // Layers
-            if (MainViewModel.CurrentMapConfiguration.ShowRadarLabels) DrawRadarLabelsToLayer();
-            if (MainViewModel.CurrentMapConfiguration.ShowRadarDiameters) DrawRadarDiametersToMap();
-            if (MainViewModel.CurrentMapConfiguration.ShowMesocycloneIdLabel) DrawMesoLabelsToLayer();
-            if (MainViewModel.CurrentMapConfiguration.ShowMesocycloneDiameter) DrawMesoDiametersToLayer();
-            if (MainViewModel.CurrentMapConfiguration.ShowHistoricMesocyclones) DrawMesosHistToLayer();
+            if (LiveViewModel.CurrentMapConfiguration.ShowRadarLabels) DrawRadarLabelsToLayer();
+            if (LiveViewModel.CurrentMapConfiguration.ShowRadarDiameters) DrawRadarDiametersToMap();
+            if (LiveViewModel.CurrentMapConfiguration.ShowMesocycloneIdLabel) DrawMesoLabelsToLayer();
+            if (LiveViewModel.CurrentMapConfiguration.ShowMesocycloneDiameter) DrawMesoDiametersToLayer();
+            if (LiveViewModel.CurrentMapConfiguration.ShowHistoricMesocyclones) DrawMesosHistToLayer();
             DrawMesosToLayer();
         }
 
@@ -192,7 +190,7 @@ namespace MecyApplication
         private void CenterMapToMeso()
         {
             var map = CreateMap();
-            var selectedMeso = MainViewModel.SelectedMesocyclone;
+            var selectedMeso = LiveViewModel.SelectedMesocyclone;
             if (selectedMeso == null) return;
 
             map.Home = n => n.NavigateTo(FromLongLat(selectedMeso.Longitude, selectedMeso.Latitude), map.Resolutions[8]);
@@ -316,14 +314,14 @@ namespace MecyApplication
         {
             var layer = (MemoryLayer)mapControl.Map.Layers.First(i => i.Name == NAME_MESO_LAYER);
             mapControl.RefreshGraphics();
-            if (MainViewModel.SelectedElement == null || MainViewModel.SelectedElement.Mesocyclones == null)
+            if (LiveViewModel.SelectedElement == null || LiveViewModel.SelectedElement.Mesocyclones == null)
             {
                 return;
             }
 
             var features = new Features();
-            var selectedMeso = MainViewModel.SelectedMesocyclone;
-            foreach (var meso in MainViewModel.SelectedElement.Mesocyclones)
+            var selectedMeso = LiveViewModel.SelectedMesocyclone;
+            foreach (var meso in LiveViewModel.SelectedElement.Mesocyclones)
             {
                 if (selectedMeso != meso) features.Add(CreateMesoFeature(meso));
             }
@@ -376,7 +374,7 @@ namespace MecyApplication
             var layer = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == NAME_MESO_DIAMETER_LAYER);
             layer.Clear();
             mapControl.RefreshGraphics();
-            if (MainViewModel.SelectedElement == null || MainViewModel.SelectedElement.Mesocyclones == null)
+            if (LiveViewModel.SelectedElement == null || LiveViewModel.SelectedElement.Mesocyclones == null)
             {
                 return;
             }
@@ -391,7 +389,7 @@ namespace MecyApplication
                     PenStrokeCap = PenStrokeCap.Butt
                 }
             };
-            foreach (var meso in MainViewModel.SelectedElement.Mesocyclones)
+            foreach (var meso in LiveViewModel.SelectedElement.Mesocyclones)
             {
                 layer.Add(new Feature
                 {
@@ -468,12 +466,12 @@ namespace MecyApplication
             var layer = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == NAME_MESO_LABEL_LAYER);
             layer.Clear();
             mapControl.RefreshGraphics();
-            if (MainViewModel.SelectedElement == null || MainViewModel.SelectedElement.Mesocyclones == null)
+            if (LiveViewModel.SelectedElement == null || LiveViewModel.SelectedElement.Mesocyclones == null)
             {
                 return;
             }
 
-            foreach (var meso in MainViewModel.SelectedElement.Mesocyclones)
+            foreach (var meso in LiveViewModel.SelectedElement.Mesocyclones)
             {
                 layer.Add(CreateMesoLabelFeature(meso));
             }
@@ -525,9 +523,9 @@ namespace MecyApplication
                     style = CreatePngStyle("MecyApplication.Resources.meso_icon_map_hist_5.png", 0.6);
                     break;
             }
-            if (MainViewModel.CurrentMapConfiguration.HistoricMesocyclonesTransparent)
+            if (LiveViewModel.CurrentMapConfiguration.HistoricMesocyclonesTransparent)
             {
-                style.Opacity = MainViewModel.CurrentMapConfiguration.HistoricMesocyclonesOpacity;
+                style.Opacity = LiveViewModel.CurrentMapConfiguration.HistoricMesocyclonesOpacity;
             }
             feature.Styles.Add(style);
             return feature;
@@ -538,24 +536,24 @@ namespace MecyApplication
         /// </summary>
         private void DrawMesosHistToLayer()
         {
-            var layer = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == NAME_MESO_HIST_LAYER);
-            layer.Clear();
-            mapControl.RefreshGraphics();
-            if (MainViewModel.SelectedElement == null || MainViewModel.SelectedElement.Mesocyclones == null)
-            {
-                return;
-            }
+            //var layer = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == NAME_MESO_HIST_LAYER);
+            //layer.Clear();
+            //mapControl.RefreshGraphics();
+            //if (LiveViewModel.SelectedElement == null || LiveViewModel.SelectedElement.Mesocyclones == null)
+            //{
+            //    return;
+            //}
 
-            OpenDataElement previousElement = OpenDataElement.GetPreviousOpenDataElement(
-                MainViewModel.OpenDataElements.ToList(),
-                MainViewModel.SelectedElement);
-            
-            if (previousElement == null) return;
-            foreach (var meso in previousElement.Mesocyclones)
-            {
-                layer.Add(CreateMesoHistFeature(meso));
-            }
-            mapControl.RefreshGraphics();
+            //OpenDataElement previousElement = OpenDataElement.GetPreviousOpenDataElement(
+            //    LiveViewModel.OpenDataElements.ToList(),
+            //    LiveViewModel.SelectedElement);
+
+            //if (previousElement == null) return;
+            //foreach (var meso in previousElement.Mesocyclones)
+            //{
+            //    layer.Add(CreateMesoHistFeature(meso));
+            //}
+            //mapControl.RefreshGraphics();
         }
 
         // -------------------- RADAR LABEL LAYER --------------------
@@ -612,12 +610,12 @@ namespace MecyApplication
             var layer = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == NAME_RADAR_LABEL_LAYER);
             layer.Clear();
             mapControl.RefreshGraphics();
-            if (MainViewModel.SelectedElement == null)
+            if (LiveViewModel.SelectedElement == null)
             {
                 return;
             }
 
-            foreach (var station in MainViewModel.SelectedElement.RadarStations)
+            foreach (var station in LiveViewModel.SelectedElement.RadarStations)
             {
                 layer.Add(CreateRadarLabelFeature(station));
             }
@@ -668,12 +666,12 @@ namespace MecyApplication
             var layer = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == NAME_RADAR_DIAMETER_LAYER);
             layer.Clear();
             mapControl.RefreshGraphics();
-            if (MainViewModel.SelectedElement == null)
+            if (LiveViewModel.SelectedElement == null)
             {
                 return;
             }
-            
-            foreach (var radar in MainViewModel.SelectedElement.RadarStations)
+
+            foreach (var radar in LiveViewModel.SelectedElement.RadarStations)
             {
                 var style = new VectorStyle
                 {
@@ -751,7 +749,7 @@ namespace MecyApplication
             _measuringStartLongitude = 0;
             _measuringStartLatitude = 0;
             _isMeasuringDistance = false;
-            MainViewModel.CurrentMapConfiguration.CurrentlyMeasuringDistance = false;
+            LiveViewModel.CurrentMapConfiguration.CurrentlyMeasuringDistance = false;
         }
 
         // -------------------- EVENT HANDLING --------------------
@@ -764,13 +762,13 @@ namespace MecyApplication
         {
             var mapInfo = args.MapInfo;
             Point pos = mapControl.Viewport.ScreenToWorld(mapInfo.ScreenPosition);
-            Feature feature = (Feature) mapInfo.Feature;
+            Feature feature = (Feature)mapInfo.Feature;
 
             // Select meso
             var meso = GetBestMesocyclone(feature);
             if (meso != null)
             {
-                MainViewModel.SelectedMesocyclone = meso;
+                LiveViewModel.SelectedMesocyclone = meso;
                 ResetMeasuring();
                 return;
             }
@@ -785,14 +783,14 @@ namespace MecyApplication
             }
 
             // No feature clicked, okay, then deselect selected meso...
-            MainViewModel.SelectedMesocyclone = null;
+            LiveViewModel.SelectedMesocyclone = null;
             RefreshMap();
 
             // Handle measuring if no feature found
-            if (MainViewModel.CurrentMapConfiguration.CurrentlyMeasuringDistance == false) return;
-            if (MainViewModel.SelectedElement == null)
+            if (LiveViewModel.CurrentMapConfiguration.CurrentlyMeasuringDistance == false) return;
+            if (LiveViewModel.SelectedElement == null)
             {
-                MainViewModel.CurrentMapConfiguration.CurrentlyMeasuringDistance = false;
+                LiveViewModel.CurrentMapConfiguration.CurrentlyMeasuringDistance = false;
                 MessageBox.Show("Please select an element before measuring.");
                 return;
             }
@@ -839,16 +837,6 @@ namespace MecyApplication
         private void lvMesocyclones_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             RefreshMap();
-        }
-
-        /// <summary>
-        /// Handles window close event.
-        /// </summary>
-        /// <param name="sender">Sender</param>
-        /// <param name="e">Arguments</param>
-        private void Window_Closing(object sender, CancelEventArgs e)
-        {
-            System.Environment.Exit(0); // Close whole application. Not only the window.
         }
 
         // -------------------- GOOGLE MAPS TILE DOWNLOAD --------------------
@@ -913,19 +901,19 @@ namespace MecyApplication
         private Mesocyclone GetBestMesocyclone(Feature feature)
         {
             if (feature == null) return null;
-            if (MainViewModel.SelectedElement.Mesocyclones.Count == 0) return null;
+            if (LiveViewModel.SelectedElement.Mesocyclones.Count == 0) return null;
 
             Point point = (Point)feature.Geometry;
             Point pos = SphericalMercator.ToLonLat(point.X, point.Y);
             double longitude = Math.Round(pos.X, 6, MidpointRounding.AwayFromZero);
             double latitude = Math.Round(pos.Y, 6, MidpointRounding.AwayFromZero);
 
-            Mesocyclone bestMeso = MainViewModel.SelectedElement.Mesocyclones[0];
+            Mesocyclone bestMeso = LiveViewModel.SelectedElement.Mesocyclones[0];
             double diffBest = 1000;
 
             // Just remember the meso in bestMeso, if the coordinate distances are smaller than the
             // previous ones
-            foreach (var meso in MainViewModel.SelectedElement.Mesocyclones)
+            foreach (var meso in LiveViewModel.SelectedElement.Mesocyclones)
             {
                 double longMeso = Math.Round(meso.Longitude, 6, MidpointRounding.AwayFromZero);
                 double latMeso = Math.Round(meso.Latitude, 6, MidpointRounding.AwayFromZero);
@@ -956,10 +944,10 @@ namespace MecyApplication
             double longitude = Math.Round(pos.X, 6, MidpointRounding.AwayFromZero);
             double latitude = Math.Round(pos.Y, 6, MidpointRounding.AwayFromZero);
 
-            RadarStation bestStation = MainViewModel.SelectedElement.RadarStations[0];
+            RadarStation bestStation = LiveViewModel.SelectedElement.RadarStations[0];
             double diffBest = 1000; // Random high number
 
-            foreach (var station in MainViewModel.SelectedElement.RadarStations)
+            foreach (var station in LiveViewModel.SelectedElement.RadarStations)
             {
                 double longMeso = Math.Round(station.Longitude, 6, MidpointRounding.AwayFromZero);
                 double latMeso = Math.Round(station.Latitude, 6, MidpointRounding.AwayFromZero);
