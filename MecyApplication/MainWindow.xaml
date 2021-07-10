@@ -68,7 +68,7 @@
             </Menu>
 
             <ToolBarTray IsLocked="True" Background="#FFA2A2A2">
-                <ToolBar Height="50" Background="#FFBDBDBD">
+                <ToolBar Height="50" Background="#FFBDBDBD" Loaded="ToolBar_Loaded">
                     <Button Command="{Binding OpenLiveViewCommand}"
                             ToolTip="Open live view">
                         <Image Source="Resources/ToolbarLiveView.png" />
