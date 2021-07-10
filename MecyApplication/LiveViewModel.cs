@@ -122,11 +122,11 @@ namespace MecyApplication
         /// </summary>
         public LiveViewModel()
         {
+            DownloadData(this);
+
             SetupClocks();
             SetupConnectionWatcher();
             SetupAutoDownloader();
-
-            DownloadData(this);
         }
 
         /// <summary>
