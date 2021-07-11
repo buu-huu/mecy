@@ -28,6 +28,8 @@ namespace MecyApplication
 
         DateTime _lastDownloadTime;
 
+        Gps _gps = new Gps();
+
         #region properties
         public OpenDataElement SelectedElement
         {
@@ -115,6 +117,18 @@ namespace MecyApplication
                 OnPropertyChanged("LastDownloadTime");
             }
         }
+
+        public Gps Gps
+        {
+            get
+            {
+                return _gps;
+            }
+            set
+            {
+                _gps = value;
+            }
+        }
         #endregion properties
 
         /// <summary>
@@ -127,6 +141,20 @@ namespace MecyApplication
             SetupClocks();
             SetupConnectionWatcher();
             SetupAutoDownloader();
+            SetupGpsWatcher();
+        }
+
+        private void SetupGpsWatcher()
+        {
+            DispatcherTimer gpsTimer = new DispatcherTimer();
+            gpsTimer.Interval = TimeSpan.FromSeconds(3);
+            gpsTimer.Tick += GpsWatcherTick;
+            gpsTimer.Start();
+        }
+
+        private void GpsWatcherTick(object sender, EventArgs e)
+        {
+            RefreshMapEvent?.Invoke();
         }
 
         /// <summary>
@@ -236,11 +264,11 @@ namespace MecyApplication
             if (OpenDataDownloader.CheckServerConnection())
             {
                 OpenDataDownloader.DownloadLatestMeso();
-                ParseData();
-                RefreshMapAndMapConfiguration(this);
                 LastDownloadTime = DateTime.UtcNow;
             }
-            else MessageBox.Show("OpenData server not reachable!");
+
+            RefreshMapAndMapConfiguration(this);
+            ParseData();
         }
 
         public ICommand ExitApplicationCommand

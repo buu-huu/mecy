@@ -33,6 +33,7 @@ namespace MecyApplication
     public partial class LiveWindow : Window
     {
         private const double MESO_ICON_SCALE = 0.6;
+        private const double GPS_ICON_SCALE = 0.3;
 
         private const string NAME_MESO_LAYER = "MesoLayer";
         private const string NAME_MESO_HIST_LAYER = "MesoHistLayer";
@@ -41,6 +42,7 @@ namespace MecyApplication
         private const string NAME_RADAR_DIAMETER_LAYER = "RadarDiameterLayer";
         private const string NAME_RADAR_LABEL_LAYER = "RadarLabelLayer";
         private const string NAME_MEASURING_LAYER = "MeasuringLayer";
+        private const string NAME_GPS_LAYER = "GpsLayer";
 
         private const double CENTER_LONGITUDE = 10.160549;
         private const double CENTER_LATITUDE = 51.024813;
@@ -117,6 +119,7 @@ namespace MecyApplication
             map.Layers.Add(CreateMesoLabelLayer());
             map.Layers.Add(CreateMesoLayer());
             map.Layers.Add(CreateMeasuringLayer());
+            map.Layers.Add(CreateGpsLayer());
 
             // Widgets
             if (LiveViewModel.CurrentMapConfiguration.ShowScaleBar) map.Widgets.Add(new ScaleBarWidget(map));
@@ -143,6 +146,7 @@ namespace MecyApplication
             if (LiveViewModel.CurrentMapConfiguration.ShowMesocycloneDiameter) DrawMesoDiametersToLayer();
             //if (LiveViewModel.CurrentMapConfiguration.ShowHistoricMesocyclones) DrawMesosHistToLayer();
             DrawMesosToLayer();
+            DrawGpsToLayer();
         }
 
         /// <summary>
@@ -165,6 +169,7 @@ namespace MecyApplication
             var layerMesoLabel = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == NAME_MESO_LABEL_LAYER);
             var layerRadarDiameter = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == NAME_RADAR_DIAMETER_LAYER);
             var layerRadarLabel = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == NAME_RADAR_LABEL_LAYER);
+            var layerGps = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == NAME_GPS_LAYER);
 
             layerMeso.DataSource = null;
             layerMesoDiameter.Clear();
@@ -172,6 +177,8 @@ namespace MecyApplication
             layerMesoLabel.Clear();
             layerRadarDiameter.Clear();
             layerRadarLabel.Clear();
+            layerGps.Clear();
+
             mapControl.RefreshGraphics();
         }
 
@@ -197,6 +204,47 @@ namespace MecyApplication
             mapControl.Map = map;
             RefreshMap();
         }
+
+        // -------------------- GPS LAYER --------------------
+        private WritableLayer CreateGpsLayer()
+        {
+            var layer = new WritableLayer
+            {
+                Name = NAME_GPS_LAYER,
+                Style = null,
+                IsMapInfoLayer = false
+            };
+            return layer;
+        }
+
+        private Feature CreateGpsFeature(Gps gps)
+        {
+            var feature = new Feature
+            {
+                Geometry = FromLongLat(gps.CurrentLon, gps.CurrentLat)
+            };
+            var style = new SymbolStyle();
+            style = CreatePngStyle("MecyApplication.Resources.GpsLocationMap.png", GPS_ICON_SCALE);
+
+            feature.Styles.Add(style);
+            return feature;
+        }
+
+        private void DrawGpsToLayer()
+        {
+            var layer = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == NAME_MESO_LABEL_LAYER);
+            layer.Clear();
+            mapControl.RefreshGraphics();
+            if (!LiveViewModel.Gps.IsAvailable) return;
+            if (LiveViewModel.Gps.CurrentLat == 0.0 || LiveViewModel.Gps.CurrentLon == 0.0)
+            {
+                return;
+            }
+
+            layer.Add(CreateGpsFeature(LiveViewModel.Gps));
+            mapControl.RefreshGraphics();
+        }
+
 
         // -------------------- MESO LAYER --------------------
         /// <summary>
@@ -837,26 +885,6 @@ namespace MecyApplication
                 _measuringStartLatitude = 0;
                 RefreshMap();
             }
-        }
-
-        /// <summary>
-        /// Handles selection changes on <c>lvOpenDataElements</c>
-        /// </summary>
-        /// <param name="sender">Sender</param>
-        /// <param name="e">Arguments</param>
-        private void lvOpenDataElements_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            RefreshMap();
-        }
-
-        /// <summary>
-        /// Handles selection changes on <c>lvMesocyclones</c>
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void lvMesocyclones_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            RefreshMap();
         }
 
         // -------------------- GOOGLE MAPS TILE DOWNLOAD --------------------
