@@ -236,6 +236,7 @@ namespace MecyApplication
             layer.Clear();
             mapControl.RefreshGraphics();
             if (!LiveViewModel.Gps.IsAvailable) return;
+            if (!LiveViewModel.Gps.IsOpen) return;
             if (LiveViewModel.Gps.CurrentLat == 0.0 || LiveViewModel.Gps.CurrentLon == 0.0)
             {
                 return;
@@ -244,7 +245,6 @@ namespace MecyApplication
             layer.Add(CreateGpsFeature(LiveViewModel.Gps));
             mapControl.RefreshGraphics();
         }
-
 
         // -------------------- MESO LAYER --------------------
         /// <summary>

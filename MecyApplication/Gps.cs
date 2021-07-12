@@ -5,6 +5,7 @@ using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 
 namespace MecyApplication
 {
@@ -13,8 +14,19 @@ namespace MecyApplication
         public double CurrentLat { get; set; }
         public double CurrentLon { get; set; }
         public bool IsAvailable { get; set; }
+        public bool IsOpen { get; set; }
         public SerialPortDevice Device { get; set; }
         public Gps()
+        {
+            ResetGps();
+
+            DispatcherTimer availitilityTimer = new DispatcherTimer();
+            availitilityTimer.Interval = TimeSpan.FromSeconds(5);
+            availitilityTimer.Tick += AvailabilityCheckerTick;
+            availitilityTimer.Start();
+        }
+
+        private void ResetGps()
         {
             string portname = "COM4";
             int baudrate = 9600;
@@ -22,6 +34,17 @@ namespace MecyApplication
             Device = new SerialPortDevice(port);
             Device.MessageReceived += device_NmeaMessageReceived;
             Device.OpenAsync();
+        }
+
+        private void AvailabilityCheckerTick(object sender, EventArgs e)
+        {
+            if (Device.IsOpen) IsOpen = true;
+            else
+            {
+                IsOpen = false;
+                IsAvailable = false;
+                ResetGps();
+            }
         }
 
         private void device_NmeaMessageReceived(object sender, NmeaMessageReceivedEventArgs args)
