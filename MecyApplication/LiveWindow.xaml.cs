@@ -68,9 +68,9 @@ namespace MecyApplication
         }
 
         /// <summary>
-        /// Constructor, that holds an instance of the MainViewModel.
+        /// Constructor, that holds an instance of the LiveViewModel.
         /// </summary>
-        /// <param name="mainViewModel">MainViewModel of the application.</param>
+        /// <param name="liveVieweModel">LiveViewModel of the application.</param>
         public LiveWindow(LiveViewModel liveViewModel)
         {
             InitializeComponent();
