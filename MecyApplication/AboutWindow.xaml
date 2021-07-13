@@ -31,6 +31,9 @@
                     https://github.com/buu-huu/mecy
                 </Hyperlink>
                 </TextBlock>
+                <Separator />
+                <Label Content="Data:" HorizontalAlignment="Center" FontSize="15" />
+                <Image Source="Resources/DWD-Logo_2013.png" Width="200" />
             </StackPanel>
         </Border>
 
@@ -49,17 +52,17 @@
                         Mecy
                     </Paragraph>
                     <Paragraph>
-                        Version 1.0.0
+                        Version 1.1
                     </Paragraph>
                     <Paragraph>
                         © 2021 buu-huu (https://github.com/buu-huu/)
                     </Paragraph>
                     <Paragraph>
-                        Mecy is a meteorological software for mesocyclones. It comes with many helpful features
+                        Mecy is a meteorological software for mesocyclones. It comes with many features
                     to examine, track and display information about them.
                     </Paragraph>
                     <Paragraph>
-                        Data source: DWD OpenData server (https://opendata.dwd.de/)
+                        Data: Deutscher Wetterdienst
                     </Paragraph>
                     <Paragraph>
                         License: MIT

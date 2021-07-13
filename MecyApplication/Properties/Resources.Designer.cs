@@ -73,6 +73,16 @@ namespace MecyApplication.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap DWD_Logo_2013 {
+            get {
+                object obj = ResourceManager.GetObject("DWD_Logo_2013", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap GpsLocationMap {
             get {
                 object obj = ResourceManager.GetObject("GpsLocationMap", resourceCulture);

@@ -462,6 +462,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\GpsLocationMap.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DWD-Logo_2013.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\WinSCP.5.19.1\build\WinSCP.targets" Condition="Exists('..\packages\WinSCP.5.19.1\build\WinSCP.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

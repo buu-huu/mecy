@@ -28,14 +28,17 @@
                 <StackPanel Grid.Row="0"
                             VerticalAlignment="Center">
                     <Image Source="Resources/LogoWithSubtitle.png"
-                       Width="350"
+                       Width="300"
                        Margin="20" />
-                    <Label HorizontalAlignment="Center">Version 1.1</Label>
+                    <StackPanel HorizontalAlignment="Center">
+                        <Label Content="Data: " HorizontalAlignment="Center" FontSize="14" />
+                        <Image Source="Resources/DWD-Logo_2013.png" Width="180" />
+                    </StackPanel>
                 </StackPanel>
-                <ProgressBar IsIndeterminate="True" Grid.Row="1" />
+                <ProgressBar IsIndeterminate="True" Grid.Row="1" Foreground="#FFE1A3FF" />
                 <TextBlock HorizontalAlignment="Center"
                    Grid.Row="2"
-                   VerticalAlignment="Center">Loading...</TextBlock>
+                   VerticalAlignment="Center">Version 1.1</TextBlock>
             </Grid>
         </Border>
     </Grid>
