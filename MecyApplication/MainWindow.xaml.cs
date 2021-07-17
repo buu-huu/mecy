@@ -101,7 +101,8 @@ namespace MecyApplication
                 BackColor = Color.Gray,
                 Limiter = new ViewportLimiterKeepWithin()
                 {
-                    PanLimits = new BoundingBox(FromLongLat(-2.703347, 56.520715), FromLongLat(22.712250, 44.540373))
+                    PanLimits = new BoundingBox(
+                        FromLongLat(-2.703347, 56.520715), FromLongLat(22.712250, 44.540373))
                 }
             };
 
