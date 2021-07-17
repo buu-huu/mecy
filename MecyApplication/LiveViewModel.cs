@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO.Ports;
 using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
@@ -28,7 +29,10 @@ namespace MecyApplication
 
         DateTime _lastDownloadTime;
 
-        Gps _gps = new Gps();
+        List<string> _comPorts = new List<string>();
+        string _selectedComPort;
+        Gps _gps;
+
 
         #region properties
         public OpenDataElement SelectedElement
@@ -118,6 +122,32 @@ namespace MecyApplication
             }
         }
 
+        public List<string> ComPorts
+        {
+            get
+            {
+                return _comPorts;
+            }
+            set
+            {
+                _comPorts = value;
+                OnPropertyChanged("ComPorts");
+            }
+        }
+
+        public string SelectedComPort
+        {
+            get
+            {
+                return _selectedComPort;
+            }
+            set
+            {
+                _selectedComPort = value;
+                OnPropertyChanged("SelectedComPort");
+            }
+        }
+
         public Gps Gps
         {
             get
@@ -138,10 +168,22 @@ namespace MecyApplication
         {
             DownloadData(this);
 
+            ComPorts = GetAllComPorts();
+            if (ComPorts.Count != 0)
+            {
+                SelectedComPort = ComPorts[0];
+                Gps = new Gps(SelectedComPort);
+            }
+            
             SetupClocks();
             SetupConnectionWatcher();
             SetupAutoDownloader();
             SetupGpsWatcher();
+        }
+
+        private List<string> GetAllComPorts()
+        {
+            return SerialPort.GetPortNames().ToList();
         }
 
         private void SetupGpsWatcher()
@@ -247,6 +289,19 @@ namespace MecyApplication
         }
 
         // -------------------- COMMANDS --------------------
+        public ICommand ResetGpsCommand
+        {
+            get
+            {
+                return new RelayCommand(e => true, this.ResetGps);
+            }
+        }
+
+        private void ResetGps(object obj)
+        {
+            Gps = new Gps(SelectedComPort);
+        }
+
         public ICommand DownloadDataCommand
         {
             get

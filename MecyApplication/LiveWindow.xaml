@@ -144,6 +144,19 @@
                                   ToolTip="Measure a distance on the map">
                         <Image Source="Resources/ToolbarMeasureDistanceLive.png" />
                     </ToggleButton>
+
+                    <Separator />
+
+                    <StackPanel>
+                        <Label Foreground="White">GPS COM Port</Label>
+                        <ComboBox x:Name="comboCom" Width="70" ItemsSource="{Binding ComPorts}" SelectedItem="{Binding SelectedComPort}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding ResetGpsCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ComboBox>
+                    </StackPanel>
                 </ToolBar>
             </ToolBarTray>
         </StackPanel>

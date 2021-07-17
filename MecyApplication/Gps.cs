@@ -11,13 +11,17 @@ namespace MecyApplication
 {
     public class Gps
     {
+        public const int BAUDRATE = 9600;
+
         public double CurrentLat { get; set; }
         public double CurrentLon { get; set; }
+        public string ComPort { get; set; }
         public bool IsAvailable { get; set; }
         public bool IsOpen { get; set; }
         public SerialPortDevice Device { get; set; }
-        public Gps()
+        public Gps(string comPort)
         {
+            ComPort = comPort;
             ResetGps();
 
             DispatcherTimer availitilityTimer = new DispatcherTimer();
@@ -28,9 +32,7 @@ namespace MecyApplication
 
         private void ResetGps()
         {
-            string portname = "COM4";
-            int baudrate = 9600;
-            var port = new SerialPort(portname, baudrate);
+            var port = new SerialPort(ComPort, BAUDRATE);
             Device = new SerialPortDevice(port);
             Device.MessageReceived += device_NmeaMessageReceived;
             Device.OpenAsync();

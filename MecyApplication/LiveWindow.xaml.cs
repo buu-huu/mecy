@@ -232,6 +232,7 @@ namespace MecyApplication
 
         private void DrawGpsToLayer()
         {
+            if (LiveViewModel.Gps == null) return;
             var layer = (WritableLayer)mapControl.Map.Layers.First(i => i.Name == NAME_MESO_LABEL_LAYER);
             layer.Clear();
             mapControl.RefreshGraphics();
