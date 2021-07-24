@@ -1,12 +1,12 @@
 !include "MUI2.nsh"
 !define INSTALLATIONNAME "Mecy"
 !define PRODUCT_NAME "Mecy"
-!define PRODUCT_VERSION "1.1"
+!define PRODUCT_VERSION "1.2"
 !define PRODUCT_PUBLISHER "buuhuu"
 !define PRODUCT_WEB_SITE "https://github.com/buu-huu/mecy"
 !define MUI_ICON "..\..\MecyApplication\Resources\256x256.ico"
 
-Name "Mecy 1.1"
+Name "Mecy 1.2"
 
 OutFile "MecyInstaller.exe"
 InstallDir $PROGRAMFILES\${INSTALLATIONNAME}

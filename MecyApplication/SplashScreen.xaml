@@ -38,7 +38,7 @@
                 <ProgressBar IsIndeterminate="True" Grid.Row="1" Foreground="#FFE1A3FF" />
                 <TextBlock HorizontalAlignment="Center"
                    Grid.Row="2"
-                   VerticalAlignment="Center">Version 1.1</TextBlock>
+                   VerticalAlignment="Center">Version 1.2</TextBlock>
             </Grid>
         </Border>
     </Grid>
