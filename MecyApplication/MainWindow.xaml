@@ -266,7 +266,7 @@
                                 <GradientStop Color="#FFBDBDBD" Offset="1"/>
                             </LinearGradientBrush>
                         </Border.Background>
-                        <Image Source="Resources/LogoWithSubtitle.png" />
+                        <Image Source="Resources/LogoWithoutSubtitle.png" />
                     </Border>
                     <ScrollViewer Grid.Row="1"
                               Padding="11"

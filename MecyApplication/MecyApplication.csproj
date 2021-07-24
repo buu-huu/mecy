@@ -305,9 +305,6 @@
     <Resource Include="Resources\ToolbarZoom.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\LogoWithoutSubtitle.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\meso_icon_1.png" />
   </ItemGroup>
   <ItemGroup>
@@ -467,6 +464,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\LogoWithSubtitle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\LogoWithoutSubtitle.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\WinSCP.5.19.1\build\WinSCP.targets" Condition="Exists('..\packages\WinSCP.5.19.1\build\WinSCP.targets')" />
