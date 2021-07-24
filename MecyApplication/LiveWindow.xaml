@@ -67,13 +67,6 @@
 
             <ToolBarTray IsLocked="True" Background="#FF6E6E6E" >
                 <ToolBar Height="50" Background="#FF717171" Loaded="ToolBar_Loaded">
-                    <Button Command="{Binding DownloadDataCommand}"
-                            ToolTip="Download data from OpenData server">
-                        <Image Source="Resources/ToolbarDownloadLive.png" />
-                    </Button>
-
-                    <Separator />
-
                     <RadioButton Style="{StaticResource {x:Type ToggleButton}}"
                                  Background="Transparent"
                                  BorderThickness="0"
