@@ -257,11 +257,109 @@
             <DockPanel Grid.Column="1">
                 <Grid>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="180" />
                         <RowDefinition />
                     </Grid.RowDefinitions>
 
                     <xaml:MapControl x:Name="mapControl"
-                                     Grid.Row="0" />
+                                     Grid.Row="0"
+                                     Grid.RowSpan="2" />
+
+                    <Grid Grid.Row="0" x:Name="grdDetails" DataContext="{Binding SelectedMesocyclone}">
+                        <Grid.Background>
+                            <SolidColorBrush Color="#FF575757" Opacity="0.7"/>
+                        </Grid.Background>
+                        
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Row="0"
+                                    Grid.Column="0"
+                                    Orientation="Horizontal">
+                            <Label Content="ID"
+                                   Foreground="White"
+                                   VerticalAlignment="Center"
+                                   FontFamily="Courier New"
+                                   FontSize="15" />
+                            <TextBlock Text="{Binding Id}"
+                                       Foreground="#FFF4C5FC"
+                                       VerticalAlignment="Center"
+                                       FontFamily="Courier New"
+                                       FontSize="15" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="0"
+                                    Grid.Column="1"
+                                    Orientation="Horizontal">
+                            <Label Content="TIME"
+                                   Foreground="White"
+                                   VerticalAlignment="Center"
+                                   FontFamily="Courier New"
+                                   FontSize="15" />
+                            <TextBlock Text="{Binding Path=Time, StringFormat='dd.MM.yy HH:mm'}"
+                                       Foreground="#FFF4C5FC"
+                                       VerticalAlignment="Center"
+                                       FontFamily="Courier New"
+                                       FontSize="15" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="0"
+                                    Grid.Column="2"
+                                    Orientation="Horizontal">
+                            <Label Content="INTENSITY"
+                                   Foreground="White"
+                                   VerticalAlignment="Center"
+                                   FontFamily="Courier New"
+                                   FontSize="15" />
+                            <TextBlock Text="{Binding Intensity}"
+                                       Foreground="#FFF4C5FC"
+                                       VerticalAlignment="Center"
+                                       FontFamily="Courier New"
+                                       FontSize="15" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="1"
+                                    Grid.Column="0"
+                                    Orientation="Horizontal">
+                            <Label Content="LATITUDE"
+                                   Foreground="White"
+                                   VerticalAlignment="Center"
+                                   FontFamily="Courier New"
+                                   FontSize="15" />
+                            <TextBlock Text="{Binding Latitude}"
+                                       Foreground="#FFF4C5FC"
+                                       VerticalAlignment="Center"
+                                       FontFamily="Courier New"
+                                       FontSize="15" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="1"
+                                    Grid.Column="1"
+                                    Orientation="Horizontal">
+                            <Label Content="LONGITUDE"
+                                   Foreground="White"
+                                   VerticalAlignment="Center"
+                                   FontFamily="Courier New"
+                                   FontSize="15" />
+                            <TextBlock Text="{Binding Longitude}"
+                                       Foreground="#FFF4C5FC"
+                                       VerticalAlignment="Center"
+                                       FontFamily="Courier New"
+                                       FontSize="15" />
+                        </StackPanel>
+                    </Grid>
 
                 </Grid>
 
