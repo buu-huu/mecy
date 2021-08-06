@@ -90,7 +90,7 @@
                         <Image Source="Resources/ToolbarMapStyleOpenStreetMap.png" />
                     </RadioButton>
 
-
+                    <!--
                     <RadioButton Style="{StaticResource {x:Type ToggleButton}}"
                                  Background="Transparent"
                                  BorderThickness="0"
@@ -99,6 +99,7 @@
                                  ToolTip="Select Google Maps style for map">
                         <Image Source="Resources/ToolbarMapStyleGoogleMaps.png" />
                     </RadioButton>
+                    -->
 
                     <Separator />
 
