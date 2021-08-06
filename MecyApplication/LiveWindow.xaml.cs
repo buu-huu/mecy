@@ -110,7 +110,7 @@ namespace MecyApplication
 
             // Tile Source
             if (LiveViewModel.CurrentMapConfiguration.ActiveTileSource == MapConfiguration.TileSource.OpenStreetMap) map.Layers.Add(OpenStreetMap.CreateTileLayer());
-            else if (LiveViewModel.CurrentMapConfiguration.ActiveTileSource == MapConfiguration.TileSource.GoogleMaps) map.Layers.Add(new TileLayer(CreateGoogleTileSource(GOOGLE_MAPS_TILE_URL)));
+            //else if (LiveViewModel.CurrentMapConfiguration.ActiveTileSource == MapConfiguration.TileSource.GoogleMaps) map.Layers.Add(new TileLayer(CreateGoogleTileSource(GOOGLE_MAPS_TILE_URL)));
 
             // Layers
             map.Layers.Add(CreateRadarDiameterLayer());
@@ -895,26 +895,26 @@ namespace MecyApplication
         /// </summary>
         /// <param name="urlFormatter">URL formatter</param>
         /// <returns>Tilesource</returns>
-        private static ITileSource CreateGoogleTileSource(string urlFormatter)
-        {
-            return new HttpTileSource(new GlobalSphericalMercator(), urlFormatter, new[] { "0", "1", "2", "3" },
-                tileFetcher: FetchGoogleTile);
-        }
+        //private static ITileSource CreateGoogleTileSource(string urlFormatter)
+        //{
+        //    return new HttpTileSource(new GlobalSphericalMercator(), urlFormatter, new[] { "0", "1", "2", "3" },
+        //        tileFetcher: FetchGoogleTile);
+        //}
 
         /// <summary>
         /// Creates a byte array of google maps tiles.
         /// </summary>
         /// <param name="uri">URI</param>
         /// <returns>Tilebytes</returns>
-        private static byte[] FetchGoogleTile(Uri uri)
-        {
-            var httpClient = new HttpClient();
+        //private static byte[] FetchGoogleTile(Uri uri)
+        //{
+        //    var httpClient = new HttpClient();
 
-            httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Referer", "http://maps.google.com/");
-            httpClient.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", @"Mozilla / 5.0(Windows; U; Windows NT 6.0; en - US; rv: 1.9.1.7) Gecko / 20091221 Firefox / 3.5.7");
+        //    httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Referer", "http://maps.google.com/");
+        //    httpClient.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", @"Mozilla / 5.0(Windows; U; Windows NT 6.0; en - US; rv: 1.9.1.7) Gecko / 20091221 Firefox / 3.5.7");
 
-            return httpClient.GetByteArrayAsync(uri).ConfigureAwait(false).GetAwaiter().GetResult();
-        }
+        //    return httpClient.GetByteArrayAsync(uri).ConfigureAwait(false).GetAwaiter().GetResult();
+        //}
 
         // -------------------- MATH HELPERS --------------------
         /// <summary>

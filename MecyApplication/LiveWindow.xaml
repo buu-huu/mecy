@@ -257,7 +257,7 @@
             <DockPanel Grid.Column="1">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="180" />
+                        <RowDefinition Height="220" />
                         <RowDefinition />
                     </Grid.RowDefinitions>
 
@@ -271,6 +271,9 @@
                         </Grid.Background>
                         
                         <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
                             <RowDefinition />
                             <RowDefinition />
                             <RowDefinition />
@@ -330,7 +333,13 @@
                                        FontSize="15" />
                         </StackPanel>
 
-                        <StackPanel Grid.Row="1"
+                        <Label Grid.Row="1"
+                               Grid.ColumnSpan="4"
+                               Background="Red"
+                               Foreground="White"
+                               Content="COORDINATE AND SHAPE" />
+
+                        <StackPanel Grid.Row="2"
                                     Grid.Column="0"
                                     Orientation="Horizontal">
                             <Label Content="LATITUDE"
@@ -345,7 +354,7 @@
                                        FontSize="15" />
                         </StackPanel>
 
-                        <StackPanel Grid.Row="1"
+                        <StackPanel Grid.Row="2"
                                     Grid.Column="1"
                                     Orientation="Horizontal">
                             <Label Content="LONGITUDE"
