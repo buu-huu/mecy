@@ -256,6 +256,7 @@
                                      Grid.Row="0"
                                      Grid.RowSpan="2" />
 
+                    <!--
                     <Grid Grid.Row="0" x:Name="grdDetails" DataContext="{Binding SelectedMesocyclone}">
                         <Grid.Background>
                             <SolidColorBrush Color="#FF575757" Opacity="0.7"/>
@@ -360,7 +361,7 @@
                                        FontSize="15" />
                         </StackPanel>
                     </Grid>
-
+                    -->
                 </Grid>
 
             </DockPanel>
