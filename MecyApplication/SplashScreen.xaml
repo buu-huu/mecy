@@ -28,11 +28,12 @@
                 <StackPanel Grid.Row="0"
                             VerticalAlignment="Center">
                     <Image Source="Resources/LogoWithSubtitle.png"
-                       Width="300"
-                       Margin="20" />
+                           RenderOptions.BitmapScalingMode="Fant"
+                           Width="300"
+                           Margin="20" />
                     <StackPanel HorizontalAlignment="Center">
                         <Label Content="Data: " HorizontalAlignment="Center" FontSize="14" />
-                        <Image Source="Resources/DWD-Logo_2013.png" Width="180" />
+                        <Image Source="Resources/DWD-Logo_2013.png" Width="180" RenderOptions.BitmapScalingMode="Fant" />
                     </StackPanel>
                 </StackPanel>
                 <ProgressBar IsIndeterminate="True" Grid.Row="1" Foreground="#FFE1A3FF" />

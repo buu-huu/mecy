@@ -76,26 +76,29 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BruTile, Version=2.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\BruTile.2.1.2\lib\net45\BruTile.dll</HintPath>
+    <Reference Include="BruTile, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BruTile.4.0.0\lib\netstandard2.0\BruTile.dll</HintPath>
+    </Reference>
+    <Reference Include="Fizzler, Version=1.2.0.0, Culture=neutral, PublicKeyToken=4ebff4844e382110, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fizzler.1.2.0\lib\netstandard2.0\Fizzler.dll</HintPath>
     </Reference>
     <Reference Include="HarfBuzzSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-      <HintPath>..\packages\HarfBuzzSharp.2.6.1\lib\net45\HarfBuzzSharp.dll</HintPath>
+      <HintPath>..\packages\HarfBuzzSharp.2.6.1.7\lib\net462\HarfBuzzSharp.dll</HintPath>
     </Reference>
-    <Reference Include="Mapsui, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Mapsui.2.0.3\lib\net461\Mapsui.dll</HintPath>
+    <Reference Include="Mapsui, Version=3.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mapsui.3.0.2\lib\netstandard2.0\Mapsui.dll</HintPath>
     </Reference>
-    <Reference Include="Mapsui.Geometries, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Mapsui.2.0.3\lib\net461\Mapsui.Geometries.dll</HintPath>
+    <Reference Include="Mapsui.Geometries, Version=3.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mapsui.3.0.2\lib\netstandard2.0\Mapsui.Geometries.dll</HintPath>
     </Reference>
-    <Reference Include="Mapsui.Rendering.Skia, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Mapsui.2.0.3\lib\net461\Mapsui.Rendering.Skia.dll</HintPath>
+    <Reference Include="Mapsui.Rendering.Skia, Version=3.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mapsui.3.0.2\lib\netstandard2.0\Mapsui.Rendering.Skia.dll</HintPath>
     </Reference>
-    <Reference Include="Mapsui.Rendering.Xaml, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Mapsui.2.0.3\lib\net461\Mapsui.Rendering.Xaml.dll</HintPath>
+    <Reference Include="Mapsui.Rendering.Xaml, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mapsui.Wpf.3.0.2\lib\net48\Mapsui.Rendering.Xaml.dll</HintPath>
     </Reference>
-    <Reference Include="Mapsui.UI.Wpf, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Mapsui.2.0.3\lib\net461\Mapsui.UI.Wpf.dll</HintPath>
+    <Reference Include="Mapsui.UI.Wpf, Version=3.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mapsui.Wpf.3.0.2\lib\net48\Mapsui.UI.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.31\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
@@ -112,17 +115,23 @@
     <Reference Include="OpenTK.GLControl, Version=3.0.1.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <HintPath>..\packages\OpenTK.GLControl.3.0.1\lib\net20\OpenTK.GLControl.dll</HintPath>
     </Reference>
-    <Reference Include="SkiaSharp, Version=1.68.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-      <HintPath>..\packages\SkiaSharp.1.68.2.1\lib\net462\SkiaSharp.dll</HintPath>
+    <Reference Include="ShimSkiaSharp, Version=0.5.7.1, Culture=neutral, PublicKeyToken=dafe96fe6c845a74, processorArchitecture=MSIL">
+      <HintPath>..\packages\ShimSkiaSharp.0.5.7.1\lib\net461\ShimSkiaSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp, Version=2.80.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.2.80.2\lib\net462\SkiaSharp.dll</HintPath>
     </Reference>
     <Reference Include="SkiaSharp.Extended.Svg, Version=1.60.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
       <HintPath>..\packages\SkiaSharp.Svg.1.60.0\lib\netstandard2.0\SkiaSharp.Extended.Svg.dll</HintPath>
     </Reference>
+    <Reference Include="SkiaSharp.HarfBuzz, Version=2.80.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.HarfBuzz.2.80.2\lib\net462\SkiaSharp.HarfBuzz.dll</HintPath>
+    </Reference>
     <Reference Include="SkiaSharp.Views.Desktop, Version=1.68.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
       <HintPath>..\packages\SkiaSharp.Views.1.68.2.1\lib\net45\SkiaSharp.Views.Desktop.dll</HintPath>
     </Reference>
-    <Reference Include="SkiaSharp.Views.Desktop.Common, Version=1.68.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-      <HintPath>..\packages\SkiaSharp.Views.Desktop.Common.1.68.2.1\lib\net45\SkiaSharp.Views.Desktop.Common.dll</HintPath>
+    <Reference Include="SkiaSharp.Views.Desktop.Common, Version=2.80.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.Views.Desktop.Common.2.80.2\lib\net462\SkiaSharp.Views.Desktop.Common.dll</HintPath>
     </Reference>
     <Reference Include="SkiaSharp.Views.Gtk, Version=1.68.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
       <HintPath>..\packages\SkiaSharp.Views.Gtk2.1.68.2.1\lib\net45\SkiaSharp.Views.Gtk.dll</HintPath>
@@ -130,8 +139,17 @@
     <Reference Include="SkiaSharp.Views.WindowsForms, Version=1.68.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
       <HintPath>..\packages\SkiaSharp.Views.WindowsForms.1.68.2.1\lib\net45\SkiaSharp.Views.WindowsForms.dll</HintPath>
     </Reference>
-    <Reference Include="SkiaSharp.Views.WPF, Version=1.68.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-      <HintPath>..\packages\SkiaSharp.Views.WPF.1.68.2.1\lib\net45\SkiaSharp.Views.WPF.dll</HintPath>
+    <Reference Include="SkiaSharp.Views.WPF, Version=2.80.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.Views.WPF.2.80.2\lib\net462\SkiaSharp.Views.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Svg.Custom, Version=0.5.7.1, Culture=neutral, PublicKeyToken=dafe96fe6c845a74, processorArchitecture=MSIL">
+      <HintPath>..\packages\Svg.Custom.0.5.7.1\lib\net461\Svg.Custom.dll</HintPath>
+    </Reference>
+    <Reference Include="Svg.Model, Version=0.5.7.1, Culture=neutral, PublicKeyToken=dafe96fe6c845a74, processorArchitecture=MSIL">
+      <HintPath>..\packages\Svg.Model.0.5.7.1\lib\net461\Svg.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="Svg.Skia, Version=0.5.7.1, Culture=neutral, PublicKeyToken=dafe96fe6c845a74, processorArchitecture=MSIL">
+      <HintPath>..\packages\Svg.Skia.0.5.7.1\lib\net461\Svg.Skia.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -185,6 +203,9 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -193,8 +214,8 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="Topten.RichTextKit, Version=0.1.118.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Topten.RichTextKit.0.1.118\lib\net45\Topten.RichTextKit.dll</HintPath>
+    <Reference Include="Topten.RichTextKit, Version=0.4.145.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Topten.RichTextKit.0.4.145\lib\net462\Topten.RichTextKit.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -474,13 +495,13 @@
     <PropertyGroup>
       <ErrorText>Dieses Projekt verweist auf mindestens ein NuGet-Paket, das auf diesem Computer fehlt. Verwenden Sie die Wiederherstellung von NuGet-Paketen, um die fehlenden Dateien herunterzuladen. Weitere Informationen finden Sie unter "http://go.microsoft.com/fwlink/?LinkID=322105". Die fehlende Datei ist "{0}".</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\HarfBuzzSharp.2.6.1\build\net45\HarfBuzzSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\HarfBuzzSharp.2.6.1\build\net45\HarfBuzzSharp.targets'))" />
-    <Error Condition="!Exists('..\packages\SkiaSharp.1.68.2.1\build\net462\SkiaSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SkiaSharp.1.68.2.1\build\net462\SkiaSharp.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.NETFramework.ReferenceAssemblies.net472.1.0.0\build\Microsoft.NETFramework.ReferenceAssemblies.net472.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NETFramework.ReferenceAssemblies.net472.1.0.0\build\Microsoft.NETFramework.ReferenceAssemblies.net472.targets'))" />
     <Error Condition="!Exists('..\packages\WinSCP.5.19.2\build\WinSCP.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\WinSCP.5.19.2\build\WinSCP.targets'))" />
+    <Error Condition="!Exists('..\packages\HarfBuzzSharp.2.6.1.7\build\net462\HarfBuzzSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\HarfBuzzSharp.2.6.1.7\build\net462\HarfBuzzSharp.targets'))" />
+    <Error Condition="!Exists('..\packages\SkiaSharp.2.80.2\build\net462\SkiaSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SkiaSharp.2.80.2\build\net462\SkiaSharp.targets'))" />
   </Target>
-  <Import Project="..\packages\HarfBuzzSharp.2.6.1\build\net45\HarfBuzzSharp.targets" Condition="Exists('..\packages\HarfBuzzSharp.2.6.1\build\net45\HarfBuzzSharp.targets')" />
-  <Import Project="..\packages\SkiaSharp.1.68.2.1\build\net462\SkiaSharp.targets" Condition="Exists('..\packages\SkiaSharp.1.68.2.1\build\net462\SkiaSharp.targets')" />
   <Import Project="..\packages\Microsoft.NETFramework.ReferenceAssemblies.net472.1.0.0\build\Microsoft.NETFramework.ReferenceAssemblies.net472.targets" Condition="Exists('..\packages\Microsoft.NETFramework.ReferenceAssemblies.net472.1.0.0\build\Microsoft.NETFramework.ReferenceAssemblies.net472.targets')" />
   <Import Project="..\packages\WinSCP.5.19.2\build\WinSCP.targets" Condition="Exists('..\packages\WinSCP.5.19.2\build\WinSCP.targets')" />
+  <Import Project="..\packages\HarfBuzzSharp.2.6.1.7\build\net462\HarfBuzzSharp.targets" Condition="Exists('..\packages\HarfBuzzSharp.2.6.1.7\build\net462\HarfBuzzSharp.targets')" />
+  <Import Project="..\packages\SkiaSharp.2.80.2\build\net462\SkiaSharp.targets" Condition="Exists('..\packages\SkiaSharp.2.80.2\build\net462\SkiaSharp.targets')" />
 </Project>

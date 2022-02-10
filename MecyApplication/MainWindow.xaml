@@ -71,11 +71,11 @@
                 <ToolBar Height="50" Background="#FFBDBDBD" Loaded="ToolBar_Loaded">
                     <Button Command="{Binding OpenLiveViewCommand}"
                             ToolTip="Open live view">
-                        <Image Source="Resources/ToolbarLiveView.png" />
+                        <Image Source="Resources/ToolbarLiveView.png" RenderOptions.BitmapScalingMode="Fant" />
                     </Button>
                     <Button Command="{Binding DownloadDataCommand}"
                             ToolTip="Download data from OpenData server">
-                        <Image Source="Resources/ToolbarDownload.png" />
+                        <Image Source="Resources/ToolbarDownload.png" RenderOptions.BitmapScalingMode="Fant" />
                     </Button>
 
                     <Separator />
@@ -87,7 +87,7 @@
                                  Command="{Binding SelectOpenStreetMapStyleCommand}"
                                  GroupName="MapStyle"
                                  ToolTip="Select OpenStreetMap style for map">
-                        <Image Source="Resources/ToolbarMapStyleOpenStreetMap.png" />
+                        <Image Source="Resources/ToolbarMapStyleOpenStreetMap.png" RenderOptions.BitmapScalingMode="Fant" />
                     </RadioButton>
 
                     <!--
@@ -97,7 +97,7 @@
                                  Command="{Binding SelectGoogleMapsStyleCommand}"
                                  GroupName="MapStyle"
                                  ToolTip="Select Google Maps style for map">
-                        <Image Source="Resources/ToolbarMapStyleGoogleMaps.png" />
+                        <Image Source="Resources/ToolbarMapStyleGoogleMaps.png" RenderOptions.BitmapScalingMode="Fant" />
                     </RadioButton>
                     -->
 
@@ -106,23 +106,23 @@
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowScaleBar, Mode=TwoWay}"
                                   Command="{Binding RefreshMapWidgetsCommand}"
                                   ToolTip="Show scale bar in map">
-                        <Image Source="Resources/ToolbarScaleBar.png" />
+                        <Image Source="Resources/ToolbarScaleBar.png" RenderOptions.BitmapScalingMode="Fant" />
                     </ToggleButton>
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowZoomWidget, Mode=TwoWay}"
                                   Command="{Binding RefreshMapWidgetsCommand}"
                                   ToolTip="Show zoom buttons in map">
-                        <Image Source="Resources/ToolbarZoom.png" />
+                        <Image Source="Resources/ToolbarZoom.png" RenderOptions.BitmapScalingMode="Fant" />
                     </ToggleButton>
                     
                     <Separator />
 
                     <Button Command="{Binding CenterMapCommand}"
                             ToolTip="Center the map to Germany">
-                        <Image Source="Resources/ToolbarCenter.png" />
+                        <Image Source="Resources/ToolbarCenter.png" RenderOptions.BitmapScalingMode="Fant" />
                     </Button>
                     <Button Command="{Binding CenterMapToMesoCommand}"
                             ToolTip="Center the map to the selected mesocyclone">
-                        <Image Source="Resources/ToolbarCenterMeso.png" />
+                        <Image Source="Resources/ToolbarCenterMeso.png" RenderOptions.BitmapScalingMode="Fant" />
                     </Button>
                     
                     <Separator />
@@ -130,38 +130,38 @@
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowRadarLabels, Mode=TwoWay}"
                                   Command="{Binding RefreshMapAndMapConfigurationCommand}"
                                   ToolTip="Show radar labels on map">
-                        <Image Source="Resources/ToolbarRadarLabels.png" />
+                        <Image Source="Resources/ToolbarRadarLabels.png" RenderOptions.BitmapScalingMode="Fant" />
                     </ToggleButton>
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowRadarDiameters, Mode=TwoWay}"
                                   Command="{Binding RefreshMapAndMapConfigurationCommand}"
                                   ToolTip="Show radar diameters on map">
-                        <Image Source="Resources/ToolbarRadarDiameters.png" />
+                        <Image Source="Resources/ToolbarRadarDiameters.png" RenderOptions.BitmapScalingMode="Fant" />
                     </ToggleButton>
 
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowHistoricMesocyclones, Mode=TwoWay}"
                                   Command="{Binding RefreshMapAndMapConfigurationCommand}"
                                   ToolTip="Show historic mesocyclones in map">
-                        <Image Source="Resources/ToobarHistMeso.png" />
+                        <Image Source="Resources/ToobarHistMeso.png" RenderOptions.BitmapScalingMode="Fant" />
                     </ToggleButton>
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.HistoricMesocyclonesTransparent, Mode=TwoWay}"
                                   Command="{Binding RefreshMapAndMapConfigurationCommand}"
                                   ToolTip="Enable transparency for historic mesocyclones">
-                        <Image Source="Resources/ToolbarHistMesoTrans.png" />
+                        <Image Source="Resources/ToolbarHistMesoTrans.png" RenderOptions.BitmapScalingMode="Fant" />
                     </ToggleButton>
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowMesocycloneDiameter, Mode=TwoWay}"
                                   Command="{Binding RefreshMapAndMapConfigurationCommand}"
                                   ToolTip="Show mesocyclone diameter in map">
-                        <Image Source="Resources/ToolbarDiameter.png" />
+                        <Image Source="Resources/ToolbarDiameter.png" RenderOptions.BitmapScalingMode="Fant" />
                     </ToggleButton>
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.ShowMesocycloneIdLabel, Mode=TwoWay}"
                                   Command="{Binding RefreshMapAndMapConfigurationCommand}"
                                   ToolTip="Show mesocyclone ID on map">
-                        <Image Source="Resources/ToolbarMesoId.png" />
+                        <Image Source="Resources/ToolbarMesoId.png" RenderOptions.BitmapScalingMode="Fant" />
                     </ToggleButton>
                     <ToggleButton IsChecked="{Binding CurrentMapConfiguration.CurrentlyMeasuringDistance, Mode=TwoWay}"
                                   Command="{Binding RefreshMapAndMapConfigurationCommand}"
                                   ToolTip="Measure a distance on the map">
-                        <Image Source="Resources/ToolbarMeasureDistance.png" />
+                        <Image Source="Resources/ToolbarMeasureDistance.png" RenderOptions.BitmapScalingMode="Fant" />
                     </ToggleButton>
                 </ToolBar>
             </ToolBarTray>
@@ -268,7 +268,7 @@
                                 <GradientStop Color="#FFBDBDBD" Offset="1"/>
                             </LinearGradientBrush>
                         </Border.Background>
-                        <Image Source="Resources/LogoWithoutSubtitle.png" />
+                        <Image Source="Resources/LogoWithoutSubtitle.png" RenderOptions.BitmapScalingMode="Fant" />
                     </Border>
                     <ScrollViewer Grid.Row="1"
                               Padding="11"
@@ -295,7 +295,8 @@
                             <Image Grid.Row="1"
                                    Grid.Column="0"
                                    Grid.RowSpan="3"
-                                   Width="50">
+                                   Width="50"
+                                   RenderOptions.BitmapScalingMode="Fant" >
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
                                         <Style.Triggers>
@@ -1013,7 +1014,7 @@
                                 <GridViewColumn Header="Intensity" Width="70">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Image Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Image Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" RenderOptions.BitmapScalingMode="Fant">
                                                 <Image.Style>
                                                     <Style TargetType="{x:Type Image}">
                                                         <Style.Triggers>
@@ -1102,7 +1103,7 @@
                                             Width="60">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Image Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <Image Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" RenderOptions.BitmapScalingMode="Fant">
                                             <Image.Style>
                                                 <Style TargetType="{x:Type Image}">
                                                     <Style.Triggers>
