@@ -49,5 +49,5 @@ All parameters of a mesocyclone are listed in the details panel - including a li
 ### Time
 The status bar shows the UTC and the local time in Germany.
 
-### Connection To The OpenData Server
+### Connection to the OpenData Server
 Shows, if the OpenData server of the DWD is reachable.
